@@ -1,0 +1,15 @@
+[
+    {
+      "name": "joshjankowski",
+      "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K",
+      "email": "joshjankowski@gmail.com",
+      "first_name": "Josh",
+      "last_name": "Jankowski",
+      "date_of_birth": "1986-04-07",
+      "zip_code": 98104,
+      "media": [
+        "INSERT URL HERE"
+      ],
+      "pet": 123456798
+    }
+  ]
