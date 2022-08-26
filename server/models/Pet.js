@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const User = require('./User');
 
 // Defines sub document where the dog pictures will be stored.
 const dogMediaSchema = new Schema({
@@ -10,10 +9,6 @@ const dogMediaSchema = new Schema({
 
 const petSchema = new Schema({
     // Attaches pet to user
-    user: {
-      type: MyObjectId, 
-      ref: 'User',
-    },
     name: {
       type: String,
       required: true,

@@ -1,6 +1,9 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
+const cloudinary = require('cloudinary');
+const dotenv = require('dotenv').config();
+const cors = require('cors');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -14,6 +17,7 @@ const server = new ApolloServer({
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
@@ -22,6 +26,13 @@ if (process.env.NODE_ENV === 'production') {
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
+
+// cloudinary config
+cloudinary.config({
+  cloud_Name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+})
 
 
 // Create a new instance of an Apollo server with the GraphQL schema

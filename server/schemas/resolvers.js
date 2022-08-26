@@ -4,12 +4,19 @@ const { Pet, User } = require('../models');
 const resolvers = {
   // GET CALLS
   Query: {
-    // insert queries
+    query ExampleQuery {
+      id
+      users {
+        username
+        password
+      }
+    }
+    
   },
   // POST CALLS
-  Mutation: {
-    // insert mutations
-  },
+  // Mutation: {
+  //   insert mutations
+  // },
 };
 
 module.exports = resolvers;
