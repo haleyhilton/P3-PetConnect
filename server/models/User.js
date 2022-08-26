@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require("bcrypt")
 
-const MyObjectID = mongoose.Types.ObjectId;
 
 // Defines sub document where the profile pictures will be stored.
 const userMediaSchema = new Schema({
@@ -47,7 +46,10 @@ const userSchema = new Schema({
     // stores profile pictures
     media: [userMediaSchema],
     // attaches owner's pets
-    pet: [MyObjectID],
+    pet: {
+      type: Schema.Types.ObjectId,
+      ref: "Pet",
+    },
     lastUpdated: { 
       type: Date, 
       default: Date.now, 
