@@ -50,6 +50,10 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "Pet",
     },
+    post: {
+      type: Schema.Types.ObjectId,
+      ref: "Post",
+    },
     lastUpdated: { 
       type: Date, 
       default: Date.now, 
@@ -72,6 +76,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
+// const UserMedia = model('UserMedia', userMediaSchema);
 const User = model('User', userSchema);
 
 module.exports = User;
