@@ -1,6 +1,7 @@
 import React from 'react'
+import '../styles/Header.css';
 
-export default function Header() {
+export default function Header(props) {
   return (
     <div>
         
@@ -58,11 +59,9 @@ export default function Header() {
     <div class="container d-flex align-items-center flex-column">
 
         
-        
-        <h1 class="masthead-heading text-uppercase mb-0">Welcome to PetConnect, !</h1>
-        
-        <h1 class="masthead-heading text-uppercase mb-0">Welcome to PetConnect</h1>
-        
+            
+        <h1 class="masthead-heading text-uppercase mb-0">Welcome to PetConnect: {props.headerText}</h1>
+        <h3 class="masthead-subheading  mb-0">Text and things and stuff {props.subHeaderText}</h3>
 
         
         <div class="divider-custom divider-light">
@@ -71,12 +70,6 @@ export default function Header() {
             <div class="divider-custom-line"></div>
         </div>
         
-        <p class="masthead-subheading font-weight-light mb-0">Start the search for your new fur-ever friend</p>
-        <form role="form">
-<div class="input-group rounded">
-  <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/loader">Browse Dogs</a>
-</div>
-        </form>
         </div>
 </header>
     </div>

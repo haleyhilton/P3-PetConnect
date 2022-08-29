@@ -43,7 +43,7 @@ h2 {
     padding: 1rem;
 }
 
-.navbar {
+/* .navbar {
   position: sticky;
   display: flex;
   flex-wrap: wrap;
@@ -118,7 +118,7 @@ h2 {
 #contact-info {
   text-decoration: none;
   color: white;
-}
+} */
 
 .form, .signup-form {
   padding: 2rem;
@@ -197,7 +197,7 @@ p {
 
 /* =========================================================================== */
 
-.masthead {
+/* .masthead {
   padding-top: calc(6rem + 74px);
   padding-bottom: 6rem;
   background-color: rgb(243, 183, 70);
@@ -210,7 +210,7 @@ p {
 
 .masthead .masthead-subheading {
   font-size: 1.25rem;
-}
+} */
 
 .input-group {
   font-style: normal;

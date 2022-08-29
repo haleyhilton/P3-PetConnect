@@ -1,8 +1,15 @@
 import React from 'react'
+// import Header from "./Header"
+import '../styles/Header.css'
 
 export default function Landing() {
     return (
         <div>
+              {/* {<Header
+         headerText = "PROFILE"
+         subHeadereText = "This is our profile TESTTEST"
+      
+      />  } */}
             <section class="page-section search" id="search">
                 <div class="container">
 

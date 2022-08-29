@@ -1,8 +1,14 @@
 import React from 'react'
+// import Header from "./Header"
 
 export default function Profile() {
   return (
     <div>
+      {/* <Header
+         headerText = "PROFILE"
+         subHeadereText = "This is our profile TESTTEST"
+      
+      /> */}
 
     <div class="container">
 
