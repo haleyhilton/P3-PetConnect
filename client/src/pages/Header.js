@@ -60,8 +60,8 @@ export default function Header(props) {
 
         
             
-        <h1 class="masthead-heading text-uppercase mb-0">Welcome to PetConnect: {props.headerText}</h1>
-        <h3 class="masthead-subheading  mb-0">Text and things and stuff {props.subHeaderText}</h3>
+        <h1 class="masthead-heading text-uppercase mb-0"> {props.headerText}</h1>
+        <h3 class="masthead-subheading  mb-0"> {props.subHeaderText}</h3>
 
         
         <div class="divider-custom divider-light">

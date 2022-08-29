@@ -11,11 +11,24 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+function createMastText () {
+  let addr = window.location.href.split("/")
+  let url = addr[addr.length-1];
+  console.log(url)
+  // const url = "/"
+  if ( url === '') {
+    return {headerText: 'example head text', subHeaderText: 'example sub text'};
+  } else if (url === 'profile') {
+    return {headerText: 'different example text', subHeaderText: 'also different test'};
+  } 
+  // hard code in URLs and there respective headerText and subHeaderText
+}
+
 function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-      <Header />
+      <Header {...createMastText()} />
         <div className="flex-column justify-center align-center min-100-vh">
           <Routes>
             <Route 
