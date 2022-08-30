@@ -46,15 +46,18 @@ const userSchema = new Schema({
     },
     // stores profile pictures
     media: [userMediaSchema],
+    profilePicture: {
+      type: String,
+    },
     // attaches owner's pets
-    pet: {
+    pet: [{
       type: Schema.Types.ObjectId,
       ref: "Pet",
-    },
-    post: {
+    }],
+    post: [{
       type: Schema.Types.ObjectId,
       ref: "Post",
-    },
+    }],
     lastUpdated: { 
       type: Date, 
       default: Date.now, 

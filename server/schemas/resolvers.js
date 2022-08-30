@@ -1,5 +1,5 @@
 // Insert models once created below
-const { Pet, User, Messages } = require('../models');
+const { Pet, User, Messages, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
@@ -12,7 +12,7 @@ const resolvers = {
   Query: {
     // Find All Users
     user: async () => {
-      return User.find({});
+      return User.find({}).populate('pet').populate('post');
     },
     // Find messages corresponding to sending user id to have history of message conversation
     userMessages: async (parent, args) => {

@@ -1,6 +1,6 @@
 [
     {
-      "user": 123456789,
+      "_id": "6306d4531b35ad587c6572fa",
       "name": "Dobie",
       "age": 3,
       "breed": "Cheagle",
@@ -8,9 +8,69 @@
       "size": "small",
       "color": "tan",
       "description": "I like to lay on the porch and bark at cars that drive by.",
-      "media": [
-        "ENTER URL HERE"
-      ]
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661826529/dobie_vap8y8.jpg"
+      }
+    },
+    {
+      "_id": "6306d4531b35ad587c6572fc",
+      "name": "Nick",
+      "age": 5,
+      "breed": "Chihuahua",
+      "sex": "male",
+      "size": "small",
+      "color": "tan",
+      "description": "I eat all my mom's socks but only on Fridays.",
+      "for_sale": "true",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661830218/chihuahua_ewgrdd.png"
+      }
+    },
+    {
+      "_id": "6306d4531b35ad587c6572fe",
+      "name": "Samantha Jones",
+      "age": 2,
+      "breed": "Bulldog",
+      "sex": "female",
+      "size": "small",
+      "color": "white",
+      "description": "My wig is fabulous!",
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661830218/bulldog_q8cxtz.png"
+      }
+    },
+    {
+      "_id": "6306d4531b35ad587c6572fb",
+      "name": "Paris Hilton",
+      "age": 9,
+      "breed": "Chihuahua",
+      "sex": "female",
+      "size": "small",
+      "color": "tan",
+      "description": "That's hot.",
+      "for_sale": "true",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661830217/haleysdog_jglnzb.jpg"
+      }
+    },
+    {
+      "_id": "6306d4531b35ad587c6572fd",
+      "name": "Black Blazer",
+      "age": 10,
+      "breed": "Labrador Retriever",
+      "sex": "male",
+      "size": "large",
+      "color": "black",
+      "description": "Gimme bones!",
+      "for_sale": "false",
+      "media": [{
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661830218/blacklab_fqlmmj.png"
+      },
+      {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661830927/blacklab2_z3sxyb.jpg"
+      }]
     }
   ]
   
