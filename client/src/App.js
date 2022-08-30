@@ -4,6 +4,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Home from './pages/Home';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Landing from './pages/Landing'
+import Profile from './pages/Profile'
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -14,14 +15,14 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-center align-center min-100-vh">
+        
           <Routes>
             <Route 
               path="/" 
-              element={<Landing />}
+              element={<Profile />}
             />
           </Routes>
-        </div>
+        
       </Router>
     </ApolloProvider>
   );
