@@ -1,8 +1,10 @@
 import React from 'react'
+import '../styles/Header.css'
 
 export default function Landing() {
     return (
         <div>
+             
             <section class="page-section search" id="search">
                 <div class="container">
 

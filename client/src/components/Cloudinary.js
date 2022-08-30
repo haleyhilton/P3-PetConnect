@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { QUERY_MATCHUPS } from '../utils/queries';
-import { TypeOrFieldNameRegExp } from '@apollo/client/cache/inmemory/helpers';
+import { useMutation } from '@apollo/client';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { CREATE_USER_PHOTO } from '../utils/mutations'
 
 const Cloudinary = () => {
     const styleImageContainer = {
@@ -29,8 +30,26 @@ const Cloudinary = () => {
         fontSize: '20px',        
     }
 
+    const [addPhoto, { error }] = useMutation(CREATE_USER_PHOTO);
+
     const [images, setImages] = useState([]);
     const [imageToRemove, setImageToRemove] = useState(null);
+    const [imageToSave, setImageToSave] = useState(null);
+
+    const handlePhotoSave = async (event) => {
+        event.preventDefault();    
+        // On form submit, perform mutation and pass in form data object as arguments
+        // It is important that the object fields are match the defined parameters in `ADD_THOUGHT` mutation
+        try {
+          const { data } = addPhoto({
+            variables: { ...imageToSave },
+          });
+    
+          window.location.reload();
+        } catch (err) {
+          console.error(err);
+        }
+      };
 
     function handleRemoveImg(imgObj){
         setImageToRemove(imgObj.public_id);
@@ -53,6 +72,8 @@ const Cloudinary = () => {
               if (!error && result && result.event === "success") { 
                 setImages((prev) => [...prev, {url: result.info.url, public_id: result.info.public_id}])
                 console.log('Done! Here is the image info: ', result.info); 
+                setImageToSave(result.info.secure_url)
+                // URL TO PICTURE IS AT result.info.secure_url
               }
             }
         );
@@ -75,6 +96,9 @@ const Cloudinary = () => {
             )
             )}
         </div>
+        <button id="submit" className="cloudinary-button" onClick={()=> handlePhotoSave()}>
+            Submit
+        </button>
     </div>
     );
 }

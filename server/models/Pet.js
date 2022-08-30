@@ -18,6 +18,7 @@ const petSchema = new Schema({
     },
     breed: {
       type: String,
+      required: true,
     },
     sex: {
       type: String,
