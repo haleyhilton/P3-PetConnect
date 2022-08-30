@@ -22,18 +22,18 @@ const typeDefs = gql`
   }
 
   type PetMedia {
-    _id: ID!
-    url: String!
+    _id: ID
+    url: String
   }
 
   type UserMedia {
-    _id: ID!
-    url: String!
+    _id: ID
+    url: String
   }
 
   type ProfileMedia {
-    _id: ID!
-    url: String!
+    _id: ID
+    url: String
   }
 
    type User {
@@ -46,7 +46,7 @@ const typeDefs = gql`
     date_of_birth: String!
     zip_code: Int!
     media: [UserMedia]
-    profilePicture: [ProfileMedia]
+    profilePicture: String
     pet: [Pet]
     post: [Post]
     lastUpdated: String
