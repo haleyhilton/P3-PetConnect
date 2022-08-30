@@ -45,6 +45,9 @@ const userSchema = new Schema({
     },
     // stores profile pictures
     media: [userMediaSchema],
+    profilePicture: {
+      type: String,
+    },
     // attaches owner's pets
     pet: {
       type: Schema.Types.ObjectId,

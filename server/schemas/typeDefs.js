@@ -31,6 +31,11 @@ const typeDefs = gql`
     url: String!
   }
 
+  type ProfileMedia {
+    _id: ID!
+    url: String!
+  }
+
    type User {
     _id: ID!
     username: String!
@@ -41,6 +46,7 @@ const typeDefs = gql`
     date_of_birth: String!
     zip_code: Int!
     media: [UserMedia]
+    profilePicture: [ProfileMedia]
     pet: [Pet]
     post: [Post]
     lastUpdated: String
