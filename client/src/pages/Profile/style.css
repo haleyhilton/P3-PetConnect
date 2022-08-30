@@ -1,14 +1,11 @@
-body, html {
-    height: 100%;
-  }
-  
+
   /* The hero image */
   .hero-image {
-  
+  height: 600px;
   background-image: url("https://dogsbestlife.com/wp-content/uploads/2020/01/collie-puppy.jpeg");
   
   /* Set a specific height */
-  height: 50%;
+
   
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
