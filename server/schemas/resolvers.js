@@ -24,6 +24,10 @@ const resolvers = {
     pet: async () => {
       return Pet.find({});
     },
+    petSearch: async (parent, { search/* , age, breed, sex, size, color, for_sale */ }) => {
+      //first use the search term
+      return Pet.find({ 'name': `${search}` });
+    },
     breed: async (parent, { breed }) => {
       return Pet.findAll({ 'breed': `${breed}` });
     },

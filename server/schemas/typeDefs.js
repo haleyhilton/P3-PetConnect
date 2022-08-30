@@ -77,6 +77,7 @@ const typeDefs = gql`
   type Query {
     user: [User]
     pet: [Pet]
+    petSearch(search: String!): [Pet]
     breed(breed: String!): [Pet]
     post(_id: String!): [Post]
     userMessages(receiverId: String!): [Messages]
