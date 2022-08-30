@@ -2,6 +2,7 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require("bcrypt")
 
 
+
 // Defines sub document where the profile pictures will be stored.
 const userMediaSchema = new Schema({
   url: {
@@ -61,6 +62,12 @@ const userSchema = new Schema({
       type: Date, 
       default: Date.now, 
     },
+    messages: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Messages'
+      }
+    ],
 });
 
 
