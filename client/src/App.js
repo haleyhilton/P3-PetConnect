@@ -5,6 +5,9 @@ import Home from './pages/Home';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Landing from './pages/Landing'
 import Header from './pages/Header'
+import Profile from './pages/Profile/Profile';
+
+
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -29,7 +32,6 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
       <Header {...createMastText()} />
-        <div className="flex-column justify-center align-center min-100-vh">
           <Routes>
             <Route 
               path="/" 
