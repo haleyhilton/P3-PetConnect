@@ -11,7 +11,7 @@ const resolvers = {
   Query: {
     // Find All Users
     user: async () => {
-      return User.find({});
+      return User.find({}).populate('pet').populate('post');
     },
     // Find All Pets
     // We can use this query for searching for specific requirements like breed, size, etc.
