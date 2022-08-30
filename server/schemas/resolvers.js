@@ -1,5 +1,5 @@
 // Insert models once created below
-const { Pet, User } = require('../models');
+const { Pet, User, Messages } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 
@@ -7,11 +7,17 @@ const { AuthenticationError } = require('apollo-server-express');
 // Query = Get Routes
 // Mutations = POST/PUT/DELETE Routes
 
+
 const resolvers = {
   Query: {
     // Find All Users
     user: async () => {
       return User.find({});
+    },
+    // Find messages corresponding to sending user id to have history of message conversation
+    userMessages: async (parent, args) => {
+     const messages = await Messages.find({ receiverId: args.receiverId })
+     return messages
     },
     // Find All Pets
     // We can use this query for searching for specific requirements like breed, size, etc.
@@ -69,6 +75,33 @@ const resolvers = {
         }
       );
     },
+    createMessage: async (parent, args) => {
+      const newMessage = await Messages.create(args);
+
+      const addToSender = await User.findOneAndUpdate(
+        { _id: args.senderId },
+        {
+          $addToSet: {
+            messages: newMessage._id
+          },
+        },
+        {
+          new: true,
+        }
+        );
+        const addToReceiver = await User.findOneAndUpdate(
+          { _id: args.receiverId },
+          {
+            $addToSet: {
+              messages: newMessage._id
+            },
+          },
+          {
+            new: true,
+          }
+        );
+        return newMessage;
+    }
   },
 };
 

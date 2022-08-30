@@ -44,13 +44,15 @@ const typeDefs = gql`
     pet: [Pet]
     post: [Post]
     lastUpdated: String
+    messages: [Messages]
   }
 
-  type Post {
+  type Messages {
     _id: ID!
-    subject: String!
-    body: String!
-    lastUpdated: String
+    messagesText: String!
+    senderId: String!
+    receiverId: String!
+    lastMessage: String
   }
 
   # Set up an Auth type to handle returning data from a profile creating or user login
@@ -64,6 +66,7 @@ const typeDefs = gql`
     pet: [Pet]
     breed(breed: String!): [Pet]
     post(_id: String!): [Post]
+    userMessages(receiverId: String!): [Messages]
   }
   
   type Mutation {
@@ -71,6 +74,7 @@ const typeDefs = gql`
     login(username: String!, password: String!): Auth
     addPet(username: String!, pet: String!): User
     addProfilePicture(username: String!, media: String!): User
+    createMessage(messageText: String!, senderId: String!, receiverId: String!, lastMessage: String): Messages
   }
 `;
 

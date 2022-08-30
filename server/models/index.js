@@ -1,5 +1,6 @@
 const Pet = require('./Pet');
 const User = require('./User');
-const Post = require('./Post');
+const Messages = require('./Messages');
 
-module.exports = { Pet, User, Post };
+
+module.exports = { Pet, User, Messages };
