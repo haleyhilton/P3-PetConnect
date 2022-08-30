@@ -49,14 +49,14 @@ const userSchema = new Schema({
       type: String,
     },
     // attaches owner's pets
-    pet: {
+    pet: [{
       type: Schema.Types.ObjectId,
       ref: "Pet",
-    },
-    post: {
+    }],
+    post: [{
       type: Schema.Types.ObjectId,
       ref: "Post",
-    },
+    }],
     lastUpdated: { 
       type: Date, 
       default: Date.now, 
