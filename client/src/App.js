@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Home from './pages/Home';
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Landing from './pages/Landing'
-import Header from './pages/Header'
+import Landing from './pages/Landing/Landing'
+import Header from './pages/Topbottom/Header'
 import Profile from './pages/Profile/Profile';
 
 
