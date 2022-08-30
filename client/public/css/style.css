@@ -1,0 +1,767 @@
+root {
+  --main: rgb(243, 183, 70);
+  --secondary: #251b68;
+  --main-fade: rgba(243, 183, 70, 0.9);
+  --font-prompt: 'Prompt', sans-serif;
+  --font-quicksand: 'Quicksand', sans-serif;
+  --body-font-size: 1rem;
+  --body-font-weight: 400;
+  --body-line-height: 1.5;
+  --body-color: #212529;
+  --body-bg: #fff;
+
+}
+
+
+
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  color: var(--body-color);
+  text-align: var(--body-text-align);
+  background-color: var(--body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+h1,
+h2 {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 700;
+
+}
+
+h2 {
+  font-family: 'Prompt', sans-serif;
+  font-weight: 700;
+    display: flex; 
+    justify-content: center ;
+    padding: 1rem;
+}
+
+/* .navbar {
+  position: sticky;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.navbar-custom {
+  background-color: #251b68;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: white;
+}
+
+.nav-link {
+  color: white;
+}
+
+.navbar-brand {
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: 'Prompt', sans-serif;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.navbar-nav .nav-link {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.navbar-nav .dropdown-menu {
+  position: static;
+}
+
+.navbar-text {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: end;
+}
+
+.navbar-toggler {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 0.125rem solid transparent;
+  border-radius: 0.5rem;
+  transition: box-shadow 0.15s ease-in-out;
+}
+
+#contact-info {
+  text-decoration: none;
+  color: white;
+} */
+
+.form, .signup-form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid;
+  margin: 3rem 10rem;
+}
+
+.form-input {
+  border: inset;
+}
+
+p {
+  font-size: larger;
+  /* font-style: italic; */
+}
+
+
+/* ============================================================== */
+/* Profile Login photo menu */
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.dropbtn {
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+/* =========================================================================== */
+
+/* .masthead {
+  padding-top: calc(6rem + 74px);
+  padding-bottom: 6rem;
+  background-color: rgb(243, 183, 70);
+}
+
+.masthead .masthead-heading {
+  font-size: 2.75rem;
+  line-height: 2.75rem;
+}
+
+.masthead .masthead-subheading {
+  font-size: 1.25rem;
+} */
+
+.input-group {
+  font-style: normal;
+  font-weight: 400;
+  text-decoration: inherit;
+  padding: 1rem;
+  font-size: 22px;
+  line-height: 1.25rem;
+  margin-top: 2rem;
+
+}
+
+.page-section {
+  padding: 6rem 0;
+}
+
+.page-section .page-section-heading {
+  font-size: 2.25rem;
+  line-height: 2rem;
+}
+
+/* ==== ICONS ==== */
+.divider-custom {
+  margin: 1.25rem 0 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider-custom .divider-custom-line {
+  width: 100%;
+  max-width: 7rem;
+  height: 0.25rem;
+  background-color: #2c3e50;
+  border-radius: 1rem;
+  border-color: #2c3e50;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.divider-custom .divider-custom-icon {
+  color: #2c3e50;
+  font-size: 2rem;
+}
+
+.search .search-item .search-item-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  background-color: rgba(243, 183, 70, 0.9);
+  border-radius: 50%;
+}
+
+.search:hover .search-item:hover .search-item-caption:hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+  background-color: rgba(243, 183, 70, 0.9);
+  border-radius: 50%;
+}
+
+.search .search-item {
+  cursor: pointer;
+  position: relative;
+  max-width: 25rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.btn-social {
+  border-radius: 100%;
+  display: inline-flex;
+  width: 3.25rem;
+  height: 3.25rem;
+  font-size: 1.25rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ==== FOOTER ==== */
+.footer {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: rgb(243, 183, 70);
+  color: #fff;
+}
+
+.copyright {
+  background-color: #251b68;
+}
+
+/* ==== MEDIA QUERIES ====*/
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-toggler {
+    transition: none;
+  }
+}
+
+.navbar-toggler:hover {
+  text-decoration: none;
+}
+
+.navbar-toggler:focus {
+  text-decoration: none;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem;
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.navbar-nav-scroll {
+  max-height: var(--bs-scroll-height, 75vh);
+  overflow-y: auto;
+}
+
+@media (min-width: 992px) {
+  .masthead {
+    padding-top: calc(6rem + 104px);
+    padding-bottom: 6rem;
+  }
+
+  .masthead .masthead-heading {
+    font-size: 4rem;
+    line-height: 3.5rem;
+  }
+
+  .masthead .masthead-subheading {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .page-section .page-section-heading {
+    font-size: 3rem;
+    line-height: 2.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: row;
+  }
+
+  .navbar-expand-lg .navbar-nav .dropdown-menu {
+    position: absolute;
+  }
+
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .navbar-expand-lg .navbar-nav-scroll {
+    overflow: visible;
+  }
+
+  .navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+  }
+
+  .navbar-expand-lg .navbar-toggler {
+    display: none;
+  }
+}
+
+
+
+/* ============================================ */
+/* styling for profile menu */
+.dropdown-content {
+  background-color:rgb(243, 183, 70);
+      
+}
+
+
+
+
+
+/* Styling for login.hbs */
+/* ================================================ */
+/* ================================================ */
+/* Styling for split menu look */
+.splitMenu-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 200px;
+}
+
+
+
+/* ================================================ */
+/* ================================================ */
+/* Styling for Login container */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* ================================================ */
+/* ================================================ */
+/* Styling for SignUp container */
+.signUp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-style: solid;
+  border-radius: 20px;
+  padding: 60px;
+}
+
+#signUpBtn {
+  position: relative;
+  top: 60px;
+}
+
+p {
+  font-size: 25px;
+  text-align: center;
+}
+
+
+
+/* ================================================ */
+/* ================================================ */
+/* Styling for buttons */
+
+button {
+  border-radius: 25px;
+  padding: 20px 50px 20px 50px;
+  margin: 15px;
+  font-size: 20px;
+}
+
+
+
+/* ================================================ */
+/* ================================================ */
+/* Styling for input boxes */
+#inputField {
+  border-radius: 25px;
+  text-align: center;
+  margin: 15px;
+  padding: 20px 100px 20px 100px;
+
+}
+
+
+/* ================================================ */
+/* ================================================ */
+/* Styling for profile.handlebars */
+
+.container {
+  position: relative;
+}
+
+.profile-picture {
+  display: flex;
+  align-items: center;
+  margin: 100px;
+  position: relative;
+  right: 175px;
+  width: 300px;
+  height: 300px;
+}
+
+#picture {
+  border-style: solid;
+  border-radius: 50%;
+  height: 300px;
+  width: 300px;
+  border-color: #251b68;
+}
+
+#profile-name {
+  position: absolute;
+  bottom: 1120px;
+  left: 600px;
+  white-space: nowrap;
+  color: #251b68;
+  font-size: 45px;
+}
+
+
+.info-container {
+   border: solid;
+   width: 350px;
+   position: relative;
+   bottom: 50px;
+   right: 90px;
+   text-align: center;
+   background-color: #251b68;
+   color: white;
+}
+
+
+/* ========================================================= */
+/* Styling for new dog post content */
+
+.newPostModal-container {
+  height: 400px;
+  width: 800px;
+  text-align: center;
+  position: relative;
+  left: 450px;
+  bottom: 400px;
+
+}
+
+/* The Modal (background) */
+.newPostModal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.postModal-content {
+  background-color: #251b68;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: rgb(243, 183, 70);
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dg-header {
+  margin-bottom: 50px;
+  color: rgb(243, 183, 70);
+}
+
+/* styling for fields in upload modal */
+/* .dg-upload {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+
+#dg-upload {
+  color: rgb(243, 183, 70);
+}
+.form-group {
+  color: rgb(243, 183, 70);
+}
+
+#dog-submit {
+  background-color: rgb(243, 183, 70);
+  color: #251b68;
+  border-radius: 10px;
+  height: 75px;
+  width: 175px
+}
+
+#newPostBtn {
+  position: relative;
+  left: 45px;
+  background-color: #251b68;
+  color: white;
+}
+
+
+/* Styling for Bio section */
+
+.bio {
+  position: relative;
+  bottom: 275px;
+  right: 15px;
+  border-style: solid;
+  border-radius: 15px;
+  height: fit-content;
+  width: 1200px;
+}
+
+#bio-header {
+  margin-bottom: 50px;
+  padding: 15px;
+  color: white;
+  background-color: #251b68;
+  border-radius: 10px 10px 0px 0px;
+  text-align: center;
+
+}
+
+/* Styling for dog for sell container */
+.userDog-container {
+  border-style: solid;
+  border-radius: 15px;
+  height: fit-content;
+  width: 1400px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 75px;
+}
+
+.userDog-title {
+  margin-bottom: 75px;
+  padding: 15px;
+  color: white;
+  background-color: #251b68;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.dogs {
+  display: flex;
+  justify-content: space-evenly;
+  align-self: flex-end;
+  margin-bottom: 25px;
+}
+
+#dog-profile {
+  border-style: solid;
+  height: 400px;
+  width: 800px;
+  object-fit: fill;
+}
+
+.dog-details {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Styling for contact form button */
+#contactBtn {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+
+
+
+
+/* CSS FOR RESULTS */
+.results-search-bar {
+  margin-top: 0.75rem;
+}
+
+.results-center {
+  display: flex;
+  justify-content: center;
+  /* flex-direction: row; */
+}
+
+.potato {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 40vw;
+  /* justify-content:space-between; */
+}
+
+.results-right{
+  /* display:flex; */
+  flex-direction:column;
+  width: 20vw;
+  padding-top: 2rem;
+}
+.results-words {
+  text-align: left;
+  font-weight: bold;
+  font-style: normal;
+}
+.results-words {
+  padding: 0px;
+  margin: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.results-words::first-letter {
+  font-size: 1.0rem;
+}
+.results-words> span::first-letter {
+  font-size: 2.0rem;
+}
+
+.results-header {
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  color:#5dc7cb;
+  font-weight: bold;
+}
+
+.results-stats {
+  font-weight:500;
+}
+
+.results-first {
+  margin: 4rem;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.breed-link {
+  font-size: 2rem;
+}

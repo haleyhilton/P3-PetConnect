@@ -1,0 +1,16 @@
+[
+    {
+      "user": 123456789,
+      "name": "Dobie",
+      "age": 3,
+      "breed": "Cheagle",
+      "sex": "male",
+      "size": "small",
+      "color": "tan",
+      "description": "I like to lay on the porch and bark at cars that drive by.",
+      "media": [
+        "ENTER URL HERE"
+      ]
+    }
+  ]
+  
