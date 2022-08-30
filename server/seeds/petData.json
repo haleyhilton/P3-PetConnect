@@ -1,6 +1,6 @@
 [
     {
-      "user": 123456789,
+      "_id": "6306d4531b35ad587c6572fa",
       "name": "Dobie",
       "age": 3,
       "breed": "Cheagle",
@@ -8,9 +8,10 @@
       "size": "small",
       "color": "tan",
       "description": "I like to lay on the porch and bark at cars that drive by.",
-      "media": [
-        "ENTER URL HERE"
-      ]
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661826529/dobie_vap8y8.jpg"
+      }
     }
   ]
   
