@@ -50,6 +50,15 @@ const typeDefs = gql`
     pet: [Pet]
     post: [Post]
     lastUpdated: String
+    messages: [Messages]
+  }
+
+  type Messages {
+    _id: ID!
+    messagesText: String!
+    senderId: String!
+    receiverId: String!
+    lastMessage: String
   }
 
   type Post {
@@ -70,6 +79,7 @@ const typeDefs = gql`
     pet: [Pet]
     breed(breed: String!): [Pet]
     post(_id: String!): [Post]
+    userMessages(receiverId: String!): [Messages]
   }
   
   type Mutation {
@@ -77,6 +87,7 @@ const typeDefs = gql`
     login(username: String!, password: String!): Auth
     addPet(username: String!, pet: String!): User
     addProfilePicture(username: String!, media: String!): User
+    createMessage(messageText: String!, senderId: String!, receiverId: String!, lastMessage: String): Messages
   }
 `;
 
