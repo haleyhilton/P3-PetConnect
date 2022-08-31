@@ -26,12 +26,17 @@ const resolvers = {
       return Pet.find({});
     },
     petSearch: async (parent, { search/* , age, breed, sex, size, color, for_sale */ }) => {
-      //first use the search term
+      //create a regex for the search term
       const searchRegex = new RegExp(`[\s\S]*${search}`);
-      const first = await Pet.find({ 'name': { $regex: searchRegex, $options: 'i' } });
-      const second = await Pet.find({ 'description': { $regex: searchRegex, $options: 'i' } });
+      //check all String fields seperately
+      const nameSearch = await Pet.find({ 'name': { $regex: searchRegex, $options: 'i' } });
+      const breedSearch = await Pet.find({ 'breed': { $regex: searchRegex, $options: 'i' } });
+      const sexSearch = await Pet.find({ 'sex': { $regex: searchRegex, $options: 'i' } });
+      const sizeSearch = await Pet.find({ 'size': { $regex: searchRegex, $options: 'i' } });
+      const colorSearch = await Pet.find({ 'color': { $regex: searchRegex, $options: 'i' } });
+      const descSearch = await Pet.find({ 'description': { $regex: searchRegex, $options: 'i' } });
 
-      const all = first.concat(second);
+      const all = nameSearch.concat(breedSearch, sexSearch, sizeSearch, colorSearch, descSearch);
       const allNoDups = removeDuplicates(all);
       return allNoDups;
     },
