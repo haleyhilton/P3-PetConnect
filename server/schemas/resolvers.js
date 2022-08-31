@@ -2,6 +2,7 @@
 const { Pet, User, Messages, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
+const removeDuplicates = require('../utils/removeDuplicates');
 
 // This essentially replaces routes and controllers.
 // Query = Get Routes
@@ -26,7 +27,15 @@ const resolvers = {
     },
     petSearch: async (parent, { search/* , age, breed, sex, size, color, for_sale */ }) => {
       //first use the search term
-      return Pet.find({ 'name': `${search}` });
+      const searchRegex = new RegExp(`[\s\S]*${search}`);
+      const first = await Pet.find({ 'name': { $regex: searchRegex, $options: 'i' } });
+      const second = await Pet.find({ 'description': { $regex: searchRegex, $options: 'i' } });
+
+      const all = first.concat(second);
+      console.log(all);
+      const allNoDups = removeDuplicates(all);
+      console.log(allNoDups);
+      return allNoDups;
     },
     breed: async (parent, { breed }) => {
       return Pet.findAll({ 'breed': `${breed}` });
