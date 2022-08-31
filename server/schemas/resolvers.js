@@ -84,6 +84,9 @@ const resolvers = {
 
         return allFiltered;
       };
+
+      //if search term wasn't passed in, do a normal Pet.find using all the filters
+      //since some filters might be null, add them to the find object based on their values
       let findAsObject = {};
       if (age) {findAsObject.age = age};
       if (breed) {findAsObject.breed = breed};
@@ -91,6 +94,7 @@ const resolvers = {
       if (size) {findAsObject.size = size};
       if (color) {findAsObject.color = color};
       if (for_sale !== null) {findAsObject.for_sale = for_sale};
+      //finally pass the find object into the Pet.find call and return that
       const filteredResults = await Pet.find(findAsObject);
       return filteredResults;
     },
