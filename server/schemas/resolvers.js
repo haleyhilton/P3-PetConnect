@@ -25,7 +25,7 @@ const resolvers = {
     pet: async () => {
       return Pet.find({});
     },
-    petSearch: async (parent, { search/* , age, breed, sex, size, color, for_sale */ }) => {
+    petSearch: async (parent, { search, age, breed, sex, size, color, for_sale }) => {
       //create a regex for the search term
       const searchRegex = new RegExp(`[\s\S]*${search}`);
       //check all String fields seperately
@@ -38,7 +38,47 @@ const resolvers = {
 
       const all = nameSearch.concat(breedSearch, sexSearch, sizeSearch, colorSearch, descSearch);
       const allNoDups = removeDuplicates(all);
-      return allNoDups;
+
+      //now use filter() to implement filters
+      const allFiltered = allNoDups.filter(function(item) {
+        let ageFiltered;
+        (age === null) ? ageFiltered = true : ageFiltered = false;
+        if (!ageFiltered) {
+          (item.age === age) ? ageFiltered = true : ageFiltered = false;
+        };
+
+        let breedFiltered;
+        (breed === null) ? breedFiltered = true : breedFiltered = false;
+        if (!breedFiltered) {
+          (item.breed === breed) ? breedFiltered = true : breedFiltered = false;
+        };
+
+        let sexFiltered;
+        (sex === null) ? sexFiltered = true : sexFiltered = false;
+        if (!sexFiltered) {
+          (item.sex === sex) ? sexFiltered = true : sexFiltered = false;
+        };
+
+        let sizeFiltered;
+        (size === null) ? sizeFiltered = true : sizeFiltered = false;
+        if (!sizeFiltered) {
+          (item.size === size) ? sizeFiltered = true : sizeFiltered = false;
+        };
+
+        let colorFiltered;
+        (color === null) ? colorFiltered = true : colorFiltered = false;
+        if (!colorFiltered) {
+          (item.color === color) ? colorFiltered = true : colorFiltered = false;
+        };
+
+        let forSaleFiltered;
+        (for_sale === null) ? forSaleFiltered = true : forSaleFiltered = false;
+        if (!forSaleFiltered) {
+          (item.for_sale === for_sale) ? forSaleFiltered = true : forSaleFiltered = false;
+        };
+
+        return (ageFiltered && breedFiltered && sexFiltered && sizeFiltered && colorFiltered && forSaleFiltered);
+      })
     },
     breed: async (parent, { breed }) => {
       return Pet.findAll({ 'breed': `${breed}` });
