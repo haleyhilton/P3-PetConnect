@@ -32,9 +32,7 @@ const resolvers = {
       const second = await Pet.find({ 'description': { $regex: searchRegex, $options: 'i' } });
 
       const all = first.concat(second);
-      console.log(all);
       const allNoDups = removeDuplicates(all);
-      console.log(allNoDups);
       return allNoDups;
     },
     breed: async (parent, { breed }) => {
