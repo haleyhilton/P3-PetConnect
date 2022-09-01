@@ -40,6 +40,8 @@ export default function Search() {
             if (updatedData.sex === "all") {updatedData.sex = null;};
             if (updatedData.color === "all") {updatedData.color = null;};
             if (updatedData.forSale === "all") {updatedData.forSale = null;};
+            console.log("ssfv updated to:");
+            console.log(JSON.parse(JSON.stringify(updatedData)));
 
             return updatedData;
         })
@@ -65,13 +67,15 @@ export default function Search() {
                 </select>
 
                 <label htmlFor="breed-filter">Breed: </label>
-                <select id="breed-filter" name="breed" onSubmit={(e) => setSearchFilterVals(current => {
+                <select id="breed-filter" name="breed" onChange={(e) => setSearchFilterVals(current => {
                     const updatedData = { ...current };
+                    console.log("Breed updated:");
+                    console.log(e.target.value);
                     updatedData.breed = e.target.value;
                     return updatedData;
                 })}>
                     <option value="all">All</option>
-                    <option value="chihuahua">Chihuahua</option>
+                    <option value="Chihuahua">Chihuahua</option>
                 </select>
 
                 <label htmlFor="size-filter">Size: </label>
