@@ -7,6 +7,7 @@ import Landing from './pages/Landing/Landing'
 import Header from './pages/Topbottom/Header'
 import Profile from './pages/Profile/Profile';
 import { setContext } from '@apollo/client/link/context';
+import Message from './pages/Messages/Message';
 
 
 // NEW NEW NEW
@@ -66,10 +67,8 @@ function App() {
       <Router>
       <Header {...createMastText()} />
           <Routes>
-            <Route 
-              path="/" 
-              element={<Profile />}
-            />
+            <Route path="/" element={<Profile />}/>
+            <Route path="/messages" element={<Message />}/>
           </Routes>
         
       </Router>
