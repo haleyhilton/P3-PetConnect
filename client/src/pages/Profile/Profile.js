@@ -4,62 +4,86 @@ export default function Profile() {
 
 
 
+    let modalVarible = function(){
+
+
+        
+    }
+
+
     return (
         <div>
-            <div class="hero-image">
-                <div class="profile-pic">
-                </div>
-            </div>
+    <div class="hero-image">
+        <div class="profile-pic">
+        </div>
+    </div>
+
+    
+    <div class="edit"><button>Edit</button></div>
+    <div class="details">
+
+        <div>Name</div>
+        <div>Buyer/Seller</div>
+        <div>Rating: ⭐️⭐️⭐️⭐️⭐️</div>
+        <div class="about-me-section">Hi! I am a dog breeder in the San Diego Area</div>
+        <div class="message">
+            <button>Message</button>
+        </div>
 
 
-            <div class="edit"><button>Edit</button></div>
-            <div class="details">
+        <div class="posts">
+            <button>Post</button>
 
-                <div>Name</div>
-                <div>Buyer/Seller</div>
-                <div>Rating: ⭐️⭐️⭐️⭐️⭐️</div>
-                <div class="about-me-section">Hi! I am a dog breeder in the San Diego Area</div>
-                <div class="message">
-                    <button>Message</button>
-                </div>
+            Append children here. Visibile if id=id
+        </div>
+    </div>
 
+    <div class="titlewrapper">
+        <div>Posts</div>
+    </div>
+    <div class="titlewrapper">
+        <div>Dogs</div>
+    </div>
+    <div class="wrapattack">
 
-                <div class="posts">
-                    <button>Post</button>
+        
+        <div id="myModal" class="modal">
 
-                    Append children here. Visibile if id=id
-                </div>
-            </div>
-
-            <div class="titlewrapper">
-                <div>Posts</div>
-            </div>
-            <div class="titlewrapper">
-                <div>Dogs</div>
-            </div>
-            <div class="wrapattack">
-
-                <div id="myModal" class="modal">
-
-
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <p>Some text in the Modal..</p>
+            
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="modal-inner-wrapper">
+                    <div>DOG NAME</div>
+                    <div class="modal-inner-image"></div>
+                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dignissim metus vitae
+                        varius mollis. Vivamus et augue auctor, tempor purus eget, tristique magna. Nam vitae augue
+                        placerat, lacinia erat nec, ornare leo. Donec iaculis ullamcorper vestibulum. Aliquam nec
+                        rhoncus justo. Phasellus at lectus non purus pellentesque mattis. Etiam placerat ipsum purus, at
+                        gravida justo fringilla ut. Integer et pulvinar ipsum, semper vulputate lectus. Vivamus bibendum
+                        diam placerat, fermentum augue quis, tempor augue. Nam sed tortor ultrices, ullamcorper mi sed,
+                        scelerisque lacus. Aenean facilisis vitae sem quis placerat. Curabitur ullamcorper lacus et urna
+                        vulputate, non vehicula nulla congue. Phasellus fermentum, libero et facilisis vulputate, ante
+                        nisl tincidunt arcu, quis sodales nunc sapien sed arcu. Sed at porta est. Nullam laoreet
+                        convallis orci ac sollicitudin. In libero tellus, vehicula quis consequat in, commodo sed magna.
                     </div>
+
                 </div>
 
-                <div class="grid-container">
-                    <div class="grid-item">Momo</div>
-                    <div class="grid-item">Sokka</div>
-                    <div class="grid-item">Katara</div>
-                    <div class="grid-item">Aang</div>
-                    <div class="grid-item">Toph</div>
-                    <div class="grid-item">Zuko</div>
-                    <div class="grid-item">Azula</div>
-                    <div class="grid-item">Appa</div>
-                    <div class="grid-item">Iroh</div>
-                </div>
             </div>
+
+        </div>
+        <div class="grid-container">
+            <div class="grid-item">Momo</div>
+            <div class="grid-item">Sokka</div>
+            <div class="grid-item">Katara</div>
+            <div class="grid-item">Aang</div>
+            <div class="grid-item">Toph</div>
+            <div class="grid-item">Zuko</div>
+            <div class="grid-item">Azula</div>
+            <div class="grid-item">Appa</div>
+            <div class="grid-item">Iroh</div>
+        </div>
+    </div>
 
 
 
