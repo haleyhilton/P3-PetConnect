@@ -1,21 +1,4 @@
-.form, .signup-form {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid;
-  margin: 3rem 10rem;
-}
-
-.form-input {
-  border: inset;
-}
-
-p {
-  font-size: larger;
-}
-
- root {
+root {
   --main: rgb(243, 183, 70);
   --secondary: #251b68;
   --main-fade: rgba(243, 183, 70, 0.9);
@@ -28,8 +11,6 @@ p {
   --body-bg: #fff;
 
 }
-
-
 
 body {
   margin: 0;
@@ -59,6 +40,25 @@ h2 {
     justify-content: center ;
     padding: 1rem;
 } 
+
+.form, .signup-form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid;
+  margin: 3rem 10rem;
+}
+
+.form-input {
+  border: inset;
+}
+
+p {
+  font-size: larger;
+}
+
+
 
 
 /* Document

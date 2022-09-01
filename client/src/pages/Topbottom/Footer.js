@@ -33,7 +33,7 @@ export default function Footer() {
                     <h4 class="text-uppercase mb-4">About PETCONNECT</h4>
                     <p class="lead mb-0">
                         <a id="contact-info" href="#">FAQ</a> <br/>
-                        <a id="contact-info" href="#">About Petconnect</a> <br/> 
+                        <a id="contact-info" href="/about">About Petconnect</a> <br/> 
                         <a id="contact-info" href="#">Testimonials</a> <br/>
 
                     </p>
