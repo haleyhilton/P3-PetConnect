@@ -1,5 +1,11 @@
 import React from 'react'
-// import '../styles/Header.css'
+import beagle from '../../images/beagle.png'
+import bulldog from '../../images/bulldog.png'
+import poodle from '../../images/poodle.png'
+import german from '../../images/german-s.png'
+import corgi from '../../images/corgi.png'
+import rotty from '../../images/rotty.png'
+
 
 export default function Landing() {
     return (
@@ -18,7 +24,7 @@ export default function Landing() {
 
 
                     <div class="row justify-content-center">
-                        <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="col-md-4 col-lg-4 mb-5">
                             <div class="search-item mx-auto"
                                 data-toggle="modal"
                                 data-target="#modal1">
@@ -27,15 +33,15 @@ export default function Landing() {
                                     <div class="search-item-caption-content text-center text-white">
                                         <p id="breed-main">Beagle</p></div>
                                 </div>
-                                <img class="img-fluid" src="/images/beagle.png" alt="beagle icon" />
-                                <img class="img-fluid" src="/images/bulldog.png" alt="bulldog icon" />
-                                <img class="img-fluid" src="/images/poodle.png" alt="poodle icon" />
+                                <img class="img-fluid" src={beagle} alt="beagle icon" />
+                                <img class="img-fluid" src={bulldog} alt="bulldog icon" />
+                                <img class="img-fluid" src={poodle} alt="poodle icon" />
                                 
 
                             </div>
                         </div>
 
-                        <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="col-md-4 col-lg-4 mb-5">
                             <div class="search-item mx-auto"
                                 data-toggle="modal"
                                 data-target="#{{icon.modal}}">
@@ -45,9 +51,9 @@ export default function Landing() {
                                         
                                         <a class="nav-link py-3 px-0 px-lg-3 rounded breed-link" href="/results/all-{{lowerIt icon.name}}-all-all-all"></a></div>
                                 </div>
-                                <img class="img-fluid" src="/images/german-s.png" alt="germans icon" />
-                                <img class="img-fluid" src="/images/corgi.png" alt="corgi icon" />
-                                <img class="img-fluid" src="/images/rotty.png" alt="rotty icon" />
+                                <img class="img-fluid" src={german} alt="germans icon" />
+                                <img class="img-fluid" src={corgi} alt="corgi icon" />
+                                <img class="img-fluid" src={rotty} alt="rotty icon" />
                                 
 
 
