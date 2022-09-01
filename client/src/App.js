@@ -15,6 +15,7 @@ import FAQ from './pages/FAQ/FAQ'
 import Landing from './pages/Landing/Landing'
 import Search from './pages/Search/Search'
 import { setContext } from '@apollo/client/link/context';
+import Message from './pages/Messages/Message';
 
 
 // NEW NEW NEW
@@ -64,13 +65,13 @@ function createMastText () {
     return {headerText: 'Welcome to PetConnect', subHeaderText: 'Arf you glad you\'re here?'};
   } 
   else if ( url === 'about') {
-    return {headerText: 'example head text', subHeaderText: 'example sub text'};
+    return {headerText: 'OUR STORY', subHeaderText: 'Founded in San Diego, California'};
   } 
   else if ( url === 'contact') {
     return {headerText: 'example head text', subHeaderText: 'example sub text'};
   } 
   else if ( url === 'faq') {
-    return {headerText: 'example head text', subHeaderText: 'example sub text'};
+    return {headerText: 'FREQUENTLY ASKED QUESTIONS', subHeaderText: ''};
   } 
   else if (url === 'profile') {
     return {headerText: 'different example text', subHeaderText: 'also different test'};
@@ -92,7 +93,11 @@ function App() {
               path="/profile" 
               element={<Profile />}
             />
-            <Route 
+               <Route 
+              path="/messages" 
+              element={<Message />}
+            />
+               <Route 
               path="/login" 
               element={<Login />}
             />

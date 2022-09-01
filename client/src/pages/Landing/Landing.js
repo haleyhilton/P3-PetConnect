@@ -24,7 +24,7 @@ export default function Landing() {
 
 
                     <div class="row justify-content-center">
-                        <div class="col-md-4 col-lg-4 mb-5">
+                        <div class="col-sm">
                             <div class="search-item mx-auto"
                                 data-toggle="modal"
                                 data-target="#modal1">
@@ -41,7 +41,7 @@ export default function Landing() {
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-lg-4 mb-5">
+                        <div class="col-sm">
                             <div class="search-item mx-auto"
                                 data-toggle="modal"
                                 data-target="#{{icon.modal}}">
@@ -62,6 +62,7 @@ export default function Landing() {
 
                             </div>
                         </div>
+                 
                     </div>
                 </div>
             </section>

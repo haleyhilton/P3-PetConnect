@@ -1,26 +1,15 @@
-.form, .signup-form {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid;
-  margin: 3rem 10rem;
-}
+@font-face {
+    font-family: 'SulphurPoint-Regular';
+    src: url('../src/pages/Topbottom/SulphurPoint-Regular.woff') format('woff');
+    font-weight: normal;
+  }
 
-.form-input {
-  border: inset;
-}
-
-p {
-  font-size: larger;
-}
-
- root {
+root {
   --main: rgb(243, 183, 70);
   --secondary: #251b68;
   --main-fade: rgba(243, 183, 70, 0.9);
   --font-prompt: 'Prompt', sans-serif;
-  --font-quicksand: 'Quicksand', sans-serif;
+  --font-sulphur: 'SulphurPoint-Regular', sans-serif;
   --body-font-size: 1rem;
   --body-font-weight: 400;
   --body-line-height: 1.5;
@@ -29,11 +18,9 @@ p {
 
 }
 
-
-
 body {
   margin: 0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'SulphurPoint-Regular', sans-serif;
   font-size: var(--body-font-size);
   font-weight: var(--body-font-weight);
   line-height: var(--body-line-height);
@@ -59,6 +46,25 @@ h2 {
     justify-content: center ;
     padding: 1rem;
 } 
+
+.form, .signup-form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid;
+  margin: 3rem 10rem;
+}
+
+.form-input {
+  border: inset;
+}
+
+p {
+  font-size: larger;
+}
+
+
 
 
 /* Document
