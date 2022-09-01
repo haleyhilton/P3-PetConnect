@@ -180,12 +180,12 @@
   
   
 
-  /* MODAL */
+/* MODAL */
 
 
 /* The Modal (background) */
 .modal {
-  display: none;
+  /* display: none;  */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
@@ -199,11 +199,33 @@
 
 /* Modal Content/Box */
 .modal-content {
+  
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
+  border-radius: 25px;
   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+.modal-inner-wrapper {
+  display: flex;
+  
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.modal-inner-image {
+  
+  border-style: solid;
+  width: 200px;
+  height: 200px;
+  background-image: url('../../images/Rhodesian-Ridgeback-puppy.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 200px;
 }
 
 /* The Close Button */
