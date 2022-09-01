@@ -63,13 +63,13 @@ function createMastText () {
     return {headerText: 'Welcome to PetConnect', subHeaderText: 'Arf you glad you\'re here?'};
   } 
   else if ( url === 'about') {
-    return {headerText: 'example head text', subHeaderText: 'example sub text'};
+    return {headerText: 'OUR STORY', subHeaderText: 'Founded in San Diego, California'};
   } 
   else if ( url === 'contact') {
     return {headerText: 'example head text', subHeaderText: 'example sub text'};
   } 
   else if ( url === 'faq') {
-    return {headerText: 'example head text', subHeaderText: 'example sub text'};
+    return {headerText: 'FREQUENTLY ASKED QUESTIONS', subHeaderText: ''};
   } 
   else if (url === 'profile') {
     return {headerText: 'different example text', subHeaderText: 'also different test'};

@@ -1,9 +1,15 @@
+@font-face {
+    font-family: 'SulphurPoint-Regular';
+    src: url('../src/pages/Topbottom/SulphurPoint-Regular.woff') format('woff');
+    font-weight: normal;
+  }
+
 root {
   --main: rgb(243, 183, 70);
   --secondary: #251b68;
   --main-fade: rgba(243, 183, 70, 0.9);
   --font-prompt: 'Prompt', sans-serif;
-  --font-quicksand: 'Quicksand', sans-serif;
+  --font-sulphur: 'SulphurPoint-Regular', sans-serif;
   --body-font-size: 1rem;
   --body-font-weight: 400;
   --body-line-height: 1.5;
@@ -14,7 +20,7 @@ root {
 
 body {
   margin: 0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'SulphurPoint-Regular', sans-serif;
   font-size: var(--body-font-size);
   font-weight: var(--body-font-weight);
   line-height: var(--body-line-height);
