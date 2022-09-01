@@ -1,0 +1,66 @@
+/*==== ICONS ==== */
+.divider-custom {
+  margin: 1.25rem 0 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider-custom .divider-custom-line {
+  width: 100%;
+  max-width: 7rem;
+  height: 0.25rem;
+  background-color: #2c3e50;
+  border-radius: 1rem;
+  border-color: #2c3e50;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.divider-custom .divider-custom-icon {
+  color: #2c3e50;
+  font-size: 2rem;
+}
+
+.breed-link {
+  font-size: 2rem;
+}
+
+
+.search .search-item .search-item-caption {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  background-color: rgba(243, 183, 70, 0.9);
+  border-radius: 50%;
+}
+
+.search:hover .search-item:hover .search-item-caption:hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+  background-color: rgba(243, 183, 70, 0.9);
+  border-radius: 50%;
+}
+
+.search .search-item {
+  cursor: pointer;
+  position: relative;
+  max-width: 25rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.page-section {
+  padding: 6rem 0;
+}
+
+.page-section .page-section-heading {
+  font-size: 2.25rem;
+  line-height: 2rem;
+}
