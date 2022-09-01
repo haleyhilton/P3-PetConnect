@@ -1,43 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style.css'
 
-import { useQuery, useMutation } from '@apollo/client';
-import { GET_ME } from '../utils/queries';
+import { useQuery } from '@apollo/client';
+import { QUERY_PET_SEARCH } from '../../utils/queries';
 
 
 export default function Search() {
-    const { loading, data } = useQuery(GET_ME);
+    const [petSearch] = useQuery(QUERY_PET_SEARCH);
+    let { loading, data } = petSearch(null, null, null, null, null, null, null);
+    const pet = data?[0] : [];
+
+    
 
     return (
     <div>
         <div>
-            <form class="flexy">
-                <label for="age-filter">Age: </label>
+            <form className="flexy">
+                <label htmlFor="age-filter">Age: </label>
                 <select id="age-filter" name="age">
                     <option value="all">All</option>
                     <option value="3">3</option>
                 </select>
 
-                <label for="breed-filter">Breed: </label>
+                <label htmlFor="breed-filter">Breed: </label>
                 <select id="breed-filter" name="breed">
                     <option value="all">All</option>
                     <option value="chihuahua">Chihuahua</option>
                 </select>
 
-                <label for="size-filter">Size: </label>
+                <label htmlFor="size-filter">Size: </label>
                 <select id="size-filter" name="size">
                     <option value="all">All</option>
                     <option value="small">Small</option>
                 </select>
 
-                <label for="sex-filter">Sex: </label>
+                <label htmlFor="sex-filter">Sex: </label>
                 <select id="sex-filter" name="sex">
                     <option value="all">All</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
                 
-                <label for="color-filter">Color: </label>
+                <label htmlFor="color-filter">Color: </label>
                 <select id="color-filter" name="color">
                     <option value="all">All</option>
                     <option value="white">White</option>
@@ -45,8 +49,14 @@ export default function Search() {
                 <input id="filter-submit" type="submit" value="Apply"/>
             </form>
         </div>
+
+        <div>
+            {loading ? (
+                <div>Loading...</div>
+            ) : (
+                <div>The data: {pet}</div>
+            )}
+        </div>
     </div>
-
-
     )
 };
