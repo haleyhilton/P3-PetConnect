@@ -34,3 +34,15 @@ mutation AddUserPhoto($username: String!, $media: String!) {
     }
   }
 `;
+
+export const CREATE_USER_MESSAGE = gql`
+mutation createMessage($messageText: String!, $senderId: String!, $receiverId: String!, $lastMessage: String) {
+  createMessage(messageText: $messageText, senderId: $senderId, receiverId: $receiverId, lastMessage: $lastMessage) {
+    _id
+    messagesText
+    senderId
+    receiverId
+    lastMessage
+  }
+}
+`;
