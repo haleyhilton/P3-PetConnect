@@ -26,6 +26,8 @@ const resolvers = {
       return Pet.find({});
     },
     petSearch: async (parent, { search, age, breed, sex, size, color, for_sale }) => {
+      console.log(`Input: search: ${search}, age: ${age}, breed: ${breed}, sex: ${sex}, size: ${size}, color: ${color}, for_sale: ${for_sale}`);
+
       //if search term exists use it
       if (search) {
         //create a regex for the search term

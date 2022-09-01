@@ -8,6 +8,6 @@ label {
 }
 
 select {
-    width: 90px;
+    width: fit-content;
     height: 50px;
 }
