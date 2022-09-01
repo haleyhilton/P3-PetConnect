@@ -47,6 +47,14 @@ const typeDefs = gql`
     messages: [Messages]
   }
 
+  type Post {
+    _id: ID!
+    subject: String!
+    body: String!
+    lastUpdated: String
+  }
+
+
   type Messages {
     _id: ID!
     messagesText: String!
