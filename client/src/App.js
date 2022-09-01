@@ -14,6 +14,7 @@ import Contact from './pages/FAQ/Contact'
 import FAQ from './pages/FAQ/FAQ'
 import Landing from './pages/Landing/Landing'
 import { setContext } from '@apollo/client/link/context';
+import Message from './pages/Messages/Message';
 
 
 // NEW NEW NEW
@@ -90,6 +91,10 @@ function App() {
                <Route 
               path="/profile" 
               element={<Profile />}
+            />
+               <Route 
+              path="/messages" 
+              element={<Message />}
             />
                <Route 
               path="/login" 
