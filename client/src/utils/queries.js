@@ -25,3 +25,15 @@ query ProfilePictures {
   }
 }
 `;
+
+export const QUERY_USER_MESSAGES = gql`
+query userMessages($receiverId: String!) {
+  userMessages(receiverId: $receiverId) {
+    _id
+    messagesText
+    senderId
+    receiverId
+    lastMessage
+  }
+}
+`;
