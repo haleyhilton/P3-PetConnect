@@ -18,10 +18,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "autoprefixer": "^10.4.8",
-    "concurrently": "^5.3.0",
-    "postcss": "^8.4.16",
-    "tailwindcss": "^3.1.8"
+    "concurrently": "^5.3.0"
   },
   "bugs": {
     "url": "https://github.com/haleyhilton/P3-PetConnect/issues"
