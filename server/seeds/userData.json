@@ -1,15 +1,75 @@
 [
     {
-      "name": "joshjankowski",
+      "username": "joshjankowski",
       "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K",
       "email": "joshjankowski@gmail.com",
       "first_name": "Josh",
       "last_name": "Jankowski",
       "date_of_birth": "1986-04-07",
       "zip_code": 98104,
-      "media": [
-        "INSERT URL HERE"
-      ],
-      "pet": 123456798
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661824507/219211605_10165766044975341_4448912384451270100_n_wj9yam.jpg"
+      },
+      "profilePicture": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661824507/219211605_10165766044975341_4448912384451270100_n_wj9yam.jpg",
+      "pet": ["6306d4531b35ad587c6572fa"]
+    },
+    {
+      "username": "haleyhilton",
+      "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K",
+      "email": "haleymariehilton@gmail.com",
+      "first_name": "Haley",
+      "last_name": "Hilton",
+      "date_of_birth": "1992-02-19",
+      "zip_code": 92083,
+      "media": [{
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661825266/haleyhilton_oywguw.jpg"
+      }],
+      "profilePicture": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661825265/haleyhilton2_uk2c8m.jpg",
+      "pet": ["6306d4531b35ad587c6572fb"]
+    },
+    {
+      "username": "nathanstein",
+      "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K",
+      "email": "nathanstein2@gmail.com",
+      "first_name": "Nathan",
+      "last_name": "Stein",
+      "date_of_birth": "1994-11-07",
+      "zip_code": 982128,
+      "media": [{
+        "url": null
+      }],
+      "profilePicture": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661824883/nathan_mcup66.jpg",
+      "pet": ["6306d4531b35ad587c6572fc"]
+    },
+    {
+      "username": "davidrios",
+      "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K",
+      "email": "riosdavid16@gmail.com",
+      "first_name": "David",
+      "last_name": "Rios",
+      "date_of_birth": "1996-08-10",
+      "zip_code": 91945,
+      "media": [{
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661825264/davidrios_hqnjqn.jpg"
+      },
+      {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661825264/davidrios2_l1didb.jpg"
+      }],
+      "profilePicture": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661825265/davidrios3_q0pe2w.jpg",
+      "pet": ["6306d4531b35ad587c6572fe"]
+    },
+    {
+      "username": "davidryan",
+      "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K",
+      "email": "dryan10101@gmail.com",
+      "first_name": "David",
+      "last_name": "Ryan",
+      "date_of_birth": "1999-03-14",
+      "zip_code": 92065,
+      "media": [{
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661824883/davidryan2_sf0spj.jpg"
+      }],
+      "profilePicture": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661824883/davidryan_ygjdph.jpg",
+      "pet": ["6306d4531b35ad587c6572fd"]
     }
   ]

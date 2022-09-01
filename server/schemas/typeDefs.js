@@ -22,13 +22,18 @@ const typeDefs = gql`
   }
 
   type PetMedia {
-    _id: ID!
-    url: String!
+    _id: ID
+    url: String
   }
 
   type UserMedia {
-    _id: ID!
-    url: String!
+    _id: ID
+    url: String
+  }
+
+  type ProfileMedia {
+    _id: ID
+    url: String
   }
 
    type User {
@@ -41,6 +46,7 @@ const typeDefs = gql`
     date_of_birth: String!
     zip_code: Int!
     media: [UserMedia]
+    profilePicture: String
     pet: [Pet]
     post: [Post]
     lastUpdated: String
@@ -62,6 +68,13 @@ const typeDefs = gql`
     lastMessage: String
   }
 
+  type Post {
+    _id: ID!
+    subject: String!
+    body: String!
+    lastUpdated: String
+  }
+
   # Set up an Auth type to handle returning data from a profile creating or user login
   type Auth {
     token: ID!
@@ -71,6 +84,7 @@ const typeDefs = gql`
   type Query {
     user: [User]
     pet: [Pet]
+    petSearch(search: String, age: Int, breed: String, size: String, sex: String, color: String, for_sale: Boolean): [Pet]
     breed(breed: String!): [Pet]
     post(_id: String!): [Post]
     userMessages(receiverId: String!): [Messages]
