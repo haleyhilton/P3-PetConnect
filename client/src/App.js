@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import Home from './pages/Home';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Landing from './pages/Landing/Landing'
 import Header from './pages/Topbottom/Header'
 import Profile from './pages/Profile/Profile';
+import Search from './pages/Search/Search';
 
 
 
@@ -36,6 +36,10 @@ function App() {
             <Route 
               path="/" 
               element={<Profile />}
+            />
+            <Route
+              path="/search"
+              element={<Search />}
             />
           </Routes>
         

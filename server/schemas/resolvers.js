@@ -86,7 +86,7 @@ const resolvers = {
       };
 
       //if search term wasn't passed in, do a normal Pet.find using all the filters
-      //since some filters might be null, add them to the find object based on their values
+      //since some filters might be null, optionally add them to the find object based on their values
       let findAsObject = {};
       if (age) {findAsObject.age = age};
       if (breed) {findAsObject.breed = breed};
