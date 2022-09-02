@@ -25,3 +25,30 @@ query ProfilePictures {
   }
 }
 `;
+
+export const QUERY_USER_MESSAGES = gql`
+query userMessages($receiverId: String!) {
+  userMessages(receiverId: $receiverId) {
+    _id
+    messagesText
+    senderId
+    receiverId
+    lastMessage
+  }
+}
+`;
+
+export const QUERY_PET_SEARCH = gql`
+  query petSearch($search: String, $age: Int, $breed: String, $sex: String, $size: String, $color: String, $for_sale: Boolean) {
+    petSearch(search: $search, age: $age, breed: $breed, sex: $sex, size: $size, color: $color, for_sale: $for_sale) {
+      name
+      age
+      breed
+      sex
+      size
+      color
+      description
+      for_sale
+    }
+  }
+`;

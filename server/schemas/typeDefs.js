@@ -52,6 +52,21 @@ const typeDefs = gql`
     lastUpdated: String
     messages: [Messages]
   }
+  
+  type Post {
+    _id: ID!
+    subject: String!
+    body: String!
+    lastUpdated: String
+  }
+
+  type Post {
+    _id: ID!
+    subject: String!
+    body: String!
+    lastUpdated: String
+  }
+
 
   type Messages {
     _id: ID!
@@ -77,6 +92,7 @@ const typeDefs = gql`
   type Query {
     user: [User]
     pet: [Pet]
+    petSearch(search: String, age: Int, breed: String, size: String, sex: String, color: String, for_sale: Boolean): [Pet]
     breed(breed: String!): [Pet]
     post(_id: String!): [Post]
     userMessages(receiverId: String!): [Messages]
