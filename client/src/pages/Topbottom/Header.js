@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css';
-
+import {Link} from 'react-router-dom'
 export default function Header(props) {
   return (
     <div>
@@ -41,7 +41,7 @@ export default function Header(props) {
                 <div class="dropdown">
                     <button class="dropbtn"><a href="/login#login"><img src="https://picsum.photos/200/300?random=1" alt="Avatar" class="avatar"/></a></button>
                     <div class="dropdown-content">
-                    <a href="#">My Profile</a>
+                    <Link to='/profile'><a href="#">My Profile</a></Link>
                     <a href="#">Settings</a>
                     <a href="#">logout</a>
                    </div>
