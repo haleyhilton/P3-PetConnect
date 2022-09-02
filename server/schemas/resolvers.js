@@ -26,6 +26,8 @@ const resolvers = {
       return Pet.find({});
     },
     petSearch: async (parent, { search, age, breed, sex, size, color, for_sale }) => {
+      console.log(`Input: search: ${search}, age: ${age}, breed: ${breed}, sex: ${sex}, size: ${size}, color: ${color}, for_sale: ${for_sale}`);
+
       //if search term exists use it
       if (search) {
         //create a regex for the search term
@@ -86,7 +88,7 @@ const resolvers = {
       };
 
       //if search term wasn't passed in, do a normal Pet.find using all the filters
-      //since some filters might be null, add them to the find object based on their values
+      //since some filters might be null, optionally add them to the find object based on their values
       let findAsObject = {};
       if (age) {findAsObject.age = age};
       if (breed) {findAsObject.breed = breed};

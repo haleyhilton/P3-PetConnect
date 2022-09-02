@@ -13,6 +13,7 @@ import About from './pages/FAQ/About'
 import Contact from './pages/FAQ/Contact'
 import FAQ from './pages/FAQ/FAQ'
 import Landing from './pages/Landing/Landing'
+import Search from './pages/Search/Search'
 import { setContext } from '@apollo/client/link/context';
 import Message from './pages/Messages/Message';
 
@@ -88,7 +89,7 @@ function App() {
               path="/" 
               element={<Landing />}
             />
-               <Route 
+            <Route 
               path="/profile" 
               element={<Profile />}
             />
@@ -100,21 +101,25 @@ function App() {
               path="/login" 
               element={<Login />}
             />
-             <Route 
+            <Route 
               path="/signup" 
               element={<Signup />}
             />
-               <Route 
+            <Route 
               path="/about" 
               element={<About />}
             />
-               <Route 
+            <Route 
               path="/contact" 
               element={<Contact />}
             />
-               <Route 
+            <Route 
               path="/faq" 
               element={<FAQ />}
+            />
+            <Route 
+              path="/search" 
+              element={<Search />}
             />
           </Routes>
       <Footer />
