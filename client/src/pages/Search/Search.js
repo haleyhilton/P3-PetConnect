@@ -37,7 +37,7 @@ export default function Search() {
     async function handleFormSubmit(event) {
         event.preventDefault();
     
-        setSearchFilterValsActual(() => {
+        await setSearchFilterValsActual(() => {
             const updatedData = { ...searchFilterVals };
             if (updatedData.age === "all") {updatedData.age = null;};
             if (updatedData.breed === "all") {updatedData.breed = null;};
@@ -136,9 +136,9 @@ export default function Search() {
                 pets.map((pet) => {
                     return (
                         console.log(pet._id),
-                        <DogSearchCard pet={pet} key={pet._id}>
-
-                        </DogSearchCard>
+                        <div key={pet._id} >
+                            Dog: {pet.name}
+                        </div>
                     )
                 })
             )}
