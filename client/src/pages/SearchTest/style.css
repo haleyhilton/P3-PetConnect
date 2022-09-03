@@ -1,0 +1,13 @@
+.flexy {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+label {
+    padding-right: 10px;
+}
+
+select {
+    width: fit-content;
+    height: 50px;
+}
