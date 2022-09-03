@@ -121,10 +121,10 @@ function App() {
               path="/search" 
               element={<Search />}
             />
-            <Route 
+            {/* <Route 
               path="/searchtest" 
               element={<SearchTest />}
-            />
+            /> */}
           </Routes>
       <Footer />
       </Router>

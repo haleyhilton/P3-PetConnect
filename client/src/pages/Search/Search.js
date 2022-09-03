@@ -62,7 +62,7 @@ export default function Search() {
         <div>
             <form className="flexy" onSubmit={handleFormSubmit}>
                 <label htmlFor="age-filter">Age: </label>
-                <select id="age-filter" name="age" onSubmit={(e) => setSearchFilterVals(current => {
+                <select id="age-filter" name="age" onChange={(e) => setSearchFilterVals(current => {
                     const updatedData = { ...current };
                     updatedData.age = e.target.value;
                     return updatedData;
@@ -74,8 +74,6 @@ export default function Search() {
                 <label htmlFor="breed-filter">Breed: </label>
                 <select id="breed-filter" name="breed" onChange={(e) => setSearchFilterVals(current => {
                     const updatedData = { ...current };
-                    console.log("Breed updated:");
-                    console.log(e.target.value);
                     updatedData.breed = e.target.value;
                     return updatedData;
                 })}>
@@ -84,7 +82,7 @@ export default function Search() {
                 </select>
 
                 <label htmlFor="size-filter">Size: </label>
-                <select id="size-filter" name="size" onSubmit={(e) => setSearchFilterVals(current => {
+                <select id="size-filter" name="size" onChange={(e) => setSearchFilterVals(current => {
                     const updatedData = { ...current };
                     updatedData.size = e.target.value;
                     return updatedData;
@@ -94,7 +92,7 @@ export default function Search() {
                 </select>
 
                 <label htmlFor="sex-filter">Sex: </label>
-                <select id="sex-filter" name="sex" onSubmit={(e) => setSearchFilterVals(current => {
+                <select id="sex-filter" name="sex" onChange={(e) => setSearchFilterVals(current => {
                     const updatedData = { ...current };
                     updatedData.sex = e.target.value;
                     return updatedData;
@@ -105,7 +103,7 @@ export default function Search() {
                 </select>
                 
                 <label htmlFor="color-filter">Color: </label>
-                <select id="color-filter" name="color" onSubmit={(e) => setSearchFilterVals(current => {
+                <select id="color-filter" name="color" onChange={(e) => setSearchFilterVals(current => {
                     const updatedData = { ...current };
                     updatedData.color = e.target.value;
                     return updatedData;
@@ -115,12 +113,12 @@ export default function Search() {
                 </select>
 
                 <label htmlFor="forsale-filter">For Sale?: </label>
-                <select id="forsale-filter" name="color" onSubmit={(e) => setSearchFilterVals(current => {
+                <select id="forsale-filter" name="color" onChange={(e) => setSearchFilterVals(current => {
                     const updatedData = { ...current };
                     updatedData.forSale = e.target.value;
                     return updatedData;
                 })}>
-                    <option value="">All</option>
+                    <option value="all">All</option>
                     <option value="true">For sale</option>
                     <option value="false">Not for sale</option>
                 </select>
