@@ -39,10 +39,24 @@ export const CREATE_USER_MESSAGE = gql`
 mutation createMessage($messageText: String!, $senderId: String!, $receiverId: String!, $lastMessage: String) {
   createMessage(messageText: $messageText, senderId: $senderId, receiverId: $receiverId, lastMessage: $lastMessage) {
     _id
-    messagesText
+    messageText
     senderId
     receiverId
     lastMessage
+  }
+}
+`;
+
+export const DELETE_USER_MESSAGE = gql`
+mutation deleteMessage($id: ID!, $messageId: String!) {
+  deleteMessage(_id: $id, messageId: $messageId) {
+    messages {
+      _id
+      messageText
+      senderId
+      receiverId
+      lastMessage
+    }
   }
 }
 `;

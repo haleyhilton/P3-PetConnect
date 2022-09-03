@@ -70,7 +70,7 @@ const typeDefs = gql`
 
   type Messages {
     _id: ID!
-    messagesText: String!
+    messageText: String!
     senderId: String!
     receiverId: String!
     lastMessage: String
@@ -104,6 +104,7 @@ const typeDefs = gql`
     addPet(username: String!, pet: String!): User
     addProfilePicture(username: String!, media: String!): User
     createMessage(messageText: String!, senderId: String!, receiverId: String!, lastMessage: String): Messages
+    deleteMessage(_id: ID!, messageId: String!): User
   }
 `;
 
