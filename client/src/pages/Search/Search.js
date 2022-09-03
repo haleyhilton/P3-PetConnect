@@ -5,15 +5,17 @@ import { useQuery, useLazyQuery } from '@apollo/client';
 
 import { QUERY_PET_SEARCH } from '../../utils/queries';
 import DogSearchCard from './components/DogSearchCard';
+import reverseSpreader from '../../utils/reverseSpreader';
 
 
 export default function Search() {
     const [searchFilterVals, setSearchFilterVals] = useState({ search: null, age: null, breed: null, size: null, sex: null, color: null, forSale: null });
+    const [searchFilterValsActual, setSearchFilterValsActual] = useState({ search: null, age: null, breed: null, size: null, sex: null, color: null, forSale: null });
 
     const [pets, setPets] = useState([]);
 
     const { loading, error } = useQuery(QUERY_PET_SEARCH, {
-        variables: {search: searchFilterVals.search, age: searchFilterVals.age, breed: searchFilterVals.breed, size: searchFilterVals.size, sex: searchFilterVals.sex, color: searchFilterVals.color, for_sale: searchFilterVals.forSale},
+        variables: {search: searchFilterValsActual.search, age: searchFilterValsActual.age, breed: searchFilterValsActual.breed, size: searchFilterValsActual.size, sex: searchFilterValsActual.sex, color: searchFilterValsActual.color, for_sale: searchFilterValsActual.forSale},
         onCompleted: newData => {
             setPets(newData.petSearch);
         }
@@ -21,19 +23,22 @@ export default function Search() {
     if (error) console.log(JSON.parse(JSON.stringify(error)));
 
     const [newSearch] = useLazyQuery(QUERY_PET_SEARCH, {
-        variables: {search: searchFilterVals.search, age: searchFilterVals.age, breed: searchFilterVals.breed, size: searchFilterVals.size, sex: searchFilterVals.sex, color: searchFilterVals.color, for_sale: searchFilterVals.forSale},
+        variables: {search: searchFilterValsActual.search, age: searchFilterValsActual.age, breed: searchFilterValsActual.breed, size: searchFilterValsActual.size, sex: searchFilterValsActual.sex, color: searchFilterValsActual.color, for_sale: searchFilterValsActual.forSale},
         onCompleted: newData => {
             console.log("Complete!");
             console.log("newData: "+ JSON.stringify(newData));
-            setPets(newData.petSearch);
+            const temphold = newData.petSearch;
+            const temphold2 = { ...temphold };
+            const temphold3 = reverseSpreader(temphold2);
+            setPets(temphold3);
         }
     })
 
     async function handleFormSubmit(event) {
         event.preventDefault();
     
-        setSearchFilterVals(current => {
-            const updatedData = { ...current };
+        setSearchFilterValsActual(() => {
+            const updatedData = { ...searchFilterVals };
             if (updatedData.age === "all") {updatedData.age = null;};
             if (updatedData.breed === "all") {updatedData.breed = null;};
             if (updatedData.size === "all") {updatedData.size = null;};
@@ -130,7 +135,10 @@ export default function Search() {
                 console.log("Pets: "+ JSON.stringify(pets)),
                 pets.map((pet) => {
                     return (
-                        <DogSearchCard pet={pet} key={pet.name.toString()} />
+                        console.log(pet._id),
+                        <DogSearchCard pet={pet} key={pet._id}>
+
+                        </DogSearchCard>
                     )
                 })
             )}
