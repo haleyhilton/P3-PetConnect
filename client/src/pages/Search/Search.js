@@ -4,7 +4,6 @@ import './style.css'
 import { useQuery, useLazyQuery } from '@apollo/client';
 
 import { QUERY_PET_SEARCH } from '../../utils/queries';
-import DogSearchCard from './components/DogSearchCard';
 import reverseSpreader from '../../utils/reverseSpreader';
 
 
