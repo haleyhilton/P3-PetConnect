@@ -15,6 +15,7 @@ import FAQ from './pages/FAQ/FAQ'
 import Landing from './pages/Landing/Landing'
 import { setContext } from '@apollo/client/link/context';
 import Message from './pages/Messages/Message';
+import Chat from './pages/Chat/chat';
 
 
 // NEW NEW NEW
@@ -95,6 +96,10 @@ function App() {
                <Route 
               path="/messages" 
               element={<Message />}
+            />
+             <Route 
+              path="/chat" 
+              element={<Chat />}
             />
                <Route 
               path="/login" 
