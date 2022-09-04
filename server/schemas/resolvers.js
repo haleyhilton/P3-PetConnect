@@ -11,9 +11,13 @@ const removeDuplicates = require('../utils/removeDuplicates');
 
 const resolvers = {
   Query: {
+    // Find one user
+    oneUser: async (parent, args) => {
+       return User.findById(args._id).populate('pet').populate('post').populate('messages');
+    },
     // Find All Users
     user: async () => {
-      return User.find({}).populate('pet').populate('post');
+      return User.find({}).populate('pet').populate('post').populate('messages');
     },
     // Find messages corresponding to sending user id to have history of message conversation
     userMessages: async (parent, args) => {
@@ -158,7 +162,7 @@ const resolvers = {
         { _id: args.senderId },
         {
           $addToSet: {
-            messages: newMessage._id
+            messages: newMessage
           },
         },
         {
@@ -169,14 +173,28 @@ const resolvers = {
           { _id: args.receiverId },
           {
             $addToSet: {
-              messages: newMessage._id
+              messages: newMessage
             },
           },
           {
             new: true,
           }
         );
+        console.log(newMessage)
         return newMessage;
+    },
+    deleteMessage: async (parent, args) => {
+      const deletedMessage = await User.findOneAndUpdate(
+        { _id: args._id },
+        {
+          $pull: { messages: args.messageId } 
+        },
+        {
+          new: true
+        }
+      ).populate('messages');
+
+      return deletedMessage
     }
   },
 };
