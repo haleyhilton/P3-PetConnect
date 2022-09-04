@@ -6,20 +6,29 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import { flexbox } from '@mui/system';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import MapsUgcIcon from '@mui/icons-material/MapsUgc';
+import IconButton from '@mui/material/IconButton';
 
 const styles = {
     header: {
         display: 'flex',
         justifyContent: 'center',
+        backgroundColor: "#023047",
+        padding: "15px 0px 30px 0px",
+        color: "white",
     },
     conversations: {
         display: "flex",
         justifyContent: 'center',
         padding: '25px 0px 50px 0px',
+    },
+    button: {
+        position: "relative",
+        left: "450px",
+        color: "white",
     }
 }
 
@@ -28,7 +37,16 @@ function Conversations() {
     
     return (
         <div>
-            <h1 style={styles.header}>Messages</h1>
+            <header style={styles.header}>
+                <h1>Messages</h1>
+                <IconButton size="large" style={styles.button}> <MapsUgcIcon fontSize='inherit' /> </IconButton>
+            </header>
+
+            <Grid container>
+                <Grid item xs={12} style={{ padding: '10px' }}>
+                    <TextField id="outlined-basic-email" label="Search" variant="outlined" fullWidth />
+                </Grid>
+            </Grid>
 
             <div style={styles.conversations}>
                 <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>

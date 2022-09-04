@@ -36,13 +36,16 @@ mutation AddUserPhoto($username: String!, $media: String!) {
 `;
 
 export const CREATE_USER_MESSAGE = gql`
-mutation createMessage($messageText: String!, $senderId: String!, $receiverId: String!, $lastMessage: String) {
-  createMessage(messageText: $messageText, senderId: $senderId, receiverId: $receiverId, lastMessage: $lastMessage) {
+mutation createMessage($messageText: String!, $senderId: String!, $receiverId: String!, $sentBy: String, $receivedBy: String, $lastMessage: String, $lastUpdated: String) {
+  createMessage(messageText: $messageText, senderId: $senderId, receiverId: $receiverId, sent_by: $sentBy, received_by: $receivedBy, lastMessage: $lastMessage, lastUpdated: $lastUpdated) {
     _id
     messageText
     senderId
+    sent_by
     receiverId
+    received_by
     lastMessage
+    lastUpdated
   }
 }
 `;
@@ -54,8 +57,11 @@ mutation deleteMessage($id: ID!, $messageId: String!) {
       _id
       messageText
       senderId
+      sent_by
       receiverId
+      received_by
       lastMessage
+      lastUpdated
     }
   }
 }
