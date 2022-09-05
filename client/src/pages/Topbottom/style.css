@@ -148,8 +148,9 @@ body {
 }
 
 .masthead {
-  padding-top: calc(6rem + 74px);
-  padding-bottom: 8rem;
+    padding-top: calc(2rem + 104px);
+    padding-bottom: 4rem;
+    margin-bottom: 4rem;
   background-color: aliceblue;
   position: relative;
 

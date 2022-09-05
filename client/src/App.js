@@ -15,6 +15,7 @@ import FAQ from './pages/FAQ/FAQ'
 import Team from './pages/FAQ/Team'
 import Blog from './pages/FAQ/Blog'
 import Landing from './pages/Landing/Landing'
+import Search from './pages/Search/Search'
 import { setContext } from '@apollo/client/link/context';
 import Message from './pages/Messages/Message';
 
@@ -129,6 +130,10 @@ function App() {
               path="/blog" 
               element={<Blog />}
             />
+                 <Route 
+              path="/search" 
+              element={<Search />}
+              />
           </Routes>
       <Footer />
       </Router>
