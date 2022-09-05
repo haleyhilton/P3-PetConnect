@@ -70,10 +70,13 @@ const typeDefs = gql`
 
   type Messages {
     _id: ID!
-    messagesText: String!
+    messageText: String!
     senderId: String!
+    sent_by: String
     receiverId: String!
+    received_by: String
     lastMessage: String
+    lastUpdated: String
   }
 
   type Post {
@@ -91,11 +94,13 @@ const typeDefs = gql`
 
   type Query {
     user: [User]
+    oneUser(_id: ID!): User
     pet: [Pet]
     petSearch(search: String, age: Int, breed: String, size: String, sex: String, color: String, for_sale: Boolean): [Pet]
     breed(breed: String!): [Pet]
     post(_id: String!): [Post]
     userMessages(receiverId: String!): [Messages]
+    
   }
   
   type Mutation {
@@ -103,7 +108,8 @@ const typeDefs = gql`
     login(username: String!, password: String!): Auth
     addPet(username: String!, pet: String!): User
     addProfilePicture(username: String!, media: String!): User
-    createMessage(messageText: String!, senderId: String!, receiverId: String!, lastMessage: String): Messages
+    createMessage(messageText: String!, senderId: String!, sent_by: String, receiverId: String!, received_by: String lastMessage: String, lastUpdated: String): Messages
+    deleteMessage(_id: ID!, messageId: String!): User
   }
 `;
 

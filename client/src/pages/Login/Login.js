@@ -3,7 +3,7 @@ import './style.css'
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-
+import {Link} from 'react-router-dom'
 
 
 export default function Login(props) {
@@ -82,7 +82,8 @@ export default function Login(props) {
             <h1>New Here?</h1>
             <p>Well then you should join us obviously</p>
 
-            <button id="signUpBtn">Sign Up</button>
+            
+            <Link to="/Signup"><button id="signUpBtn" onClick={'/Signup'}>Sign Up</button></Link>
 
           </div>
 
