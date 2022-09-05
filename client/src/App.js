@@ -134,7 +134,7 @@ function App() {
             />
                   <Route 
               path="/blog" 
-              element={<Blog />}
+              element={<Blog />}/>
                  <Route 
               path="/search" 
               element={<Search />}

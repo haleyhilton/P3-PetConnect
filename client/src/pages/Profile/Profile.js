@@ -1,16 +1,22 @@
 import React from 'react'
 import './style.css'
 import Modal from '../Modal/Modal'
+import { useState } from 'react'
+import Griditem from '../Griditem/Griditem'
+
+export default function Profile(props) {
+
+    const canine = {
+        name: 'Ronalds',
+        description: 'An old macdonald boy',
+    }
+    const [isOpen, setIsOpen] = useState(true);
 
 
-
-export default function Profile() {
-
-const canine={
-    name: 'Ronald',
-    description: 'An old macdonald boy',
-}
-
+    const handleOpen = event => {
+        // toggle vis
+        setIsOpen(current => !current)
+    };
 
     return (
         <div>
@@ -48,17 +54,42 @@ const canine={
             <div class="wrapattack">
 
 
-<Modal name={canine.name} description={canine.description}/>
+
+<Griditem/>
+
+
+
+
+
+
+
+                <div id="myModal" class="modal" style={{ display: isOpen ? 'none' : 'block' }}>
+                    <div class="modal-content">
+                        <span class="close" onClick={handleOpen}>&times;</span>
+                        <div class="modal-inner-wrapper">
+                            <div>{canine.name}</div>
+                            <div class="modal-inner-image"></div>
+                            <div>{canine.description}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
                 <div class="grid-container">
-                    <div class="grid-item">Momo</div>
-                    <div class="grid-item">Sokka</div>
-                    <div class="grid-item">Katara</div>
-                    <div class="grid-item">Aang</div>
-                    <div class="grid-item">Toph</div>
-                    <div class="grid-item">Zuko</div>
-                    <div class="grid-item">Azula</div>
-                    <div class="grid-item">Appa</div>
-                    <div class="grid-item">Iroh</div>
+                    <div class="grid-item" onClick={handleOpen}>Momo</div>
+                    <div class="grid-item" onClick={handleOpen}>Sokka</div>
+                    <div class="grid-item" onClick={handleOpen}>Katara</div>
+                    <div class="grid-item" onClick={handleOpen}>Aang</div>
+                    <div class="grid-item" onClick={handleOpen}>Toph</div>
+                    <div class="grid-item" onClick={handleOpen}>Zuko</div>
+                    <div class="grid-item" onClick={handleOpen}>Azula</div>
+                    <div class="grid-item" onClick={handleOpen}>Appa</div>
+                    <div class="grid-item" onClick={handleOpen}>Iroh</div>
                 </div>
             </div>
 

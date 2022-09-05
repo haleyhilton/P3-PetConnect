@@ -1,85 +1,104 @@
 import React from 'react'
+import { useState } from 'react';
 import './style.css'
 
 export default function PostCard(props) {
 
 
-
-    // Use form state to create blank form with click handles to generate the props, then send these down to the grid items on Profile. Need to talk to Backend boys about the Mutations
-
-
+// OPEN AND CLOSE
+  const [isPostOpen, setIsPostOpen] = useState(false);
 
 
-    // const [formState, setFormState] = useState({
-    //     first: '',
-    //     last: '',
-    //     dob:'',
-    //     zipCode: '',
-        
-    //     email: '',
-    //     username: '',
-    //     password: '',
-    //   });
-    //   const [addUser, { error, data }] = useMutation(ADD_USER);
-    //   let navigate = useNavigate()
-    //   const handleChange = (event) => {
-        
-    //     const { name, value } = event.target;
-    //     console.log(name)
-    //     setFormState({
-    //       ...formState,
-    //       [name]: value,
-    //     });
-    //   };
+  const handlePostOpen = event => {
+      // toggle vis
+      setIsPostOpen(current => !current)
+  };
+  
+
+// SET VALUE
+  const [name, setName] =useState('')
+  
+  const [age, setAge] = useState('')
+
+  const [breed, setBreed] = useState('')
+
+  const [description, setDescription] = useState('')
 
 
 
 
-    //   const handleFormSubmit = async (event) => {
-    //     event.preventDefault();
-    //     console.log(formState);
-    
-    //     try {
-    //       const { data } = await addUser({
-    //         variables: { ...formState },
-    //       });
-    
-    //       Auth.login(data.addUser.token);
-    //       navigate.push('/profile')
+
+// Submit Post Request
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+    const gridpost = { name, age, breed, description}
+
+const requestOptions ={
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json'},
+  body: JSON.stringify({ title: 'Dog Post'})
+}
+// write fetch request
+fetch("filepath", requestOptions)
+// apppend to bottom, 
+    `<div class="grid-item" onClick={handleOpen} >${props.name}</div>`
+
+    console.log(gridpost)
+}
+
+
+
+  
+    return (
+      <div>        
+      <div id="myModal" class="modal" style={{display: isPostOpen ? 'none' : 'block'}}>
+  
           
-    
-    //     } catch (e) {
-          
-    //       console.error(e);
-    //     }
-    
-    //   };
+          <div class="modal-content">
+              <span class="close" onClick={handlePostOpen}>&times;</span>
+              <form onSubmit={handleSubmit} class="modal-inner-wrapper">
+                  
+                  
+                  <div class="modal-inner-image" >ADD IMAGE HERE</div>
+                  <label>Name</label>
+                  <input required
+                  value={name}
+                  onChange={(e)=> setName(e.target.value)}>
+                  </input>
+                  <label>Age</label>
+                  <input required
+                  value={age}
+                  onChange={(e)=> setAge(e.target.value)}></input>
+
+                  <label>Breed</label>
+                  <input required
+                  value={breed}
+                  onChange={(e)=> setBreed(e.target.value)}></input>
+
+                  <label>Description</label>
+                  <textarea
+                  required
+                  value={description}
+                  onChange={(e)=> setDescription(e.target.value)}></textarea>
 
 
-  return (
+                  <button type='submit'>Submit</button>
+                  
 
-
-
-
-    <div>        
-    <div id="myModal" class="modal">
-
-        
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="modal-inner-wrapper">
-                
-
-
-                <div>{props.name}</div>
-                <div class="modal-inner-image"></div>
-                <div>{props.description}
-                </div>
-
-            </div>
-
-        </div>
-
-    </div></div>
-  )
+                  {name}
+                  <br></br>
+                  {age}
+                  <br></br>
+                  {breed}
+                  <br></br>
+                  {description}
+  
+              </form>
+  
+          </div>
+  
+      </div>
+      </div>
+    )
 }
