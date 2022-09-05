@@ -34,15 +34,15 @@ const handleSubmit = (e) => {
     e.preventDefault();
     const gridpost = { name, age, breed, description}
 
-const requestOptions ={
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json'},
-  body: JSON.stringify({ title: 'Dog Post'})
-}
-// write fetch request
-fetch("filepath", requestOptions)
-// apppend to bottom, 
-    `<div class="grid-item" onClick={handleOpen} >${props.name}</div>`
+// const requestOptions ={
+//   method: 'POST',
+//   headers: { 'Content-Type': 'application/json'},
+//   body: JSON.stringify({ title: 'Dog Post'})
+// }
+// // write fetch request
+// fetch("filepath", requestOptions)
+// // apppend to bottom, 
+//     `<div class="grid-item" onClick={handleOpen} >${props.name}</div>`
 
     console.log(gridpost)
 }
