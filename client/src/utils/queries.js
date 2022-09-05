@@ -25,3 +25,18 @@ query ProfilePictures {
   }
 }
 `;
+
+export const QUERY_DOG_BREED = gql`
+query Breed($breed: String!) {
+  breed(breed: $breed) {
+    breed
+    name
+    age
+    sex
+    size
+    color
+    description
+    for_sale
+  }
+}
+`;

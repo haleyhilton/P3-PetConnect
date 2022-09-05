@@ -8,7 +8,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type Pet {
-    _id: ID!
+    _id: ID
     name: String!
     age: Int
     breed: String!
@@ -37,7 +37,7 @@ const typeDefs = gql`
   }
 
    type User {
-    _id: ID!
+    _id: ID
     username: String!
     password: String!
     email: String!
@@ -51,6 +51,11 @@ const typeDefs = gql`
     post: [Post]
     lastUpdated: String
     messages: [Messages]
+  }
+
+  input UserInput {
+    username: String!
+    media: ID!
   }
 
   type Messages {
@@ -83,10 +88,10 @@ const typeDefs = gql`
   }
   
   type Mutation {
-    addUser(_id: ID!, username: String!, password: String!, email: String!, first_name: String!, last_name: String!, date_of_birth: String!, zip_code: Int!): User 
+    addUser(username: String!, password: String!, email: String!, first_name: String!, last_name: String!, date_of_birth: String!, zip_code: Int!): User 
     login(username: String!, password: String!): Auth
     addPet(username: String!, pet: String!): User
-    addProfilePicture(username: String!, media: String!): User
+    addProfilePicture(username: String!, media: String): User
     createMessage(messageText: String!, senderId: String!, receiverId: String!, lastMessage: String): Messages
   }
 `;

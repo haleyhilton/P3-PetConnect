@@ -24,8 +24,9 @@ const resolvers = {
     pet: async () => {
       return Pet.find({});
     },
+    // Returns all dogs based on breed searched
     breed: async (parent, { breed }) => {
-      return Pet.findAll({ 'breed': `${breed}` });
+      return Pet.find({ 'breed': `${breed}`.toLowerCase() });
     },
   },
   Mutation: {
@@ -52,16 +53,18 @@ const resolvers = {
       return newUser;
     },
     addProfilePicture: async (parent, { userName, media }) => {
-      return User.findOneAndUpdate(
+      const updatedUser = await User.findOneAndUpdate(
+         console.log(userName, media),
         { username: userName },
         {
-          $addToSet: { media: media },
+          $addToSet: { media: [{ url: media }] },
         },
         {
           new: true,
           runValidators: true,
         }
       );
+      return updatedUser;
     },
     addPet: async (parent, { userName, pet }) => {
       return User.findOneAndUpdate(
