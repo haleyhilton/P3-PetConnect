@@ -11,9 +11,13 @@ const removeDuplicates = require('../utils/removeDuplicates');
 
 const resolvers = {
   Query: {
+    // Find one user
+    oneUser: async (parent, args) => {
+       return User.findById(args._id).populate('pet').populate('post').populate('messages');
+    },
     // Find All Users
     user: async () => {
-      return User.find({}).populate('pet').populate('post');
+      return User.find({}).populate('pet').populate('post').populate('messages');
     },
     // Find messages corresponding to sending user id to have history of message conversation
     userMessages: async (parent, args) => {
@@ -26,6 +30,8 @@ const resolvers = {
       return Pet.find({});
     },
     petSearch: async (parent, { search, age, breed, sex, size, color, for_sale }) => {
+      console.log(`Input: search: ${search}, age: ${age}, breed: ${breed}, sex: ${sex}, size: ${size}, color: ${color}, for_sale: ${for_sale}`);
+
       //if search term exists use it
       if (search) {
         //create a regex for the search term
@@ -86,7 +92,7 @@ const resolvers = {
       };
 
       //if search term wasn't passed in, do a normal Pet.find using all the filters
-      //since some filters might be null, add them to the find object based on their values
+      //since some filters might be null, optionally add them to the find object based on their values
       let findAsObject = {};
       if (age) {findAsObject.age = age};
       if (breed) {findAsObject.breed = breed};
@@ -156,7 +162,7 @@ const resolvers = {
         { _id: args.senderId },
         {
           $addToSet: {
-            messages: newMessage._id
+            messages: newMessage
           },
         },
         {
@@ -167,14 +173,28 @@ const resolvers = {
           { _id: args.receiverId },
           {
             $addToSet: {
-              messages: newMessage._id
+              messages: newMessage
             },
           },
           {
             new: true,
           }
         );
+        console.log(newMessage)
         return newMessage;
+    },
+    deleteMessage: async (parent, args) => {
+      const deletedMessage = await User.findOneAndUpdate(
+        { _id: args._id },
+        {
+          $pull: { messages: args.messageId } 
+        },
+        {
+          new: true
+        }
+      ).populate('messages');
+
+      return deletedMessage
     }
   },
 };

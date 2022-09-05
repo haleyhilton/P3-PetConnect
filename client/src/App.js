@@ -15,8 +15,10 @@ import FAQ from './pages/FAQ/FAQ'
 import Team from './pages/FAQ/Team'
 import Blog from './pages/FAQ/Blog'
 import Landing from './pages/Landing/Landing'
+import Search from './pages/Search/Search'
 import { setContext } from '@apollo/client/link/context';
 import Message from './pages/Messages/Message';
+import Chat from './pages/Chat/chat';
 
 
 // NEW NEW NEW
@@ -93,7 +95,7 @@ function App() {
               path="/" 
               element={<Landing />}
             />
-               <Route 
+            <Route 
               path="/profile" 
               element={<Profile />}
             />
@@ -101,26 +103,31 @@ function App() {
               path="/messages" 
               element={<Message />}
             />
+             <Route 
+              path="/chat" 
+              element={<Chat />}
+            />
                <Route 
               path="/login" 
               element={<Login />}
             />
-             <Route 
+            <Route 
               path="/signup" 
               element={<Signup />}
             />
-               <Route 
+            <Route 
               path="/about" 
               element={<About />}
             />
-               <Route 
+            <Route 
               path="/contact" 
               element={<Contact />}
             />
-               <Route 
+            <Route 
               path="/faq" 
               element={<FAQ />}
             />
+
                  <Route 
               path="/team" 
               element={<Team />}
@@ -128,6 +135,10 @@ function App() {
                   <Route 
               path="/blog" 
               element={<Blog />}
+                 <Route 
+              path="/search" 
+              element={<Search />}
+
             />
           </Routes>
       <Footer />
