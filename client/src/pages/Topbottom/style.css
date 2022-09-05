@@ -158,11 +158,11 @@ body {
   .footer {
     padding-top: 5rem;
     padding-bottom: 5rem;
-
+    margin-top: 4rem;
     background-color: #219ebc;
-    color: white
+    color: white;
   }
-  
+  x
 
   .avatar {
     vertical-align: middle;
@@ -176,6 +176,7 @@ body {
     padding: 0;
     margin: 0;
     font-size: 0;
+    
   }
   
   .copyright {
@@ -186,6 +187,10 @@ body {
   .dropdown {
     position: relative;
     display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
   }
   
   /* Dropdown Content (Hidden by Default) */
