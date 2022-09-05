@@ -1,0 +1,353 @@
+
+
+root {
+  --main: rgb(243, 183, 70);
+  --secondary: #251b68;
+  --main-fade: rgba(243, 183, 70, 0.9);
+  --font-prompt: 'Prompt', sans-serif;
+  --font-quicksand: 'Quicksand', sans-serif;
+  --body-font-size: 1rem;
+  --body-font-weight: 400;
+  --body-line-height: 1.5;
+  --body-color: #212529;
+  --body-bg: #fff;
+
+}
+
+
+@font-face {
+  font-family: 'Head-Turner';
+  src: url('../Topbottom/Head-Turner.woff') format('woff');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'SulphurPoint-Regular';
+  src: url('../Topbottom/SulphurPoint-Regular.woff') format('woff');
+  font-weight: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-size: var(--body-font-size);
+  font-weight: var(--body-font-weight);
+  line-height: var(--body-line-height);
+  color: var(--body-color);
+  text-align: var(--body-text-align);
+  background-color: var(--body-bg);
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+.navbar {
+    position: sticky;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    text-decoration: none;
+  }
+
+  
+  .navbar-custom {
+    background-color: #023047;
+    padding: 2rem 1rem;
+
+  }
+  
+  .navbar-custom .navbar-brand,
+  .navbar-custom .navbar-text {
+    color: white;
+    font-family: 'Head-Turner';
+    font-size: xxx-large;
+    text-decoration: none;
+  }
+  
+  .nav-link {
+    color: white;
+    font-family: 'SulphurPoint-Regular';
+  }
+  
+  .navbar-brand {
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    text-decoration: none;
+    white-space: nowrap;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+  }
+  
+  .navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  
+  .navbar-nav .dropdown-menu {
+    position: static;
+  }
+  
+  .navbar-text {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  .navbar-collapse {
+    flex-basis: 100%;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: end;
+  }
+  
+  .navbar-toggler {
+    padding: 0.25rem 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 0.125rem solid transparent;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.15s ease-in-out;
+  }
+  
+  #contact-info {
+    text-decoration: none;
+    color: white;
+  }
+
+  .masthead {
+    padding-top: calc(6rem + 74px);
+    padding-bottom: 8rem;
+    /* background-color: #8ecae6; */
+    
+  }
+  
+  .masthead .masthead-heading {
+    font-size: 2.75rem;
+    line-height: 2.75rem;
+    color: #126782;
+    font-family: 'Head-Turner';
+
+  }
+  
+  .masthead .masthead-subheading {
+    font-size: 1.25rem;
+    color: rgb(18, 103, 130, .8);
+    padding: 1rem;
+    font-family: 'SulphurPoint-Regular';
+
+  }
+
+  .footer {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+
+    background-color: #219ebc;
+    color: white
+  }
+  
+
+  .avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .dropbtn {
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+  }
+  
+  .copyright {
+    background-color: #023047;
+    color: white;
+  }
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+
+  /* styling for profile menu */
+.dropdown-content {
+  background-color:rgb(243, 183, 70);
+      
+}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
+  
+  /* =========================================================================== */
+  
+  /* ==== ICONS ==== */
+ .divider-custom {
+  margin: 1.25rem 0 1.5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divider-custom .divider-custom-line {
+  width: 100%;
+  max-width: 7rem;
+  height: 0.25rem;
+  background-color: #2c3e50;
+  border-radius: 1rem;
+  border-color: #2c3e50;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.divider-custom .divider-custom-icon {
+  color: #2c3e50;
+  font-size: 2rem;
+} 
+
+.btn-social {
+  border-radius: 100%;
+  display: inline-flex;
+  width: 3.25rem;
+  height: 3.25rem;
+  font-size: 1.25rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ==== MEDIA QUERIES ====*/
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-toggler {
+    transition: none;
+  }
+}
+
+.navbar-toggler:hover {
+  text-decoration: none;
+}
+
+.navbar-toggler:focus {
+  text-decoration: none;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem;
+}
+
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.navbar-nav-scroll {
+  max-height: var(--bs-scroll-height, 75vh);
+  overflow-y: auto;
+}
+
+@media (min-width: 992px) {
+  .masthead {
+    padding-top: calc(6rem + 104px);
+    padding-bottom: 6rem;
+  }
+
+  .masthead .masthead-heading {
+    font-size: 4rem;
+    line-height: 3.5rem;
+  }
+
+  .masthead .masthead-subheading {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .page-section .page-section-heading {
+    font-size: 3rem;
+    line-height: 2.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: row;
+  }
+
+  .navbar-expand-lg .navbar-nav .dropdown-menu {
+    position: absolute;
+  }
+
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .navbar-expand-lg .navbar-nav-scroll {
+    overflow: visible;
+  }
+
+  .navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto;
+  }
+
+  .navbar-expand-lg .navbar-toggler {
+    display: none;
+  }
+}
