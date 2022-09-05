@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './style.css'
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
-
+import { useNavigate } from 'react-router-dom'
 import Auth from '../../utils/auth';
 
 
@@ -24,10 +24,11 @@ export default function Signup() {
     password: '',
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
-
+  let navigate = useNavigate()
   const handleChange = (event) => {
+    
     const { name, value } = event.target;
-
+    console.log(name)
     setFormState({
       ...formState,
       [name]: value,
@@ -44,9 +45,14 @@ export default function Signup() {
       });
 
       Auth.login(data.addUser.token);
+      navigate.push('/profile')
+      
+
     } catch (e) {
+      
       console.error(e);
     }
+
   };
 
 
@@ -69,32 +75,32 @@ export default function Signup() {
       <form class="form signup-form" onSubmit={handleFormSubmit}>
         <div class="form-group">
           <label for="fn-signup">First Name:</label>
-          <input class="form-input" type="text" id="fn-signup" value={formState.first} onChange={handleChange} />
+          <input class="form-input" type="text" id="fn-signup" name='first' value={formState.first} onChange={handleChange} />
         </div>
         <div class="form-group">
           <label for="ln-signup">Last Name:</label>
-          <input class="form-input" type="text" id="ln-signup" value={formState.last} onChange={handleChange} />
+          <input class="form-input" type="text" id="ln-signup" name='last' value={formState.last} onChange={handleChange} />
         </div>
         <div class="form-group">
           <label for="dob-signup">Date of Birth:</label>
-          <input class="form-input" type="text" id="dob-signup" value={formState.dob} onChange={handleChange} />
+          <input class="form-input" type="text" id="dob-signup" name='dob' value={formState.dob} onChange={handleChange} />
         </div>
         <div class="form-group">
           <label for="zip-signup">Zip Code:</label>
-          <input class="form-input" type="text" id="zip-signup" value={formState.zipCode} onChange={handleChange} />
+          <input class="form-input" type="text" id="zip-signup" name='zipCode' value={formState.zipCode} onChange={handleChange} />
         </div>
         <div class="form-group">
           <label for="email-signup">Email:</label>
-          <input class="form-input" type="text" id="email-signup" value={formState.email}
+          <input class="form-input" type="text" id="email-signup" name='email' value={formState.email}
             onChange={handleChange} />
         </div>
         <div class="form-group">
           <label for="username-signup">Username:</label>
-          <input class="form-input" type="text" id="username-signup" value={formState.username} onChange={handleChange} />
+          <input class="form-input" type="text" id="username-signup" name='username' value={formState.username} onChange={handleChange} />
         </div>
         <div class="form-group">
           <label for="password-signup">Password:</label>
-          <input class="form-input" type="password" id="password-signup" value={formState.password}
+          <input class="form-input" type="password" id="password-signup" name='password' value={formState.password}
             onChange={handleChange} />
         </div>
         <div class="form-group">
