@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import './style.css'
 
 import { useQuery, useLazyQuery } from '@apollo/client';
@@ -10,12 +10,12 @@ export default function Search() {
     const [pets, setPets] = useState([]);
     const [firstRender, setFirstRender] = useState(true);
 
-    const ageRef = useRef();
-    const breedRef = useRef();
-    const sizeRef = useRef();
-    const sexRef = useRef();
-    const colorRef = useRef();
-    const forSaleRef = useRef();
+    let ageRef = React.useRef();
+    let breedRef = React.useRef();
+    let sizeRef = React.useRef();
+    let sexRef = React.useRef();
+    let colorRef = React.useRef();
+    let forSaleRef = React.useRef();
 
     const { loading, error } = useQuery(QUERY_PET_SEARCH, {
         variables: {search: null, age: null, breed: null, size: null, sex: null, color: null, for_sale: null},
@@ -33,14 +33,25 @@ export default function Search() {
     const [newSearch] = useLazyQuery(QUERY_PET_SEARCH, {
         variables: {
             search: null,
-            age: (ageRef.current.value === "all" ? null : ageRef.current.value),
-            breed: (breedRef.current.value === "all" ? null : breedRef.current.value),
-            size: (sizeRef.current.value === "all" ? null : sizeRef.current.value),
-            sex: (sexRef.current.value === "all" ? null : sexRef.current.value),
-            color: (colorRef.current.value === "all" ? null : colorRef.current.value),
-            for_sale: (forSaleRef.current.value === "all" ? null : forSaleRef.current.value)
+            age: (ageRef.current ? (ageRef.current.value === "all" ? null : ageRef.current.value) : null),
+            breed: (breedRef.current ? (breedRef.current.value === "all" ? null : breedRef.current.value) : null),
+            size: (sizeRef.current ? (sizeRef.current.value === "all" ? null : sizeRef.current.value) : null),
+            sex: (sexRef.current ? (sexRef.current.value === "all" ? null : sexRef.current.value) : null),
+            color: (colorRef.current ? (colorRef.current.value === "all" ? null : colorRef.current.value) : null),
+            for_sale: (forSaleRef.current ? (forSaleRef.current.value === "all" ? null : forSaleRef.current.value) : null)
         },
         onCompleted: newData => {
+            const currentSearchInput = {
+                search: null,
+                age: (ageRef.current ? (ageRef.current.value === "all" ? null : ageRef.current.value) : null),
+                breed: (breedRef.current ? (breedRef.current.value === "all" ? null : breedRef.current.value) : null, console.log(breedRef.current)),
+                size: (sizeRef.current ? (sizeRef.current.value === "all" ? null : sizeRef.current.value) : null),
+                sex: (sexRef.current ? (sexRef.current.value === "all" ? null : sexRef.current.value) : null),
+                color: (colorRef.current ? (colorRef.current.value === "all" ? null : colorRef.current.value) : null),
+                for_sale: (forSaleRef.current ? (forSaleRef.current.value === "all" ? null : forSaleRef.current.value) : null)
+            };
+            console.log("current search input: ");
+            console.log(currentSearchInput);
             setPets(newData.petSearch);
             console.log("setPets via useLazyQuery");
         }
