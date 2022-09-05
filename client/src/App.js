@@ -12,6 +12,8 @@ import Signup from './pages/Signup/Signup'
 import About from './pages/FAQ/About'
 import Contact from './pages/FAQ/Contact'
 import FAQ from './pages/FAQ/FAQ'
+import Team from './pages/FAQ/Team'
+import Blog from './pages/FAQ/Blog'
 import Landing from './pages/Landing/Landing'
 import Search from './pages/Search/Search'
 import { setContext } from '@apollo/client/link/context';
@@ -77,6 +79,9 @@ function createMastText () {
   else if (url === 'profile') {
     return {headerText: 'different example text', subHeaderText: 'also different test'};
   } 
+  else if (url === 'team') {
+    return {headerText: 'Meet the Team', subHeaderText: 'Something about us'};
+  } 
   // hard code in URLs and there respective headerText and subHeaderText
 }
 
@@ -122,9 +127,18 @@ function App() {
               path="/faq" 
               element={<FAQ />}
             />
-            <Route 
+
+                 <Route 
+              path="/team" 
+              element={<Team />}
+            />
+                  <Route 
+              path="/blog" 
+              element={<Blog />}
+                 <Route 
               path="/search" 
               element={<Search />}
+
             />
           </Routes>
       <Footer />

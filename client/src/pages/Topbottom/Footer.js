@@ -11,7 +11,7 @@ export default function Footer() {
             <div class="row">
 
 
-                <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="col-lg-4 contact-info">
                     <h4 class="text-uppercase mb-4">Follow us for more!</h4>
                     <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
                             class="fab fa-fw fa-facebook-f"></i></a>
@@ -30,11 +30,12 @@ export default function Footer() {
                 </div>
 
                 <div class="col-lg-4">
-                    <h4 class="text-uppercase mb-4">About PETCONNECT</h4>
+                    <h4 class="text-uppercase mb-4">Extras</h4>
                     <p class="lead mb-0">
-                        <a id="contact-info" href="/faq">FAQ</a> <br/>
-                        <a id="contact-info" href="/about">About Petconnect</a> <br/> 
-                        <a id="contact-info" href="#">Testimonials</a> <br/>
+                        <a id="contact-info" href="/about">Our Story</a> <br/>
+                        <a id="contact-info" href="/team">Meet the Team</a> <br/>
+                        <a id="contact-info" href="/faq">FAQ</a> <br/> 
+                        <a id="contact-info" href="#">Blog</a> <br/>
 
                     </p>
                 </div>
