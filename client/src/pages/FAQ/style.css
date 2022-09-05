@@ -2,3 +2,26 @@
     padding: 5rem 10rem;
     font-size: larger;
 }
+
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+
+  
+.masthead-heading {
+    font-size: 2.75rem;
+    line-height: 2.75rem;
+    color: #126782;
+    font-family: 'KulimPark-SemiBold';
+
+  }
+
+  .about-photos {
+  width: 100%;
+  height: 100%
+}
