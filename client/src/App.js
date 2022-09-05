@@ -12,9 +12,13 @@ import Signup from './pages/Signup/Signup'
 import About from './pages/FAQ/About'
 import Contact from './pages/FAQ/Contact'
 import FAQ from './pages/FAQ/FAQ'
+import Team from './pages/FAQ/Team'
+import Blog from './pages/FAQ/Blog'
 import Landing from './pages/Landing/Landing'
+import Search from './pages/Search/Search'
 import { setContext } from '@apollo/client/link/context';
 import Message from './pages/Messages/Message';
+import Chat from './pages/Chat/chat';
 
 
 // NEW NEW NEW
@@ -75,6 +79,9 @@ function createMastText () {
   else if (url === 'profile') {
     return {headerText: 'different example text', subHeaderText: 'also different test'};
   } 
+  else if (url === 'team') {
+    return {headerText: 'Meet the Team', subHeaderText: 'Something about us'};
+  } 
   // hard code in URLs and there respective headerText and subHeaderText
 }
 
@@ -88,7 +95,7 @@ function App() {
               path="/" 
               element={<Landing />}
             />
-               <Route 
+            <Route 
               path="/profile" 
               element={<Profile />}
             />
@@ -96,25 +103,42 @@ function App() {
               path="/messages" 
               element={<Message />}
             />
+             <Route 
+              path="/chat" 
+              element={<Chat />}
+            />
                <Route 
               path="/login" 
               element={<Login />}
             />
-             <Route 
+            <Route 
               path="/signup" 
               element={<Signup />}
             />
-               <Route 
+            <Route 
               path="/about" 
               element={<About />}
             />
-               <Route 
+            <Route 
               path="/contact" 
               element={<Contact />}
             />
-               <Route 
+            <Route 
               path="/faq" 
               element={<FAQ />}
+            />
+
+                 <Route 
+              path="/team" 
+              element={<Team />}
+            />
+                  <Route 
+              path="/blog" 
+              element={<Blog />}
+                 <Route 
+              path="/search" 
+              element={<Search />}
+
             />
           </Routes>
       <Footer />

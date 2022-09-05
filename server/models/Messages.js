@@ -10,12 +10,22 @@ const messageSchema = new Schema({
     type: String,
     required: true,
   },
+  sent_by: {
+    type: String,
+  },
   receiverId: {
     type: String,
     required: true,
   },
+  received_by: {
+    type: String,
+  },
   lastMessage: {
     type: String,
+  },
+  lastUpdated: { 
+    type: Date, 
+    default: Date.now, 
   },
 });
 

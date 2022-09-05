@@ -28,7 +28,7 @@
 }
 
 
-.search .search-item .search-item-caption {
+/* .search .search-item .search-item-caption {
   position: absolute;
   top: 0;
   left: 0;
@@ -46,11 +46,10 @@
   opacity: 1;
   background-color: rgba(243, 183, 70, 0.9);
   border-radius: 50%;
-}
+} */
 
-.search .search-item {
+/* .search .search-item {
   cursor: pointer;
-  position: relative;
   max-width: 25rem;
   border-radius: 0.5rem;
   overflow: hidden;
@@ -63,4 +62,7 @@
 .page-section .page-section-heading {
   font-size: 2.25rem;
   line-height: 2rem;
-}
+}*/
+
+.img-fluid {
+padding: 1rem;} 
