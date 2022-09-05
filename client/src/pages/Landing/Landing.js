@@ -7,6 +7,7 @@ import corgi from '../../images/corgi.png'
 import rotty from '../../images/rotty.png'
 
 
+
 export default function Landing() {
     return (
         <div>
@@ -22,7 +23,7 @@ export default function Landing() {
                         <div class="divider-custom-line"></div>
                     </div>
 
-
+            
                     <div class="row justify-content-center">
                         <div class="col-sm">
                             <div class="search-item mx-auto"

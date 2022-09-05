@@ -22,8 +22,14 @@ root {
 }
 
 @font-face {
-  font-family: 'SulphurPoint-Regular';
-  src: url('../Topbottom/SulphurPoint-Regular.woff') format('woff');
+  font-family: 'KulimPark-Regular';
+  src: url('../Topbottom/KulimPark-Regular.woff') format('woff');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'KulimPark-SemiBold';
+  src: url('../Topbottom/KulimPark-SemiBold.woff') format('woff');
   font-weight: normal;
 }
 
@@ -137,7 +143,7 @@ body {
     font-size: 2.75rem;
     line-height: 2.75rem;
     color: #126782;
-    font-family: 'Head-Turner';
+    font-family: 'KulimPark-SemiBold';
 
   }
   
@@ -145,7 +151,7 @@ body {
     font-size: 1.25rem;
     color: rgb(18, 103, 130, .8);
     padding: 1rem;
-    font-family: 'SulphurPoint-Regular';
+    font-family: 'KulimPark-Regular';
 
   }
 
@@ -256,6 +262,7 @@ body {
   font-size: 1.25rem;
   justify-content: center;
   align-items: center;
+  color:#023047
 }
 
 /* ==== MEDIA QUERIES ====*/

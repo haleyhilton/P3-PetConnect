@@ -11,7 +11,7 @@ export default function Footer() {
             <div class="row">
 
 
-                <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="contact-info">
                     <h4 class="text-uppercase mb-4">Follow us for more!</h4>
                     <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
                             class="fab fa-fw fa-facebook-f"></i></a>
