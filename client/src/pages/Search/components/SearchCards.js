@@ -2,12 +2,11 @@ import React from 'react'
 
 
 export default function SearchCards(props) {
+    console.log("Pets within SearchCards: "+ JSON.stringify(props.pets));
 
     return (
         <div>
-            Name: {props.pet.name}
-            Age: {props.pet.age}
-            Size: {props.pet.size}
+            {JSON.stringify(props.pets)}
         </div>
     )
 };

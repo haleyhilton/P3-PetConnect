@@ -114,11 +114,7 @@ export default function Search() {
                 <div>Loading...</div>
             ) : (
                 console.log("Pets: "+ JSON.stringify(pets)),
-                pets.map((pet) => {
-                    return (
-                        <SearchCards pet={pet} />
-                    )
-                })
+                <SearchCards pets={pets} />
             )}
         </div>
     </div>
