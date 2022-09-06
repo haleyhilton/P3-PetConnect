@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import './style.css'
-
 import { useQuery, useLazyQuery } from '@apollo/client';
-
 import { QUERY_PET_SEARCH } from '../../utils/queries';
+import SearchCards from './components/SearchCards';
 
 
 export default function Search() {
@@ -33,7 +32,7 @@ export default function Search() {
     const [newSearch] = useLazyQuery(QUERY_PET_SEARCH, {
         variables: {
             search: null,
-            age: (ageRef.current ? (ageRef.current.value === "all" ? null : ageRef.current.value) : null),
+            age: (ageRef.current ? (ageRef.current.value === "all" ? null : parseInt(ageRef.current.value)) : null),
             breed: (breedRef.current ? (breedRef.current.value === "all" ? null : breedRef.current.value) : null),
             size: (sizeRef.current ? (sizeRef.current.value === "all" ? null : sizeRef.current.value) : null),
             sex: (sexRef.current ? (sexRef.current.value === "all" ? null : sexRef.current.value) : null),
@@ -43,8 +42,8 @@ export default function Search() {
         onCompleted: newData => {
             const currentSearchInput = {
                 search: null,
-                age: (ageRef.current ? (ageRef.current.value === "all" ? null : ageRef.current.value) : null),
-                breed: (breedRef.current ? (breedRef.current.value === "all" ? null : breedRef.current.value) : null, console.log(breedRef.current)),
+                age: (ageRef.current ? (ageRef.current.value === "all" ? null : parseInt(ageRef.current.value)) : null),
+                breed: (breedRef.current ? (breedRef.current.value === "all" ? null : breedRef.current.value) : null),
                 size: (sizeRef.current ? (sizeRef.current.value === "all" ? null : sizeRef.current.value) : null),
                 sex: (sexRef.current ? (sexRef.current.value === "all" ? null : sexRef.current.value) : null),
                 color: (colorRef.current ? (colorRef.current.value === "all" ? null : colorRef.current.value) : null),
@@ -117,9 +116,7 @@ export default function Search() {
                 console.log("Pets: "+ JSON.stringify(pets)),
                 pets.map((pet) => {
                     return (
-                        <div key={pet._id} >
-                            Dog: {pet.name}
-                        </div>
+                        <SearchCards pet={pet} />
                     )
                 })
             )}
