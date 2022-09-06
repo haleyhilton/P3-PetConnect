@@ -10,7 +10,7 @@ export default function Profile(props) {
 
 
 
-// This is for the individual dog modal
+    // This is for the individual dog modal
     const canine = {
         name: 'Ronalds',
         description: 'An old macdonald boy',
@@ -28,7 +28,7 @@ export default function Profile(props) {
 
 
 
-// This is for the posts
+    // This is for the posts
 
     // OPEN AND CLOSE
     const [isPostOpen, setIsPostOpen] = useState(true);
@@ -68,6 +68,26 @@ export default function Profile(props) {
         // fetch("filepath", requestOptions)
         // // apppend to bottom, 
         //     `<div class="grid-item" onClick={handleOpen} >${props.name}</div>`
+
+
+
+        fetch('http://localhost:3001/graphql', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                query: `Query {
+                    pet {
+                      name
+                      age
+                      breed
+                      description
+                    }
+                  }`
+            })
+        }).then(res => res.json())
+            .then(data => {
+                console.log(data.data)
+            })
 
         console.log(gridpost)
     }
