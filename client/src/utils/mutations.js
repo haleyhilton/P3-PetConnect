@@ -103,3 +103,14 @@ mutation Mutation($name: String!, $age: String!, $breed: String!, $sex: String!,
   }
 }
 `;
+
+export const ADD_PICTURE_TO_PROFILE = gql`
+mutation Mutation($profileId: String!, $media: String!) {
+  addProfilePicture(profileId: $profileId, media: $media) {
+    media {
+      _id
+      url
+    }
+  }
+}
+`;

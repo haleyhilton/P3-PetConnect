@@ -8,6 +8,7 @@ import Header from './pages/Topbottom/Header'
 import Footer from './pages/Topbottom/Footer'
 import Profile from './pages/Profile/Profile'
 import Login from './pages/Login/Login'
+import Gallery from './pages/Gallery'
 import Signup from './pages/Signup/Signup'
 import About from './pages/FAQ/About'
 import Contact from './pages/FAQ/Contact'
@@ -128,10 +129,13 @@ function App() {
               path="/faq" 
               element={<FAQ />}
             />
-
                  <Route 
               path="/team" 
               element={<Team />}
+            />
+             <Route 
+              path="/gallery/:profileId" 
+              element={<Gallery />}
             />
                   <Route 
               path="/blog" 

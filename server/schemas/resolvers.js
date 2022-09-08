@@ -22,6 +22,9 @@ const resolvers = {
     onePetName: async (parent, { name }) => {
       return Pet.findOne({ name: name });
     },
+    viewUserPictures: async (parent, { profileId }) => {
+      return User.findOne({ _id: profileId });
+    },
     // Find All Users
     user: async () => {
       return User.find({}).populate('pet').populate('post').populate('messages');
@@ -156,11 +159,11 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addProfilePicture: async (parent, { userName, media }) => {
+    addProfilePicture: async (parent, { profileId, media }) => {
       return User.findOneAndUpdate(
-        { username: userName },
+        { _id: profileId },
         {
-          $addToSet: { media: media },
+          $addToSet: { media: { url:  media } },
         },
         {
           new: true,
