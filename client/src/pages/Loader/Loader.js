@@ -3,17 +3,17 @@ import './style.css'
 
 export default function Loader() {
     return (
-        <div><div class="loader">
-            <div class="dog">
-                <div class="dog-body">
-                    <div class="dog-tail">
-                        <div class="dog-tail">
-                            <div class="dog-tail">
-                                <div class="dog-tail">
-                                    <div class="dog-tail">
-                                        <div class="dog-tail">
-                                            <div class="dog-tail">
-                                                <div class="dog-tail"></div>
+        <div><div className="loader">
+            <div className="dog">
+                <div className="dog-body">
+                    <div className="dog-tail">
+                        <div className="dog-tail">
+                            <div className="dog-tail">
+                                <div className="dog-tail">
+                                    <div className="dog-tail">
+                                        <div className="dog-tail">
+                                            <div className="dog-tail">
+                                                <div className="dog-tail"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -22,18 +22,18 @@ export default function Loader() {
                         </div>
                     </div>
                 </div>
-                <div class="dog-torso"></div>
-                <div class="dog-head">
-                    <div class="dog-ears">
-                        <div class="dog-ear"></div>
-                        <div class="dog-ear"></div>
+                <div className="dog-torso"></div>
+                <div className="dog-head">
+                    <div className="dog-ears">
+                        <div className="dog-ear"></div>
+                        <div className="dog-ear"></div>
                     </div>
-                    <div class="dog-eyes">
-                        <div class="dog-eye"></div>
-                        <div class="dog-eye"></div>
+                    <div className="dog-eyes">
+                        <div className="dog-eye"></div>
+                        <div className="dog-eye"></div>
                     </div>
-                    <div class="dog-muzzle">
-                        <div class="dog-tongue"></div>
+                    <div className="dog-muzzle">
+                        <div className="dog-tongue"></div>
                     </div>
                 </div>
             </div>

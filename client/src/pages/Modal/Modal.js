@@ -16,14 +16,14 @@ const handleOpen = event => {
 
   return (
     <div>        
-    <div id="myModal" class="modal" style={{display: isOpen ? 'none' : 'block'}}>
+    <div id="myModal" className="modal" style={{display: isOpen ? 'none' : 'block'}}>
 
         
-        <div class="modal-content">
-            <span class="close" onClick={handleOpen}>&times;</span>
-            <div class="modal-inner-wrapper">
+        <div className="modal-content">
+            <span className="close" onClick={handleOpen}>&times;</span>
+            <div className="modal-inner-wrapper">
                 <div>{props.name}</div>
-                <div class="modal-inner-image"></div>
+                <div className="modal-inner-image"></div>
                 <div>{props.description}
                 </div>
 
