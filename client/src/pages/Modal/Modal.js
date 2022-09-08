@@ -7,31 +7,33 @@
 // const [isOpen, setIsOpen] = useState(true);
 
 
-// const handleOpen = event => {
-//     // toggle vis
-//     setIsOpen(current => !current)
-// };
-
-
-
-//   return (
-//     <div>        
-//     <div id="myModal" class="modal" style={{display: isOpen ? 'none' : 'block'}}>
-
-        
-//         <div class="modal-content">
-//             <span class="close" onClick={handleOpen}>&times;</span>
-//             <div class="modal-inner-wrapper">
-//                 <div>{props.name}</div>
-//                 <div class="modal-inner-image"></div>
-//                 <div>{props.description}
-//                 </div>
+const handleOpen = event => {
+    // toggle vis
+    setIsOpen(current => !current)
+};
 
 //             </div>
 
 //         </div>
 
-//     </div>
-//     </div>
-//   )
-// }
+  return (
+    <div>        
+    <div id="myModal" className="modal" style={{display: isOpen ? 'none' : 'block'}}>
+
+        
+        <div className="modal-content">
+            <span className="close" onClick={handleOpen}>&times;</span>
+            <div className="modal-inner-wrapper">
+                <div>{props.name}</div>
+                <div className="modal-inner-image"></div>
+                <div>{props.description}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+  )
+}

@@ -42,7 +42,7 @@ const handleSubmit = (e) => {
 // // write fetch request
 // fetch("filepath", requestOptions)
 // // apppend to bottom, 
-//     `<div class="grid-item" onClick={handleOpen} >${props.name}</div>`
+//     `<div className="grid-item" onClick={handleOpen} >${props.name}</div>`
 
     console.log(gridpost)
 }
@@ -52,15 +52,15 @@ const handleSubmit = (e) => {
   
     return (
       <div>        
-      <div id="myModal" class="modal" style={{display: isPostOpen ? 'none' : 'block'}}>
+      <div id="myModal" className="modal" style={{display: isPostOpen ? 'none' : 'block'}}>
   
           
-          <div class="modal-content">
-              <span class="close" onClick={handlePostOpen}>&times;</span>
-              <form onSubmit={handleSubmit} class="modal-inner-wrapper">
+          <div className="modal-content">
+              <span className="close" onClick={handlePostOpen}>&times;</span>
+              <form onSubmit={handleSubmit} className="modal-inner-wrapper">
                   
                   
-                  <div class="modal-inner-image" >ADD IMAGE HERE</div>
+                  <div className="modal-inner-image" >ADD IMAGE HERE</div>
                   <label>Name</label>
                   <input required
                   value={name}

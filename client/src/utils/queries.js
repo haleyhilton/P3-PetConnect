@@ -15,8 +15,8 @@ query User {
 `;
 
 export const QUERY_ONE_USER = gql`
-query oneUser($id: ID!) {
-  oneUser(_id: $id) {
+query OneUser($profileId: ID!) {
+  oneUser(profileId: $profileId) {
     _id
     username
     password
@@ -63,6 +63,34 @@ query oneUser($id: ID!) {
       lastMessage
       lastUpdated
     }
+  }
+}
+`;
+
+export const QUERY_ONE_PET = gql`
+query OnePet($profileId: ID!) {
+  onePet(profileId: $profileId) {
+    name
+    age
+    breed
+    sex
+    size
+    color
+    description
+    for_sale
+    lastUpdated
+    media {
+      _id
+      url
+    }
+  }
+}
+`;
+
+export const QUERY_PET_BY_NAME = gql`
+query Query($name: String) {
+  onePetName(name: $name) {
+    _id
   }
 }
 `;
