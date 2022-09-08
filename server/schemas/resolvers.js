@@ -12,8 +12,9 @@ const removeDuplicates = require('../utils/removeDuplicates');
 const resolvers = {
   Query: {
     // Find one user
-    oneUser: async (parent, args) => {
-       return User.findById(args._id).populate('pet').populate('post').populate('messages');
+    oneUser: async (parent, { _id }) => {
+      console.log("***", _id)
+       return User.findById(_id).populate('pet').populate('post').populate('messages');
     },
     // Find All Users
     user: async () => {
