@@ -8,6 +8,7 @@ import Header from './pages/Topbottom/Header'
 import Footer from './pages/Topbottom/Footer'
 import Profile from './pages/Profile/Profile'
 import Login from './pages/Login/Login'
+import Gallery from './pages/Gallery'
 import Signup from './pages/Signup/Signup'
 import About from './pages/FAQ/About'
 import Contact from './pages/FAQ/Contact'
@@ -19,6 +20,7 @@ import Search from './pages/Search/Search'
 import { setContext } from '@apollo/client/link/context';
 import Message from './pages/Messages/Message';
 import Chat from './pages/Chat/chat';
+import Social from './pages/Social/social';
 
 
 // NEW NEW NEW
@@ -101,7 +103,7 @@ function App() {
               element={<Profile />}
             />
                <Route 
-              path="/messages" 
+              path="/messages/:userId" 
               element={<Message />}
             />
              <Route 
@@ -128,10 +130,13 @@ function App() {
               path="/faq" 
               element={<FAQ />}
             />
-
                  <Route 
               path="/team" 
               element={<Team />}
+            />
+             <Route 
+              path="/gallery/:profileId" 
+              element={<Gallery />}
             />
                   <Route 
               path="/blog" 
@@ -142,10 +147,10 @@ function App() {
               element={<Search />}
 
             />
-                 <Route 
-              path="/search" 
-              element={<Search />}
-              />
+            <Route 
+              path="/social" 
+              element={<Social />}
+            />
           </Routes>
       <Footer />
       </Router>

@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import ProfileDog from "../../components/ProfileDog";
 import Cloudinary from "../../components/Cloudinary";
@@ -9,6 +9,7 @@ import { QUERY_ONE_USER } from "../../utils/queries";
 import { ADD_PET_TO_USER } from "../../utils/mutations";
 import { ADD_PET } from "../../utils/mutations";
 import { getDataFromTree } from "@apollo/client/react/ssr";
+import Auth from "../../utils/auth";
 // import placeholder from "../../images/results.PNG"
 
 export default function Profile(props) {
@@ -71,8 +72,6 @@ export default function Profile(props) {
     }
   };
 
-
-
   //BEGIN QUERY ONE USER
 
   const { loading, data } = useQuery(QUERY_ONE_USER, {
@@ -97,8 +96,6 @@ const textArea = {
   "display": "none"
 }
 
-
-
   return (
     <div>
       <div className="hero-image">
@@ -111,6 +108,11 @@ const textArea = {
         <button>Edit</button>
       </div>
       <div class="details">
+        <div>
+        <Link className="nav-link py-3 px-0 px-lg-3 rounded" to={`/gallery/${Auth.getUser().data._id}`}>
+        View Gallery
+         </Link>
+        </div>
         <div>
           Name: {profile.first_name} {profile.last_name}
         </div>

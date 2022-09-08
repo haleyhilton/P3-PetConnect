@@ -20,3 +20,7 @@ select {
     display: flex;
     justify-content: center;
 }
+    
+.SearchCard {
+    border-style: solid;
+}

@@ -7,7 +7,7 @@ import dogpark from '../../images/dog-park.jpg'
 
 export default function About() {
     return (
-        <div class="faq">
+        <div className="faq">
        <p> Founded in 2022, PetConnect started as a brainstorming session between UCSD Full Stack Development students and quickly 
            snowballed into an obvious commonality between 5 different humans - our love for dogs.  
         We thought, what if we had a place to combine our love of connecting on social with our love of our dogs? So we got hard at work 
@@ -18,7 +18,7 @@ export default function About() {
         is a place for everyone to do just that - connect. </p><br /><br /><br /><br />
 
 
-        <img class="about-photos" src={dogpark} alt="" />
+        <img className="about-photos" src={dogpark} alt="" />
         <br /><br /><br /><br /><br /><br /><br /><br />
 
 
@@ -26,13 +26,13 @@ export default function About() {
 
         
             
-<h1 class="masthead-heading text-uppercase mb-0"> Our Mission</h1>
+<h1 className="masthead-heading text-uppercase mb-0"> Our Mission</h1>
 
 
-<div class="divider-custom divider-light">
-    <div class="divider-custom-line"></div>
-    <div class="divider-custom-icon"><i class="fas fa-paw fa-beat"></i></div>
-    <div class="divider-custom-line"></div>
+<div className="divider-custom divider-light">
+    <div className="divider-custom-line"></div>
+    <div className="divider-custom-icon"><i className="fas fa-paw fa-beat"></i></div>
+    <div className="divider-custom-line"></div>
 </div>
 
 </div>
@@ -44,15 +44,15 @@ social interactions and testimonials, we're able to ensure a happy and productiv
 Ultimately, we always promise to put our customers’ pets’ health and happiness before profits and continue 
 to seek new and innovative ways to deliver the best experience possible (for people and pups!) </p>
         <br /><br /> <br /><br />
-        <div class="row">
-    <div class="col-sm">
-        <img class="about-photos" src={mission1} alt="" /></div>
-        <div class="col-sm">
+        <div className="row">
+    <div className="col-sm">
+        <img className="about-photos" src={mission1} alt="" /></div>
+        <div className="col-sm">
 
-        <img class="about-photos" src={mission2} alt="" /></div>
-        <div class="col-sm">
+        <img className="about-photos" src={mission2} alt="" /></div>
+        <div className="col-sm">
 
-        <img class="about-photos" src={mission3} alt="" /></div>
+        <img className="about-photos" src={mission3} alt="" /></div>
         </div>
         
         </div>

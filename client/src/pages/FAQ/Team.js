@@ -8,48 +8,48 @@ import woman from '../../images/woman-placeholder.jpg'
 export default function Team() {
     return (
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-    <img class="img-fluid" src={man} alt="David Rios" />
+<div className="container">
+  <div className="row">
+    <div className="col-sm">
+    <img className="img-fluid" src={man} alt="David Rios" />
     </div>
-    <div class="col-sm">
+    <div className="col-sm">
     David Rios
     </div>
     </div>
 
-    <div class="row">
-    <div class="col-sm">
-    <img class="img-fluid" src={man} alt="David Ryan" />
+    <div className="row">
+    <div className="col-sm">
+    <img className="img-fluid" src={man} alt="David Ryan" />
     </div>
-    <div class="col-sm">
+    <div className="col-sm">
     David Ryan
     </div>
     </div>
 
-    <div class="row">
-    <div class="col-sm">
-    <img class="img-fluid" src={woman} alt="Haley Hilton Zito" />
+    <div className="row">
+    <div className="col-sm">
+    <img className="img-fluid" src={woman} alt="Haley Hilton Zito" />
     </div>
-    <div class="col-sm">
+    <div className="col-sm">
     Haley Hilton Zito
     </div>
     </div>
     
-    <div class="row">
-    <div class="col-sm">
-    <img class="img-fluid" src={man} alt="Josh Jankowski" />
+    <div className="row">
+    <div className="col-sm">
+    <img className="img-fluid" src={man} alt="Josh Jankowski" />
     </div>
-    <div class="col-sm">
+    <div className="col-sm">
     Josh Jankowski
     </div>
     </div>
     
-    <div class="row">
-    <div class="col-sm">
-    <img class="img-fluid" src={man} alt="Nathan Stein" />
+    <div className="row">
+    <div className="col-sm">
+    <img className="img-fluid" src={man} alt="Nathan Stein" />
     </div>
-    <div class="col-sm">
+    <div className="col-sm">
     Nathan Stein
     </div>
     </div>
