@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import './style.css'
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { QUERY_PET_SEARCH } from '../../utils/queries';
-import SearchCards from './components/SearchCards';
+import SearchCard from './components/SearchCard';
 
 
 export default function Search() {
     const [pets, setPets] = useState([]);
     const [firstRender, setFirstRender] = useState(true);
 
+    let searchRef = React.useRef();
     let ageRef = React.useRef();
     let breedRef = React.useRef();
     let sizeRef = React.useRef();
@@ -21,7 +22,6 @@ export default function Search() {
         onCompleted: newData => {
             if (firstRender) {
                 setPets(newData.petSearch);
-                console.log("setPets via useQuery");
                 setFirstRender(false);
             }
         }
@@ -31,35 +31,22 @@ export default function Search() {
 
     const [newSearch] = useLazyQuery(QUERY_PET_SEARCH, {
         variables: {
-            search: null,
+            search: (searchRef.current ? (searchRef.current.value.replace(/^\s+|\s+$/gm,'') === "" ? null : searchRef.current.value.trim()) : null),
             age: (ageRef.current ? (ageRef.current.value === "all" ? null : parseInt(ageRef.current.value)) : null),
             breed: (breedRef.current ? (breedRef.current.value === "all" ? null : breedRef.current.value) : null),
             size: (sizeRef.current ? (sizeRef.current.value === "all" ? null : sizeRef.current.value) : null),
             sex: (sexRef.current ? (sexRef.current.value === "all" ? null : sexRef.current.value) : null),
             color: (colorRef.current ? (colorRef.current.value === "all" ? null : colorRef.current.value) : null),
-            for_sale: (forSaleRef.current ? (forSaleRef.current.value === "all" ? null : forSaleRef.current.value) : null)
-        },
-        onCompleted: newData => {
-            const currentSearchInput = {
-                search: null,
-                age: (ageRef.current ? (ageRef.current.value === "all" ? null : parseInt(ageRef.current.value)) : null),
-                breed: (breedRef.current ? (breedRef.current.value === "all" ? null : breedRef.current.value) : null),
-                size: (sizeRef.current ? (sizeRef.current.value === "all" ? null : sizeRef.current.value) : null),
-                sex: (sexRef.current ? (sexRef.current.value === "all" ? null : sexRef.current.value) : null),
-                color: (colorRef.current ? (colorRef.current.value === "all" ? null : colorRef.current.value) : null),
-                for_sale: (forSaleRef.current ? (forSaleRef.current.value === "all" ? null : forSaleRef.current.value) : null)
-            };
-            console.log("current search input: ");
-            console.log(currentSearchInput);
-            setPets(newData.petSearch);
-            console.log("setPets via useLazyQuery");
+            for_sale: (forSaleRef.current ? (forSaleRef.current.value === "all" ? null : (forSaleRef.current.value === "true" ? true : false)) : null)
         }
     })
 
     async function handleFormSubmit(event) {
         event.preventDefault();
-
-        newSearch();
+        let results = await newSearch();
+        if(results) {
+            setPets(results.data.petSearch)
+        }
     }
 
     
@@ -68,6 +55,8 @@ export default function Search() {
     <div>
         <div>
             <form className="flexy" onSubmit={handleFormSubmit}>
+                <label htmlFor="search-filter">Search: </label>
+                <input id="search-filter" name="search" ref={searchRef}></input>
                 <label htmlFor="age-filter">Age: </label>
                 <select id="age-filter" name="age" ref={ageRef}>
                     <option value="all">All</option>
@@ -109,15 +98,12 @@ export default function Search() {
             </form>
         </div>
 
-        <div>
+        <div className='flexy'>
             {loading ? (
                 <div>Loading...</div>
             ) : (
-                console.log("Pets: "+ JSON.stringify(pets)),
                 pets.map((pet) => {
-                    return (
-                        <SearchCards pet={pet} />
-                    )
+                    return <SearchCard pet={pet} />
                 })
             )}
         </div>
