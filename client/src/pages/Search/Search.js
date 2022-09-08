@@ -37,12 +37,22 @@ export default function Search() {
             size: (sizeRef.current ? (sizeRef.current.value === "all" ? null : sizeRef.current.value) : null),
             sex: (sexRef.current ? (sexRef.current.value === "all" ? null : sexRef.current.value) : null),
             color: (colorRef.current ? (colorRef.current.value === "all" ? null : colorRef.current.value) : null),
-            for_sale: (forSaleRef.current ? (forSaleRef.current.value === "all" ? null : forSaleRef.current.value) : null)
+            for_sale: (forSaleRef.current ? (forSaleRef.current.value === "all" ? null : (forSaleRef.current.value === "true" ? true : false)) : null)
         }
     })
 
     async function handleFormSubmit(event) {
         event.preventDefault();
+        const stuff = {
+            search: (searchRef.current ? (searchRef.current.value.replace(/^\s+|\s+$/gm,'') === "" ? null : searchRef.current.value.trim()) : null),
+            age: (ageRef.current ? (ageRef.current.value === "all" ? null : parseInt(ageRef.current.value)) : null),
+            breed: (breedRef.current ? (breedRef.current.value === "all" ? null : breedRef.current.value) : null),
+            size: (sizeRef.current ? (sizeRef.current.value === "all" ? null : sizeRef.current.value) : null),
+            sex: (sexRef.current ? (sexRef.current.value === "all" ? null : sexRef.current.value) : null),
+            color: (colorRef.current ? (colorRef.current.value === "all" ? null : colorRef.current.value) : null),
+            for_sale: (forSaleRef.current ? (forSaleRef.current.value === "all" ? null : (forSaleRef.current.value === "true" ? true : false)) : null)
+        };
+        console.log(stuff);
         let results = await newSearch();
         if(results) {
             setPets(results.data.petSearch)
