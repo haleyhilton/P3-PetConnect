@@ -1,7 +1,7 @@
 [
     {
       "username": "joshjankowski",
-      "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K",
+      "password": "$2b$10$NWeP3cBMS1vDiNPWCvKVmeLt.bXXhIVU8n6cy.yt7xH0HH.UkNR6C",
       "email": "joshjankowski@gmail.com",
       "first_name": "Josh",
       "last_name": "Jankowski",
@@ -15,7 +15,7 @@
     },
     {
       "username": "haleyhilton",
-      "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K",
+      "password": "$2b$10$NWeP3cBMS1vDiNPWCvKVmeLt.bXXhIVU8n6cy.yt7xH0HH.UkNR6C",
       "email": "haleymariehilton@gmail.com",
       "first_name": "Haley",
       "last_name": "Hilton",
@@ -29,7 +29,7 @@
     },
     {
       "username": "nathanstein",
-      "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K",
+      "password": "$2b$10$NWeP3cBMS1vDiNPWCvKVmeLt.bXXhIVU8n6cy.yt7xH0HH.UkNR6C",
       "email": "nathanstein2@gmail.com",
       "first_name": "Nathan",
       "last_name": "Stein",
@@ -43,7 +43,7 @@
     },
     {
       "username": "davidrios",
-      "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K",
+      "password": "$2b$10$NWeP3cBMS1vDiNPWCvKVmeLt.bXXhIVU8n6cy.yt7xH0HH.UkNR6C",
       "email": "riosdavid16@gmail.com",
       "first_name": "David",
       "last_name": "Rios",
@@ -60,7 +60,7 @@
     },
     {
       "username": "davidryan",
-      "password": "$2a$10$FEBywZh8u9M0Cec/0mWep.1kXrwKeiWDba6tdKvDfEBjyePJnDT7K",
+      "password": "$2b$10$NWeP3cBMS1vDiNPWCvKVmeLt.bXXhIVU8n6cy.yt7xH0HH.UkNR6C",
       "email": "dryan10101@gmail.com",
       "first_name": "David",
       "last_name": "Ryan",

@@ -1,34 +1,23 @@
-import React, { useState } from 'react'
-import './style.css'
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../../utils/mutations';
-import { useNavigate } from 'react-router-dom'
-import Auth from '../../utils/auth';
-
-
-
-
-
-
+import React, { useState } from "react";
+import { Link } from 'react-router-dom';
+import "./style.css";
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../../utils/mutations";
+import { useNavigate } from "react-router-dom";
+import Auth from "../../utils/auth";
 
 export default function Signup() {
-
   const [formState, setFormState] = useState({
-    first: '',
-    last: '',
-    dob:'',
-    zipCode: '',
-    
-    email: '',
-    username: '',
-    password: '',
+    username: "",
+    email: "",
+    password: "",
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
-  let navigate = useNavigate()
+
+  let navigate = useNavigate();
   const handleChange = (event) => {
-    
     const { name, value } = event.target;
-    console.log(name)
+    console.log(name);
     setFormState({
       ...formState,
       [name]: value,
@@ -45,19 +34,11 @@ export default function Signup() {
       });
 
       Auth.login(data.addUser.token);
-      navigate.push('/profile')
-      
-
+      navigate.push("/profile");
     } catch (e) {
-      
       console.error(e);
     }
-
   };
-
-
-
-
 
   return (
     <div>
@@ -67,13 +48,18 @@ export default function Signup() {
 
       <div class="divider-custom">
         <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon"><i class="fas fa-paw fa-beat"></i></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-paw fa-beat"></i>
+        </div>
         <div class="divider-custom-line"></div>
       </div>
-
-
-      <form class="form signup-form" onSubmit={handleFormSubmit}>
-        <div class="form-group">
+      {data ? (
+        <p>
+          Success! You may now head <Link to="/">back to the homepage.</Link>
+        </p>
+      ) : (
+        <form class="form signup-form" onSubmit={handleFormSubmit}>
+          {/* <div class="form-group">
           <label for="fn-signup">First Name:</label>
           <input class="form-input" type="text" id="fn-signup" name='first' value={formState.first} onChange={handleChange} />
         </div>
@@ -88,26 +74,59 @@ export default function Signup() {
         <div class="form-group">
           <label for="zip-signup">Zip Code:</label>
           <input class="form-input" type="text" id="zip-signup" name='zipCode' value={formState.zipCode} onChange={handleChange} />
-        </div>
-        <div class="form-group">
-          <label for="email-signup">Email:</label>
-          <input class="form-input" type="text" id="email-signup" name='email' value={formState.email}
-            onChange={handleChange} />
-        </div>
-        <div class="form-group">
-          <label for="username-signup">Username:</label>
-          <input class="form-input" type="text" id="username-signup" name='username' value={formState.username} onChange={handleChange} />
-        </div>
-        <div class="form-group">
-          <label for="password-signup">Password:</label>
-          <input class="form-input" type="password" id="password-signup" name='password' value={formState.password}
-            onChange={handleChange} />
-        </div>
-        <div class="form-group">
-          <button id="signup-submit" class="btn btn-primary" type="submit">Sign Up</button>
-        </div>
-      </form>
-    </div>
+        </div> */}
+          <div class="form-group">
+            <label for="username-signup">Username:</label>
+            <input
+              class="form-input"
+              placeholder="Enter username"
+              type="text"
+              id="username-signup"
+              name="username"
+              value={formState.username}
+              onChange={handleChange}
+            />
+          </div>
+          <div class="form-group">
+            <label for="email-signup">Email:</label>
+            <input
+              class="form-input"
+              placeholder="Enter email"
+              type="email"
+              id="email-signup"
+              name="email"
+              value={formState.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div class="form-group">
+            <label for="password-signup">Password:</label>
+            <input
+              class="form-input"
+              placeholder="Enter password"
+              type="password"
+              id="password-signup"
+              name="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+          </div>
+          <div class="form-group">
+            <button
+              id="signup-submit"
+              class="btn btn-primary"
+              type="submit"
+              style={{ cursor: "pointer" }}
+            >
+              Sign Up
+            </button>
+          </div>
+        </form>
+      )}
 
-  )
+      {error && (
+        <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
+      )}
+    </div>
+  );
 }

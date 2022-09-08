@@ -86,6 +86,7 @@ function createMastText () {
 }
 
 function App() {
+
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -96,7 +97,7 @@ function App() {
               element={<Landing />}
             />
             <Route 
-              path="/profile" 
+              path="/profiles/:profileId"
               element={<Profile />}
             />
                <Route 
@@ -135,6 +136,7 @@ function App() {
                   <Route 
               path="/blog" 
               element={<Blog />}
+            />
                  <Route 
               path="/search" 
               element={<Search />}
