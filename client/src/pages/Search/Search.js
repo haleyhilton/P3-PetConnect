@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './style.css'
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { QUERY_PET_SEARCH } from '../../utils/queries';
-import SearchCards from './components/SearchCards';
+import SearchCard from './components/SearchCard';
 
 
 export default function Search() {
@@ -31,7 +31,7 @@ export default function Search() {
 
     const [newSearch] = useLazyQuery(QUERY_PET_SEARCH, {
         variables: {
-            search: null,
+            search: (searchRef.current ? (searchRef.current.value.replace(/^\s+|\s+$/gm,'') === "" ? null : searchRef.current.value.trim()) : null),
             age: (ageRef.current ? (ageRef.current.value === "all" ? null : parseInt(ageRef.current.value)) : null),
             breed: (breedRef.current ? (breedRef.current.value === "all" ? null : breedRef.current.value) : null),
             size: (sizeRef.current ? (sizeRef.current.value === "all" ? null : sizeRef.current.value) : null),
@@ -102,8 +102,9 @@ export default function Search() {
             {loading ? (
                 <div>Loading...</div>
             ) : (
-                console.log("Pets: "+ JSON.stringify(pets)),
-                <SearchCards pets={pets} />
+                pets.map((pet) => {
+                    return <SearchCard pet={pet} />
+                })
             )}
         </div>
     </div>
