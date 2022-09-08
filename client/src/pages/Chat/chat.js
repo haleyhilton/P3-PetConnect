@@ -12,6 +12,8 @@ import Avatar from '@material-ui/core/Avatar';
 import Fab from '@material-ui/core/Fab';
 import SendIcon from '@material-ui/icons/Send';
 import { IconButton } from '@mui/material';
+import { useQuery } from '@apollo/client';
+import { QUERY_ONE_USER } from '../../utils/queries';
 
 
 const styles = {
@@ -94,9 +96,12 @@ const styles = {
   };
 // TODO: Write an if statement to display a message on whole page if there are no current messages for this person
 function Chat() {
+    const { loading, data } = useQuery( QUERY_ONE_USER )
+    const messages = data?.oneUser || [];
+     console.log(messages)
     return (
         <div>
-            <h1 style={styles.header}> David Rios
+            <h1 style={styles.header}> 
             <IconButton style={styles.button}> <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" sx={{ width: 56, height: 56 }} /> </IconButton>
             </h1>
             <div style={styles.chatBox}> 
