@@ -122,6 +122,7 @@ query userMessages($receiverId: String!) {
 export const QUERY_PET_SEARCH = gql`
   query petSearch($search: String, $age: Int, $breed: String, $sex: String, $size: String, $color: String, $for_sale: Boolean) {
     petSearch(search: $search, age: $age, breed: $breed, sex: $sex, size: $size, color: $color, for_sale: $for_sale) {
+      _id
       name
       age
       breed
