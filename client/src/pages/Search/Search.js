@@ -98,7 +98,7 @@ export default function Search() {
             </form>
         </div>
 
-        <div>
+        <div className='flexy'>
             {loading ? (
                 <div>Loading...</div>
             ) : (

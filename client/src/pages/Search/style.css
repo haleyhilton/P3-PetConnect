@@ -11,3 +11,7 @@ select {
     width: fit-content;
     height: 50px;
 }
+
+.SearchCard {
+    border-style: solid;
+}
