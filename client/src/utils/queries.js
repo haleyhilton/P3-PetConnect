@@ -134,3 +134,16 @@ export const QUERY_PET_SEARCH = gql`
     }
   }
 `;
+
+
+export const QUERY_ALL_PICTURES_BY_USER = gql`
+query ViewUserPictures($profileId: ID!) {
+  viewUserPictures(profileId: $profileId) {
+    profilePicture
+    media {
+      url
+      _id
+    }
+  }
+}
+`;

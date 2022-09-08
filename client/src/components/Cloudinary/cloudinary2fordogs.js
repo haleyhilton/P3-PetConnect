@@ -1,20 +1,13 @@
-import { useParams } from "react-router-dom";
-import { useQuery, useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import axios from 'axios';
-import { QUERY_ALL_PICTURES_BY_USER } from '../../utils/queries'
-import { ADD_PICTURE_TO_PROFILE } from '../../utils/mutations'
+import { useParams } from "react-router-dom";
+import { ADD_PICTURE_TO_PET } from '../../utils/mutations'
 import "./style.css";
-import Auth from "../../utils/auth";
 
-const Cloudinary = (props) => {
-    const { profileId } = useParams();
-    const [images, setImages] = useState([]);
-    const [imageToRemove, setImageToRemove] = useState(null);
-    const [addPicture, setPictureState] = useState({
-        profileId: profileId,
-        media: "",
-      });
+const Cloudinary = ( { dogName } ) => {
+    console.log(dogName, "YES")
     const styleImageContainer = {
         position: 'relative',
         width: '300px',
@@ -40,30 +33,23 @@ const Cloudinary = (props) => {
         fontSize: '20px',        
     }
 
-    const { loading, data } = useQuery(QUERY_ALL_PICTURES_BY_USER, {
-      variables: { profileId: profileId },
+    const [addPhoto, { error }] = useMutation(ADD_PICTURE_TO_PET);
+
+    const [images, setImages] = useState([]);
+    const [imageToRemove, setImageToRemove] = useState(null);
+    const [imageToSave, setImageToSave] = useState({
+        name: dogName,
+        media: "",
     });
-    const [addPictureToProfile, { err }] = useMutation(ADD_PICTURE_TO_PROFILE);
 
-  
-    const profile = data?.viewUserPictures || {};
-  
-    if (loading) {
-      return <div>Loading...</div>;
-    }
-
-    const userImages = [...profile.media];
-    console.log(userImages, "yay images")
-  
-   
     const handlePhotoSave = async (event) => {
         // event.preventDefault();    
         // On form submit, perform mutation and pass in form data object as arguments
         // It is important that the object fields are match the defined parameters in `ADD_THOUGHT` mutation
         try {
-            const { datum } = await addPictureToProfile({
-                variables: { ...addPicture },
-              });
+          const { data } = addPhoto({
+            variables: { ...imageToSave },
+          });
     
           window.location.reload();
         } catch (err) {
@@ -93,8 +79,7 @@ const Cloudinary = (props) => {
                 setImages((prev) => [...prev, {url: result.info.url, public_id: result.info.public_id}])
                 console.log('Done! Here is the image info: ', result.info); 
                 // Save image
-                addPicture.media = result.info.secure_url;
-                // imageToSave.media = result.info.secure_url
+                imageToSave.media = result.info.secure_url
               }
             }
         );
@@ -103,20 +88,10 @@ const Cloudinary = (props) => {
     }
 
     return (
-     <div className="main-component">
-        <div className="photo-gallery">
-        { userImages &&
-        userImages.map(
-          (userImage) => (
-            // console.log(dog.media[0].url, "dog picture"),
-            (
-              <div key={userImage._id} className="gallery-images" style={{backgroundImage: `url(${userImage.url})`}}>
-              </div>
-            )
-          )
-        )}
-        </div>
 
+
+
+    <div className="main-component">
         <div>
         <button id="upload-widget" className="cloudinary-button" onClick={()=> handleOpenWidget()}>
             Upload New Photo
@@ -133,9 +108,9 @@ const Cloudinary = (props) => {
             )}
         </div>
         <br />
-        <button id="submit" className="cloudinary-button" onClick={()=> handlePhotoSave()}>
-            Confirm Add Picture
-        </button>
+        {/* <button id="submit" className="cloudinary-button" onClick={()=> handlePhotoSave()}>
+            Submit
+        </button> */}
         </div>
     </div>
     );
