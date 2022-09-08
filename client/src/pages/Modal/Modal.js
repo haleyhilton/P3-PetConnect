@@ -1,10 +1,10 @@
-import React from 'react'
-import { useState } from 'react'
-import { getCurrentUrl } from 'swup/lib/helpers';
-import './style.css'
+// import React from 'react'
+// import { useState } from 'react'
+// import { getCurrentUrl } from 'swup/lib/helpers';
+// import './style.css'
 
-export default function Modal(props) {
-const [isOpen, setIsOpen] = useState(true);
+// export default function Modal(props) {
+// const [isOpen, setIsOpen] = useState(true);
 
 
 const handleOpen = event => {
@@ -12,7 +12,9 @@ const handleOpen = event => {
     setIsOpen(current => !current)
 };
 
+//             </div>
 
+//         </div>
 
   return (
     <div>        
