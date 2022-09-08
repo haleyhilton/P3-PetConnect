@@ -3,7 +3,7 @@ import './style.css'
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { QUERY_PET_SEARCH } from '../../utils/queries';
 import SearchCards from './components/SearchCards';
-
+import Grid from "@material-ui/core/Grid";
 
 export default function Search() {
     const [pets, setPets] = useState([]);
@@ -113,12 +113,18 @@ export default function Search() {
             {loading ? (
                 <div>Loading...</div>
             ) : (
-                console.log("Pets: "+ JSON.stringify(pets)),
-                pets.map((pet) => {
-                    return (
-                        <SearchCards pet={pet} />
-                    )
-                })
+ //               console.log("Pets: "+ JSON.stringify(pets)),
+                (
+                    <Grid container direction="row">
+
+                        {pets.map((pet) => {
+                            return (
+                                <SearchCards pet={pet} />
+                            )
+                        })}
+
+                    </Grid>
+                )
             )}
         </div>
     </div>

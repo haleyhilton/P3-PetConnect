@@ -11,3 +11,12 @@ select {
     width: fit-content;
     height: 50px;
 }
+
+.search-card {
+    padding: 2rem;
+    border: solid 2px;
+    margin: 2rem;
+    width: 25rem;
+    display: flex;
+    justify-content: center;
+}
