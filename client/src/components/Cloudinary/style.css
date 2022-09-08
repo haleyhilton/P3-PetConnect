@@ -1,0 +1,15 @@
+.main-component {
+    display: flex;
+    justify-content: center;
+}
+
+.gallery-images {
+    width: 200px;
+    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200px;
+    border-style: solid;
+    margin: 20px;
+}
+

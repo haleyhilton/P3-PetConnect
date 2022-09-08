@@ -3,6 +3,7 @@ const { Pet, User, Messages, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 const removeDuplicates = require('../utils/removeDuplicates');
+const { eventNames } = require('../models/Messages');
 
 // This essentially replaces routes and controllers.
 // Query = Get Routes
@@ -12,8 +13,17 @@ const removeDuplicates = require('../utils/removeDuplicates');
 const resolvers = {
   Query: {
     // Find one user
-    oneUser: async (parent, args) => {
-       return User.findById(args._id).populate('pet').populate('post').populate('messages');
+    oneUser: async (parent, { profileId }) => {
+      return User.findOne({ _id: profileId }).populate('pet').populate('post').populate('messages');
+    },
+    onePet: async (parent, { profileId }) => {
+      return Pet.findOne({ _id: profileId });
+    },
+    onePetName: async (parent, { name }) => {
+      return Pet.findOne({ name: name });
+    },
+    viewUserPictures: async (parent, { profileId }) => {
+      return User.findOne({ _id: profileId });
     },
     // Find All Users
     user: async () => {
@@ -110,6 +120,28 @@ const resolvers = {
   },
   Mutation: {
     // Adds new user to database
+    addUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+
+      return { token, user };
+    },
+    addPetInfo: async (parent, { name, age, breed, sex, size, color, description }) => {
+      const pet = await Pet.create({ name, age, breed, sex, size, color, description });
+      return pet;
+    },
+    addPetPicture: async (parent, { name, media }) => {
+      return Pet.findOneAndUpdate(
+        { name: name },
+        {
+          $addToSet: { media: { url: media } },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
     // See typedefs for what specific fields it needs. Media and Pets are not included
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
@@ -127,15 +159,11 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addUser: async (parent, args) => {
-      const newUser = await User.create(args);
-      return newUser;
-    },
-    addProfilePicture: async (parent, { userName, media }) => {
+    addProfilePicture: async (parent, { profileId, media }) => {
       return User.findOneAndUpdate(
-        { username: userName },
+        { _id: profileId },
         {
-          $addToSet: { media: media },
+          $addToSet: { media: { url:  media } },
         },
         {
           new: true,
@@ -143,11 +171,11 @@ const resolvers = {
         }
       );
     },
-    addPet: async (parent, { userName, pet }) => {
+    addPet: async (parent, { profileId, pet }) => {
       return User.findOneAndUpdate(
-        { username: userName },
+        { _id: profileId },
         {
-          $addToSet: { pet: Pet.create(pet) },
+          $addToSet: { pet: pet },
         },
         {
           new: true,

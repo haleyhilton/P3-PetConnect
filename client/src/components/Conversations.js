@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import MapsUgcIcon from '@mui/icons-material/MapsUgc';
 import IconButton from '@mui/material/IconButton';
+import { QUERY_ONE_USER } from '../utils/queries';
 
 const styles = {
     header: {
@@ -22,6 +23,8 @@ const styles = {
     },
     conversations: {
         display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         justifyContent: 'center',
         padding: '25px 0px 50px 0px',
     },
@@ -33,7 +36,11 @@ const styles = {
 }
 
 
-function Conversations() {
+function Conversations({ conversations }) {
+    console.log("Test",conversations)
+    if (!conversations.length) {
+        return <h3>No Conversations Yet</h3>;
+      }
     
     return (
         <div>
@@ -49,38 +56,49 @@ function Conversations() {
             </Grid>
 
             <div style={styles.conversations}>
-                <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+            {conversations.map((messages) => {
+                { console.log("messages", messages) }
+                return (
+                    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                     <ListItem alignItems="flex-start">
+                        {/* ?This is where I may need to add onclick function to go to conversation chat? */}
                         <ListItemButton href="/chat">
                             <ListItemAvatar>
                                 {/* Add Cloudinary profile pictures url */}
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                <Avatar alt="Remy Sharp" src="#" />
                             </ListItemAvatar>
-                            <ListItemText
-                                // this will display receiver name for messages
-                                primary="David Rios"
-                                secondary={
-                                    <React.Fragment>
-                                        <Typography
-                                            sx={{ display: 'inline' }}
-                                            component="span"
-                                            variant="body2"
-                                            color="text.primary"
-                                        >
-                                        </Typography>
-                                        {/* Display last message below from database */}
-                                        {"this is where we want last message dispayed"}
-                                    </React.Fragment>
-                                }
-                            />
+                                    <ListItemText
+                                    // this will display receiver name for messages
+                                    primary={messages.sent_by}
+                                    secondary={
+                                        <React.Fragment>
+                                            <Typography
+                                                sx={{ display: 'inline' }}
+                                                component="span"
+                                                variant="body2"
+                                                color="text.primary"
+                                            >
+                                            </Typography>
+                                            {/* Display last message below from database */}
+                                            {messages.messageText}
+                                        </React.Fragment>
+                                    }
+                                /> 
                         </ListItemButton>
                     </ListItem>
                     <Divider variant="inset" component="li" />
                 </List>
+                )
+            })}
             </div>
+            
         </div>
     );
 };
 
 
 export default Conversations;
+
+{/* {conversations.messages.map((message) => {
+    return(     )
+})} */}
