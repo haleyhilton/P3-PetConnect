@@ -9,9 +9,9 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type Pet {
     _id: ID!
-    name: String!
+    name: String
     age: Int
-    breed: String!
+    breed: String
     sex: String
     size: String
     color: String
@@ -41,10 +41,10 @@ const typeDefs = gql`
     username: String!
     password: String!
     email: String!
-    first_name: String!
-    last_name: String!
-    date_of_birth: String!
-    zip_code: Int!
+    first_name: String
+    last_name: String
+    date_of_birth: String
+    zip_code: Int
     media: [UserMedia]
     profilePicture: String
     pet: [Pet]
@@ -94,22 +94,26 @@ const typeDefs = gql`
 
   type Query {
     user: [User]
-    oneUser(_id: ID!): User
+    oneUser(profileId: ID!): User
+    onePet(profileId: ID!): Pet
+    onePetName(name: String): Pet
     pet: [Pet]
     petSearch(search: String, age: Int, breed: String, size: String, sex: String, color: String, for_sale: Boolean): [Pet]
     breed(breed: String!): [Pet]
     post(_id: String!): [Post]
     userMessages(receiverId: String!): [Messages]
-    
   }
   
   type Mutation {
-    addUser(_id: ID!, username: String!, password: String!, email: String!, first_name: String!, last_name: String!, date_of_birth: String!, zip_code: Int!): User 
-    login(username: String!, password: String!): Auth
-    addPet(username: String!, pet: String!): User
+    addPet(profileId: String!, pet: String!): User
+    addPetInfo(name: String!, age: String!, breed: String!, sex: String!, size: String!, color: String!, description: String!): Pet
+    addPetPicture(name: String!, media: String!): Pet
     addProfilePicture(username: String!, media: String!): User
     createMessage(messageText: String!, senderId: String!, sent_by: String, receiverId: String!, received_by: String lastMessage: String, lastUpdated: String): Messages
     deleteMessage(_id: ID!, messageId: String!): User
+
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
   }
 `;
 

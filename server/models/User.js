@@ -30,19 +30,15 @@ const userSchema = new Schema({
     },
     first_name: {
       type: String,
-      required: true,
     },
     last_name: {
       type: String,
-      required: true,
     },
     date_of_birth: {
       type: Date,
-      required: true,
     },
     zip_code: {
       type: Number,
-      required: true,
     },
     // stores profile pictures
     media: [userMediaSchema],

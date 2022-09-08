@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import axios from 'axios';
-import { CREATE_USER_PHOTO } from '../utils/mutations'
+import { useParams } from "react-router-dom";
+import { ADD_PICTURE_TO_PET } from '../../utils/mutations'
 
-const Cloudinary = () => {
+const Cloudinary = ( { dogName } ) => {
+    console.log(dogName, "YES")
     const styleImageContainer = {
         position: 'relative',
         width: '300px',
@@ -12,7 +14,7 @@ const Cloudinary = () => {
         margin: '20px',
     }
 
-    const imageStyle = {
+    const imageStyleNew = {
         width: '300px',
         height: '300px',
         objectFit: 'cover',
@@ -30,14 +32,17 @@ const Cloudinary = () => {
         fontSize: '20px',        
     }
 
-    const [addPhoto, { error }] = useMutation(CREATE_USER_PHOTO);
+    const [addPhoto, { error }] = useMutation(ADD_PICTURE_TO_PET);
 
     const [images, setImages] = useState([]);
     const [imageToRemove, setImageToRemove] = useState(null);
-    const [imageToSave, setImageToSave] = useState(null);
+    const [imageToSave, setImageToSave] = useState({
+        name: dogName,
+        media: "",
+    });
 
     const handlePhotoSave = async (event) => {
-        event.preventDefault();    
+        // event.preventDefault();    
         // On form submit, perform mutation and pass in form data object as arguments
         // It is important that the object fields are match the defined parameters in `ADD_THOUGHT` mutation
         try {
@@ -72,8 +77,8 @@ const Cloudinary = () => {
               if (!error && result && result.event === "success") { 
                 setImages((prev) => [...prev, {url: result.info.url, public_id: result.info.public_id}])
                 console.log('Done! Here is the image info: ', result.info); 
-                setImageToSave(result.info.secure_url)
-                // URL TO PICTURE IS AT result.info.secure_url
+                // Save image
+                imageToSave.media = result.info.secure_url
               }
             }
         );
@@ -90,7 +95,7 @@ const Cloudinary = () => {
             {/* Show Pictures*/}
             {images.map((image) => (
                 <div className="image-preview" style={styleImageContainer}>
-                    <img src={image.url} style={imageStyle}/>
+                    <img src={image.url} style={imageStyleNew}/>
                     {imageToRemove != image.public_id && <i className="fa fa-times-circle close-icon" style={closeIcon} onClick={() => handleRemoveImg(image)}></i>}
                 </div>
             )
