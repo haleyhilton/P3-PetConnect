@@ -20,6 +20,7 @@ import Search from './pages/Search/Search'
 import { setContext } from '@apollo/client/link/context';
 import Message from './pages/Messages/Message';
 import Chat from './pages/Chat/chat';
+import Social from './pages/Social/social';
 
 
 // NEW NEW NEW
@@ -102,7 +103,7 @@ function App() {
               element={<Profile />}
             />
                <Route 
-              path="/messages" 
+              path="/messages/:userId" 
               element={<Message />}
             />
              <Route 
@@ -145,6 +146,10 @@ function App() {
               path="/search" 
               element={<Search />}
 
+            />
+            <Route 
+              path="/social" 
+              element={<Social />}
             />
           </Routes>
       <Footer />
