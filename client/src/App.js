@@ -128,18 +128,17 @@ function App() {
               element={<FAQ />}
             />
 
-                 <Route 
+            <Route 
               path="/team" 
               element={<Team />}
             />
-                  <Route 
+            <Route 
               path="/blog" 
               element={<Blog />}
               />
-                 <Route 
+            <Route 
               path="/search" 
               element={<Search />}
-
             />
                  <Route 
               path="/search" 
