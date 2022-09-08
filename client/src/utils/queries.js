@@ -103,6 +103,10 @@ export const QUERY_PET_SEARCH = gql`
       color
       description
       for_sale
+      media {
+        _id
+        url
+      }
     }
   }
 `;
