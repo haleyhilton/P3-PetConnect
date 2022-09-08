@@ -107,10 +107,10 @@ const textArea = {
         </div>
       </div>
 
-      <div class="edit">
+      <div className="edit">
         <button>Edit</button>
       </div>
-      <div class="details">
+      <div className="details">
         <div>
           Name: {profile.first_name} {profile.last_name}
         </div>
@@ -120,36 +120,37 @@ const textArea = {
         <br />
         <div>Buyer/Seller</div>
         <div>Rating: ⭐️⭐️⭐️⭐️⭐️</div>
-        <div className="about-me-section">
+        <div classNameName="about-me-section">
           Hi! I am a dog breeder in the San Diego Area
         </div>
-        <div class="message">
+        <div className="message">
           <button>Message</button>
         </div>
       </div>
 
-      <div class="titlewrapper">
+      <div className="titlewrapper">
         <div>Posts</div>
       </div>
-      <div class="titlewrapper">
+      <div className="titlewrapper">
         <div>Dogs</div>
       </div>
-      <div class="posts">
+      <div className="posts">
         <button onClick={handlePostOpen}>Add New Dog!</button>
       </div>
-      <div class="wrapattack">
+      <div className="wrapattack">
         {/* Modal for Adding a Dog */}
         <div
           id="myModal"
-          class="modal"
+          className="modal"
           style={{ display: isPostOpen ? "none" : "block" }}
         >
-          <div class="modal-content">
-            <span class="close" onClick={handlePostOpen}>
+          <div className="modal-content">
+            <span className="close" onClick={handlePostOpen}>
               &times;
             </span>
-            <form onSubmit={handleFormSubmit} class="modal-inner-wrapper">
+            <form onSubmit={handleFormSubmit} className="modal-inner-wrapper">
 
+                            <div className="modal-inner-image" >ADD IMAGE HERE</div>
               <label>Name</label>
               <input
                 required

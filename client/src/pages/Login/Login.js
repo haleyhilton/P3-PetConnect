@@ -42,8 +42,8 @@ export default function Login(props) {
 
   return (
     <div>
-      <div class="splitMenu-container" id="login">
-        <div class="login-container">
+      <div className="splitMenu-container" id="login">
+        <div className="login-container">
           <h1>Login to your account</h1>
 
           {/* Call the login states */}
@@ -68,7 +68,7 @@ export default function Login(props) {
             />
             <button
                   id="login-submit"
-                  className="btn btn-block btn-info"
+                  classNameName="btn btn-block btn-info"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
@@ -77,7 +77,7 @@ export default function Login(props) {
           </form>
 
           <div
-            class="fb-login-button"
+            className="fb-login-button"
             data-width="30"
             data-size="medium"
             data-button-type="login_with"
@@ -87,7 +87,7 @@ export default function Login(props) {
           ></div>
         </div>
 
-        <div class="signUp-container">
+        <div className="signUp-container">
           <h1>New Here?</h1>
           <p>Well then you should join us obviously</p>
 
