@@ -47,6 +47,7 @@ export default function Profile(props) {
   };
   let navigate = useNavigate();
 
+  const { profileId } = useParams();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
