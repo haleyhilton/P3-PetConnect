@@ -17,6 +17,7 @@ export default function Profile(props) {
     }
     const [isOpen, setIsOpen] = useState(true);
 
+    
 
     const handleOpen = event => {
         // toggle vis
@@ -75,18 +76,20 @@ export default function Profile(props) {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                query: `Query {
-                    pet {
-                      name
-                      age
-                      breed
-                      description
+                mutation: `Mutation($username: String!, $pet: String!) {
+                    addPet(username: $username, pet: $pet) {
+                      pet {
+                        name
+                        age
+                        breed
+                        description
+                      }
                     }
                   }`
             })
         }).then(res => res.json())
             .then(data => {
-                console.log(data.data)
+                console.log(data)
             })
 
         console.log(gridpost)
