@@ -2,11 +2,12 @@ import { gql } from '@apollo/client';
 
 
 export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
       token
       user {
         _id
+        email
         username
       }
     }
@@ -63,6 +64,42 @@ mutation deleteMessage($id: ID!, $messageId: String!) {
       lastMessage
       lastUpdated
     }
+  }
+}
+`;
+
+export const ADD_PET_TO_USER = gql`
+mutation Mutation($profileId: String!, $pet: String!) {
+  addPet(profileId: $profileId, pet: $pet) {
+    pet {
+      _id
+    }
+  }
+}
+`;
+
+export const ADD_PICTURE_TO_PET = gql`
+mutation Mutation($name: String!, $media: String!) {
+  addPetPicture(name: $name, media: $media) {
+    name
+    media {
+      url
+    }
+  }
+}
+`;
+
+export const ADD_PET = gql`
+mutation Mutation($name: String!, $age: String!, $breed: String!, $sex: String!, $size: String!, $color: String!, $description: String!) {
+  addPetInfo(name: $name, age: $age, breed: $breed, sex: $sex, size: $size, color: $color, description: $description) {
+    _id
+    name
+    age
+    breed
+    sex
+    size
+    color
+    description
   }
 }
 `;
