@@ -10,7 +10,7 @@ import { ADD_PET_TO_USER } from "../../utils/mutations";
 import { ADD_PET } from "../../utils/mutations";
 import { getDataFromTree } from "@apollo/client/react/ssr";
 // import placeholder from "../../images/results.PNG"
-
+import {format} from 'date-fns'
 export default function Profile(props) {
   // OPEN AND CLOSE ADDING A NEW DOG
   const [isPostOpen, setIsPostOpen] = useState(true);
@@ -97,13 +97,19 @@ const textArea = {
   "display": "none"
 }
 
+// profile.date_of_birth
+
+let formatDate = new Date('1994-07-11').toLocaleDateString();
+
+console.log(formatDate);
 
 
   return (
     <div>
       <div className="hero-image">
-        <div className="profile-pic">
-          <img style={imageStyle} src={profile.profilePicture} />
+        <div className="profile-pic" style={{backgroundImage: `url(${profile.profilePicture})`}}>
+          
+          
         </div>
       </div>
 
@@ -114,7 +120,7 @@ const textArea = {
         <div>
           Name: {profile.first_name} {profile.last_name}
         </div>
-        <div>Birthday: {profile.date_of_birth}</div>
+        <div>Birthday: {formatDate} </div>
         <div>Zip Code: {profile.zip_code}</div>
         <br />
         <br />
