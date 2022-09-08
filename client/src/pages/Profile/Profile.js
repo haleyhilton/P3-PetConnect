@@ -1,233 +1,228 @@
-import React from 'react'
-import './style.css'
-import Modal from '../Modal/Modal'
-import { useState } from 'react'
-import Griditem from '../Griditem/Griditem'
+import React from "react";
+import "./style.css";
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useQuery, useMutation } from "@apollo/client";
+import ProfileDog from "../../components/ProfileDog";
+import Cloudinary from "../../components/Cloudinary";
+import { QUERY_ONE_USER } from "../../utils/queries";
+import { ADD_PET_TO_USER } from "../../utils/mutations";
+import { ADD_PET } from "../../utils/mutations";
+import { getDataFromTree } from "@apollo/client/react/ssr";
+// import placeholder from "../../images/results.PNG"
 
 export default function Profile(props) {
+  // OPEN AND CLOSE ADDING A NEW DOG
+  const [isPostOpen, setIsPostOpen] = useState(true);
+  const handlePostOpen = (event) => {
+    setIsPostOpen((current) => !current);
+  };
+  // HANDLE FORM STATE
+  const [formState, setFormState] = useState({
+    name: "",
+    age: "",
+    breed: "",
+    sex: "",
+    size: "",
+    color: "",
+    description: "",
+    // for_sale: false,
+    // media: "yes",
+  });
+
+  const [addPetState, setPetState] = useState({
+    profileId: "",
+    pet: "",
+  });
+  // ADD NEW PET
+  //BEGIN ADDING PET TO USER
+  const [addPetToUser, { err }] = useMutation(ADD_PET_TO_USER);
+  const [addPet, { error }] = useMutation(ADD_PET);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+  let navigate = useNavigate();
 
 
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await addPet({
+        variables: { ...formState },
+      });
+      console.log(JSON.stringify(data), "THIS IS THE DATA COMING IN")
 
+      addPetState.profileId = profileId
+      addPetState.pet = data.addPetInfo._id
+      console.log(data.addPetInfo._id, "this is the data")
+      console.log(profileId, "profile id")
+      const { datum } = await addPetToUser({
+        variables: { ...addPetState },
+      });
 
-
-    // This is for the individual dog modal
-    const canine = {
-        name: 'Ronalds',
-        description: 'An old macdonald boy',
+      navigate("/");
+    } catch (e) {
+      console.error(e);
     }
-    const [isOpen, setIsOpen] = useState(true);
-
-    
-
-    const handleOpen = event => {
-        // toggle vis
-        setIsOpen(current => !current)
-    };
+  };
 
 
 
+  //BEGIN QUERY ONE USER
+
+  const { loading, data } = useQuery(QUERY_ONE_USER, {
+    variables: { profileId: profileId },
+  });
+   
+  const profile = data?.oneUser || {};
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  const imageStyle = {
+    maxWidth: "200px",
+    maxHeight: "200px",
+  };
+
+  const dogProfile = profile.pet;
+console.log(formState, "hi im form")
+
+const textArea = {
+  "display": "none"
+}
 
 
 
-    // This is for the posts
+  return (
+    <div>
+      <div className="hero-image">
+        <div className="profile-pic">
+          <img style={imageStyle} src={profile.profilePicture} />
+        </div>
+      </div>
 
-    // OPEN AND CLOSE
-    const [isPostOpen, setIsPostOpen] = useState(true);
-
-
-    const handlePostOpen = event => {
-        // toggle vis
-        setIsPostOpen(current => !current)
-    };
-
-
-    // SET VALUE
-    const [name, setName] = useState('')
-
-    const [age, setAge] = useState('')
-
-    const [breed, setBreed] = useState('')
-
-    const [description, setDescription] = useState('')
-
-
-
-
-
-    // Submit Post Request
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const gridpost = { name, age, breed, description }
-
-        // const requestOptions ={
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json'},
-        //   body: JSON.stringify({ title: 'Dog Post'})
-        // }
-        // // write fetch request
-        // fetch("filepath", requestOptions)
-        // // apppend to bottom, 
-        //     `<div class="grid-item" onClick={handleOpen} >${props.name}</div>`
-
-
-
-        fetch('http://localhost:3001/graphql', {
-            method: 'POST',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                mutation: `Mutation($username: String!, $pet: String!) {
-                    addPet(username: $username, pet: $pet) {
-                      pet {
-                        name
-                        age
-                        breed
-                        description
-                      }
-                    }
-                  }`
-            })
-        }).then(res => res.json())
-            .then(data => {
-                console.log(data)
-            })
-
-        console.log(gridpost)
-    }
-
-
-
-
-
-
-
-
-
-
-    return (
+      <div class="edit">
+        <button>Edit</button>
+      </div>
+      <div class="details">
         <div>
-            <div class="hero-image">
-                <div class="profile-pic">
-                </div>
-            </div>
+          Name: {profile.first_name} {profile.last_name}
+        </div>
+        <div>Birthday: {profile.date_of_birth}</div>
+        <div>Zip Code: {profile.zip_code}</div>
+        <br />
+        <br />
+        <div>Buyer/Seller</div>
+        <div>Rating: ⭐️⭐️⭐️⭐️⭐️</div>
+        <div className="about-me-section">
+          Hi! I am a dog breeder in the San Diego Area
+        </div>
+        <div class="message">
+          <button>Message</button>
+        </div>
+      </div>
 
-
-            <div class="edit"><button>Edit</button></div>
-            <div class="details">
-
-                <div>Name</div>
-                <div>Buyer/Seller</div>
-                <div>Rating: ⭐️⭐️⭐️⭐️⭐️</div>
-                <div class="about-me-section">Hi! I am a dog breeder in the San Diego Area</div>
-                <div class="message">
-                    <button>Message</button>
-                </div>
-
-
-                <div class="posts">
-                    <button onClick={handlePostOpen}>Post</button>
-
-                    Append children here. Visibile if id=id
-                </div>
-            </div>
-
-            <div class="titlewrapper">
-                <div>Posts</div>
-            </div>
-            <div class="titlewrapper">
-                <div>Dogs</div>
-            </div>
-            <div class="wrapattack">
-
-
-
-                <div id="myModal" class="modal" style={{ display: isPostOpen ? 'none' : 'block' }}>
-
-
-                    <div class="modal-content">
-                        <span class="close" onClick={handlePostOpen}>&times;</span>
-                        <form onSubmit={handleSubmit} class="modal-inner-wrapper">
-
+      <div class="titlewrapper">
+        <div>Posts</div>
+      </div>
+      <div class="titlewrapper">
+        <div>Dogs</div>
+      </div>
+      <div class="posts">
+        <button onClick={handlePostOpen}>Add New Dog!</button>
+      </div>
+      <div class="wrapattack">
+        {/* Modal for Adding a Dog */}
+        <div
+          id="myModal"
+          class="modal"
+          style={{ display: isPostOpen ? "none" : "block" }}
+        >
+          <div class="modal-content">
+            <span class="close" onClick={handlePostOpen}>
+              &times;
+            </span>
+            <form onSubmit={handleFormSubmit} class="modal-inner-wrapper">
 
                             <div class="modal-inner-image" >ADD IMAGE HERE</div>
-                            <label>Name</label>
-                            <input required
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}>
-                            </input>
-                            <label>Age</label>
-                            <input required
-                                value={age}
-                                onChange={(e) => setAge(e.target.value)}></input>
+              <label>Name</label>
+              <input
+                required
+                placeholder="Enter your pet's name"
+                type="text"
+                name="name"
+                value={formState.name}
+                onChange={handleInputChange}
+              ></input>
+              <label>Age</label>
+              <input
+                required
+                placeholder="Enter your pet's age"
+                type="text"
+                name="age"
+                value={formState.age}
+                onChange={handleInputChange}
+              ></input>
 
-                            <label>Breed</label>
-                            <input required
-                                value={breed}
-                                onChange={(e) => setBreed(e.target.value)}></input>
+              <label>Breed</label>
+              <input
+                required
+                placeholder="Enter your pet's breed"
+                type="text"
+                name="breed"
+                value={formState.breed}
+                onChange={handleInputChange}
+              ></input>
+              <label>Sex</label>
+              <textarea
+                required
+                placeholder="Enter your pet's sex"
+                type="text"
+                name="sex"
+                value={formState.sex}
+                onChange={handleInputChange}
+              ></textarea>
+              <label>Size</label>
+              <textarea
+                required
+                placeholder="Enter your pet's size"
+                type="text"
+                name="size"
+                value={formState.size}
+                onChange={handleInputChange}
+              ></textarea>
+              <label>Color</label>
+              <textarea
+                required
+                placeholder="Enter your pet's color"
+                type="text"
+                name="color"
+                value={formState.color}
+                onChange={handleInputChange}
+              ></textarea>
 
-                            <label>Description</label>
-                            <textarea
-                                required
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}></textarea>
-
-
-                            <button type='submit'>Submit</button>
-
-
-                            {name}
-                            <br></br>
-                            {age}
-                            <br></br>
-                            {breed}
-                            <br></br>
-                            {description}
-
-                        </form>
-
-                    </div>
-
-                </div>
-
-
-
-
-
-
-
-                <div id="myModal" class="modal" style={{ display: isOpen ? 'none' : 'block' }}>
-                    <div class="modal-content">
-                        <span class="close" onClick={handleOpen}>&times;</span>
-                        <div class="modal-inner-wrapper">
-                            <div>{canine.name}</div>
-                            <div class="modal-inner-image"></div>
-                            <div>{canine.description}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-
-                <div class="grid-container">
-                    <div class="grid-item" onClick={handleOpen}>Momo</div>
-                    <div class="grid-item" onClick={handleOpen}>Sokka</div>
-                    <div class="grid-item" onClick={handleOpen}>Katara</div>
-                    <div class="grid-item" onClick={handleOpen}>Aang</div>
-                    <div class="grid-item" onClick={handleOpen}>Toph</div>
-                    <div class="grid-item" onClick={handleOpen}>Zuko</div>
-                    <div class="grid-item" onClick={handleOpen}>Azula</div>
-                    <div class="grid-item" onClick={handleOpen}>Appa</div>
-                    <div class="grid-item" onClick={handleOpen}>Iroh</div>
-                </div>
-            </div>
-
-
-
+              <label>Description</label>
+              <textarea
+                required
+                placeholder="Description of your pet"
+                type="text"
+                name="description"
+                value={formState.description}
+                onChange={handleInputChange}
+              ></textarea>
+              {/* <Cloudinary dogName={formState.name} /> */}
+              <button type="submit">Submit</button>
+            </form>
+          </div>
         </div>
 
-    )
+        <ProfileDog dogs={dogProfile} />
+      </div>
+    </div>
+  );
 }
