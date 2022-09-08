@@ -15,17 +15,7 @@ export default function Header(props) {
     Auth.logout();
   };
 
-  const { loading, data } = useQuery(QUERY_ONE_USER, {
-    variables: { profileId: Auth.getUser().data._id },
-  });
-   
-  const profile = data?.oneUser || {};
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  
+ 
   return (
     <div>
       <nav
@@ -69,7 +59,7 @@ export default function Header(props) {
                         <a>
                           <img
                             id="profile-image"
-                            src="www.amazon.com"
+                            src={Auth.getUser().data.profilePicture}
                             alt="Avatar"
                             className="avatar"
                           />
@@ -96,38 +86,6 @@ export default function Header(props) {
                       </div>
                     </div>
                   </li>
-
-                  {/* <div className="dropdown">
-                    <button className="dropbtn">
-                      <a href="/login#login">
-                        <img
-                          src="https://picsum.photos/200/300?random=1"
-                          alt="Avatar"
-                          className="avatar"
-                        />
-                      </a>
-                    </button>
-                    <div className="dropdown-content">
-                      <Link to={`/profiles/${Auth.getUser().data._id}`}>
-                        <a href="#">Profile</a>
-                      </Link>
-                      <Link to="/settings">
-                        <a href="#">Settings</a>
-                      </Link>
-                      <Link to="/chat">
-                        <a href="#">Chat</a>
-                      </Link>
-                      <Link to="/messages">
-                        <a href="#">Messages</a>
-                      </Link>
-                      <Link to="/">
-                        <a href="#" onClick={logout}>
-                          Logout
-                        </a>
-                      </Link>
-                    </div>
-                  </div> */}
-
                 </div>
               ) : (
                 <>
