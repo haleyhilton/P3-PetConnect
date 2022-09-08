@@ -126,7 +126,7 @@ console.log(formatDate);
         <br />
         <div>Buyer/Seller</div>
         <div>Rating: ⭐️⭐️⭐️⭐️⭐️</div>
-        <div classNameName="about-me-section">
+        <div className="about-me-section">
           Hi! I am a dog breeder in the San Diego Area
         </div>
         <div className="message">

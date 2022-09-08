@@ -27,11 +27,20 @@ const ProfileDog = ({ dogs }) => {
     return <h3>No Dogs Yet</h3>;
   }
 
-  const imageStyle = {
-    maxWidth: "200px",
-    maxHeight: "200px",
-  };
+
   // console.log(profile.media.0.url, "media")
+
+
+// Animations for griditems
+
+function mouseHover(){
+  this.style.transform = 'translateY(-10px)'
+}
+
+
+
+
+
 
   return (
     <div className="grid-container">
@@ -40,31 +49,36 @@ const ProfileDog = ({ dogs }) => {
           (dog) => (
             // console.log(dog.media[0].url, "dog picture"),
             (
-              <div key={dog._id} className="grid-item" style={{backgroundImage: `url(${dog.media[0]? dog.media[0].url : placeholder})`}}>
-                <Button variant="primary" className="grid-item" style={{backgroundImage: `url(${dog.media[0]? dog.media[0].url : placeholder})`}} onClick={() => {
-                  // setModalShow(true)
+              <div key={dog._id} className="grid-item" style={{backgroundImage: `url(${dog.media[0]? dog.media[0].url : placeholder})`}} onClick={() => {
+                // setModalShow(true)
+                handleOpen()
+                setDogInfo(dog._id)
+                }}>
+                {/* <Button variant="primary" className="grid-item" style={{backgroundImage: `url(${dog.media[0]? dog.media[0].url : placeholder})`}} onClick={() => {
+                  setModalShow(true)
                   handleOpen()
                   setDogInfo(dog._id)
                   }}>
-                  {/* {dog.name}: {dog.breed} */}
+                  {dog.name}: {dog.breed}
                   <br />
-                {/* <img style={imageStyle} src={dog.media[0]? dog.media[0].url : placeholder} /> */}
-                </Button>
+                <img style={imageStyle} src={dog.media[0]? dog.media[0].url : placeholder} />
+                </Button> */}
               </div>
             )
           )
         )}
          <div
           id="myModal"
-          class="modal"
+          className="modal"
           style={{ display: isOpen ? "none" : "block" }}
         >
-          <div class="modal-content">
-            <span class="close" onClick={handleOpen}>
+          <div className="modal-content">
+            <span className="close" onClick={handleOpen}>
               &times;
             </span>
-            <div class="modal-inner-wrapper">
-              <p className="dog-stats">Age: {profile.name}</p>
+            <div className="modal-inner-wrapper">
+            <div className="modal-inner-image" ></div>
+              <p className="dog-stats">Name: {profile.name}</p>
               <p className="dog-stats">Age: {profile.age}</p>
               <p className="dog-stats">Breed: {profile.breed}</p>
               <p className="dog-stats">Sex: {profile.sex}</p>

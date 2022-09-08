@@ -60,16 +60,23 @@
   
   }
   .grid-item {
-    border: 1px;
-    border-style: solid;
+
     width: 200px;
     height: 200px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 200px;
+    background-color: black;
   }
   
-  
+  .grid-item:hover {
+    transform: translateY(-10px);
+    border: 1px;
+    border-style: solid;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+  }
+
   .wrapattack{
   display: flex;
   justify-content: center;
