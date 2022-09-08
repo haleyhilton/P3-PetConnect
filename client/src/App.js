@@ -135,6 +135,7 @@ function App() {
                   <Route 
               path="/blog" 
               element={<Blog />}
+              />
                  <Route 
               path="/search" 
               element={<Search />}
