@@ -21,7 +21,6 @@ import { setContext } from '@apollo/client/link/context';
 import Message from './pages/Messages/Message';
 import Chat from './pages/Chat/chat';
 import Social from './pages/Social/social';
-import Loader from './pages/Loader/Loader';
 
 
 // NEW NEW NEW

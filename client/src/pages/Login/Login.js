@@ -30,7 +30,11 @@ export default function Login(props) {
       });
 
       Auth.login(data.login.token);
+      //this portion handles the loader
       setLoaderTime(true);
+      const loaderTimeout = setTimeout(() => {
+        window.location.assign('/');
+      }, 4000);
     } catch (e) {
       console.error(e);
     }
