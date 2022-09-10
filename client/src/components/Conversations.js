@@ -37,7 +37,7 @@ const styles = {
 
 
 function Conversations({ conversations }) {
-    console.log("Test",conversations)
+    console.log()
     if (!conversations.length) {
         return <h3>No Conversations Yet</h3>;
       }

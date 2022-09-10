@@ -102,11 +102,12 @@ function App() {
               element={<Profile />}
             />
                <Route 
-              path="/messages/:userId" 
+              path="/messages/:profileId" 
               element={<Message />}
             />
+            {/* Maybe add receiverId as a param for the conversation */}
              <Route 
-              path="/chat" 
+              path="/chat/:profileId" 
               element={<Chat />}
             />
                <Route 

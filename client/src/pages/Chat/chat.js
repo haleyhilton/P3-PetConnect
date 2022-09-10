@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
@@ -14,6 +14,8 @@ import SendIcon from '@material-ui/icons/Send';
 import { IconButton } from '@mui/material';
 import { useQuery } from '@apollo/client';
 import { QUERY_ONE_USER } from '../../utils/queries';
+import { useParams } from "react-router-dom";
+import Auth  from "../../utils/auth";
 
 
 const styles = {
@@ -91,66 +93,108 @@ const styles = {
     button: {
         position: "relative",
         top: "45px",
-        right: "110px",
+        right: "160px",
     }
   };
 // TODO: Write an if statement to display a message on whole page if there are no current messages for this person
 function Chat() {
-    const { loading, data } = useQuery( QUERY_ONE_USER )
-    const messages = data?.oneUser || [];
-     console.log(messages)
+
+    // Query other user
+    const { profileId } = useParams()
+  const { loading, data } = useQuery(QUERY_ONE_USER,
+    {
+      variables: { profileId: profileId },
+    }
+  );
+  
+  const [chatBubble, setChatBubble] = useState([]);
+  
+  //   !Where I left off
+  useEffect(() => {
+      const chat = data?.oneUser || [];
+      console.log(chat)
+        console.log("useEffect",chat)
+        
+        if (data) {
+            const converse = chat.messages;
+
+            console.log("converse", converse)
+         
+            let currentMessages = converse.filter(function (converse) {
+                return converse.senderId === profileId;
+            }).map(function (converse) {
+                return converse.messageText;
+            })
+            
+            console.log("new mess array", currentMessages)
+    
+            setChatBubble(currentMessages)
+            
+        }
+       
+    }, [loading]);
+
+
+
+    // TODO: I may need to map out the recever and sender messages in the actual page for it to list out the length of messages in the array. 
     return (
         <div>
-            <h1 style={styles.header}> 
-            <IconButton style={styles.button}> <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" sx={{ width: 56, height: 56 }} /> </IconButton>
+            <h1 style={styles.header}> {chatBubble.first_name} {chatBubble.last_name}
+            {/* Need to change this to the profile picture rather than the media url */}
+            <IconButton style={styles.button}> <Avatar alt="User-profile picture" src="#" sx={{ width: 56, height: 56 }} /> </IconButton>
             </h1>
             <div style={styles.chatBox}> 
               <Grid item xs={9}>
                   <List style={styles.messageArea}>
-                      <ListItem key="1">
+                    {chatBubble.map((mess) => {
+                        {console.log("mess",mess)}
+                        return (
+                            <ListItem>
+                         <Grid container>
+                             <Grid item xs={12}>
+                                 <Avatar style={styles.receiverAvatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                 <ListItemText style={styles.receiver} primary={mess}></ListItemText>
+                             </Grid>
+                             <Grid item xs={12}>
+                                 <ListItemText  style={styles.receiverTime} secondary="This is where time will be displayed - 09:30 pm"></ListItemText>
+                             </Grid>
+                         </Grid>
+                     </ListItem>
+                        )   
+                    })}
+                      <ListItem>
                           <Grid container>
                               <Grid item xs={12}>
-                                  <Avatar style={styles.senderAvatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                  <ListItemText style={styles.sender} primary="This is where sender message will go dgjhsfdgjsdfgjsfdgjsfgjsfgjsfghkdghjkdfghjkdhfjdhfjdfghjdfghjdfghjdfghjdfghjdfghjdfgh"></ListItemText>
+                                  <Avatar style={styles.senderAvatar} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                                  <ListItemText style={styles.sender} primary="This is where receiver message will go dfhdfhdfhfhdfsdgsasdgasdgasdgasdgasddfgjfgjfdsgjdfgjdfgdgasdgsadg dfhbsfhdsfhsxdf sdgasgdasdfgsdfghsdfg dfbsfsfdghsdfgsdgsdfgsdfgsdg sfrhgsdg"></ListItemText>
                               </Grid>
                               <Grid item xs={12}>
-                                  <ListItemText  style={styles.senderTime} secondary="This is where time will be displayed - 09:30 pm"></ListItemText>
+                                  <ListItemText style={styles.senderTime} secondary="09:31 pm"></ListItemText>
                               </Grid>
                           </Grid>
                       </ListItem>
-                      <ListItem key="2">
+                      {/* <ListItem key="3">
                           <Grid container>
                               <Grid item xs={12}>
-                                  <Avatar style={styles.receiverAvatar} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                                  <ListItemText style={styles.receiver} primary="This is where receiver message will go dfhdfhdfhfhdfsdgsasdgasdgasdgasdgasddfgjfgjfdsgjdfgjdfgdgasdgsadg dfhbsfhdsfhsxdf sdgasgdasdfgsdfghsdfg dfbsfsfdghsdfgsdgsdfgsdfgsdg sfrhgsdg"></ListItemText>
+                                  <Avatar style={styles.receiverAvatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                  <ListItemText  style={styles.receiver} primary="Text is wrapping when it is more than bubble! asrgasrfhgadsfhadfhadfhadf"></ListItemText>
                               </Grid>
                               <Grid item xs={12}>
-                                  <ListItemText style={styles.receiverTime} secondary="09:31 pm"></ListItemText>
-                              </Grid>
-                          </Grid>
-                      </ListItem>
-                      <ListItem key="3">
-                          <Grid container>
-                              <Grid item xs={12}>
-                                  <Avatar style={styles.senderAvatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                  <ListItemText  style={styles.sender} primary="Text is wrapping when it is more than bubble! asrgasrfhgadsfhadfhadfhadf"></ListItemText>
-                              </Grid>
-                              <Grid item xs={12}>
-                                  <ListItemText  style={styles.senderTime} align="right" secondary="10:30"></ListItemText>
+                                  <ListItemText  style={styles.receiverTime} align="right" secondary="10:30"></ListItemText>
                               </Grid>
                           </Grid>
                       </ListItem>
                       <ListItem key="">
                           <Grid container>
                               <Grid item xs={12}>
-                                  <Avatar style={styles.receiverAvatar} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                                  <ListItemText style={styles.receiver} primary="This is where receiver message will go dfhdfhdfhfhdfsdgsasdgasdgasdgasdgasddfgjfgjfdsgjdfgjdfgdgasdgsadg dfhbsfhdsfhsxdf sdgasgdasdfgsdfghsdfg dfbsfsfdghsdfgsdgsdfgsdfgsdg sfrhgsdg"></ListItemText>
+                                  <Avatar style={styles.senderAvatar} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                                  <ListItemText style={styles.sender} primary="This is where receiver message will go dfhdfhdfhfhdfsdgsasdgasdgasdgasdgasddfgjfgjfdsgjdfgjdfgdgasdgsadg dfhbsfhdsfhsxdf sdgasgdasdfgsdfghsdfg dfbsfsfdghsdfgsdgsdfgsdfgsdg sfrhgsdg"></ListItemText>
                               </Grid>
                               <Grid item xs={12}>
-                                  <ListItemText style={styles.receiverTime} secondary="09:31 pm"></ListItemText>
+                                  <ListItemText style={styles.senderTime} secondary="09:31 pm"></ListItemText>
                               </Grid>
                           </Grid>
-                      </ListItem>
+                      </ListItem> */}
                   </List>
                   <Divider />
                   <Grid container style={{padding: '20px'}}>

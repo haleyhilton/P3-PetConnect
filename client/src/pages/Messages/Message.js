@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from '@apollo/client';
 import Conversations from '../../components/Conversations.js'
-import { QUERY_USER_MESSAGES, QUERY_USER, QUERY_ONE_USER } from '../../utils/queries';
+import { QUERY_ONE_USER } from '../../utils/queries';
 import { useParams } from "react-router-dom";
 
+
+// TODO: I will need to add an onclick function to go to page of correct chat maybe user senderId from message as a way to input into chat/:profileId params of chat page 
 function Message() {
 
-  const { userId } = useParams()
+  const { profileId } = useParams()
   const { loading, data } = useQuery(QUERY_ONE_USER,
     {
-      variables: { id: userId },
+      variables: { profileId: profileId },
     }
   );
 
@@ -35,11 +37,11 @@ function Message() {
   
       console.log(arr);
   
-      const filkteredObjs = mess.filter((mes) => arr.includes(mes._id));
+      const filteredObjs = mess.filter((mes) => arr.includes(mes._id));
   
-      console.log("))))",filkteredObjs);
+      console.log("))))",filteredObjs);
 
-      setMessage(filkteredObjs);
+      setMessage(filteredObjs);
     }
 
   },[loading]);
