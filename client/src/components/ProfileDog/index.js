@@ -42,15 +42,15 @@ console.log(profile, "here is the profile")
           (dog) => (
             // console.log(dog.media[0].url, "dog picture"),
             (
-              <div key={dog._id} className="grid-item">
-                <Button variant="primary" onClick={() => {
+              <div key={dog._id} className="grid-item" style={{backgroundImage: `url(${dog.media[0]? dog.media[0].url : placeholder})`}}>
+                <Button variant="primary" className="grid-item" style={{backgroundImage: `url(${dog.media[0]? dog.media[0].url : placeholder})`}} onClick={() => {
                   // setModalShow(true)
                   handleOpen()
                   setDogInfo(dog._id)
                   }}>
-                  {dog.name}: {dog.breed}
+                  {/* {dog.name}: {dog.breed} */}
                   <br />
-                <img style={imageStyle} src={dog.media[0]? dog.media[0].url : placeholder} />
+                {/* <img style={imageStyle} src={dog.media[0]? dog.media[0].url : placeholder} /> */}
                 </Button>
               </div>
             )

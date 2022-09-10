@@ -15,40 +15,40 @@ export default function Landing() {
     return (
         <div>
              
-            <section class="page-section search" id="search">
-                <div class="container">
+            <section className="page-section search" id="search">
+                <div className="container">
 
-                    {/* <h2 class="page-section-heading text-center texwt-uppercase text-secondary mb-0" id="topPage">Top Breeds</h2>
+                    {/* <h2 className="page-section-heading text-center texwt-uppercase text-secondary mb-0" id="topPage">Top Breeds</h2>
 
-                    <div class="divider-custom">
-                        <div class="divider-custom-line"></div>
-                        <div class="divider-custom-icon"><i class="fas fa-paw fa-beat"></i></div>
-                        <div class="divider-custom-line"></div>
+                    <div className="divider-custom">
+                        <div className="divider-custom-line"></div>
+                        <div className="divider-custom-icon"><i className="fas fa-paw fa-beat"></i></div>
+                        <div className="divider-custom-line"></div>
                     </div> */}
 
             
-                    <div class="row justify-content-center">
-                        <div class="x">
-                            <div class="search-item mx-auto"
+                    <div className="row justify-content-center">
+                        <div className="x">
+                            <div className="search-item mx-auto"
                                 data-toggle="modal"
                                 data-target="#{{icon.modal}}">
                                 <div
-                                    class="search-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="search-item-caption-content text-center text-white">
+                                    className="search-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                    <div className="search-item-caption-content text-center text-white">
                                         
-                                        <a class="nav-link py-3 px-0 px-lg-3 rounded breed-link" href="/results/all-{{lowerIt icon.name}}-all-all-all"></a></div>
+                                        <a className="nav-link py-3 px-0 px-lg-3 rounded breed-link" href="/results/all-{{lowerIt icon.name}}-all-all-all"></a></div>
                                 </div>
-                                <img class="img-fluid" src={corgi} alt="corgi icon" />
-                                <img class="img-fluid" src={frenchy} alt="frenchy icon" />
-                                <img class="img-fluid" src={poodle} alt="poodle icon" />
+                                <img className="img-fluid" src={corgi} alt="corgi icon" />
+                                <img className="img-fluid" src={frenchy} alt="frenchy icon" />
+                                <img className="img-fluid" src={poodle} alt="poodle icon" />
 
-                                <img class="img-fluid" src={bulldog} alt="bulldog icon" />
-                                <img class="img-fluid" src={german} alt="germans icon" />
-                                <img class="img-fluid" src={lab} alt="lab icon" />
+                                <img className="img-fluid" src={bulldog} alt="bulldog icon" />
+                                <img className="img-fluid" src={german} alt="germans icon" />
+                                <img className="img-fluid" src={lab} alt="lab icon" />
 
-                                <img class="img-fluid" src={golden} alt="golden icon" />
-                                <img class="img-fluid" src={beagle} alt="beagle icon" />
-                                <img class="img-fluid" src={rotty} alt="rotty icon" />
+                                <img className="img-fluid" src={golden} alt="golden icon" />
+                                <img className="img-fluid" src={beagle} alt="beagle icon" />
+                                <img className="img-fluid" src={rotty} alt="rotty icon" />
 
 
 

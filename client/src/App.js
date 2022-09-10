@@ -22,6 +22,8 @@ import Search from './pages/Search/Search'
 import { setContext } from '@apollo/client/link/context';
 import Message from './pages/Messages/Message';
 import Chat from './pages/Chat/chat';
+import Social from './pages/Social/social';
+
 
 
 // NEW NEW NEW
@@ -68,24 +70,26 @@ function createMastText () {
   console.log(url)
   // const url = "/"
   if ( url === '') {
-    return {headerText: 'Welcome to PetConnect', subHeaderText: 'Arf you glad you\'re here?'};
+    return {headerText: 'Welcome to PetConnect', subHeaderText: 'We\'re so glad you\'re here'};
   } 
   else if ( url === 'about') {
     return {headerText: 'OUR STORY', subHeaderText: 'Founded in San Diego, California'};
   } 
-  else if ( url === 'contact') {
-    return {headerText: 'example head text', subHeaderText: 'example sub text'};
+  else if ( url === 'search') {
+    return {headerText: 'Find your furever friend', subHeaderText: 'Get Searching'};
   } 
   else if ( url === 'faq') {
     return {headerText: 'FREQUENTLY ASKED QUESTIONS', subHeaderText: ''};
   } 
-  else if (url === 'profile') {
-    return {headerText: 'different example text', subHeaderText: 'also different test'};
+  else if (url === 'contact') {
+    return {headerText: 'Contact Us', subHeaderText: 'Got a question? Need details about our business plan? Let us know below'};
   } 
   else if (url === 'team') {
     return {headerText: 'Meet the Team', subHeaderText: 'Something about us'};
   } 
-  // hard code in URLs and there respective headerText and subHeaderText
+  else if (url === 'login') {
+    return {};
+  } 
 }
 
 function App() {
@@ -104,18 +108,19 @@ function App() {
               element={<Profile />}
             />
             <Route 
+
               path="/external-profiles/:profileId"
               element={<ExternalProfile />}
             />
                <Route 
-              path="/messages" 
+              path="/messages/:userId" 
               element={<Message />}
             />
-             <Route 
+            <Route 
               path="/chat" 
               element={<Chat />}
             />
-               <Route 
+            <Route 
               path="/login" 
               element={<Login />}
             />
@@ -135,7 +140,7 @@ function App() {
               path="/faq" 
               element={<FAQ />}
             />
-                 <Route 
+            <Route 
               path="/team" 
               element={<Team />}
             />
@@ -143,18 +148,23 @@ function App() {
               path="/gallery/:profileId" 
               element={<Gallery />}
             />
+
               <Route 
               path="/pet-gallery/:petId" 
               element={<PetGallery />}
             />
-                  <Route 
+            <Route 
               path="/blog" 
               element={<Blog />}
             />
-                 <Route 
+            <Route 
               path="/search" 
               element={<Search />}
 
+            />
+            <Route 
+              path="/social" 
+              element={<Social />}
             />
           </Routes>
       <Footer />
