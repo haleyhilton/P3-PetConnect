@@ -99,7 +99,7 @@ const textArea = {
       
       <div className="hero-image">
         <div className="profile-pic" style={{ backgroundImage:`url(${profile.profilePicture})` }}>
-          {/* <img style={imageStyle} src={profile.profilePicture} /> */}
+          
         </div>
       </div>
 

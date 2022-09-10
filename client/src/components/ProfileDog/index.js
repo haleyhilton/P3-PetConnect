@@ -25,9 +25,7 @@ const ProfileDog = ({ dogs }) => {
     setIsOpen((current) => !current);
   };
 
-  if (!dogs.length) {
-    return <h3>No Dogs Yet</h3>;
-  }
+
 
   const imageStyle = {
     maxWidth: "200px",
