@@ -37,8 +37,7 @@ console.log(profile, "here is the profile")
     <div className="grid-container">
       {dogs &&
         dogs.map(
-          (dog) => (
-            // console.log(dog.media[0].url, "dog picture"),
+          (dog) =>
             (
               <div key={dog._id} className="grid-item" style={{backgroundImage: `url(${dog.media[0]? dog.media[0].url : placeholder})`}} onClick={() => {
                 // setModalShow(true)
@@ -47,7 +46,7 @@ console.log(profile, "here is the profile")
                 }}>
               </div>
             )
-          )
+          
         )}
          <div
           id="myModal"
@@ -59,7 +58,7 @@ console.log(profile, "here is the profile")
               &times;
             </span>
             <div className="modal-inner-wrapper">
-            <div className="modal-inner-image" ></div>
+            <div className="modal-inner-image" style={{backgroundImage: `url(${profile?.media?.[0]? profile.media[0].url : placeholder})`}}></div>
               <p className="dog-stats">Name: {profile.name}</p>
               <p className="dog-stats">Age: {profile.age}</p>
               <p className="dog-stats">Breed: {profile.breed}</p>

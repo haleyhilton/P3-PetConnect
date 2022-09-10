@@ -59,7 +59,7 @@ console.log(profile, "here is the profile")
               &times;
             </span>
             <div className="modal-inner-wrapper">
-            <div className="modal-inner-image" ></div>
+            <div className="modal-inner-image" style={{backgroundImage: `url(${profile?.media?.[0]? profile.media[0].url : placeholder})`}}></div>
             <p className="dog-stats"> Owner: {}</p>
               <p className="dog-stats">Name: {profile.name}</p>
               <p className="dog-stats">Age: {profile.age}</p>
