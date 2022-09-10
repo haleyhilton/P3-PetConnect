@@ -3,11 +3,19 @@ import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
-import { ADD_PICTURE_TO_PET } from '../../utils/mutations'
-import "./style.css";
+import { ADD_PET_PICTURE } from '../../utils/mutations'
+// import "./style.css";
 
-const Cloudinary = ( { dogName } ) => {
-    console.log(dogName, "YES")
+const PetCloudinary = (pros) => {
+    const { petId } = useParams();
+    const [images, setImages] = useState([]);
+    const [imageToRemove, setImageToRemove] = useState(null);
+    console.log(petId, "this is pet id")
+    const [imageToSave, setImageToSave] = useState({
+        petId: petId,
+        media: "",
+    });
+
     const styleImageContainer = {
         position: 'relative',
         width: '300px',
@@ -33,14 +41,7 @@ const Cloudinary = ( { dogName } ) => {
         fontSize: '20px',        
     }
 
-    const [addPhoto, { error }] = useMutation(ADD_PICTURE_TO_PET);
-
-    const [images, setImages] = useState([]);
-    const [imageToRemove, setImageToRemove] = useState(null);
-    const [imageToSave, setImageToSave] = useState({
-        name: dogName,
-        media: "",
-    });
+    const [addPhoto, { error }] = useMutation(ADD_PET_PICTURE);
 
     const handlePhotoSave = async (event) => {
         // event.preventDefault();    
@@ -108,12 +109,12 @@ const Cloudinary = ( { dogName } ) => {
             )}
         </div>
         <br />
-        {/* <button id="submit" className="cloudinary-button" onClick={()=> handlePhotoSave()}>
+        <button id="submit" className="cloudinary-button" onClick={()=> handlePhotoSave()}>
             Submit
-        </button> */}
+        </button>
         </div>
     </div>
     );
 }
 
-export default Cloudinary;
+export default PetCloudinary;

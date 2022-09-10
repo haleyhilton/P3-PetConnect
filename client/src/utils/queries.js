@@ -70,6 +70,7 @@ query OneUser($profileId: ID!) {
 export const QUERY_ONE_PET = gql`
 query OnePet($profileId: ID!) {
   onePet(profileId: $profileId) {
+    _id
     name
     age
     breed

@@ -114,3 +114,16 @@ mutation Mutation($profileId: String!, $media: String!) {
   }
 }
 `;
+
+export const ADD_PET_PICTURE = gql`
+mutation Mutation($petId: String!, $media: String!) {
+  addPetPicture(petId: $petId, media: $media) {
+    _id
+    media {
+      _id
+      url
+    }
+    name
+  }
+}
+`;

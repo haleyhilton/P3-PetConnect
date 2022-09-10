@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import { useQuery } from "@apollo/client";
 import { QUERY_ONE_PET } from "../../utils/queries";
 import placeholder from '../../images/results.PNG'
+import PetCloudinary from '../PetCloudinary'
+import { Link } from 'react-router-dom';
 
 const ProfileDog = ({ dogs }) => {
   const [dogInfo, setDogInfo] = React.useState("");
@@ -31,7 +33,7 @@ const ProfileDog = ({ dogs }) => {
     maxWidth: "200px",
     maxHeight: "200px",
   };
-  // console.log(profile.media.0.url, "media")
+console.log(profile, "here is the profile")
 
   return (
     <div className="grid-container">
@@ -71,7 +73,9 @@ const ProfileDog = ({ dogs }) => {
               <p className="dog-stats">Size: {profile.size}</p>
               <p className="dog-stats">Color: {profile.color}</p>
               <p className="dog-stats">Description: {profile.description}</p>
-              {/* <img src={profile.media[0].url} /> */}
+              <Link className="nav-link py-3 px-0 px-lg-3 rounded" to={`/pet-gallery/${profile._id}`}>
+              Click Here to Upload a Picture!
+              </Link>
             </div>
           </div>
         </div>

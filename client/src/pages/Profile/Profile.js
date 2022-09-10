@@ -27,8 +27,6 @@ export default function Profile(props) {
     size: "",
     color: "",
     description: "",
-    // for_sale: false,
-    // media: "yes",
   });
 
   const [addPetState, setPetState] = useState({
@@ -98,6 +96,7 @@ const textArea = {
 
   return (
     <div>
+      
       <div className="hero-image">
         <div className="profile-pic">
           <img style={imageStyle} src={profile.profilePicture} />
