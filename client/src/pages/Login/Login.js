@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 export default function Login(props) {
   const [formState, setFormState] = useState({ username: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [loaderTime, setLoaderTime] = useState(false);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -29,6 +30,11 @@ export default function Login(props) {
       });
 
       Auth.login(data.login.token);
+      //this portion handles the loader
+      setLoaderTime(true);
+      const loaderTimeout = setTimeout(() => {
+        window.location.assign('/');
+      }, 4000);
     } catch (e) {
       console.error(e);
     }
@@ -42,6 +48,50 @@ export default function Login(props) {
 
   return (
     <div>
+      {loaderTime? 
+      <div className="loader">
+        <div className="dog">
+          <div className="dog-body">
+            <div className="dog-tail">
+              <div className="dog-tail">
+                <div className="dog-tail">
+                  <div className="dog-tail">
+                    <div className="dog-tail">
+                      <div className="dog-tail">
+                        <div className="dog-tail">
+                          <div className="dog-tail">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="dog-torso">
+          </div>
+          <div className="dog-head">
+            <div className="dog-ears">
+              <div className="dog-ear">
+              </div>
+              <div className="dog-ear">
+              </div>
+            </div>
+            <div className="dog-eyes">
+              <div className="dog-eye">
+                </div>
+                <div className="dog-eye">
+                </div>
+              </div>
+              <div className="dog-muzzle">
+                <div className="dog-tongue">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      : 
       <div className="splitMenu-container" id="login">
         <div className="login-container">
           <h1>Login to your account</h1>
@@ -74,6 +124,9 @@ export default function Login(props) {
                 >
                   Login
             </button>
+            {error && (
+              <div className="my-3 p-3 bg-danger text-white">{error.message}</div>
+            )}
           </form>
 
           <div
@@ -98,6 +151,7 @@ export default function Login(props) {
           </Link>
         </div>
       </div>
+      }
     </div>
   );
 }

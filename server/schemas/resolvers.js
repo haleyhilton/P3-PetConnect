@@ -22,6 +22,9 @@ const resolvers = {
     onePetName: async (parent, { name }) => {
       return Pet.findOne({ name: name });
     },
+    viewUserPictures: async (parent, { profileId }) => {
+      return User.findOne({ _id: profileId });
+    },
     // Find All Users
     user: async () => {
       return User.find({}).populate('pet').populate('post').populate('messages');
@@ -127,9 +130,9 @@ const resolvers = {
       const pet = await Pet.create({ name, age, breed, sex, size, color, description });
       return pet;
     },
-    addPetPicture: async (parent, { name, media }) => {
+    addPetPicture: async (parent, { petId, media }) => {
       return Pet.findOneAndUpdate(
-        { name: name },
+        { _id: petId },
         {
           $addToSet: { media: { url: media } },
         },
@@ -144,7 +147,7 @@ const resolvers = {
       const user = await User.findOne({ username });
 
       if (!user) {
-        throw new AuthenticationError('No user with this email found!');
+        throw new AuthenticationError('No user with this username found!');
       }
 
       const correctPw = await user.isCorrectPassword(password);
@@ -156,11 +159,11 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addProfilePicture: async (parent, { userName, media }) => {
+    addProfilePicture: async (parent, { profileId, media }) => {
       return User.findOneAndUpdate(
-        { username: userName },
+        { _id: profileId },
         {
-          $addToSet: { media: media },
+          $addToSet: { media: { url:  media } },
         },
         {
           new: true,

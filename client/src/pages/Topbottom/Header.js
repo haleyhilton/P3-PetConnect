@@ -72,9 +72,6 @@ export default function Header(props) {
                         <Link to="/settings">
                           <a href="#">Settings</a>
                         </Link>
-                        <Link to="/chat">
-                          <a href="#">Chat</a>
-                        </Link>
                         <Link to="/messages">
                           <a href="#">Messages</a>
                         </Link>

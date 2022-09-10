@@ -1,0 +1,28 @@
+.main-component {
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    padding: 10px;
+    column-gap: 5px;
+    row-gap: 5px;
+    width: 500px;
+    justify-content: center;
+}
+
+.gallery-images {
+    width: 200px;
+    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 200px;
+    border-style: solid;
+    margin: 20px;
+}
+
+
