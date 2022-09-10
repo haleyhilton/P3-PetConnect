@@ -1,6 +1,10 @@
- 
+ body {
+  background-color: #F0F8FF;
+ }
   
-  /* The hero image */
+ 
+ 
+ /* The hero image */
   .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://dogsbestlife.com/wp-content/uploads/2020/01/collie-puppy.jpeg");
@@ -37,7 +41,7 @@
     padding-left: 100px;
     display: flex;
     flex-direction: column;
-  
+    border-bottom: 5px solid black
   }
   
   .edit {
@@ -46,6 +50,8 @@
   padding-right: 200px;
   padding-top: 50px;
   }
+
+
   
   
   .grid-container {
@@ -67,6 +73,9 @@
     background-repeat: no-repeat;
     background-size: 200px;
     background-color: black;
+    display: flex;
+    justify-content: end;
+
   }
   
   .grid-item:hover {
@@ -92,6 +101,30 @@
   }
   
   
+
+
+  .linktext {
+    text-decoration: none;
+    color: black;
+    text-decoration: underline;
+  }
+
+
+  .deleteButton {
+    
+    background-color: red;
+    height: fit-content;
+    
+
+  }
+
+  .deleteButton:hover {
+    
+    background-color: rgb(255, 183, 0);
+    height: fit-content;
+    
+
+  }
 
 /* MODAL */
 

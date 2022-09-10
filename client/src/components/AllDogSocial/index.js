@@ -47,6 +47,7 @@ console.log(profile, "here is the profile")
                 
               </div>
             )
+            
           )
         )}
          <div
