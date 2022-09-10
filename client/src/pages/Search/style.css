@@ -46,6 +46,11 @@ select {
     padding: 16px 10px 22px;
 }
 
+.card-title {
+    color: cornflowerblue;
+    font-weight: 600;
+}
+
 .card-title::after {
     right: -6px;
     left: -6.3px;
