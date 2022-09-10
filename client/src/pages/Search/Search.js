@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 import './style.css'
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { QUERY_PET_SEARCH } from '../../utils/queries';
-import SearchCards from './components/SearchCards';
-
+import SearchCard from './components/SearchCard';
+import breedlist from '../../utils/breedlist';
+import colorlist from '../../utils/colorlist';
+// import Grid from "@material-ui/core/Grid";
 
 export default function Search() {
     const [pets, setPets] = useState([]);
     const [firstRender, setFirstRender] = useState(true);
 
+    let searchRef = React.useRef();
     let ageRef = React.useRef();
     let breedRef = React.useRef();
     let sizeRef = React.useRef();
@@ -21,7 +24,6 @@ export default function Search() {
         onCompleted: newData => {
             if (firstRender) {
                 setPets(newData.petSearch);
-                console.log("setPets via useQuery");
                 setFirstRender(false);
             }
         }
@@ -31,35 +33,22 @@ export default function Search() {
 
     const [newSearch] = useLazyQuery(QUERY_PET_SEARCH, {
         variables: {
-            search: null,
+            search: (searchRef.current ? (searchRef.current.value.replace(/^\s+|\s+$/gm,'') === "" ? null : searchRef.current.value.trim()) : null),
             age: (ageRef.current ? (ageRef.current.value === "all" ? null : parseInt(ageRef.current.value)) : null),
             breed: (breedRef.current ? (breedRef.current.value === "all" ? null : breedRef.current.value) : null),
             size: (sizeRef.current ? (sizeRef.current.value === "all" ? null : sizeRef.current.value) : null),
             sex: (sexRef.current ? (sexRef.current.value === "all" ? null : sexRef.current.value) : null),
             color: (colorRef.current ? (colorRef.current.value === "all" ? null : colorRef.current.value) : null),
-            for_sale: (forSaleRef.current ? (forSaleRef.current.value === "all" ? null : forSaleRef.current.value) : null)
-        },
-        onCompleted: newData => {
-            const currentSearchInput = {
-                search: null,
-                age: (ageRef.current ? (ageRef.current.value === "all" ? null : parseInt(ageRef.current.value)) : null),
-                breed: (breedRef.current ? (breedRef.current.value === "all" ? null : breedRef.current.value) : null),
-                size: (sizeRef.current ? (sizeRef.current.value === "all" ? null : sizeRef.current.value) : null),
-                sex: (sexRef.current ? (sexRef.current.value === "all" ? null : sexRef.current.value) : null),
-                color: (colorRef.current ? (colorRef.current.value === "all" ? null : colorRef.current.value) : null),
-                for_sale: (forSaleRef.current ? (forSaleRef.current.value === "all" ? null : forSaleRef.current.value) : null)
-            };
-            console.log("current search input: ");
-            console.log(currentSearchInput);
-            setPets(newData.petSearch);
-            console.log("setPets via useLazyQuery");
+            for_sale: (forSaleRef.current ? (forSaleRef.current.value === "all" ? null : (forSaleRef.current.value === "true" ? true : false)) : null)
         }
     })
 
     async function handleFormSubmit(event) {
         event.preventDefault();
-
-        newSearch();
+        let results = await newSearch();
+        if(results) {
+            setPets(results.data.petSearch)
+        }
     }
 
     
@@ -68,22 +57,43 @@ export default function Search() {
     <div>
         <div>
             <form className="flexy" onSubmit={handleFormSubmit}>
+                <label htmlFor="search-filter">Search: </label>
+                <input id="search-filter" name="search" ref={searchRef}></input>
                 <label htmlFor="age-filter">Age: </label>
                 <select id="age-filter" name="age" ref={ageRef}>
                     <option value="all">All</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
                     <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
                 </select>
 
                 <label htmlFor="breed-filter">Breed: </label>
                 <select id="breed-filter" name="breed" ref={breedRef}>
                     <option value="all">All</option>
-                    <option value="Chihuahua">Chihuahua</option>
+                    {breedlist.map((breed) => {
+                        return <option value={breed}>{breed}</option>
+                    })}
                 </select>
 
                 <label htmlFor="size-filter">Size: </label>
                 <select id="size-filter" name="size" ref={sizeRef}>
                     <option value="all">All</option>
                     <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
                 </select>
 
                 <label htmlFor="sex-filter">Sex: </label>
@@ -96,7 +106,9 @@ export default function Search() {
                 <label htmlFor="color-filter">Color: </label>
                 <select id="color-filter" name="color" ref={colorRef}>
                     <option value="all">All</option>
-                    <option value="white">White</option>
+                    {colorlist.map((color) => [
+                        <option value={color.toLowerCase()}>{color}</option>
+                    ])}
                 </select>
 
                 <label htmlFor="forsale-filter">For Sale?: </label>
@@ -109,18 +121,29 @@ export default function Search() {
             </form>
         </div>
 
-        <div>
+        <div className='flexy'>
             {loading ? (
                 <div>Loading...</div>
             ) : (
-                console.log("Pets: "+ JSON.stringify(pets)),
-                pets.map((pet) => {
-                    return (
-                        <SearchCards pet={pet} />
-                    )
-                })
+ //               console.log("Pets: "+ JSON.stringify(pets)),
+                (
+                    <div className='container'>
+                        <div className='row gy-4'>
+
+                        {pets.length > 0 ? pets.map((pet) => {
+                            return (
+                                <SearchCard pet={pet} />
+                            )
+                        }) :
+                            <div>No pets matched your search</div>
+                        }
+    </div>
+
+                    </div>
+                )
             )}
         </div>
     </div>
+    
     )
 };

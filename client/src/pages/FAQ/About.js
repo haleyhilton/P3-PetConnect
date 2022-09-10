@@ -12,7 +12,7 @@ export default function About() {
            snowballed into an obvious commonality between 5 different humans - our love for dogs.  
         We thought, what if we had a place to combine our love of connecting on social with our love of our dogs? So we got hard at work 
         to figure out what that would look like. After hours of work, various prototypes and concepts - we landed on the first iteration of 
-        PetConnect (which was more of a PetConnector than a place for PetConnections)
+        PetConnect (which was more of a Pet<span class="italic">Connector </span> than a place for Pet<span class="bold">Connections</span>)
         We started our business with our simple thing in mind, whether you're here for a pick me up or 
         you're here to find your new furever friend, PetConnect
         is a place for everyone to do just that - connect. </p><br /><br /><br /><br />

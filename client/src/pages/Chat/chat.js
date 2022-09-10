@@ -12,10 +12,11 @@ import Avatar from '@material-ui/core/Avatar';
 import Fab from '@material-ui/core/Fab';
 import SendIcon from '@material-ui/icons/Send';
 import { IconButton } from '@mui/material';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ONE_USER } from '../../utils/queries';
+import { CREATE_USER_MESSAGE } from '../../utils/mutations';
 import { useParams } from "react-router-dom";
-import Auth  from "../../utils/auth";
+import AuthService from '../../utils/auth';
 
 
 const styles = {
@@ -107,53 +108,114 @@ function Chat() {
     }
   );
   
-  const [chatBubble, setChatBubble] = useState([]);
+  const [receiverBubble, setReceiverBubble] = useState([]);
+  console.log("DDDDDDDDD",data)
+
+  const [ senderBubble, setSenderBubble ] = useState([]);
+
+  const [ nameState, setNameState ] = useState('')
   
-  //   !Where I left off
+
   useEffect(() => {
       const chat = data?.oneUser || [];
       console.log(chat)
         console.log("useEffect",chat)
         
         if (data) {
+
+            const id = AuthService.getUser().data._id;
+
+            console.log(id);
+            
             const converse = chat.messages;
 
             console.log("converse", converse)
          
-            let currentMessages = converse.filter(function (converse) {
+            const receiverMessages = converse.filter(function (converse) {
                 return converse.senderId === profileId;
             }).map(function (converse) {
-                return converse.messageText;
+                return converse;
+            })
+
+            const senderMessages = converse.filter(function (converse) {
+                return converse.senderId === id;
+            }).map(function (converse) {
+                return converse;
             })
             
-            console.log("new mess array", currentMessages)
+            console.log("receiver mess array", receiverMessages, senderMessages)
     
-            setChatBubble(currentMessages)
+            setReceiverBubble(receiverMessages);
+
+            setSenderBubble(senderMessages);
+
+            setNameState(`${chat.first_name} ${chat.last_name}`)
             
         }
        
     }, [loading]);
 
 
+    // Logic to send message to database
+    // Need to add from token sender and params receiver
+    const [ createMessage, setCreateMessage ] = useState({
+        messageText: "",
+        senderId: "630d906c198859fcc30ce27a",
+        receiverId: "630d906c198859fcc30ce274",
+    });
 
-    // TODO: I may need to map out the recever and sender messages in the actual page for it to list out the length of messages in the array. 
+    // Making mutation
+    const [ sendMessage, { error }] = useMutation(CREATE_USER_MESSAGE)
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setCreateMessage({
+          ...createMessage,
+          [name]: value,
+        });
+    }
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        try {
+           const messageData = await sendMessage({
+            variables: {...createMessage}
+           });
+
+           console.log("Message Data", messageData)
+
+           window.location.reload();
+
+           //setReceiverBubble(...receiverBubble, messageData.data.createMessage.messageText)
+
+
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+    // TODO: Need to get the click in message page to link to chat page with user id in params
+    // TODO: need to be able to click on a profile message button that automatically opens up chat page with user id in params to 
+// TODO: to start conversation
+// TODO: need to fix what messages display on message page 
+// TODO: maybe find replacement for window.location.reload()
+
+
     return (
         <div>
-            <h1 style={styles.header}> {chatBubble.first_name} {chatBubble.last_name}
+            <h1 style={styles.header}> {nameState}
             {/* Need to change this to the profile picture rather than the media url */}
             <IconButton style={styles.button}> <Avatar alt="User-profile picture" src="#" sx={{ width: 56, height: 56 }} /> </IconButton>
             </h1>
             <div style={styles.chatBox}> 
               <Grid item xs={9}>
                   <List style={styles.messageArea}>
-                    {chatBubble.map((mess) => {
-                        {console.log("mess",mess)}
+                    {receiverBubble.map((mess) => {
                         return (
                             <ListItem>
                          <Grid container>
                              <Grid item xs={12}>
                                  <Avatar style={styles.receiverAvatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                 <ListItemText style={styles.receiver} primary={mess}></ListItemText>
+                                 <ListItemText style={styles.receiver} primary={mess.messageText}></ListItemText>
                              </Grid>
                              <Grid item xs={12}>
                                  <ListItemText  style={styles.receiverTime} secondary="This is where time will be displayed - 09:30 pm"></ListItemText>
@@ -162,47 +224,29 @@ function Chat() {
                      </ListItem>
                         )   
                     })}
+                    {senderBubble.map((mess2) => {
+                        return (
                       <ListItem>
                           <Grid container>
                               <Grid item xs={12}>
                                   <Avatar style={styles.senderAvatar} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                                  <ListItemText style={styles.sender} primary="This is where receiver message will go dfhdfhdfhfhdfsdgsasdgasdgasdgasdgasddfgjfgjfdsgjdfgjdfgdgasdgsadg dfhbsfhdsfhsxdf sdgasgdasdfgsdfghsdfg dfbsfsfdghsdfgsdgsdfgsdfgsdg sfrhgsdg"></ListItemText>
+                                  <ListItemText style={styles.sender} primary={mess2.messageText}></ListItemText>
                               </Grid>
                               <Grid item xs={12}>
                                   <ListItemText style={styles.senderTime} secondary="09:31 pm"></ListItemText>
                               </Grid>
                           </Grid>
                       </ListItem>
-                      {/* <ListItem key="3">
-                          <Grid container>
-                              <Grid item xs={12}>
-                                  <Avatar style={styles.receiverAvatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                  <ListItemText  style={styles.receiver} primary="Text is wrapping when it is more than bubble! asrgasrfhgadsfhadfhadfhadf"></ListItemText>
-                              </Grid>
-                              <Grid item xs={12}>
-                                  <ListItemText  style={styles.receiverTime} align="right" secondary="10:30"></ListItemText>
-                              </Grid>
-                          </Grid>
-                      </ListItem>
-                      <ListItem key="">
-                          <Grid container>
-                              <Grid item xs={12}>
-                                  <Avatar style={styles.senderAvatar} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                                  <ListItemText style={styles.sender} primary="This is where receiver message will go dfhdfhdfhfhdfsdgsasdgasdgasdgasdgasddfgjfgjfdsgjdfgjdfgdgasdgsadg dfhbsfhdsfhsxdf sdgasgdasdfgsdfghsdfg dfbsfsfdghsdfgsdgsdfgsdfgsdg sfrhgsdg"></ListItemText>
-                              </Grid>
-                              <Grid item xs={12}>
-                                  <ListItemText style={styles.senderTime} secondary="09:31 pm"></ListItemText>
-                              </Grid>
-                          </Grid>
-                      </ListItem> */}
+                        )
+                    })}
                   </List>
                   <Divider />
                   <Grid container style={{padding: '20px'}}>
                       <Grid item xs={11}>
-                          <TextField id="outlined-basic-email" label="Type Message" fullWidth />
+                          <TextField name="messageText" id="outlined-basic-email" label="Type Message" fullWidth onChange={handleInputChange}/>
                       </Grid>
                       <Grid xs={1} align="right">
-                          <Fab color="primary" aria-label="add"><SendIcon /></Fab>
+                          <Fab color="primary" aria-label="add" onClick={handleFormSubmit}><SendIcon /></Fab>
                       </Grid>
                   </Grid>
               </Grid>

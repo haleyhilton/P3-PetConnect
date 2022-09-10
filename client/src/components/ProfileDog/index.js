@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import { useQuery } from "@apollo/client";
 import { QUERY_ONE_PET } from "../../utils/queries";
 import placeholder from '../../images/results.PNG'
+import PetCloudinary from '../PetCloudinary'
+import { Link } from 'react-router-dom';
 
 const ProfileDog = ({ dogs }) => {
   const [dogInfo, setDogInfo] = React.useState("");
@@ -31,7 +33,7 @@ const ProfileDog = ({ dogs }) => {
     maxWidth: "200px",
     maxHeight: "200px",
   };
-  // console.log(profile.media.0.url, "media")
+console.log(profile, "here is the profile")
 
   return (
     <div className="grid-container">
@@ -40,38 +42,36 @@ const ProfileDog = ({ dogs }) => {
           (dog) => (
             // console.log(dog.media[0].url, "dog picture"),
             (
-              <div key={dog._id} className="grid-item" style={{backgroundImage: `url(${dog.media[0]? dog.media[0].url : placeholder})`}}>
-                <Button variant="primary" className="grid-item" style={{backgroundImage: `url(${dog.media[0]? dog.media[0].url : placeholder})`}} onClick={() => {
-                  // setModalShow(true)
-                  handleOpen()
-                  setDogInfo(dog._id)
-                  }}>
-                  {/* {dog.name}: {dog.breed} */}
-                  <br />
-                {/* <img style={imageStyle} src={dog.media[0]? dog.media[0].url : placeholder} /> */}
-                </Button>
+              <div key={dog._id} className="grid-item" style={{backgroundImage: `url(${dog.media[0]? dog.media[0].url : placeholder})`}} onClick={() => {
+                // setModalShow(true)
+                handleOpen()
+                setDogInfo(dog._id)
+                }}>
               </div>
             )
           )
         )}
          <div
           id="myModal"
-          class="modal"
+          className="modal"
           style={{ display: isOpen ? "none" : "block" }}
         >
-          <div class="modal-content">
-            <span class="close" onClick={handleOpen}>
+          <div className="modal-content">
+            <span className="close" onClick={handleOpen}>
               &times;
             </span>
-            <div class="modal-inner-wrapper">
-              <p className="dog-stats">Age: {profile.name}</p>
+            <div className="modal-inner-wrapper">
+            <div className="modal-inner-image" ></div>
+              <p className="dog-stats">Name: {profile.name}</p>
               <p className="dog-stats">Age: {profile.age}</p>
               <p className="dog-stats">Breed: {profile.breed}</p>
               <p className="dog-stats">Sex: {profile.sex}</p>
               <p className="dog-stats">Size: {profile.size}</p>
               <p className="dog-stats">Color: {profile.color}</p>
               <p className="dog-stats">Description: {profile.description}</p>
-              {/* <img src={profile.media[0].url} /> */}
+              <Link className="nav-link py-3 px-0 px-lg-3 rounded" to={`/pet-gallery/${profile._id}`}>
+              Click Here to Upload a Picture!
+              </Link>
             </div>
           </div>
         </div>

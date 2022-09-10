@@ -72,10 +72,7 @@ export default function Header(props) {
                         <Link to="/settings">
                           <a href="#">Settings</a>
                         </Link>
-                        <Link to="/chat">
-                          <a href="#">Chat</a>
-                        </Link>
-                        <Link to="/messages">
+                        <Link to={`/messages/${Auth.getUser().data._id}`}>
                           <a href="#">Messages</a>
                         </Link>
                         <Link to="/">

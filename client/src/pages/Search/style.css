@@ -1,6 +1,7 @@
 .flexy {
     display: flex;
     flex-wrap: wrap;
+    margin: 3.5%;
 }
 
 label {
@@ -10,4 +11,71 @@ label {
 select {
     width: fit-content;
     height: 50px;
+}
+
+
+
+.card-description {
+    margin: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.petCard-photo {
+    top: 0;
+    left: 0;
+    font-family: "object-fit:cover";
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.petCard {
+    flex-grow: 1;
+    height: 12rem;
+}
+
+.italic {
+    font-style: italic;
+}
+
+
+.petCard-body {
+    box-sizing: border-box;
+    position: relative;
+    background-color: #fff;
+    text-align: center;
+    padding: 16px 10px 22px;
+}
+
+.card-title {
+    color: cornflowerblue;
+    font-weight: 600;
+}
+
+.card-title::after {
+    right: -6px;
+    left: -6.3px;
+    background-color: #fff;
+    content: "";
+    display: block;
+    height: 52px;
+    border-radius: 0% 55% 0 0;
+    position: absolute;
+    bottom: calc(130% - 10px);
+    background-color: #fff;
+}
+
+
+.capital {
+    text-transform: capitalize;
+}
+
+.card-description {
+    text-overflow: ellipsis;
+}
+
+.heart-like {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 6%;
 }

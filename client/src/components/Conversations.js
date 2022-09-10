@@ -37,7 +37,7 @@ const styles = {
 
 
 function Conversations({ conversations }) {
-    console.log()
+    console.log("Conversations", conversations)
     if (!conversations.length) {
         return <h3>No Conversations Yet</h3>;
       }
@@ -62,7 +62,7 @@ function Conversations({ conversations }) {
                     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                     <ListItem alignItems="flex-start">
                         {/* ?This is where I may need to add onclick function to go to conversation chat? */}
-                        <ListItemButton href="/chat">
+                        <ListItemButton href={`/chat/${messages.senderId}`}>
                             <ListItemAvatar>
                                 {/* Add Cloudinary profile pictures url */}
                                 <Avatar alt="Remy Sharp" src="#" />

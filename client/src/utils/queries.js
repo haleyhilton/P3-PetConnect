@@ -70,6 +70,7 @@ query OneUser($profileId: ID!) {
 export const QUERY_ONE_PET = gql`
 query OnePet($profileId: ID!) {
   onePet(profileId: $profileId) {
+    _id
     name
     age
     breed
@@ -86,6 +87,10 @@ query OnePet($profileId: ID!) {
   }
 }
 `;
+
+// export const QUERY_ALL_PET = gql`
+// query AllPet
+// `
 
 export const QUERY_PET_BY_NAME = gql`
 query Query($name: String) {
@@ -131,6 +136,32 @@ export const QUERY_PET_SEARCH = gql`
       color
       description
       for_sale
+      media {
+        _id
+        url
+      }
     }
   }
 `;
+
+
+export const QUERY_ALL_PICTURES_BY_USER = gql`
+query ViewUserPictures($profileId: ID!) {
+  viewUserPictures(profileId: $profileId) {
+    profilePicture
+    media {
+      url
+      _id
+    }
+  }
+}
+`;
+
+//can add more to this later if needed, only needs _id right now
+export const QUERY_ONE_USER_BY_PET_ID = gql`
+query oneUserByPetId($petId: ID!) {
+  oneUserByPetId(petId: $petId) {
+    _id
+  }
+}
+`
