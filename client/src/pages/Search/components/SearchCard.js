@@ -1,46 +1,42 @@
 import React from 'react'
+import heart from '../../../images/like.png'
+
 
 
 export default function SearchCard(props) {
-    //TODO: Styled by the artist that is Haley
     return (
-        <div className='SearchCard'>
-            <p>Name: {props.pet.name}</p>
-            <p>Age: {props.pet.age}</p>
-            <p>Breed: {props.pet.breed}</p>
-            <p>Size: {props.pet.size}</p>
-            <p>Sex: {props.pet.sex}</p>
-            <p>Color: {props.pet.color}</p>
-            <p>For Sale?: {props.pet.for_sale}</p>
-            <p>Description: {props.pet.description}</p>
-            <img src={props.pet.media[0].url} width="100px" height="100px"></img>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src={props.pet.media[0].url} width="20%" height="300px" class="card-img-top" alt="..."></img>
+        {/* <favorite-btn class="petCard-favoriteBtn" pet-name="#" pet-id="#" pet-index="#" search-result=""> */}
+        <input type="image" className="heart-like" src={heart} />          
+    
+    {/* </favorite-btn> */}
+        <div class="card-body text-center petCard">
+          <h5 class="card-title mb-0">{props.pet.name}</h5>
+          <br /> <br />
+          
+          <div class="card-text">
+        <span> {props.pet.age}</span> |
+          {/* <i className="fa-solid fa-circle-small"></i>           */}
+          <span class="capital"> {props.pet.breed}</span> |
+          {/* <i className="fa-solid fa-circle-small"></i>           */}
+          <span class="capital"> {props.pet.sex}</span>
+          </div>
+          <div class="card-text">
+          <span>{props.pet.for_sale}</span>
+          <br /> <br />
+          <div class="card-text text-black-50 card-description">{props.pet.description}</div>
+
+
+          </div>
         </div>
-    )
-};
+      </div>        
+    </div>  
 
+    );}
 
-// import Grid from "@material-ui/core/Grid";
-// import Typography from "@material-ui/core/Typography";
-
-
-// export default function SearchCards(props) {
-
-//     return (
-//   <div className="search-card">
-//         <Grid 
-//         item
-//         container
-//         direction="row"
-//         alignItems="center"
-//         justifyContent="center"
-//         md={4}
-//       >
-//         <Typography>          
-//         <h6> Name: {props.pet.name}</h6>
-//         <h6>Age: {props.pet.age}</h6>
-//         <h6>Size: {props.pet.size} </h6>
-//         </Typography>
-//       </Grid>
-//       </div>
-//     )
-// };
+                            
+                              
+                           

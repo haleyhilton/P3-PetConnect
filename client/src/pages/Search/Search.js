@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import './style.css'
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { QUERY_PET_SEARCH } from '../../utils/queries';
-import SearchCards from './components/SearchCards';
-import Grid from "@material-ui/core/Grid";
+import SearchCard from './components/SearchCard';
+// import Grid from "@material-ui/core/Grid";
 
 export default function Search() {
     const [pets, setPets] = useState([]);
@@ -104,18 +104,21 @@ export default function Search() {
             ) : (
  //               console.log("Pets: "+ JSON.stringify(pets)),
                 (
-                    <Grid container direction="row">
+                    <div className='container'>
+                        <div className='row gy-4'>
 
                         {pets.map((pet) => {
                             return (
-                                <SearchCards pet={pet} />
+                                <SearchCard pet={pet} />
                             )
                         })}
+    </div>
 
-                    </Grid>
+                    </div>
                 )
             )}
         </div>
     </div>
+    
     )
 };

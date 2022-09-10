@@ -23,6 +23,7 @@ import Chat from './pages/Chat/chat';
 import Social from './pages/Social/social';
 
 
+
 // NEW NEW NEW
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -67,24 +68,26 @@ function createMastText () {
   console.log(url)
   // const url = "/"
   if ( url === '') {
-    return {headerText: 'Welcome to PetConnect', subHeaderText: 'Arf you glad you\'re here?'};
+    return {headerText: 'Welcome to PetConnect', subHeaderText: 'We\'re so glad you\'re here'};
   } 
   else if ( url === 'about') {
     return {headerText: 'OUR STORY', subHeaderText: 'Founded in San Diego, California'};
   } 
-  else if ( url === 'contact') {
-    return {headerText: 'example head text', subHeaderText: 'example sub text'};
+  else if ( url === 'search') {
+    return {headerText: 'Find your furever friend', subHeaderText: 'Get Searching'};
   } 
   else if ( url === 'faq') {
     return {headerText: 'FREQUENTLY ASKED QUESTIONS', subHeaderText: ''};
   } 
-  else if (url === 'profile') {
-    return {headerText: 'different example text', subHeaderText: 'also different test'};
+  else if (url === 'contact') {
+    return {headerText: 'Contact Us', subHeaderText: 'Got a question? Need details about our business plan? Let us know below'};
   } 
   else if (url === 'team') {
     return {headerText: 'Meet the Team', subHeaderText: 'Something about us'};
   } 
-  // hard code in URLs and there respective headerText and subHeaderText
+  else if (url === 'login') {
+    return {};
+  } 
 }
 
 function App() {

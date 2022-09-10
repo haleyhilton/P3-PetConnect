@@ -1,6 +1,7 @@
 .flexy {
     display: flex;
     flex-wrap: wrap;
+    margin: 3.5%;
 }
 
 label {
@@ -12,15 +13,65 @@ select {
     height: 50px;
 }
 
-.search-card {
-    padding: 2rem;
-    border: solid 2px;
-    margin: 2rem;
-    width: 25rem;
-    display: flex;
-    justify-content: center;
+
+
+.card-description {
+    margin: 1.5rem;
+    margin-bottom: 2rem;
 }
-    
-.SearchCard {
-    border-style: solid;
+
+.petCard-photo {
+    top: 0;
+    left: 0;
+    font-family: "object-fit:cover";
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.petCard {
+    flex-grow: 1;
+    height: 12rem;
+}
+
+.italic {
+    font-style: italic;
+}
+
+
+.petCard-body {
+    box-sizing: border-box;
+    position: relative;
+    background-color: #fff;
+    text-align: center;
+    padding: 16px 10px 22px;
+}
+
+.card-title::after {
+    right: -5px;
+    left: -5px;
+    background-color: #fff;
+    transform: rotate(1deg);
+    content: "";
+    display: block;
+    height: 56px;
+    border-radius: 0% 100% 10% 0;
+    position: absolute;
+    bottom: calc(40.5% - 10px);
+    background-color: #fff;
+}
+
+
+.capital {
+    text-transform: capitalize;
+}
+
+.card-description {
+    text-overflow: ellipsis;
+}
+
+.heart-like {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 6%;
 }

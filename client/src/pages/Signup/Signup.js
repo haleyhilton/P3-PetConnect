@@ -42,7 +42,7 @@ export default function Signup() {
 
   return (
     <div>
-      <h2 className="signupH2">SIGN-UP</h2>
+      {/* <h2 className="signupH2">SIGN-UP</h2>
 
       <p>What Arf you waiting for?</p>
 
@@ -52,7 +52,7 @@ export default function Signup() {
           <i className="fas fa-paw fa-beat"></i>
         </div>
         <div className="divider-custom-line"></div>
-      </div>
+      </div> */}
       {data ? (
         <p>
           Success! You may now head <Link to="/">back to the homepage.</Link>
