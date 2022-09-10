@@ -9,11 +9,13 @@ import Footer from './pages/Topbottom/Footer'
 import Profile from './pages/Profile/Profile'
 import Login from './pages/Login/Login'
 import Gallery from './pages/Gallery'
+import PetGallery from './pages/PetGallery'
 import Signup from './pages/Signup/Signup'
 import About from './pages/FAQ/About'
 import Contact from './pages/FAQ/Contact'
 import FAQ from './pages/FAQ/FAQ'
 import Team from './pages/FAQ/Team'
+import ExternalProfile from './pages/ExternalProfile'
 import Blog from './pages/FAQ/Blog'
 import Landing from './pages/Landing/Landing'
 import Search from './pages/Search/Search'
@@ -101,6 +103,10 @@ function App() {
               path="/profiles/:profileId"
               element={<Profile />}
             />
+            <Route 
+              path="/external-profiles/:profileId"
+              element={<ExternalProfile />}
+            />
                <Route 
               path="/messages" 
               element={<Message />}
@@ -136,6 +142,10 @@ function App() {
              <Route 
               path="/gallery/:profileId" 
               element={<Gallery />}
+            />
+              <Route 
+              path="/pet-gallery/:petId" 
+              element={<PetGallery />}
             />
                   <Route 
               path="/blog" 

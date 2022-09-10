@@ -130,9 +130,9 @@ const resolvers = {
       const pet = await Pet.create({ name, age, breed, sex, size, color, description });
       return pet;
     },
-    addPetPicture: async (parent, { name, media }) => {
+    addPetPicture: async (parent, { petId, media }) => {
       return Pet.findOneAndUpdate(
-        { name: name },
+        { _id: petId },
         {
           $addToSet: { media: { url: media } },
         },

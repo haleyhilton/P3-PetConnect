@@ -108,7 +108,7 @@ const typeDefs = gql`
   type Mutation {
     addPet(profileId: String!, pet: String!): User
     addPetInfo(name: String!, age: String!, breed: String!, sex: String!, size: String!, color: String!, description: String!): Pet
-    addPetPicture(name: String!, media: String!): Pet
+    addPetPicture(petId: String!, media: String!): Pet
     addProfilePicture(profileId: String!, media: String!): User
     createMessage(messageText: String!, senderId: String!, sent_by: String, receiverId: String!, received_by: String lastMessage: String, lastUpdated: String): Messages
     deleteMessage(_id: ID!, messageId: String!): User
