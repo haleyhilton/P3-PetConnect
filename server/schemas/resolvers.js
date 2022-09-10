@@ -16,6 +16,9 @@ const resolvers = {
     oneUser: async (parent, { profileId }) => {
       return User.findOne({ _id: profileId }).populate('pet').populate('post').populate('messages');
     },
+    oneUserByPetId: async (parent, { petId }) => {
+      return User.findOne({pet: { _id: petId} });
+    },
     onePet: async (parent, { profileId }) => {
       return Pet.findOne({ _id: profileId });
     },
