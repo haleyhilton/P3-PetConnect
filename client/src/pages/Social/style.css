@@ -1,3 +1,8 @@
+.centerfold {
+    display: flex;
+    justify-content: center;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
