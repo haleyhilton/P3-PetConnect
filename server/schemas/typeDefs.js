@@ -95,6 +95,7 @@ const typeDefs = gql`
   type Query {
     user: [User]
     oneUser(profileId: ID!): User
+    oneUserByPetId(petId: ID!): User
     onePet(profileId: ID!): Pet
     onePetName(name: String): Pet
     pet: [Pet]

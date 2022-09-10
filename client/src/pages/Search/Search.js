@@ -3,6 +3,8 @@ import './style.css'
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { QUERY_PET_SEARCH } from '../../utils/queries';
 import SearchCard from './components/SearchCard';
+import breedlist from '../../utils/breedlist';
+import colorlist from '../../utils/colorlist';
 // import Grid from "@material-ui/core/Grid";
 
 export default function Search() {
@@ -60,19 +62,38 @@ export default function Search() {
                 <label htmlFor="age-filter">Age: </label>
                 <select id="age-filter" name="age" ref={ageRef}>
                     <option value="all">All</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
                     <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
                 </select>
 
                 <label htmlFor="breed-filter">Breed: </label>
                 <select id="breed-filter" name="breed" ref={breedRef}>
                     <option value="all">All</option>
-                    <option value="Chihuahua">Chihuahua</option>
+                    {breedlist.map((breed) => {
+                        return <option value={breed}>{breed}</option>
+                    })}
                 </select>
 
                 <label htmlFor="size-filter">Size: </label>
                 <select id="size-filter" name="size" ref={sizeRef}>
                     <option value="all">All</option>
                     <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
                 </select>
 
                 <label htmlFor="sex-filter">Sex: </label>
@@ -85,7 +106,9 @@ export default function Search() {
                 <label htmlFor="color-filter">Color: </label>
                 <select id="color-filter" name="color" ref={colorRef}>
                     <option value="all">All</option>
-                    <option value="white">White</option>
+                    {colorlist.map((color) => [
+                        <option value={color.toLowerCase()}>{color}</option>
+                    ])}
                 </select>
 
                 <label htmlFor="forsale-filter">For Sale?: </label>
@@ -107,11 +130,13 @@ export default function Search() {
                     <div className='container'>
                         <div className='row gy-4'>
 
-                        {pets.map((pet) => {
+                        {pets.length > 0 ? pets.map((pet) => {
                             return (
                                 <SearchCard pet={pet} />
                             )
-                        })}
+                        }) :
+                            <div>No pets matched your search</div>
+                        }
     </div>
 
                     </div>
