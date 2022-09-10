@@ -1,4 +1,4 @@
-//need to fix this to compare object ids
+//used for Search backend
 function removeDuplicates(arr) {
     return arr.filter((item, index, originArr) => {
         const howManyInstances = originArr.filter((originItem) => item.id === originItem.id);

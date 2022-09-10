@@ -3,6 +3,7 @@ const { Pet, User, Messages, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express');
 const removeDuplicates = require('../utils/removeDuplicates');
+const { eventNames } = require('../models/Messages');
 
 // This essentially replaces routes and controllers.
 // Query = Get Routes
@@ -11,9 +12,26 @@ const removeDuplicates = require('../utils/removeDuplicates');
 
 const resolvers = {
   Query: {
+    // Find one user
+    oneUser: async (parent, { profileId }) => {
+      return User.findOne({ _id: profileId }).populate('pet').populate('post').populate('messages');
+    },
+    //for use on search page for links
+    oneUserByPetId: async (parent, { petId }) => {
+      return User.findOne({pet: { _id: petId} });
+    },
+    onePet: async (parent, { profileId }) => {
+      return Pet.findOne({ _id: profileId });
+    },
+    onePetName: async (parent, { name }) => {
+      return Pet.findOne({ name: name });
+    },
+    viewUserPictures: async (parent, { profileId }) => {
+      return User.findOne({ _id: profileId });
+    },
     // Find All Users
     user: async () => {
-      return User.find({}).populate('pet').populate('post');
+      return User.find({}).populate('pet').populate('post').populate('messages');
     },
     // Find messages corresponding to sending user id to have history of message conversation
     userMessages: async (parent, args) => {
@@ -106,12 +124,34 @@ const resolvers = {
   },
   Mutation: {
     // Adds new user to database
+    addUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
+
+      return { token, user };
+    },
+    addPetInfo: async (parent, { name, age, breed, sex, size, color, description }) => {
+      const pet = await Pet.create({ name, age, breed, sex, size, color, description });
+      return pet;
+    },
+    addPetPicture: async (parent, { petId, media }) => {
+      return Pet.findOneAndUpdate(
+        { _id: petId },
+        {
+          $addToSet: { media: { url: media } },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
     // See typedefs for what specific fields it needs. Media and Pets are not included
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
 
       if (!user) {
-        throw new AuthenticationError('No user with this email found!');
+        throw new AuthenticationError('No user with this username found!');
       }
 
       const correctPw = await user.isCorrectPassword(password);
@@ -123,15 +163,11 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addUser: async (parent, args) => {
-      const newUser = await User.create(args);
-      return newUser;
-    },
-    addProfilePicture: async (parent, { userName, media }) => {
+    addProfilePicture: async (parent, { profileId, media }) => {
       return User.findOneAndUpdate(
-        { username: userName },
+        { _id: profileId },
         {
-          $addToSet: { media: media },
+          $addToSet: { media: { url:  media } },
         },
         {
           new: true,
@@ -139,11 +175,11 @@ const resolvers = {
         }
       );
     },
-    addPet: async (parent, { userName, pet }) => {
+    addPet: async (parent, { profileId, pet }) => {
       return User.findOneAndUpdate(
-        { username: userName },
+        { _id: profileId },
         {
-          $addToSet: { pet: Pet.create(pet) },
+          $addToSet: { pet: pet },
         },
         {
           new: true,
@@ -158,7 +194,7 @@ const resolvers = {
         { _id: args.senderId },
         {
           $addToSet: {
-            messages: newMessage._id
+            messages: newMessage
           },
         },
         {
@@ -169,14 +205,28 @@ const resolvers = {
           { _id: args.receiverId },
           {
             $addToSet: {
-              messages: newMessage._id
+              messages: newMessage
             },
           },
           {
             new: true,
           }
         );
+        console.log(newMessage)
         return newMessage;
+    },
+    deleteMessage: async (parent, args) => {
+      const deletedMessage = await User.findOneAndUpdate(
+        { _id: args._id },
+        {
+          $pull: { messages: args.messageId } 
+        },
+        {
+          new: true
+        }
+      ).populate('messages');
+
+      return deletedMessage
     }
   },
 };

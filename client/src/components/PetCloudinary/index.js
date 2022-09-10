@@ -2,9 +2,20 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import axios from 'axios';
-import { CREATE_USER_PHOTO } from '../utils/mutations'
+import { useParams } from "react-router-dom";
+import { ADD_PET_PICTURE } from '../../utils/mutations'
+// import "./style.css";
 
-const Cloudinary = () => {
+const PetCloudinary = (pros) => {
+    const { petId } = useParams();
+    const [images, setImages] = useState([]);
+    const [imageToRemove, setImageToRemove] = useState(null);
+    console.log(petId, "this is pet id")
+    const [imageToSave, setImageToSave] = useState({
+        petId: petId,
+        media: "",
+    });
+
     const styleImageContainer = {
         position: 'relative',
         width: '300px',
@@ -12,7 +23,7 @@ const Cloudinary = () => {
         margin: '20px',
     }
 
-    const imageStyle = {
+    const imageStyleNew = {
         width: '300px',
         height: '300px',
         objectFit: 'cover',
@@ -30,14 +41,10 @@ const Cloudinary = () => {
         fontSize: '20px',        
     }
 
-    const [addPhoto, { error }] = useMutation(CREATE_USER_PHOTO);
-
-    const [images, setImages] = useState([]);
-    const [imageToRemove, setImageToRemove] = useState(null);
-    const [imageToSave, setImageToSave] = useState(null);
+    const [addPhoto, { error }] = useMutation(ADD_PET_PICTURE);
 
     const handlePhotoSave = async (event) => {
-        event.preventDefault();    
+        // event.preventDefault();    
         // On form submit, perform mutation and pass in form data object as arguments
         // It is important that the object fields are match the defined parameters in `ADD_THOUGHT` mutation
         try {
@@ -72,8 +79,8 @@ const Cloudinary = () => {
               if (!error && result && result.event === "success") { 
                 setImages((prev) => [...prev, {url: result.info.url, public_id: result.info.public_id}])
                 console.log('Done! Here is the image info: ', result.info); 
-                setImageToSave(result.info.secure_url)
-                // URL TO PICTURE IS AT result.info.secure_url
+                // Save image
+                imageToSave.media = result.info.secure_url
               }
             }
         );
@@ -82,25 +89,32 @@ const Cloudinary = () => {
     }
 
     return (
-    <div className="Cloudinary">
+
+
+
+    <div className="main-component">
+        <div>
         <button id="upload-widget" className="cloudinary-button" onClick={()=> handleOpenWidget()}>
-            Upload
+            Upload New Photo
         </button>
+        <h2>Preview Image</h2>
         <div className="images-preview-container" style={imagePreviewContainer}>
             {/* Show Pictures*/}
             {images.map((image) => (
                 <div className="image-preview" style={styleImageContainer}>
-                    <img src={image.url} style={imageStyle}/>
+                    <img src={image.url} style={imageStyleNew}/>
                     {imageToRemove != image.public_id && <i className="fa fa-times-circle close-icon" style={closeIcon} onClick={() => handleRemoveImg(image)}></i>}
                 </div>
             )
             )}
         </div>
+        <br />
         <button id="submit" className="cloudinary-button" onClick={()=> handlePhotoSave()}>
             Submit
         </button>
+        </div>
     </div>
     );
 }
 
-export default Cloudinary;
+export default PetCloudinary;
