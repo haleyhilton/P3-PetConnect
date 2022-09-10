@@ -151,7 +151,7 @@ function App() {
               path="/social" 
               element={<Social />}
             />
-            {//for testing loader}
+            {/* for testing loader */}
             <Route
               path="/loader"
               element={<Loader />}
