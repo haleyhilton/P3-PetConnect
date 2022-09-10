@@ -46,17 +46,21 @@ select {
     padding: 16px 10px 22px;
 }
 
+.card-title {
+    color: cornflowerblue;
+    font-weight: 600;
+}
+
 .card-title::after {
-    right: -5px;
-    left: -5px;
+    right: -6px;
+    left: -6.3px;
     background-color: #fff;
-    transform: rotate(1deg);
     content: "";
     display: block;
-    height: 56px;
-    border-radius: 0% 100% 10% 0;
+    height: 52px;
+    border-radius: 0% 55% 0 0;
     position: absolute;
-    bottom: calc(40.5% - 10px);
+    bottom: calc(130% - 10px);
     background-color: #fff;
 }
 

@@ -156,3 +156,12 @@ query ViewUserPictures($profileId: ID!) {
   }
 }
 `;
+
+//can add more to this later if needed, only needs _id right now
+export const QUERY_ONE_USER_BY_PET_ID = gql`
+query oneUserByPetId($petId: ID!) {
+  oneUserByPetId(petId: $petId) {
+    _id
+  }
+}
+`
