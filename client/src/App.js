@@ -105,15 +105,15 @@ function App() {
               path="/profiles/:profileId"
               element={<Profile />}
             />
-               <Route 
+            <Route 
               path="/messages/:userId" 
               element={<Message />}
             />
-             <Route 
+            <Route 
               path="/chat" 
               element={<Chat />}
             />
-               <Route 
+            <Route 
               path="/login" 
               element={<Login />}
             />
@@ -133,7 +133,7 @@ function App() {
               path="/faq" 
               element={<FAQ />}
             />
-                 <Route 
+            <Route 
               path="/team" 
               element={<Team />}
             />
@@ -141,11 +141,11 @@ function App() {
               path="/gallery/:profileId" 
               element={<Gallery />}
             />
-                  <Route 
+            <Route 
               path="/blog" 
               element={<Blog />}
             />
-                 <Route 
+            <Route 
               path="/search" 
               element={<Search />}
 
