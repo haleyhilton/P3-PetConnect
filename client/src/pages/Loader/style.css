@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom left, #ffc107 40%, #f0ff076b 100%);
+    background-color: #ffc107;
     z-index: 9999;
     top: 0;
  }
