@@ -98,8 +98,8 @@ const textArea = {
     <div>
       
       <div className="hero-image">
-        <div className="profile-pic">
-          <img style={imageStyle} src={profile.profilePicture} />
+        <div className="profile-pic" style={{ backgroundImage:`url(${profile.profilePicture})` }}>
+          
         </div>
       </div>
 

@@ -7,8 +7,8 @@ import Button from "react-bootstrap/Button";
 import placeholder from "../../images/results.PNG";
 
 export default function ExternalProfile(props) {
-  // const { profileId } = useParams();
-  const profileId = "6319432ff2c754c444d42e71";
+  const { profileId } = useParams();
+  /* const profileId = "6319432ff2c754c444d42e71"; */
 
   const { loading, data } = useQuery(QUERY_ONE_USER, {
     variables: { profileId: profileId },
