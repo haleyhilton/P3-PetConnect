@@ -54,13 +54,17 @@ const ProfileDog = ({ dogs }) => {
             (dog) =>
             (
               <div key={dog._id} className="grid-item" style={{ backgroundImage: `url(${dog.media[0] ? dog.media[0].url : placeholder})` }} onClick={() => {
-                // setModalShow(true)
-                handleOpen()
-                setDogInfo(dog._id)
+                if (isDeleteOpen === true){
+                  handleOpen()
+                  setDogInfo(dog._id)
+
+                }
+                else{testOpen()}
+
               }}>
 
 
-                <div className="deleteButton" style={{ display: isDeleteOpen ? "none" : "block" , backgroundColor: isTest ? "orange" : "purple"}} onClick={testOpen} >X</div>
+                <div className="deleteButton" style={{ display: isDeleteOpen ? "none" : "block" , backgroundColor: isTest ? "orange" : "purple"}}>X</div>
               </div>
             )
 
