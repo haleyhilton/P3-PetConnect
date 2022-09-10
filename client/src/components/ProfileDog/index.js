@@ -47,15 +47,6 @@ console.log(profile, "here is the profile")
                 handleOpen()
                 setDogInfo(dog._id)
                 }}>
-                {/* <Button variant="primary" className="grid-item" style={{backgroundImage: `url(${dog.media[0]? dog.media[0].url : placeholder})`}} onClick={() => {
-                  setModalShow(true)
-                  handleOpen()
-                  setDogInfo(dog._id)
-                  }}>
-                  {dog.name}: {dog.breed}
-                  <br />
-                <img style={imageStyle} src={dog.media[0]? dog.media[0].url : placeholder} />
-                </Button> */}
               </div>
             )
           )

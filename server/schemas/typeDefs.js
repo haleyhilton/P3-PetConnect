@@ -104,6 +104,7 @@ const typeDefs = gql`
     userMessages(receiverId: String!): [Messages]
     viewUserPictures(profileId: ID!): User
   }
+
   
   type Mutation {
     addPet(profileId: String!, pet: String!): User
