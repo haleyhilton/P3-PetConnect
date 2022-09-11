@@ -5,7 +5,7 @@ import "./style.css";
 function Social() {
     return (
         <div className='centerfold'>
-<AllDogSocial/>
+            <AllDogSocial/>
         </div>
     )
 };
