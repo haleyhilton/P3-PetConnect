@@ -88,6 +88,8 @@ query OnePet($profileId: ID!) {
 }
 `;
 
+
+
 export const QUERY_ALL_PET = gql `query QUERY_ALL_PET {
   pet {
     name

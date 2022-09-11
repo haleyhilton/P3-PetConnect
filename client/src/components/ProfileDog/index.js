@@ -47,7 +47,7 @@ const ProfileDog = ({ dogs }) => {
       <div class="titlewrapper">
         <div>Dogs</div>
       </div>
-
+<div className="wrapattack">
       <div className="grid-container">
         {dogs &&
           dogs.map(
@@ -69,6 +69,7 @@ const ProfileDog = ({ dogs }) => {
             )
 
           )}
+          </div>
         <div
           id="myModal"
           className="modal"

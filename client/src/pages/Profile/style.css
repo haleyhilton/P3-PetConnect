@@ -1,5 +1,7 @@
  body {
   background-color: #F0F8FF;
+  font-family: 'SulphurPoint-Regular';
+  font-size: x-large;
  }
   
  
@@ -36,11 +38,12 @@
   }
   
   .details {
-    font-size: large;
+    
     padding-top: 110px;
     padding-left: 100px;
     display: flex;
     flex-direction: column;
+    font-size: x-large;
     border-bottom: 5px solid black
   }
   
@@ -100,13 +103,16 @@
   text-decoration: underline;
   }
   
-  
+  .message {
+    margin-top: 5px;
+  }
 
 
   .linktext {
     text-decoration: none;
     color: black;
     text-decoration: underline;
+    padding-bottom: 5px;
   }
 
 

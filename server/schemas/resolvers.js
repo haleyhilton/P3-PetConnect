@@ -16,10 +16,6 @@ const resolvers = {
     oneUser: async (parent, { profileId }) => {
       return User.findOne({ _id: profileId }).populate('pet').populate('post').populate('messages');
     },
-    //for use on search page for links
-    oneUserByPetId: async (parent, { petId }) => {
-      return User.findOne({pet: { _id: petId} });
-    },
     onePet: async (parent, { profileId }) => {
       return Pet.findOne({ _id: profileId });
     },
@@ -181,6 +177,15 @@ const resolvers = {
         {
           $addToSet: { pet: pet },
         },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    deletePet: async (parent, { profileId, pet }) => {
+      return User.findByIdAndDelete(
+        { _id: petId },
         {
           new: true,
           runValidators: true,

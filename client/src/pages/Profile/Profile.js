@@ -84,21 +84,11 @@ export default function Profile(props) {
     return <div>Loading...</div>;
   }
 
-  const imageStyle = {
-    maxWidth: "200px",
-    maxHeight: "200px",
-  };
 
   const dogProfile = profile.pet;
   console.log(formState, "hi im form")
 
-  const textArea = {
-    "display": "none"
-  }
 
-  const handleDeleteOpen = (event) => {
-    setIsDeleteOpen((current) => !current);
-  };
   return (
     <div>
 
@@ -109,25 +99,27 @@ export default function Profile(props) {
       </div>
 
 
-      <div class="details">
+      <div className="details">
 
         <div>
-          Name: {profile.first_name} {profile.last_name}
+          {profile.first_name} {profile.last_name}
         </div>
 
 
         <div>Buyer/Seller</div>
-        <div>Rating: ⭐️⭐️⭐️⭐️⭐️</div>
+        <div>⭐️⭐️⭐️⭐️⭐️</div>
 
         <div className="about-me-section">
+          Hello! I'm {profile.first_name} and I am a dog breeder in {profile.zip_code}
 
         </div>
+        <br></br>
         <div class="message">
           <button>Message</button>
 
         </div>
 
-        <div class="addnew">
+        <div class="message">
           <button onClick={handlePostOpen}>Add New Dog!</button>
         </div>
         <div>
@@ -141,6 +133,7 @@ export default function Profile(props) {
       <div class="posts">
 
       </div>
+      <ProfileDog dogs={dogProfile}/>
       <div class="wrapattack">
         {/* Modal for Adding a Dog */}
         <div
@@ -225,7 +218,7 @@ export default function Profile(props) {
           </div>
         </div>
 
-        <ProfileDog dogs={dogProfile}/>
+        
       </div>
     </div>
   );
