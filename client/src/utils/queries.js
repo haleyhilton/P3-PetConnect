@@ -88,6 +88,20 @@ query OnePet($profileId: ID!) {
 }
 `;
 
+export const QUERY_ALL_PET = gql `query QUERY_ALL_PET {
+  pet {
+    name
+    age
+    breed
+    description
+    _id
+    media {
+      _id
+      url
+    }
+  }
+}`;
+
 export const QUERY_PET_BY_NAME = gql`
 query Query($name: String) {
   onePetName(name: $name) {

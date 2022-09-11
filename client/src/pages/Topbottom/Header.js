@@ -47,6 +47,9 @@ export default function Header(props) {
               <Link className="nav-link py-3 px-0 px-lg-3 rounded" to="/search">
                 Browse
               </Link>
+              <Link className="nav-link py-3 px-0 px-lg-3 rounded" to="/social">
+                Social
+              </Link>
               <Link
                 className="nav-link py-3 px-0 px-lg-3 rounded"
                 to="/contact"
