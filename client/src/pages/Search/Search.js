@@ -7,7 +7,7 @@ import breedlist from '../../utils/breedlist';
 import colorlist from '../../utils/colorlist';
 import {createMastText} from '../../utils/helpers'
 import Masthead from '../../components/Masthead'
-import Auth from "../../utils/auth";
+// import Auth from "../../utils/auth";
 
 export default function Search() {
     const [pets, setPets] = useState([]);
