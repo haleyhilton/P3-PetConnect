@@ -1,6 +1,12 @@
- 
+ body {
+  background-color: #F0F8FF;
+  font-family: 'SulphurPoint-Regular';
+  font-size: x-large;
+ }
   
-  /* The hero image */
+ 
+ 
+ /* The hero image */
   .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://dogsbestlife.com/wp-content/uploads/2020/01/collie-puppy.jpeg");
@@ -32,12 +38,13 @@
   }
   
   .details {
-    font-size: large;
+    
     padding-top: 110px;
     padding-left: 100px;
     display: flex;
     flex-direction: column;
-  
+    font-size: x-large;
+    border-bottom: 5px solid black
   }
   
   .edit {
@@ -46,6 +53,8 @@
   padding-right: 200px;
   padding-top: 50px;
   }
+
+
   
   
   .grid-container {
@@ -67,6 +76,9 @@
     background-repeat: no-repeat;
     background-size: 200px;
     background-color: black;
+    display: flex;
+    justify-content: end;
+
   }
   
   .grid-item:hover {
@@ -91,7 +103,34 @@
   text-decoration: underline;
   }
   
-  
+  .message {
+    margin-top: 5px;
+  }
+
+
+  .linktext {
+    text-decoration: none;
+    color: black;
+    text-decoration: underline;
+    padding-bottom: 5px;
+  }
+
+
+  .deleteButton {
+    
+    background-color: red;
+    height: fit-content;
+    
+
+  }
+
+  .deleteButton:hover {
+    
+    background-color: rgb(255, 183, 0);
+    height: fit-content;
+    
+
+  }
 
 /* MODAL */
 
