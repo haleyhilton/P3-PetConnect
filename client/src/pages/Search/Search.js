@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.css'
 import { useQuery, useLazyQuery } from '@apollo/client';
 import { QUERY_PET_SEARCH } from '../../utils/queries';
 import SearchCard from './components/SearchCard';
 import breedlist from '../../utils/breedlist';
 import colorlist from '../../utils/colorlist';
+import {createMastText} from '../../utils/helpers'
+import Masthead from '../../components/Masthead'
 // import Grid from "@material-ui/core/Grid";
 
 export default function Search() {
@@ -51,12 +53,23 @@ export default function Search() {
         }
     }
 
+    const [text,setText] = useState();
     
+    useEffect(() => {
+        const data = createMastText();
+
+        setText(data);
+
+        console.log("*****",data);
+    },[]);
+
 
     return (
     <div>
+                    <Masthead {...createMastText()}/>
+
         <div>
-            <form className="flexy" onSubmit={handleFormSubmit}>
+            <form className="flexy flexy2" onSubmit={handleFormSubmit}>
                 <label htmlFor="search-filter">Search: </label>
                 <input id="search-filter" name="search" ref={searchRef}></input>
                 <label htmlFor="age-filter">Age: </label>

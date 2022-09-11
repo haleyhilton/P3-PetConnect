@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 import './style.css'
 import mission1 from '../../images/dog-bath.png'
 import mission2 from '../../images/dog-friend.jpg'
 import mission3 from '../../images/dog-selfie.jpg'
 import dogpark from '../../images/dog-park.jpg'
+import {createMastText} from '../../utils/helpers'
+import Masthead from '../../components/Masthead'
 
+
+
+   
 export default function About() {
+    const [text,setText] = useState();
+    
+    useEffect(() => {
+        const data = createMastText();
+
+        setText(data);
+
+        console.log("*****",data);
+    },[]);
     return (
+        <div>
+            <Masthead {...createMastText()}/>
         <div className="faq">
        <p> Founded in 2022, PetConnect started as a brainstorming session between UCSD Full Stack Development students and quickly 
            snowballed into an obvious commonality between 5 different humans - our love for dogs.  
@@ -55,6 +71,7 @@ to seek new and innovative ways to deliver the best experience possible (for peo
         <img className="about-photos" src={mission3} alt="" /></div>
         </div>
         
+        </div>
         </div>
     )};
         

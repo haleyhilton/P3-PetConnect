@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.css'
+import {createMastText} from '../../utils/helpers'
+import Masthead from '../../components/Masthead'
 
 export default function Contact() {
+    const [text,setText] = useState();
+    
+    useEffect(() => {
+        const data = createMastText();
+
+        setText(data);
+
+        console.log("*****",data);
+    },[]);
+
     return (
+        <div>
+            <Masthead {...createMastText()}/>
+
         <div>
     
     <section className="bg-white dark:bg-gray-900">
@@ -27,5 +42,6 @@ export default function Contact() {
   </div>
 </section>
         
+        </div>
         </div>
     )};

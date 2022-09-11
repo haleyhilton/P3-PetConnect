@@ -31,9 +31,7 @@ export default function SearchCard(props) {
           
           <div class="card-text">
         <span> {props.pet.age}</span> |
-          {/* <i className="fa-solid fa-circle-small"></i>           */}
           <span class="capital"> {props.pet.breed}</span> |
-          {/* <i className="fa-solid fa-circle-small"></i>           */}
           <span class="capital"> {props.pet.sex}</span>
           </div>
           <div class="card-text">

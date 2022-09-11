@@ -4,6 +4,14 @@
     margin: 3.5%;
 }
 
+.flexy2 {
+    display: flex;
+    justify-content: center;
+    margin: 3.5% 0;
+    background-color: #ffb703;
+    padding: 1rem;
+}
+
 label {
     padding-right: 10px;
 }
