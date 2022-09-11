@@ -23,6 +23,7 @@ import { setContext } from '@apollo/client/link/context';
 import Message from './pages/Messages/Message';
 import Chat from './pages/Chat/chat';
 import Social from './pages/Social/Social';
+import Settings from './pages/Settings';
 
 
 
@@ -119,6 +120,10 @@ function App() {
              <Route 
               path="/gallery/:profileId" 
               element={<Gallery />}
+            />
+                         <Route 
+              path="/settings" 
+              element={<Settings />}
             />
 
               <Route 

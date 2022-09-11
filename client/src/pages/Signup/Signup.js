@@ -34,7 +34,7 @@ export default function Signup() {
       });
 
       Auth.login(data.addUser.token);
-      navigate.push("/profile");
+      navigate.push(`/profiles/${Auth.getUser().data._id}`);
     } catch (e) {
       console.error(e);
     }

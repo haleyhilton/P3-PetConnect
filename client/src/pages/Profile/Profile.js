@@ -10,7 +10,7 @@ import { ADD_PET_TO_USER } from "../../utils/mutations";
 import { ADD_PET } from "../../utils/mutations";
 import { getDataFromTree } from "@apollo/client/react/ssr";
 import Auth from "../../utils/auth";
-// import placeholder from "../../images/results.PNG"
+import blankPicture from "../../images/blankprofile.PNG"
 
 export default function Profile(props) {
   // OPEN AND CLOSE ADDING A NEW DOG
@@ -93,7 +93,7 @@ export default function Profile(props) {
     <div>
 
       <div className="hero-image">
-        <div className="profile-pic" style={{ backgroundImage: `url(${profile.profilePicture})` }}>
+        <div className="profile-pic" style={{ backgroundImage: `url(${profile.profilePicture ? profile.profilePicture : blankPicture})` }}>
 
         </div>
       </div>
