@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
+import blankPicture from "../../images/blankprofile.PNG"
 
 
 // import { useQuery } from '@apollo/client';
@@ -64,7 +65,7 @@ export default function Header(props) {
                         <a>
                           <img
                             id="profile-image"
-                            src={Auth.getUser().data.profilePicture}
+                            src={Auth.getUser().data.profilePicture ? Auth.getUser().data.profilePicture : blankPicture}
                             alt="Avatar"
                             className="avatar"
                           />
