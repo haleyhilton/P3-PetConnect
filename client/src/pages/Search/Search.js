@@ -7,7 +7,7 @@ import breedlist from '../../utils/breedlist';
 import colorlist from '../../utils/colorlist';
 import {createMastText} from '../../utils/helpers'
 import Masthead from '../../components/Masthead'
-// import Grid from "@material-ui/core/Grid";
+import Auth from "../../utils/auth";
 
 export default function Search() {
     const [pets, setPets] = useState([]);
