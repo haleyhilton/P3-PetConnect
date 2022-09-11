@@ -56,7 +56,7 @@ export default function Team() {
                 <div class="profile"> <img src={haley} /> </div>
                     <div class="card-name mt-4"> Haley Hilton Zito<br /> <small>UX / UI Guy</small> </div>
                     <div class="card-sub">
-                        <p> <small class="text-muted"> I always wanted cool videos of my concerts never knew whom to talk to but they are amazing! </small> </p>
+                        <p> <small class="text-muted"> I like to make things pretty and practical (and most of all, fun!) </small> </p>
                     </div>
                 </div>
             </div>

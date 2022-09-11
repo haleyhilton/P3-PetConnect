@@ -68,9 +68,10 @@ export default function Search() {
     <div>
                     <Masthead {...createMastText()}/>
 
-        <div>
-            <form className="flexy flexy2" onSubmit={handleFormSubmit}>
-                <label htmlFor="search-filter">Search: </label>
+        <div className='row flexy'>
+            
+            <form className="col-3 text-center flexy3" onSubmit={handleFormSubmit}>
+                <label htmlFor="search-filter">Search </label>
                 <input id="search-filter" name="search" ref={searchRef}></input>
                 <label htmlFor="age-filter">Age: </label>
                 <select id="age-filter" name="age" ref={ageRef}>
@@ -93,7 +94,7 @@ export default function Search() {
                     <option value="15">15</option>
                 </select>
 
-                <label htmlFor="breed-filter">Breed: </label>
+                <label htmlFor="breed-filter">Breed </label>
                 <select id="breed-filter" name="breed" ref={breedRef}>
                     <option value="all">All</option>
                     {breedlist.map((breed) => {
@@ -101,7 +102,7 @@ export default function Search() {
                     })}
                 </select>
 
-                <label htmlFor="size-filter">Size: </label>
+                <label htmlFor="size-filter">Size </label>
                 <select id="size-filter" name="size" ref={sizeRef}>
                     <option value="all">All</option>
                     <option value="small">Small</option>
@@ -109,14 +110,14 @@ export default function Search() {
                     <option value="large">Large</option>
                 </select>
 
-                <label htmlFor="sex-filter">Sex: </label>
+                <label htmlFor="sex-filter">Sex </label>
                 <select id="sex-filter" name="sex" ref={sexRef}>
                     <option value="all">All</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
                 
-                <label htmlFor="color-filter">Color: </label>
+                <label htmlFor="color-filter">Color </label>
                 <select id="color-filter" name="color" ref={colorRef}>
                     <option value="all">All</option>
                     {colorlist.map((color) => [
@@ -124,7 +125,7 @@ export default function Search() {
                     ])}
                 </select>
 
-                <label htmlFor="forsale-filter">For Sale?: </label>
+                <label htmlFor="forsale-filter">For Sale </label>
                 <select id="forsale-filter" name="forsale" ref={forSaleRef}>
                     <option value="all">All</option>
                     <option value="true">For sale</option>
@@ -132,29 +133,27 @@ export default function Search() {
                 </select>
                 <input id="filter-submit" type="submit" value="Apply"/>
             </form>
-        </div>
 
-        <div className='flexy'>
+        <div className=' col-9'>
             {loading ? (
                 <div>Loading...</div>
-            ) : (
- //               console.log("Pets: "+ JSON.stringify(pets)),
-                (
-                    <div className='container'>
+                ) : (
+                    (
+                        <div className='container'>
                         <div className='row gy-4'>
-
                         {pets.length > 0 ? pets.map((pet) => {
                             return (
                                 <SearchCard pet={pet} />
-                            )
-                        }) :
+                                )
+                            }) :
                             <div>No pets matched your search</div>
                         }
     </div>
 
                     </div>
                 )
-            )}
+                )}
+                </div>
         </div>
     </div>
     
