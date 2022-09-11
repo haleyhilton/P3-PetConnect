@@ -95,6 +95,7 @@ const typeDefs = gql`
   type Query {
     user: [User]
     oneUser(profileId: ID!): User
+    oneUserByPetId(petId: ID!): User
     onePet(profileId: ID!): Pet
     onePetName(name: String): Pet
     pet: [Pet]
@@ -104,6 +105,7 @@ const typeDefs = gql`
     userMessages(receiverId: String!): [Messages]
     viewUserPictures(profileId: ID!): User
   }
+
   
   type Mutation {
     addPet(profileId: String!, pet: String!): User
@@ -112,6 +114,7 @@ const typeDefs = gql`
     addProfilePicture(profileId: String!, media: String!): User
     createMessage(messageText: String!, senderId: String!, sent_by: String, receiverId: String!, received_by: String lastMessage: String, lastUpdated: String): Messages
     deleteMessage(_id: ID!, messageId: String!): User
+    deletePet(_id: ID!): Pet
 
     addUser(username: String!, email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth

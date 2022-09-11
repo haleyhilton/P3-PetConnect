@@ -1,14 +1,26 @@
 import React from 'react'
+import { useLazyQuery } from '@apollo/client';
 import heart from '../../../images/like.png'
-
-
+import { QUERY_ONE_USER_BY_PET_ID } from '../../../utils/queries';
 
 export default function SearchCard(props) {
-  console.log(props, "yes props")
+
+  const [getOwner] = useLazyQuery(QUERY_ONE_USER_BY_PET_ID, { variables: { petId: props.pet._id } });
+
+  //makeshift link to the dog owner's profile page
+  async function linkHandler(event) {
+    event.preventDefault();
+  
+    const owner = await getOwner();
+    if (owner) {
+      window.location.replace(`/external-profiles/${owner.data.oneUserByPetId._id}`);
+    }
+  }
+
     return (
 
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-0 shadow">
+    <div class="col-xl-3 col-md-6 mb-4" onClick={linkHandler}>
+      <div class="card petCard-border shadow">
         <img src={props.pet.media[0].url} width="20%" height="300px" class="card-img-top" alt="..."></img>
         {/* <favorite-btn class="petCard-favoriteBtn" pet-name="#" pet-id="#" pet-index="#" search-result=""> */}
         <input type="image" className="heart-like" src={heart} />          
@@ -20,9 +32,7 @@ export default function SearchCard(props) {
           
           <div class="card-text">
         <span> {props.pet.age}</span> |
-          {/* <i className="fa-solid fa-circle-small"></i>           */}
           <span class="capital"> {props.pet.breed}</span> |
-          {/* <i className="fa-solid fa-circle-small"></i>           */}
           <span class="capital"> {props.pet.sex}</span>
           </div>
           <div class="card-text">

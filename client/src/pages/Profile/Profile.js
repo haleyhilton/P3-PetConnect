@@ -15,6 +15,7 @@ import Auth from "../../utils/auth";
 export default function Profile(props) {
   // OPEN AND CLOSE ADDING A NEW DOG
   const [isPostOpen, setIsPostOpen] = useState(true);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(true);
   const handlePostOpen = (event) => {
     setIsPostOpen((current) => !current);
   };
@@ -47,7 +48,7 @@ export default function Profile(props) {
   let navigate = useNavigate();
 
   const { profileId } = useParams();
-
+  console.log(profileId)
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -64,7 +65,8 @@ export default function Profile(props) {
         variables: { ...addPetState },
       });
 
-      navigate("/");
+      navigate(`/profiles/${profileId}`);
+      window.location.reload();
     } catch (e) {
       console.error(e);
     }
@@ -75,69 +77,63 @@ export default function Profile(props) {
   const { loading, data } = useQuery(QUERY_ONE_USER, {
     variables: { profileId: profileId },
   });
-   
+
   const profile = data?.oneUser || {};
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  const imageStyle = {
-    maxWidth: "200px",
-    maxHeight: "200px",
-  };
 
   const dogProfile = profile.pet;
-console.log(formState, "hi im form")
+  console.log(formState, "hi im form")
 
-const textArea = {
-  "display": "none"
-}
 
   return (
     <div>
-      
+
       <div className="hero-image">
-        <div className="profile-pic">
-          <img style={imageStyle} src={profile.profilePicture} />
+        <div className="profile-pic" style={{ backgroundImage: `url(${profile.profilePicture})` }}>
+
         </div>
       </div>
 
-      <div class="edit">
-        <button>Edit</button>
-      </div>
-      <div class="details">
+
+      <div className="details">
+
         <div>
-        <Link className="nav-link py-3 px-0 px-lg-3 rounded" to={`/gallery/${Auth.getUser().data._id}`}>
-        View Gallery
-         </Link>
+          {profile.first_name} {profile.last_name}
         </div>
-        <div>
-          Name: {profile.first_name} {profile.last_name}
-        </div>
-        <div>Birthday: {profile.date_of_birth}</div>
-        <div>Zip Code: {profile.zip_code}</div>
-        <br />
-        <br />
+
+
         <div>Buyer/Seller</div>
-        <div>Rating: ⭐️⭐️⭐️⭐️⭐️</div>
+        <div>⭐️⭐️⭐️⭐️⭐️</div>
+
         <div className="about-me-section">
-          Hi! I am a dog breeder in the San Diego Area
+          Hello! I'm {profile.first_name} and I am a dog breeder in {profile.zip_code}
+
         </div>
+        <br></br>
         <div class="message">
           <button>Message</button>
+
+        </div>
+
+        <div class="message">
+          <button onClick={handlePostOpen}>Add New Dog!</button>
+        </div>
+        <div>
+          <Link className="linktext" to={`/gallery/${Auth.getUser().data._id}`}>
+            View Gallery
+          </Link>
         </div>
       </div>
 
-      <div class="titlewrapper">
-        <div>Posts</div>
-      </div>
-      <div class="titlewrapper">
-        <div>Dogs</div>
-      </div>
+
       <div class="posts">
-        <button onClick={handlePostOpen}>Add New Dog!</button>
+
       </div>
+      <ProfileDog dogs={dogProfile}/>
       <div class="wrapattack">
         {/* Modal for Adding a Dog */}
         <div
@@ -217,12 +213,12 @@ const textArea = {
                 onChange={handleInputChange}
               ></textarea>
               {/* <Cloudinary dogName={formState.name} /> */}
-              <button type="submit">Submit</button>
+              <button type="submit" onClick={handlePostOpen}>Submit</button>
             </form>
           </div>
         </div>
 
-        <ProfileDog dogs={dogProfile} />
+        
       </div>
     </div>
   );

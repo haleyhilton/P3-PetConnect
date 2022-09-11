@@ -183,6 +183,15 @@ const resolvers = {
         }
       );
     },
+    deletePet: async (parent, { profileId, pet }) => {
+      return User.findByIdAndDelete(
+        { _id: petId },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
     createMessage: async (parent, args) => {
       const newMessage = await Messages.create(args);
 

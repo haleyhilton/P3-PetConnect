@@ -7,7 +7,7 @@ export default function Footer() {
     <div>
 
     <footer className="footer text-center">
-        <div className="container">
+        <div className="xyz">
             <div className="row">
 
 
@@ -44,7 +44,7 @@ export default function Footer() {
     </footer>
 
     <div className="copyright py-4 text-center text-white">
-        <div className="container"><small>Copyright &copy; PetConnect 2022</small></div>
+        <div className="xyz"><small>Copyright &copy; PetConnect 2022</small></div>
     </div>
     </div>
   )
