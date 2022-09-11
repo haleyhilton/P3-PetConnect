@@ -5,6 +5,7 @@ import { QUERY_PET_SEARCH } from '../../utils/queries';
 import SearchCard from './components/SearchCard';
 import breedlist from '../../utils/breedlist';
 import colorlist from '../../utils/colorlist';
+import Auth from "../../utils/auth";
 // import Grid from "@material-ui/core/Grid";
 
 export default function Search() {
