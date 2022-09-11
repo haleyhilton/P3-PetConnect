@@ -17,7 +17,7 @@ export default function SocialCard(props) {
                     <span className="close" onClick={handleOpen}>&times;</span>
                     <div className="modal-inner-wrapper">
                         <div className="modal-inner-image" style={{backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})`}}>
-                            <a href={'/external-profiles/'+ props.pet.ownerId} className='dog-stats'>My Owner</a>
+                            <a href={'/external-profiles/'+ props.pet.ownerId} className='dog-stats'>Owner: {props.pet.ownerName}</a>
                             <p className="dog-stats">Name: {props.pet.name}</p>
                             <p className="dog-stats">Age: {props.pet.age}</p>
                             <p className="dog-stats">Breed: {props.pet.breed}</p>

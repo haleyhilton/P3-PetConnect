@@ -17,6 +17,7 @@ function Social() {
             for (let j = 0; j < pets.length; j++) {
                 const currentPet = {...pets[j]};
                 currentPet.ownerId = arr[i]._id;
+                currentPet.ownerName = (arr[i].first_name + " " + arr[i].last_name);
                 petArr.push(currentPet);
             };
         };
