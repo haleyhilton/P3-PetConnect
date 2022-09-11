@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import beagle from '../../images/beagle.png'
 import bulldog from '../../images/bulldog.png'
 import poodle from '../../images/poodle.png'
@@ -9,11 +9,24 @@ import frenchy from '../../images/frenchy.png'
 import golden from '../../images/golden.png'
 import lab from '../../images/lab.png'
 import './style.css'
+import {createMastText} from '../../utils/helpers'
+import Masthead from '../../components/Masthead'
 
 
 export default function Landing() {
+    const [text,setText] = useState();
+    
+    useEffect(() => {
+        const data = createMastText();
+
+        setText(data);
+
+        console.log("*****",data);
+    },[]);
+
     return (
         <div>
+            <Masthead {...createMastText()}/>
              
             <section className="page-section search" id="search">
                 <div className="container">
