@@ -22,6 +22,10 @@ const resolvers = {
     onePetName: async (parent, { name }) => {
       return Pet.findOne({ name: name });
     },
+    //for use on search page for links
+    oneUserByPetId: async (parent, { petId }) => {
+      return User.findOne({pet: { _id: petId} });
+    },
     viewUserPictures: async (parent, { profileId }) => {
       return User.findOne({ _id: profileId });
     },

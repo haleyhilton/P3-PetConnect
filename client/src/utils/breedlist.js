@@ -1,6 +1,46 @@
 const breedlist = [
+    "Labrador Retriever",
+    "French Bulldog",
+    "Golden Retriever",
+    "German Shepherd",
+    "Poodle",
+    "Bulldog",
+    "Beagle",
+    "Rottweiler",
+    "German Shorthaired Pointer",
+    "Dachshund",
+    "Pembroke Welsh Corgi",
+    "Australian Shepherd",
+    "Yorkshire Terrier",
+    "Boxer",
+    "Cavalier King Charles Spaniel",
+    "Doberman Pinscher",
+    "Great Dane",
+    "Miniature Schnauzer",
+    "Siberian Husky",
+    "Bernese Moutain Dog",
+    "Cane Corso",
+    "Shih Tzu",
+    "Boston Terrier",
+    "Pomeranian",
+    "Havanese",
+    "English Springer Spaniel",
+    "Brittany",
+    "Shetland Sheepdog",
+    "Cocker Spaniel",
+    "Miniature American Shepherd",
+    "Border Collie",
+    "Vizla",
+    "Pug",
+    "Bassett Hound",
+    "Mastiff",
+    "Belgian Malinois",
     "Chihuahua",
-    "Beagle"
+    "Collie",
+    "Maltese",
+    "Weimaraner"
+    //AKC top 40 most popular dog breeds 2021 https://www.akc.org/expert-advice/dog-breeds/most-popular-dog-breeds-of-2021/
+    //add the rest later - David
 ];
 
 module.exports = breedlist;
