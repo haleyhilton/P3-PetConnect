@@ -118,9 +118,9 @@ const Cloudinary = (props) => {
   }
 
   const setFinalPicture = async (url) => {
-    console.log(url, "here is name")
+    console.log(url, "here is name");
     newProfilePicture.profilePicture = url;
-    console.log(newProfilePicture, "here is the updated")
+    console.log(newProfilePicture, "here is the updated");
     try {
       const { datum3 } = await setPicture({
         variables: { ...newProfilePicture },
@@ -133,61 +133,79 @@ const Cloudinary = (props) => {
     }
   };
 
- 
   return (
     <div className="main-component">
-      <div className="photo-gallery">
-        {userImages &&
-          userImages.map((userImage) => (
-            // console.log(dog.media[0].url, "dog picture"),
-            <div
-              key={userImage._id}
-              className="gallery-images"
-              style={{ backgroundImage: `url(${userImage.url})` }}
-            >
-                <button
-                  className="btn btn-primary"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => setFinalPicture(userImage.url)}
-                >
-                  Set Default
-                </button>
-            </div>
-          ))}
-      </div>
+      <h1>
+        <span>
+          <button className="btn btn-secondary" onClick={() => navigate(-1)}>
+            {" "}
+            <span>&lt;</span> Back{" "}
+          </button>{" "}
+          Gallery
+        </span>
+      </h1>
+      <div className="section-page">
+        <div className="centered-gallery">
+          <div className="photo-gallery">
+            {userImages &&
+              userImages.map((userImage) => (
+                // console.log(dog.media[0].url, "dog picture"),
+                <div className="centered-gallery">
+                  <div
+                    key={userImage._id}
+                    className="gallery-images"
+                    style={{ backgroundImage: `url(${userImage.url})` }}
+                  ></div>
+                  <button
+                    className="btn btn-primary"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => setFinalPicture(userImage.url)}
+                  >
+                    Set Default
+                  </button>
+                </div>
+              ))}
+          </div>
 
-      <div>
-        <button
-          id="upload-widget"
-          className="cloudinary-button"
-          onClick={() => handleOpenWidget()}
-        >
-          Upload New Photo
-        </button>
-        <h2>Preview Image</h2>
-        <div className="images-preview-container" style={imagePreviewContainer}>
-          {/* Show Pictures*/}
-          {images.map((image) => (
-            <div className="image-preview" style={styleImageContainer}>
-              <img src={image.url} style={imageStyleNew} />
-              {imageToRemove != image.public_id && (
-                <i
-                  className="fa fa-times-circle close-icon"
-                  style={closeIcon}
-                  onClick={() => handleRemoveImg(image)}
-                ></i>
-              )}
+          <div className="upload-section">
+            <div className="button-center">
+            <button
+              id="upload-widget"
+              className="cloudinary-button wow-button"
+              onClick={() => handleOpenWidget()}
+            >
+              Upload New Photo
+            </button>
+            <br />
+            <button
+              id="submit"
+              className="cloudinary-button wow-button"
+              onClick={() => handlePhotoSave()}
+            >
+              Confirm Add Picture
+            </button>
             </div>
-          ))}
+            <h2>Preview Image</h2>
+            <div
+              className="images-preview-container"
+              style={imagePreviewContainer}
+            >
+              {/* Show Pictures*/}
+              {images.map((image) => (
+                <div className="image-preview preview-image" style={styleImageContainer}>
+                  <img src={image.url} style={imageStyleNew} />
+                  {imageToRemove != image.public_id && (
+                    <i
+                      className="fa fa-times-circle close-icon"
+                      style={closeIcon}
+                      onClick={() => handleRemoveImg(image)}
+                    ></i>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        <br />
-        <button
-          id="submit"
-          className="cloudinary-button"
-          onClick={() => handlePhotoSave()}
-        >
-          Confirm Add Picture
-        </button>
       </div>
     </div>
   );

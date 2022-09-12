@@ -17,6 +17,9 @@ export default function EditBilling() {
             Billing Settings
           </span>
         </h1>
+        <div>
+          No Credit Cards Added
+        </div>
       </div>
     </div>
   );
