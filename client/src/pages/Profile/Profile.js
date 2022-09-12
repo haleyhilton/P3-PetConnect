@@ -125,7 +125,9 @@ const textArea = {
           Hi! I am a dog breeder in the San Diego Area
         </div>
         <div class="message">
-          <button>Message</button>
+          <button> 
+            <a href={`/chat/${profileId}`}>Message</a></button>
+         
         </div>
       </div>
 

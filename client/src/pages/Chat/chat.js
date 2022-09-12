@@ -17,6 +17,7 @@ import { QUERY_ONE_USER } from '../../utils/queries';
 import { CREATE_USER_MESSAGE } from '../../utils/mutations';
 import { useParams } from "react-router-dom";
 import AuthService from '../../utils/auth';
+import formatDate from '../../utils/date';
 
 
 const styles = {
@@ -58,7 +59,7 @@ const styles = {
     receiverAvatar: {
         position: "relative",
         right: "30px",
-        top: "50px",
+        top: "30px",
     },
     sender: {
         display: "flex",
@@ -73,7 +74,7 @@ const styles = {
         overflowWrap: "break-word",
         wordBreak: "break-all",
         position: "relative",
-        left: "67%"
+        left: "72%"
     },
     senderTime: {
         display: "flex",
@@ -82,7 +83,7 @@ const styles = {
     senderAvatar: {
         position: "relative",
         left: "99%",
-        top: "50px",
+        top: "30px",
     },
     messageArea: {
       height: '70vh',
@@ -109,7 +110,6 @@ function Chat() {
   );
   
   const [receiverBubble, setReceiverBubble] = useState([]);
-  console.log("DDDDDDDDD",data)
 
   const [ senderBubble, setSenderBubble ] = useState([]);
 
@@ -144,8 +144,12 @@ function Chat() {
             })
             
             console.log("receiver mess array", receiverMessages, senderMessages)
+
+            // filter out proper messages in conversation
+            const filteredResult = receiverMessages.filter(filterMess);
+            console.log("@@@@@@@@", filteredResult)
     
-            setReceiverBubble(receiverMessages);
+            setReceiverBubble(filteredResult);
 
             setSenderBubble(senderMessages);
 
@@ -160,8 +164,9 @@ function Chat() {
     // Need to add from token sender and params receiver
     const [ createMessage, setCreateMessage ] = useState({
         messageText: "",
-        senderId: "630d906c198859fcc30ce27a",
-        receiverId: "630d906c198859fcc30ce274",
+        senderId: `${AuthService.getUser().data._id}`,
+        receiverId: `${profileId}`,
+        sentBy: `${AuthService.getUser().data.username}`,
     });
 
     // Making mutation
@@ -185,7 +190,7 @@ function Chat() {
 
            window.location.reload();
 
-           //setReceiverBubble(...receiverBubble, messageData.data.createMessage.messageText)
+        //    setReceiverBubble(...receiverBubble, messageData.data.createMessage.messageText)
 
 
         } catch (err) {
@@ -193,47 +198,56 @@ function Chat() {
         }
     }
 
-    // TODO: Need to get the click in message page to link to chat page with user id in params
-    // TODO: need to be able to click on a profile message button that automatically opens up chat page with user id in params to 
-// TODO: to start conversation
-// TODO: need to fix what messages display on message page 
-// TODO: maybe find replacement for window.location.reload()
+    // function to filter out only what ids are corresponding to the conversation
+    function filterMess(mes) {
+        const id = AuthService.getUser().data._id;
+
+        if (mes.receiverId === id) {
+            return mes;
+        }
+    }
+
+
+// TODO: need to be able to click on a profile message button that automatically opens up chat page with user id in params to start conversation
+// TODO: Change date format
 
 
     return (
         <div>
-            <h1 style={styles.header}> {nameState}
+            <h1 style={styles.header}> {nameState} {console.log("NAME", nameState)}
             {/* Need to change this to the profile picture rather than the media url */}
-            <IconButton style={styles.button}> <Avatar alt="User-profile picture" src="#" sx={{ width: 56, height: 56 }} /> </IconButton>
+            <IconButton style={styles.button}> <Avatar alt={Array.from(nameState)[0]} src="#" sx={{ width: 56, height: 56 }} /> </IconButton>
             </h1>
             <div style={styles.chatBox}> 
               <Grid item xs={9}>
                   <List style={styles.messageArea}>
                     {receiverBubble.map((mess) => {
+                        console.log("44444444",mess)
                         return (
                             <ListItem>
                          <Grid container>
                              <Grid item xs={12}>
-                                 <Avatar style={styles.receiverAvatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                                 <Avatar style={styles.receiverAvatar} alt={Array.from(nameState)[0]} src="/static/images/avatar/1.jpg" />
                                  <ListItemText style={styles.receiver} primary={mess.messageText}></ListItemText>
                              </Grid>
                              <Grid item xs={12}>
-                                 <ListItemText  style={styles.receiverTime} secondary="This is where time will be displayed - 09:30 pm"></ListItemText>
+                                 <ListItemText  style={styles.receiverTime} secondary={mess.lastUpdated}></ListItemText>
                              </Grid>
                          </Grid>
                      </ListItem>
                         )   
                     })}
                     {senderBubble.map((mess2) => {
+                        console.log("mess2",mess2)
                         return (
                       <ListItem>
                           <Grid container>
                               <Grid item xs={12}>
-                                  <Avatar style={styles.senderAvatar} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                                  <Avatar style={styles.senderAvatar} alt={Array.from(AuthService.getUser().data.username)[0].toUpperCase()} src="/static/images/avatar/3.jpg" />
                                   <ListItemText style={styles.sender} primary={mess2.messageText}></ListItemText>
                               </Grid>
                               <Grid item xs={12}>
-                                  <ListItemText style={styles.senderTime} secondary="09:31 pm"></ListItemText>
+                                  <ListItemText style={styles.senderTime} secondary={mess2.lastUpdated}></ListItemText>
                               </Grid>
                           </Grid>
                       </ListItem>

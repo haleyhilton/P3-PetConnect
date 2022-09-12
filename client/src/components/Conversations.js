@@ -65,7 +65,7 @@ function Conversations({ conversations }) {
                         <ListItemButton href={`/chat/${messages.senderId}`}>
                             <ListItemAvatar>
                                 {/* Add Cloudinary profile pictures url */}
-                                <Avatar alt="Remy Sharp" src="#" />
+                                <Avatar alt={Array.from(messages.sent_by)[0].toUpperCase()} src="#" />
                             </ListItemAvatar>
                                     <ListItemText
                                     // this will display receiver name for messages
