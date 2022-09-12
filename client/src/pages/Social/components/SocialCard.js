@@ -4,18 +4,18 @@ import placeholder from '../../../images/results.PNG'
 
 export default function SocialCard(props) {
     const [isOpen, setIsOpen] = React.useState(true);
-    
+
 
     const handleOpen = async (event) => {
         // toggle vis
         setIsOpen((current) => !current);
     };
 
-    
+
 
     const handleLikeClick = event => {
-      // 👇️ toggle isActive state on click
-      event.currentTarget.classList.toggle('liked')
+        // 👇️ toggle isActive state on click
+        event.currentTarget.classList.toggle('liked')
     };
 
 
@@ -25,12 +25,12 @@ export default function SocialCard(props) {
 
             <div key={props.pet._id} className="box" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }} onClick={handleOpen}></div>
             <div className="smallerbox" >
-                <button className="button button-like" onClick={handleLikeClick}>
+                <button className="button button-like button-move" onClick={handleLikeClick}>
                     <i className="fa fa-heart"></i>
-                    
+
                 </button>
 
-                <textarea className='comment'></textarea>
+                <div><textarea placeholder="Leave Comment" className='comment'></textarea></div>
             </div>
             <div id="myModal" className="modal" style={{ display: isOpen ? "none" : "block" }}>
                 <div className="modal-content">

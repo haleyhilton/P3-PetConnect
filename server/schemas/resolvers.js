@@ -212,9 +212,10 @@ const resolvers = {
         }
       );
     },
-    deletePet: async (parent, { _id }) => {
+    deletePet: async (parent, pet) => {
+      console.log(pet)
       return Pet.findByIdAndDelete(
-        { _id: _id },
+        { _id: pet._id },
         {
           new: true,
           runValidators: true,
