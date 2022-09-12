@@ -47,7 +47,9 @@ Link showing functionality, usage and final deployment [here]
 <a name="Screenshots"></a>
 
 ## Screenshots
+![FrontPage](/client/src/images/readMeScreenshots/Frontpage.png)
 
+![Profile](/client/src/images/readMeScreenshots/profile.png)
 
 <a name="Questions"></a>
 
@@ -60,4 +62,4 @@ Email us at:<br>
 [David Ryan](dryan10101@gmail.com)<br>
 [Haley Hilton Zito](haleymariehilton@gmail.com)<br>
 [Josh Jankowski](joshjankowski@gmail.com)<br>
-[Nathan Stein](NathanStein@gmail.com)<br>
+[Nathan Stein](nathanstein.dev@gmail.com)<br>
