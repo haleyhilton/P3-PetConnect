@@ -71,6 +71,146 @@
       {
         "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661830927/blacklab2_z3sxyb.jpg"
       }]
+    },
+    {
+      "_id": "631eed37778834a5ed052169",
+      "name": "Chewy",
+      "age": 5,
+      "breed": "Chocolate Lab",
+      "sex": "male",
+      "size": "large",
+      "color": "chocolate",
+      "description": "These tables just don't taste like they used to...",
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1662965138/chocolatelab2_szkpv3.jpg"
+      }
+    },
+    {
+      "_id": "631eed37778834a5ed052168",
+      "name": "Darnel-Choobaka",
+      "age": 3,
+      "breed": "Husky",
+      "sex": "female",
+      "size": "medium",
+      "color": "brown and white",
+      "description": "I may be husky but I'm not fat. I'm just P-H-A-T",
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1662965781/husky_lnzn6l.jpg"
+      }
+    },
+    {
+      "_id": "631eed37778834a5ed052167",
+      "name": "Pugsly",
+      "age": 11,
+      "breed": "Pug",
+      "sex": "male",
+      "size": "small",
+      "color": "black",
+      "description": "Does this hate make me look phat?",
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1662965870/pug.jps_yiy9dd.jpg"
+      }
+    },
+    {
+      "_id": "631eed37778834a5ed052166",
+      "name": "Soapy Josefina",
+      "age": 6,
+      "breed": "Pug",
+      "sex": "female",
+      "size": "small",
+      "color": "tan",
+      "description": "I like long walks in the shower and lots of facial scrubs.",
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1662965930/pugbath_lcbodj.jpg"
+      }
+    },
+    {
+      "_id": "631eed37778834a5ed052165",
+      "name": "Cigs",
+      "age": 4,
+      "breed": "llama",
+      "sex": "female",
+      "size": "medium",
+      "color": "white",
+      "description": "Llama tell you, I'm a dog at heart!",
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1662966572/goat_mewpuj.jpg"
+      }
+    },
+    {
+      "_id": "631eed37778834a5ed052162",
+      "name": "Terry",
+      "age": 1,
+      "breed": "Terrier",
+      "sex": "male",
+      "size": "small",
+      "color": "white",
+      "description": "Does this green hoodie give me a 1 up on the competition?",
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1662966022/greenhairterrier_zw9f2k.jpg"
+      }
+    },
+    {
+      "_id": "631eed37778834a5ed052164",
+      "name": "Donald Trump",
+      "age": 96,
+      "breed": "chihuahua",
+      "sex": "male",
+      "size": "large",
+      "color": "tan",
+      "description": "My bark account is YOO-UGE!!",
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1662966684/trump_jhaxke.jpg"
+      }
+    },
+    {
+      "_id": "631eed37778834a5ed052163",
+      "name": "Zaddy Long Legs",
+      "age": 12,
+      "breed": "Dachschund",
+      "sex": "male",
+      "size": "small",
+      "color": "black",
+      "description": "These legs have ears for days.",
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1662966104/dachschund_v9vzdo.jpg"
+      }
+    },
+    {
+      "_id": "631eed37778834a5ed052161",
+      "name": "Messy Queen",
+      "age": 7,
+      "breed": "Labrador",
+      "sex": "female",
+      "size": "large",
+      "color": "brown",
+      "description": "You look as good as how drunk I am.",
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1662966362/drunkretriever_ovbjvd.jpg"
+      }
+    },
+    {
+      "_id": "631eed37778834a5ed052160",
+      "name": "Chocolatey Goodness",
+      "age": 9,
+      "breed": "Chocolate Lab",
+      "sex": "female",
+      "size": "large",
+      "color": "tan",
+      "description": "Mama said there would be days like this!",
+      "for_sale": "false",
+      "media": {
+        "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1662966169/chocolatelab_y4hfrl.jpg"
+      }
     }
   ]  
   
