@@ -4,6 +4,7 @@ import heart from '../../../images/like.png'
 import { QUERY_ONE_USER_BY_PET_ID } from '../../../utils/queries';
 
 export default function SearchCard(props) {
+
   const [getOwner] = useLazyQuery(QUERY_ONE_USER_BY_PET_ID, { variables: { petId: props.pet._id } });
 
   //makeshift link to the dog owner's profile page
@@ -31,9 +32,7 @@ export default function SearchCard(props) {
           
           <div class="card-text">
         <span> {props.pet.age}</span> |
-          {/* <i className="fa-solid fa-circle-small"></i>           */}
           <span class="capital"> {props.pet.breed}</span> |
-          {/* <i className="fa-solid fa-circle-small"></i>           */}
           <span class="capital"> {props.pet.sex}</span>
           </div>
           <div class="card-text">

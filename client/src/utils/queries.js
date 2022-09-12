@@ -3,6 +3,7 @@ import { gql } from '@apollo/client';
 export const QUERY_USER = gql`
 query User {
   user {
+    _id
     username
     password
     email
@@ -10,6 +11,21 @@ query User {
     last_name
     date_of_birth
     zip_code
+    pet {
+      _id
+      name
+      age
+      breed
+      sex
+      size
+      color
+      description
+      for_sale
+      media {
+        _id
+        url
+      }
+    }
   }
 }
 `;
@@ -88,9 +104,21 @@ query OnePet($profileId: ID!) {
 }
 `;
 
-// export const QUERY_ALL_PET = gql`
-// query AllPet
-// `
+
+
+export const QUERY_ALL_PET = gql `query QUERY_ALL_PET {
+  pet {
+    name
+    age
+    breed
+    description
+    _id
+    media {
+      _id
+      url
+    }
+  }
+}`;
 
 export const QUERY_PET_BY_NAME = gql`
 query Query($name: String) {

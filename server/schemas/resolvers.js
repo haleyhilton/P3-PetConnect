@@ -16,10 +16,6 @@ const resolvers = {
     oneUser: async (parent, { profileId }) => {
       return User.findOne({ _id: profileId }).populate('pet').populate('post').populate('messages');
     },
-    //for use on search page for links
-    oneUserByPetId: async (parent, { petId }) => {
-      return User.findOne({pet: { _id: petId} });
-    },
     onePet: async (parent, { profileId }) => {
       return Pet.findOne({ _id: profileId });
     },
@@ -146,6 +142,21 @@ const resolvers = {
         }
       );
     },
+    editUserInfo: async (parent, { profileId, first_name, last_name }) => {
+      return User.findOneAndUpdate(
+        { _id: profileId },
+        {
+          $set: { 
+            first_name: first_name,
+            last_name: last_name,
+          },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
     // See typedefs for what specific fields it needs. Media and Pets are not included
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
@@ -181,6 +192,15 @@ const resolvers = {
         {
           $addToSet: { pet: pet },
         },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    deletePet: async (parent, { profileId, pet }) => {
+      return User.findByIdAndDelete(
+        { _id: petId },
         {
           new: true,
           runValidators: true,
