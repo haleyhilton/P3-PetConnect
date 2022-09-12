@@ -4,6 +4,24 @@
   align-items: center;
 }
 
+.top-box {
+  width: 400px;
+  height: 50px;
+  border: solid #a7848433;
+  border-bottom: 1px;
+  margin-top: 10%;
+  border-radius: 5px 5px 0% 0%;
+  background-color: lightsteelblue;
+}
+
+.dog-name {
+  display: flex;
+  justify-content: center;
+  top: 25%;
+  text-transform: capitalize;
+  font-family: 'SulphurPoint-Regular';
+  color: #023047;
+}
 
 .box {
   
@@ -11,9 +29,9 @@
   height: 400px;
   background-size: cover;
   background-repeat: none;
-  border: solid #000;
-  border-width: 1px 1px ;
-  margin-top: 25px;
+  border: solid #a7848433;
+  border-width: 2px 2px ;
+  /* margin-top: 25px; */
 
 }
 
@@ -21,10 +39,10 @@
 .smallerbox{
   width: 400px;
   height: 75px;
-  border: solid #000;
-  border-width: 0 1px 1px;
+  border: solid #a7848433;
+  border-width: 0 2px 2px;
   margin-bottom: 25px;
-
+  border-radius: 0% 0% 5px 5px;
 
 }
 
@@ -32,7 +50,7 @@
 
 .button-like {
 
-  border: 2px solid #8a8a8a;
+  border: 2px solid #023047;
   background-color: transparent;
   text-decoration: none;
   padding: 1rem;
@@ -42,7 +60,7 @@
   text-align: center;
   display: inline-block;
   border-radius: 3rem;
-  color: #8a8a8a;
+  color: #023047;
   transition: all ease 0.4s;
 }
 

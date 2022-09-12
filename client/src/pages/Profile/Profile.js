@@ -98,7 +98,7 @@ export default function Profile(props) {
         </div>
       </div>
 
-    <div className="row">
+    <div className="row custom-row">
       <div className="col-9 details">
 
         <div className="name">
@@ -106,13 +106,14 @@ export default function Profile(props) {
         </div>
 
 
-        <div>Buyer/Seller</div>
-        <div>⭐️⭐️⭐️⭐️⭐️</div>
+        <div className="buyer-seller">Buyer/Seller</div>
+  
 
         <div className="about-me-section">
           Hello! I'm {profile.first_name} and I am a dog breeder in {profile.zip_code}
 
         </div>
+        <div>⭐️⭐️⭐️⭐️⭐️</div>
         <br></br>
         <div class="message">
           <button className='message-btn'> 

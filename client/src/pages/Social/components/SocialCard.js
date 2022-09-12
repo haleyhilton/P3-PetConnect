@@ -22,7 +22,7 @@ export default function SocialCard(props) {
 
     return (
         <div>
-
+            <div className="top-box"><p className="dog-name">{props.pet.name}</p></div>
             <div key={props.pet._id} className="box" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }} onClick={handleOpen}></div>
             <div className="smallerbox" >
                 <button className="button button-like button-move" onClick={handleLikeClick}>
