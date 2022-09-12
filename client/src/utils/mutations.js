@@ -133,3 +133,15 @@ mutation Mutation($petId: String!, $media: String!) {
   }
 }
 `;
+
+
+export const EDIT_USER = gql`
+mutation Mutation($profileId: ID!, $firstName: String!, $lastName: String!) {
+  editUserInfo(profileId: $profileId, first_name: $firstName, last_name: $lastName) {
+    _id
+    first_name
+    last_name
+    username
+  }
+}
+`;
