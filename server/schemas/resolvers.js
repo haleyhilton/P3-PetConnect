@@ -198,9 +198,10 @@ const resolvers = {
         }
       );
     },
-    deletePet: async (parent, { profileId, pet }) => {
-      return User.findByIdAndDelete(
-        { _id: petId },
+    deletePet: async (parent, pet) => {
+      console.log(pet)
+      return Pet.findByIdAndDelete(
+        { _id: pet._id },
         {
           new: true,
           runValidators: true,
