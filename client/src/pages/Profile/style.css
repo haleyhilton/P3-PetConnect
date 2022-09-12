@@ -122,9 +122,10 @@
 }
 
 .grid-item {
-  object-fit: cover;
-  height: 430px;
-  width: 470px;
+  background-repeat: no-repeat;
+  background-size: cover;  
+  height: 250px;
+  width: 250px;
   box-shadow: 0 20px 40px rgb(0 0 0 / 10%);
   margin: 0.5rem;
   border-radius: 5px;
