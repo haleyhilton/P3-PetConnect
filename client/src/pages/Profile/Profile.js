@@ -115,7 +115,7 @@ export default function Profile(props) {
         </div>
         <div>⭐️⭐️⭐️⭐️⭐️</div>
         <br></br>
-        <div class="message">
+        <div className="message">
           <button className='message-btn'> 
             <a className="message-text" href={`/chat/${profileId}`}>Message</a></button>
          
@@ -133,23 +133,23 @@ export default function Profile(props) {
         </div>
         </div>
 
-      <div class="posts">
+      <div className="posts">
 
       </div>
       <ProfileDog dogs={dogProfile}/>
 
-      <div class="wrapattack">
+      <div className="wrapattack">
         {/* Modal for Adding a Dog */}
         <div
           id="myModal"
-          class="modal"
+          className="modal"
           style={{ display: isPostOpen ? "none" : "block" }}
         >
-          <div class="modal-content">
-            <span class="close" onClick={handlePostOpen}>
+          <div className="modal-content">
+            <span className="close" onClick={handlePostOpen}>
               &times;
             </span>
-            <form onSubmit={handleFormSubmit} class="modal-inner-wrapper">
+            <form onSubmit={handleFormSubmit} className="modal-inner-wrapper">
 
               <label>Name</label>
               <input

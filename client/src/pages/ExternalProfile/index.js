@@ -61,7 +61,7 @@ export default function ExternalProfile(props) {
             </div>
             <div>⭐️⭐️⭐️⭐️⭐️</div>
             <br></br>
-            <div class="message">
+            <div className="message">
               <button className='message-btn'>
                 <a className="message-text" href={`/chat/${profileId}`}>Message</a></button>
             </div>
@@ -71,9 +71,9 @@ export default function ExternalProfile(props) {
             </div>
           </div>
         </div>
-        <div class="posts">
+        <div className="posts">
         </div>
-        <div class="titlewrapper">
+        <div className="titlewrapper">
           <div>Dogs</div>
         </div>
         <div className="wrapattack">
