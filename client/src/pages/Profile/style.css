@@ -4,7 +4,7 @@
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://dogsbestlife.com/wp-content/uploads/2020/01/collie-puppy.jpeg");
   
   /* Set a specific height */
-  height: 600px;
+  height: 350px;
   
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
@@ -29,17 +29,16 @@
   }
 /* Masthead Profile Bio */ 
   .details {
-    
-    padding: 6rem 0 2rem;
+    padding: 9rem 0 1rem;
     padding-left: 100px;
     display: flex;
     flex-direction: column;
     font-size: x-large;
-  line-height: 150%;
+    line-height: 130%;
   }
 
   .name {
-    font-size: xx-large;
+    font-size: larger;
     font-weight: 600;
     line-height: 190%;
 }
@@ -54,10 +53,14 @@
   padding-right: 200px;
   padding-top: 50px;
   }
-  
+
+  .buyer-seller, .about-me-section {
+    font-size: medium;
+  }
+
 /*Masthead Bio Buttons */
   .button-box {
-   padding: 6rem 3rem 0rem;
+   padding: 8rem 3rem 0rem;
   }
 
   .box-btn {
@@ -70,7 +73,7 @@
     color: black;
     box-shadow: 10px 20px 40px rgb(0 0 0 / 20%);
     border: none;
-    font-size: larger;
+    font-size: large;
   }
 
   .message {
@@ -78,9 +81,9 @@
   }
     .message-btn {
       background-color: aliceblue;
-      padding: 1rem;
+      padding: 10px;
       margin-bottom: 1rem;
-      width: 10%;
+      width: 20%;
       border-radius: 40px;
       text-decoration: none;
       color: black;
@@ -91,6 +94,7 @@
   .message-text {
     text-decoration: none;
     color: black;
+    font-size: large;
   }
 
 
@@ -136,7 +140,7 @@
   }
   
   .titlewrapper{
-    padding-top: 100px;
+    padding-top: 2rem;
     display: flex;
     justify-content: center;
     font-size: xx-large;
