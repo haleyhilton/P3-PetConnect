@@ -37,18 +37,21 @@ function Social() {
     
 
     return (
+        <div>
         <div className='centerfold'>
             {loading ? (
                 <div>Loading...</div>
             ) : (
-                <div className='grid-container'>
+                <div className='gridcontainer'>
                     {petsState.map((pet) => {
                         return (
                         <SocialCard pet={pet} />
                         )
                     })}
-                </div>
+                    </div>
+                
             )}
+        </div>
         </div>
     )
 };

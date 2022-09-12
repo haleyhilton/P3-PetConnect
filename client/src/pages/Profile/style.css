@@ -1,6 +1,6 @@
  body {
   background-color: #F0F8FF;
-  font-family: 'SulphurPoint-Regular';
+ 
   font-size: x-large;
  }
   
@@ -31,7 +31,6 @@
   border-radius: 50%;
   width: 200px;
   height: 200px;
-  /* background-image: url('../../images/selfie.jpeg'); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: 200px;
@@ -44,7 +43,9 @@
     display: flex;
     flex-direction: column;
     font-size: x-large;
-    border-bottom: 5px solid black
+    border-bottom: 5px solid black;
+    font-family: 'Helvetica';
+    
   }
   
   .edit {
@@ -70,11 +71,11 @@
   }
   .grid-item {
 
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 400px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: 200px;
+    background-size: 400px;
     background-color: black;
     display: flex;
     justify-content: end;
