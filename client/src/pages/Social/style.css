@@ -117,5 +117,14 @@
   }
 
   .comment {
-    left: 10px;
+    left: 75px;
+    top: -48px;
+    width: 300px;
+    height: 60px;
+
+  }
+
+  .button-move {
+left: 10px;
+top: 10px
   }

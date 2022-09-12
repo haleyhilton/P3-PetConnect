@@ -1,16 +1,22 @@
 import React from "react";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ONE_PET } from "../../utils/queries";
 import placeholder from '../../images/results.PNG'
 import PetCloudinary from '../PetCloudinary'
 import { Link } from 'react-router-dom';
 import { style } from "@mui/system";
+import { DELETE_ONE_PET } from "../../utils/mutations";
+
+
+
 
 const ProfileDog = ({ dogs }) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(true);
   const [isTest, setTest] = useState(true)
+
+  const [deletePetToUser, { err }] = useMutation(DELETE_ONE_PET);
 
   const [dogInfo, setDogInfo] = React.useState("");
   const [isOpen, setIsOpen] = React.useState(true);
@@ -37,6 +43,10 @@ const ProfileDog = ({ dogs }) => {
     setTest((current) => !current)
   }
 
+  const deleteFunction = (id) => {
+    deletePetToUser({variables : {id: id}})
+    window.location.reload()
+  }
 
 
   return (
@@ -59,12 +69,12 @@ const ProfileDog = ({ dogs }) => {
                   setDogInfo(dog._id)
 
                 }
-                else{testOpen()}
+                else{deleteFunction(dog._id)}
 
               }}>
 
 
-                <div className="deleteButton" style={{ display: isDeleteOpen ? "none" : "block" , backgroundColor: isTest ? "orange" : "purple"}}>X</div>
+                <div className="deleteButton" style={{ display: isDeleteOpen ? "none" : "block"}}>X</div>
               </div>
             )
 
