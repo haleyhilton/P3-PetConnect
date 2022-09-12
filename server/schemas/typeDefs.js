@@ -115,6 +115,7 @@ const typeDefs = gql`
     createMessage(messageText: String!, senderId: String!, sent_by: String, receiverId: String!, received_by: String lastMessage: String, lastUpdated: String): Messages
     deleteMessage(_id: ID!, messageId: String!): User
     deletePet(_id: ID!): Pet
+    editUserInfo(profileId: ID!, first_name: String!, last_name: String!): User
 
     addUser(username: String!, email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth

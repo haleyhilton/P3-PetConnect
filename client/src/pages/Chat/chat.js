@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Divider from '@material-ui/core/Divider';
@@ -12,8 +12,12 @@ import Avatar from '@material-ui/core/Avatar';
 import Fab from '@material-ui/core/Fab';
 import SendIcon from '@material-ui/icons/Send';
 import { IconButton } from '@mui/material';
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_ONE_USER } from '../../utils/queries';
+import { CREATE_USER_MESSAGE } from '../../utils/mutations';
+import { useParams } from "react-router-dom";
+import AuthService from '../../utils/auth';
+import formatDate from '../../utils/date';
 
 
 const styles = {
@@ -55,7 +59,7 @@ const styles = {
     receiverAvatar: {
         position: "relative",
         right: "30px",
-        top: "50px",
+        top: "30px",
     },
     sender: {
         display: "flex",
@@ -70,7 +74,7 @@ const styles = {
         overflowWrap: "break-word",
         wordBreak: "break-all",
         position: "relative",
-        left: "67%"
+        left: "72%"
     },
     senderTime: {
         display: "flex",
@@ -79,7 +83,7 @@ const styles = {
     senderAvatar: {
         position: "relative",
         left: "99%",
-        top: "50px",
+        top: "30px",
     },
     messageArea: {
       height: '70vh',
@@ -91,74 +95,172 @@ const styles = {
     button: {
         position: "relative",
         top: "45px",
-        right: "110px",
+        right: "160px",
     }
   };
 // TODO: Write an if statement to display a message on whole page if there are no current messages for this person
 function Chat() {
-    const { loading, data } = useQuery( QUERY_ONE_USER )
-    const messages = data?.oneUser || [];
-     console.log(messages)
+
+    // Query other user
+    const { profileId } = useParams()
+  const { loading, data } = useQuery(QUERY_ONE_USER,
+    {
+      variables: { profileId: profileId },
+    }
+  );
+  
+  const [receiverBubble, setReceiverBubble] = useState([]);
+
+  const [ senderBubble, setSenderBubble ] = useState([]);
+
+  const [ nameState, setNameState ] = useState('')
+  
+
+  useEffect(() => {
+      const chat = data?.oneUser || [];
+      console.log(chat)
+        console.log("useEffect",chat)
+        
+        if (data) {
+
+            const id = AuthService.getUser().data._id;
+
+            console.log(id);
+            
+            const converse = chat.messages;
+
+            console.log("converse", converse)
+         
+            const receiverMessages = converse.filter(function (converse) {
+                return converse.senderId === profileId;
+            }).map(function (converse) {
+                return converse;
+            })
+
+            const senderMessages = converse.filter(function (converse) {
+                return converse.senderId === id;
+            }).map(function (converse) {
+                return converse;
+            })
+            
+            console.log("receiver mess array", receiverMessages, senderMessages)
+
+            // filter out proper messages in conversation
+            const filteredResult = receiverMessages.filter(filterMess);
+            console.log("@@@@@@@@", filteredResult)
+    
+            setReceiverBubble(filteredResult);
+
+            setSenderBubble(senderMessages);
+
+            setNameState(`${chat.first_name} ${chat.last_name}`)
+            
+        }
+       
+    }, [loading]);
+
+
+    // Logic to send message to database
+    // Need to add from token sender and params receiver
+    const [ createMessage, setCreateMessage ] = useState({
+        messageText: "",
+        senderId: `${AuthService.getUser().data._id}`,
+        receiverId: `${profileId}`,
+        sentBy: `${AuthService.getUser().data.username}`,
+    });
+
+    // Making mutation
+    const [ sendMessage, { error }] = useMutation(CREATE_USER_MESSAGE)
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setCreateMessage({
+          ...createMessage,
+          [name]: value,
+        });
+    }
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        try {
+           const messageData = await sendMessage({
+            variables: {...createMessage}
+           });
+
+           console.log("Message Data", messageData)
+
+           window.location.reload();
+
+        //    setReceiverBubble(...receiverBubble, messageData.data.createMessage.messageText)
+
+
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+    // function to filter out only what ids are corresponding to the conversation
+    function filterMess(mes) {
+        const id = AuthService.getUser().data._id;
+
+        if (mes.receiverId === id) {
+            return mes;
+        }
+    }
+
+
+// TODO: need to be able to click on a profile message button that automatically opens up chat page with user id in params to start conversation
+// TODO: Change date format
+
+
     return (
         <div>
-            <h1 style={styles.header}> 
-            <IconButton style={styles.button}> <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" sx={{ width: 56, height: 56 }} /> </IconButton>
+            <h1 style={styles.header}> {nameState} {console.log("NAME", nameState)}
+            {/* Need to change this to the profile picture rather than the media url */}
+            <IconButton style={styles.button}> <Avatar alt={Array.from(nameState)[0]} src="#" sx={{ width: 56, height: 56 }} /> </IconButton>
             </h1>
             <div style={styles.chatBox}> 
               <Grid item xs={9}>
                   <List style={styles.messageArea}>
-                      <ListItem key="1">
+                    {receiverBubble.map((mess) => {
+                        console.log("44444444",mess)
+                        return (
+                            <ListItem>
+                         <Grid container>
+                             <Grid item xs={12}>
+                                 <Avatar style={styles.receiverAvatar} alt={Array.from(nameState)[0]} src="/static/images/avatar/1.jpg" />
+                                 <ListItemText style={styles.receiver} primary={mess.messageText}></ListItemText>
+                             </Grid>
+                             <Grid item xs={12}>
+                                 <ListItemText  style={styles.receiverTime} secondary={mess.lastUpdated}></ListItemText>
+                             </Grid>
+                         </Grid>
+                     </ListItem>
+                        )   
+                    })}
+                    {senderBubble.map((mess2) => {
+                        console.log("mess2",mess2)
+                        return (
+                      <ListItem>
                           <Grid container>
                               <Grid item xs={12}>
-                                  <Avatar style={styles.senderAvatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                  <ListItemText style={styles.sender} primary="This is where sender message will go dgjhsfdgjsdfgjsfdgjsfgjsfgjsfghkdghjkdfghjkdhfjdhfjdfghjdfghjdfghjdfghjdfghjdfghjdfgh"></ListItemText>
+                                  <Avatar style={styles.senderAvatar} alt={Array.from(AuthService.getUser().data.username)[0].toUpperCase()} src="/static/images/avatar/3.jpg" />
+                                  <ListItemText style={styles.sender} primary={mess2.messageText}></ListItemText>
                               </Grid>
                               <Grid item xs={12}>
-                                  <ListItemText  style={styles.senderTime} secondary="This is where time will be displayed - 09:30 pm"></ListItemText>
+                                  <ListItemText style={styles.senderTime} secondary={mess2.lastUpdated}></ListItemText>
                               </Grid>
                           </Grid>
                       </ListItem>
-                      <ListItem key="2">
-                          <Grid container>
-                              <Grid item xs={12}>
-                                  <Avatar style={styles.receiverAvatar} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                                  <ListItemText style={styles.receiver} primary="This is where receiver message will go dfhdfhdfhfhdfsdgsasdgasdgasdgasdgasddfgjfgjfdsgjdfgjdfgdgasdgsadg dfhbsfhdsfhsxdf sdgasgdasdfgsdfghsdfg dfbsfsfdghsdfgsdgsdfgsdfgsdg sfrhgsdg"></ListItemText>
-                              </Grid>
-                              <Grid item xs={12}>
-                                  <ListItemText style={styles.receiverTime} secondary="09:31 pm"></ListItemText>
-                              </Grid>
-                          </Grid>
-                      </ListItem>
-                      <ListItem key="3">
-                          <Grid container>
-                              <Grid item xs={12}>
-                                  <Avatar style={styles.senderAvatar} alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                                  <ListItemText  style={styles.sender} primary="Text is wrapping when it is more than bubble! asrgasrfhgadsfhadfhadfhadf"></ListItemText>
-                              </Grid>
-                              <Grid item xs={12}>
-                                  <ListItemText  style={styles.senderTime} align="right" secondary="10:30"></ListItemText>
-                              </Grid>
-                          </Grid>
-                      </ListItem>
-                      <ListItem key="">
-                          <Grid container>
-                              <Grid item xs={12}>
-                                  <Avatar style={styles.receiverAvatar} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                                  <ListItemText style={styles.receiver} primary="This is where receiver message will go dfhdfhdfhfhdfsdgsasdgasdgasdgasdgasddfgjfgjfdsgjdfgjdfgdgasdgsadg dfhbsfhdsfhsxdf sdgasgdasdfgsdfghsdfg dfbsfsfdghsdfgsdgsdfgsdfgsdg sfrhgsdg"></ListItemText>
-                              </Grid>
-                              <Grid item xs={12}>
-                                  <ListItemText style={styles.receiverTime} secondary="09:31 pm"></ListItemText>
-                              </Grid>
-                          </Grid>
-                      </ListItem>
+                        )
+                    })}
                   </List>
                   <Divider />
                   <Grid container style={{padding: '20px'}}>
                       <Grid item xs={11}>
-                          <TextField id="outlined-basic-email" label="Type Message" fullWidth />
+                          <TextField name="messageText" id="outlined-basic-email" label="Type Message" fullWidth onChange={handleInputChange}/>
                       </Grid>
                       <Grid xs={1} align="right">
-                          <Fab color="primary" aria-label="add"><SendIcon /></Fab>
+                          <Fab color="primary" aria-label="add" onClick={handleFormSubmit}><SendIcon /></Fab>
                       </Grid>
                   </Grid>
               </Grid>

@@ -115,9 +115,11 @@ export default function Profile(props) {
         </div>
         <br></br>
         <div class="message">
-          <button>Message</button>
-
+          <button> 
+            <a href={`/chat/${profileId}`}>Message</a></button>
+         
         </div>
+      </div>
 
         <div class="message">
           <button onClick={handlePostOpen}>Add New Dog!</button>
@@ -127,7 +129,6 @@ export default function Profile(props) {
             View Gallery
           </Link>
         </div>
-      </div>
 
 
       <div class="posts">
@@ -220,6 +221,6 @@ export default function Profile(props) {
 
         
       </div>
-    </div>
+    </div >
   );
 }
