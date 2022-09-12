@@ -13,6 +13,7 @@ export default function SearchCard(props) {
   
     const owner = await getOwner();
     if (owner) {
+      console.log(owner);
       window.location.replace(`/external-profiles/${owner.data.oneUserByPetId._id}`);
     }
   }
