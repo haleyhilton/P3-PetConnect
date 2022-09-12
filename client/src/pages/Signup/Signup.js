@@ -41,7 +41,7 @@ export default function Signup() {
   };
 
   return (
-    <div>
+    <div className="div-form">
       {/* <h2 className="signupH2">SIGN-UP</h2>
 
       <p>What Arf you waiting for?</p>
@@ -58,7 +58,7 @@ export default function Signup() {
           Success! You may now head <Link to="/">back to the homepage.</Link>
         </p>
       ) : (
-        <form className="form signup-form" onSubmit={handleFormSubmit}>
+        <form className="form signup-form form-addition" onSubmit={handleFormSubmit}>
           {/* <div className="form-group"> */}
             {/* <label for="fn-signup">First Name:</label>
             <input

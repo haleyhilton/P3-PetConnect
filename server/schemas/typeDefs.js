@@ -116,6 +116,8 @@ const typeDefs = gql`
     deleteMessage(_id: ID!, messageId: String!): User
     deletePet(_id: ID!): Pet
     editUserInfo(profileId: ID!, first_name: String!, last_name: String!): User
+    setProfilePicture(profileId: String!, profilePicture: String!): User
+
 
     addUser(username: String!, email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth

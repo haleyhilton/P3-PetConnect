@@ -11,10 +11,11 @@ import blankPicture from "../../images/blankprofile.PNG"
 import { QUERY_ONE_USER } from '../../utils/queries';
 
 export default function Header(props) {
-
+  const navigate = useNavigate();
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
+    navigate.push(`/`);
   };
 
  

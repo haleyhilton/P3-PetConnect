@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import Auth from "../../utils/auth";
+import './style.css'
 
 export default function Settings() {
   const navigate = useNavigate();
@@ -116,15 +117,15 @@ export default function Settings() {
         <div>
           {visibleOptions.map((option) => (
             <div key={option.header.name} className="mt-5 mt-2">
-              <h3>{option.header.name}</h3>
+              <h3 className="settings-header">{option.header.name}</h3>
 
               <div>
                 {option.values.map((value) => (
                   <div key={value.name}>
                     <ul className="list-group">
-                      <li className="list-group=item mb-2">
-                      <Link to={value.link}>
-                        <h6 className="font-weight-bold">{value.name}</h6>
+                      <li className="list-group-item mb-2">
+                      <Link to={value.link} className="link-group">
+                        <h5 className="settings-header">{value.name}</h5>
                         <h6>{value.description}</h6>
                       </Link>
                       </li>
