@@ -42,6 +42,39 @@
     background-repeat: no-repeat;
     background-size: 200px;
   }
+
+  .modal-inner-image {
+
+    width: 200px;
+    height: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.modal-inner-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  border: solid #888;
+  border-radius: 8px;
+  margin: 10px;
+  width: 75%;
+}
+
+.upload-btn {
+  background-color: aliceblue;
+  padding: 10px;
+  margin-bottom: 1rem;
+  width: 40%;
+  border-radius: 40px;
+  text-decoration: none;
+  color: black;
+  box-shadow: 10px 10px 40px rgb(0 0 0 / 10%);
+  border: none;
+}
+
   
   /* The Close Button */
   .close {

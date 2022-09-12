@@ -34,7 +34,7 @@ export default function Team() {
 
                     <div class="card-name mt-4"> David Rios<br /> <small>Chat Champion</small> </div>
                     <div class="card-sub">
-                        <p> <small class="text-muted"> I expected anything less than perfect for the team of experts. They are the best team ever! </small> </p>
+                        <p> <small class="text-muted"> I expected nothing less than perfect for the team of experts. They are the best team ever! </small> </p>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@ export default function Team() {
                 <div class="profile"> <img src={dryan} /> </div>
                     <div class="card-name mt-4"> David Ryan<br /> <small>Backend Wizard</small> </div>
                     <div class="card-sub">
-                        <p> <small class="text-muted"> I really enjoyed working with them, they are Group of Professionals and they know what they're Doing </small> </p>
+                        <p> <small class="text-muted"> I really enjoyed working with them, they are a group of Professionals and they know what they're doing </small> </p>
                     </div>
                 </div>
             </div>
