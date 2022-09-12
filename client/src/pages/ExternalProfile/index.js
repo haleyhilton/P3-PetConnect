@@ -6,6 +6,7 @@ import "./style.css";
 import Button from "react-bootstrap/Button";
 import placeholder from "../../images/results.PNG";
 import blankPicture from "../../images/blankprofile.PNG"
+import DogCard from "./components/DogCard";
 
 export default function ExternalProfile(props) {
   const [isOpen, setIsOpen] = React.useState(true);
@@ -45,52 +46,33 @@ export default function ExternalProfile(props) {
 
   return (
     <div className="external-profile">
-
-
-
-      
-
         <div className="hero-image">
           <div className="profile-pic" style={{ backgroundImage: `url(${profile.profilePicture ? profile.profilePicture : blankPicture})` }}>
-
           </div>
         </div>
-
         <div className="row custom-row">
           <div className="col-9 details">
-
             <div className="name">
               {profile.first_name} {profile.last_name}
             </div>
-
-
             <div className="buyer-seller">Buyer/Seller</div>
-
-
             <div className="about-me-section">
               Hello! I'm {profile.first_name} and I am a dog breeder in {profile.zip_code}
-
             </div>
             <div>⭐️⭐️⭐️⭐️⭐️</div>
             <br></br>
             <div class="message">
               <button className='message-btn'>
                 <a className="message-text" href={`/chat/${profileId}`}>Message</a></button>
-
             </div>
           </div>
           <div className="col-3 button-box">
-
             <div>
-
             </div>
           </div>
         </div>
-
         <div class="posts">
-
         </div>
-
         <div class="titlewrapper">
           <div>Dogs</div>
         </div>
@@ -100,47 +82,12 @@ export default function ExternalProfile(props) {
               pets.map(
                 (dog) =>
                 (
-                  <div key={dog._id} className="grid-item" style={{ backgroundImage: `url(${dog.media[0] ? dog.media[0].url : placeholder})` }} onClick={() => {
-
-                    handleOpen()
-                    setDogInfo(dog._id)
-
-                  }}>
-
-                  </div>
+                  <DogCard dog={dog} />
                 )
-
-              )}
+              )
+            }
           </div>
-          <div
-            id="myModal"
-            className="modal"
-            style={{ display: isOpen ? "none" : "block" }}
-          >
-            <div className="modal-content">
-              <span className="close" onClick={handleOpen}>
-                &times;
-              </span>
-              <div className="modal-inner-wrapper">
-                <div className="modal-inner-image" style={{ backgroundImage: `url(${profile?.media?.[0] ? profile.media[0].url : placeholder})` }}>
-
-                </div>
-                <p className="dog-stats">Name: {profile.name}</p>
-                <p className="dog-stats">Age: {profile.age}</p>
-                <p className="dog-stats">Breed: {profile.breed}</p>
-                <p className="dog-stats">Sex: {profile.sex}</p>
-                <p className="dog-stats">Size: {profile.size}</p>
-                <p className="dog-stats">Color: {profile.color}</p>
-                <p className="dog-stats">Description: {profile.description}</p>
-              </div>
-            </div>
-          </div>
-          </div>
-          </div>
-
-          
-          
-          
-
-          );
+        </div>
+      </div>
+  );
 }
