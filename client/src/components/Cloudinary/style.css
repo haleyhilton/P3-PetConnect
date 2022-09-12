@@ -1,7 +1,8 @@
 .main-component {
     display: flex;
-    justify-content: space-evenly;
-
+    justify-content: center;
+    padding: 30px;
+    flex-direction: column;
 }
 
 .photo-gallery {
@@ -25,4 +26,55 @@
     margin: 20px;
 }
 
+.centered-gallery {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.centered-gallery >button {
+    width: 200px;
+    margin: 20px;
+    margin-top: 1px;
+}
 
+.major-div {
+    display: flex;
+    justify-content: center;
+}
+
+/* 
+.two-components {
+    display: flex;
+    flex-direction: column;
+} */
+.button-size {
+    width: 200px;
+}
+
+.upload-section{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.section-page{
+    display: flex;
+    justify-content: center;
+}
+.upload-section >button {
+    height:40px;
+    width: 200px;
+}
+
+.button-center {
+    display: flex;
+    justify-content: center;
+}
+
+.wow-button {
+    margin: 10px;
+}
+
+.preview-image {
+    display: flex;
+    justify-content: center;
+}
