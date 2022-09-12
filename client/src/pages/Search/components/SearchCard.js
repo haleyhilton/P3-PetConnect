@@ -21,7 +21,7 @@ export default function SearchCard(props) {
     return (
 
     <div class="col-xl-3 col-md-6 mb-4" onClick={linkHandler}>
-      <div class="card petCard-border shadow">
+      <div class="card petCard-border shadow pointer-cursor">
         <img src={props.pet.media[0].url} width="20%" height="300px" class="card-img-top" alt="..."></img>
         {/* <favorite-btn class="petCard-favoriteBtn" pet-name="#" pet-id="#" pet-index="#" search-result=""> */}
         <input type="image" className="heart-like" src={heart} />          

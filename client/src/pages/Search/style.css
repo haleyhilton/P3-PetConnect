@@ -131,3 +131,7 @@ select {
     right: 10px;
     height: 6%;
 }
+
+.pointer-cursor {
+    cursor: pointer;
+}
