@@ -246,7 +246,7 @@ const resolvers = {
             new: true,
           }
         );
-        console.log(newMessage)
+        console.log("******",newMessage)
         return newMessage;
     },
     deleteMessage: async (parent, args) => {

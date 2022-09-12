@@ -43,6 +43,11 @@ export default function ExternalProfile(props) {
           Email: {profile.email} <br />
           Zip Code: {profile.zip_code} <br />
         </div>
+        <div class="message">
+          <button> 
+            <a href={`/chat/${profileId}`}>Message</a></button>
+         
+        </div>
       </div>
       <div className="pets">
         {pets &&

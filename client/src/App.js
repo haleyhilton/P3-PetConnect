@@ -27,7 +27,7 @@ import Search from "./pages/Search/Search";
 import { setContext } from "@apollo/client/link/context";
 import Message from "./pages/Messages/Message";
 import Chat from "./pages/Chat/chat";
-import Social from "./pages/Social/Social";
+import Social from "./pages/Social/social";
 import Settings from "./pages/Settings";
 import EditUser from "./pages/Settings/components/EditUser";
 import EditDog from "./pages/Settings/components/EditDog";
@@ -79,8 +79,8 @@ function App() {
             path="/external-profiles/:profileId"
             element={<ExternalProfile />}
           />
-          <Route path="/messages/:userId" element={<Message />} />
-          <Route path="/chat" element={<Chat />} />
+          <Route path="/messages/:profileId" element={<Message />} />
+          <Route path="/chat/:profileId" element={<Chat />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />

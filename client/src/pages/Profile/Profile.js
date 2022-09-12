@@ -98,10 +98,10 @@ export default function Profile(props) {
         </div>
       </div>
 
+    <div className="row">
+      <div className="col-9 details">
 
-      <div className="details">
-
-        <div>
+        <div className="name">
           {profile.first_name} {profile.last_name}
         </div>
 
@@ -115,25 +115,28 @@ export default function Profile(props) {
         </div>
         <br></br>
         <div class="message">
-          <button>Message</button>
-
-        </div>
-
-        <div class="message">
-          <button onClick={handlePostOpen}>Add New Dog!</button>
-        </div>
-        <div>
-          <Link className="linktext" to={`/gallery/${Auth.getUser().data._id}`}>
-            View Gallery
-          </Link>
+          <button className='message-btn'> 
+            <a className="message-text" href={`/chat/${profileId}`}>Message</a></button>
+         
         </div>
       </div>
-
+    <div className="col-3 button-box">
+        <div>
+          <button className="box-btn" onClick={handlePostOpen}>Add New Dog</button>
+        </div>
+        <div><button className="box-btn">
+          <Link className="linktext" to={`/gallery/${Auth.getUser().data._id}`}>
+            View Gallery
+          </Link></button>
+        </div>
+        </div>
+        </div>
 
       <div class="posts">
 
       </div>
       <ProfileDog dogs={dogProfile}/>
+
       <div class="wrapattack">
         {/* Modal for Adding a Dog */}
         <div
@@ -220,6 +223,6 @@ export default function Profile(props) {
 
         
       </div>
-    </div>
+    </div >
   );
 }

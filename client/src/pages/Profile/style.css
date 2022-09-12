@@ -1,12 +1,4 @@
- body {
-  background-color: #F0F8FF;
-  font-family: 'SulphurPoint-Regular';
-  font-size: x-large;
- }
-  
- 
- 
- /* The hero image */
+/* The hero image */
   .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://dogsbestlife.com/wp-content/uploads/2020/01/collie-puppy.jpeg");
@@ -31,7 +23,6 @@
   border-radius: 50%;
   width: 200px;
   height: 200px;
-  /* background-image: url('../../images/selfie.jpeg'); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: 200px;
@@ -39,12 +30,23 @@
   
   .details {
     
-    padding-top: 110px;
+    padding: 6rem 0 2rem;
     padding-left: 100px;
     display: flex;
     flex-direction: column;
     font-size: x-large;
-    border-bottom: 5px solid black
+  line-height: 150%;
+  }
+
+  .name {
+    font-size: xx-large;
+    font-weight: 600;
+    line-height: 190%;
+}
+
+  .row {
+    border-bottom: 2px solid black;
+
   }
   
   .edit {
@@ -54,6 +56,22 @@
   padding-top: 50px;
   }
 
+  .button-box {
+   padding: 6rem 3rem 0rem;
+  }
+
+  .box-btn {
+    background-color: aliceblue;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    width: 60%;
+    border-radius: 40px;
+    text-decoration: none;
+    color: black;
+    box-shadow: 10px 20px 40px rgb(0 0 0 / 20%);
+    border: none;
+    font-size: larger;
+  }
 
   
   
@@ -69,16 +87,13 @@
   
   }
   .grid-item {
-
-    width: 200px;
-    height: 200px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 200px;
-    background-color: black;
-    display: flex;
-    justify-content: end;
-
+    object-fit: cover;
+    height: 430px;
+    width: 470px;
+    /* text-align: center; */
+    box-shadow: 0 20px 40px rgb(0 0 0 / 10%);
+    margin: 0.5rem;
+    border-radius: 5px;
   }
   
   .grid-item:hover {
@@ -96,23 +111,42 @@
   }
   
   .titlewrapper{
-  padding-top: 100px;
-  display: flex;
-  justify-content: center;
-  font-size: xx-large;
-  text-decoration: underline;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+    color: #023047;
+    text-transform: uppercase;
+    font-family: 'KulimPark-SemiBold';
+
   }
   
   .message {
     margin-top: 5px;
+  }
+    .message-btn {
+      background-color: aliceblue;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      width: 10%;
+      border-radius: 40px;
+      text-decoration: none;
+      color: black;
+      box-shadow: 0 20px 40px rgb(0 0 0 / 20%);
+      border: none;
+
+  }
+
+  .message-text {
+    text-decoration: none;
+    color: black;
   }
 
 
   .linktext {
     text-decoration: none;
     color: black;
-    text-decoration: underline;
-    padding-bottom: 5px;
+        padding-bottom: 5px;
   }
 
 
