@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+// import Stripe from "../../../components/Stripe"
 
 export default function EditBilling() {
   const navigate = useNavigate();

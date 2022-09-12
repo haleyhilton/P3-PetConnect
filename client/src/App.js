@@ -32,6 +32,7 @@ import Settings from "./pages/Settings";
 import EditUser from "./pages/Settings/components/EditUser";
 import EditDog from "./pages/Settings/components/EditDog";
 import EditBilling from "./pages/Settings/components/EditBilling";
+// import Stripe from "../../client/src/components/Stripe"
 
 // NEW NEW NEW
 // Construct our main GraphQL API endpoint
@@ -96,6 +97,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/search" element={<Search />} />
           <Route path="/social" element={<Social />} />
+          {/* <Route path="/stripe" element={<Stripe />} /> */}
         </Routes>
         <Footer />
       </Router>

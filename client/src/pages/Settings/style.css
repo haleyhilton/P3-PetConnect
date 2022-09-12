@@ -1,0 +1,13 @@
+.link-group {
+    color: black;
+    text-decoration: none; 
+}
+
+.link-group:hover {
+    text-decoration: none;
+    /* font-weight: bold;
+    text-decoration: none; */
+}
+.settings-header {
+    font-weight: bold;
+}

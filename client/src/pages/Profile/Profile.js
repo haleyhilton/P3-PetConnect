@@ -98,7 +98,7 @@ export default function Profile(props) {
         </div>
       </div>
 
-    <div className="row">
+    <div className="row custom-row">
       <div className="col-9 details">
 
         <div className="name">
