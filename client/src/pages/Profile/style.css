@@ -27,7 +27,7 @@
   background-repeat: no-repeat;
   background-size: 200px;
   }
-  
+/* Masthead Profile Bio */ 
   .details {
     
     padding: 6rem 0 2rem;
@@ -46,7 +46,6 @@
 
   .row {
     border-bottom: 2px solid black;
-
   }
   
   .edit {
@@ -55,7 +54,8 @@
   padding-right: 200px;
   padding-top: 50px;
   }
-
+  
+/*Masthead Bio Buttons */
   .button-box {
    padding: 6rem 3rem 0rem;
   }
@@ -73,8 +73,35 @@
     font-size: larger;
   }
 
+  .message {
+    margin-top: 5px;
+  }
+    .message-btn {
+      background-color: aliceblue;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      width: 10%;
+      border-radius: 40px;
+      text-decoration: none;
+      color: black;
+      box-shadow: 0 20px 40px rgb(0 0 0 / 20%);
+      border: none;
+  }
+
+  .message-text {
+    text-decoration: none;
+    color: black;
+  }
+
+
+  .linktext {
+    text-decoration: none;
+    color: black;
+        padding-bottom: 5px;
+  }
+
   
-  
+  /* Dog Grid */
   .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -90,7 +117,6 @@
     object-fit: cover;
     height: 430px;
     width: 470px;
-    /* text-align: center; */
     box-shadow: 0 20px 40px rgb(0 0 0 / 10%);
     margin: 0.5rem;
     border-radius: 5px;
@@ -107,7 +133,6 @@
   .wrapattack{
   display: flex;
   justify-content: center;
-  
   }
   
   .titlewrapper{
@@ -118,52 +143,19 @@
     color: #023047;
     text-transform: uppercase;
     font-family: 'KulimPark-SemiBold';
-
-  }
-  
-  .message {
-    margin-top: 5px;
-  }
-    .message-btn {
-      background-color: aliceblue;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      width: 10%;
-      border-radius: 40px;
-      text-decoration: none;
-      color: black;
-      box-shadow: 0 20px 40px rgb(0 0 0 / 20%);
-      border: none;
-
   }
 
-  .message-text {
-    text-decoration: none;
-    color: black;
-  }
-
-
-  .linktext {
-    text-decoration: none;
-    color: black;
-        padding-bottom: 5px;
-  }
-
+/*Future Delete Button?*/
 
   .deleteButton {
-    
     background-color: red;
     height: fit-content;
-    
-
   }
 
   .deleteButton:hover {
     
     background-color: rgb(255, 183, 0);
     height: fit-content;
-    
-
   }
 
 /* MODAL */
