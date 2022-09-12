@@ -79,7 +79,7 @@ function App() {
             element={<ExternalProfile />}
           />
           <Route path="/messages/:profileId" element={<Message />} />
-          <Route path="/chat/profileId" element={<Chat />} />
+          <Route path="/chat/:profileId" element={<Chat />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
