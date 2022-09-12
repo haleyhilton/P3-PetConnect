@@ -4,13 +4,16 @@ import Auth from "../../../utils/auth";
 import { QUERY_ONE_USER } from "../../../utils/queries";
 import { EDIT_USER } from "../../../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
+import './editUser.css'
 
 export default function EditUser() {
-  const [editUser, { error }] = useMutation(EDIT_USER);
+
+  
+  const [editUser, { error, datum }] = useMutation(EDIT_USER);
   const [nameInfo, setNameInfo] = useState({
     profileId: Auth.getUser().data._id,
-    firstName: "",
-    lastName: "",
+    firstName: "Monkey",
+    lastName: "Pox",
   });
   const navigate = useNavigate();
   const profileId = Auth.getUser().data._id;
@@ -24,14 +27,7 @@ export default function EditUser() {
     return <div>Loading...</div>;
   }
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setNameInfo({
-      ...nameInfo,
-      [name]: value,
-    });
-  };
-
+ 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     // console.log(nameInfo,"here is name")
@@ -40,7 +36,7 @@ export default function EditUser() {
         variables: { ...nameInfo },
       });
       window.location.reload();
-      // console.log(datum, "datum")
+      console.log(datum, "datum")
       // navigate.push(`/settings`);
     } catch (e) {
       console.error(e);
@@ -61,25 +57,26 @@ export default function EditUser() {
             Profile Settings
           </span>
         </h1>
-        <div className="my-5">
-          <form className="form signup-form" onSubmit={handleFormSubmit}>
+        <div className="my-5 div-form">
+          <form className="form signup-form form-addition" onSubmit={handleFormSubmit}>
+          <h2>Edit Your Name</h2>
             <input
               className="form-input"
               type="text"
-              placeholder="First Name"
+              placeholder={`Current First Name: ${profile.first_name}`}
               id="fn-signup"
               name="first_name"
-              value={nameInfo.firstName.value}
-              onChange={handleChange}
+              // value={this.state.name}
+              onChange={e => nameInfo.firstName = e.target.value}
             />
             <input
               className="form-input"
               type="text"
               id="fn-signup"
               name="last_name"
-              placeholder="Last Name"
-              value={nameInfo.lastName.value}
-              onChange={handleChange}
+              placeholder={`Current Last Name: ${profile.last_name}`}
+              // value={this.state.name}
+              onChange={e => nameInfo.lastName = e.target.value}
             />
             <button
               id="signup-submit"
@@ -90,8 +87,8 @@ export default function EditUser() {
               Update Name
             </button>
           </form>
-          <div>First Name: {profile.first_name}</div>
-          <div>Last Name: {profile.last_Name}</div>
+          {/* <div>First Name: {profile.first_name}</div>
+          <div>Last Name: {profile.last_name}</div> */}
         </div>
       </div>
     </div>

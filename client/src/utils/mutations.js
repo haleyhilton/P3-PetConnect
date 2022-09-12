@@ -145,3 +145,16 @@ mutation Mutation($profileId: ID!, $firstName: String!, $lastName: String!) {
   }
 }
 `;
+
+export const SET_USER_PROFILE_PICTURE = gql`
+mutation SetProfilePicture($profileId: String!, $profilePicture: String!) {
+  setProfilePicture(profileId: $profileId, profilePicture: $profilePicture) {
+    _id
+    username
+    profilePicture
+    media {
+      _id
+      url
+    }
+  }
+}`

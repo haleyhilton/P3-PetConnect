@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import React, { useState } from "react";
 import axios from "axios";
@@ -6,8 +6,10 @@ import { QUERY_ALL_PICTURES_BY_USER } from "../../utils/queries";
 import { ADD_PICTURE_TO_PROFILE } from "../../utils/mutations";
 import "./style.css";
 import Auth from "../../utils/auth";
+import { SET_USER_PROFILE_PICTURE } from "../../utils/mutations";
 
 const Cloudinary = (props) => {
+  const [setPicture, { error, datum1 }] = useMutation(SET_USER_PROFILE_PICTURE);
   const { profileId } = useParams();
   const [images, setImages] = useState([]);
   const [imageToRemove, setImageToRemove] = useState(null);
@@ -15,6 +17,16 @@ const Cloudinary = (props) => {
     profileId: profileId,
     media: "",
   });
+  const [newProfilePicture, setProfilePicture] = useState({
+    profileId: Auth.getUser().data._id,
+    profilePicture: "",
+  });
+  const navigate = useNavigate();
+
+  const urlDisplay = {
+    display: "none",
+  };
+
   const styleImageContainer = {
     position: "relative",
     width: "300px",
@@ -52,7 +64,7 @@ const Cloudinary = (props) => {
   }
 
   const userImages = [...profile.media];
-  console.log(userImages, "yay images");
+  console.log(newProfilePicture.profilePicture, "yay images");
 
   const handlePhotoSave = async (event) => {
     // event.preventDefault();
@@ -105,6 +117,23 @@ const Cloudinary = (props) => {
     myWidget.open();
   }
 
+  const setFinalPicture = async (url) => {
+    console.log(url, "here is name")
+    newProfilePicture.profilePicture = url;
+    console.log(newProfilePicture, "here is the updated")
+    try {
+      const { datum3 } = await setPicture({
+        variables: { ...newProfilePicture },
+      });
+      // window.location.reload();
+      console.log(datum3, "datum");
+      navigate(`/profiles/${Auth.getUser().data._id}`);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+ 
   return (
     <div className="main-component">
       <div className="photo-gallery">
@@ -115,7 +144,15 @@ const Cloudinary = (props) => {
               key={userImage._id}
               className="gallery-images"
               style={{ backgroundImage: `url(${userImage.url})` }}
-            ></div>
+            >
+                <button
+                  className="btn btn-primary"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => setFinalPicture(userImage.url)}
+                >
+                  Set Default
+                </button>
+            </div>
           ))}
       </div>
 

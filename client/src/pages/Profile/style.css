@@ -1,8 +1,4 @@
-
-  
- 
- 
- /* The hero image */
+/* The hero image */
   .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://dogsbestlife.com/wp-content/uploads/2020/01/collie-puppy.jpeg");
@@ -31,17 +27,25 @@
   background-repeat: no-repeat;
   background-size: 200px;
   }
-  
+/* Masthead Profile Bio */ 
   .details {
     
-    padding-top: 110px;
+    padding: 6rem 0 2rem;
     padding-left: 100px;
     display: flex;
     flex-direction: column;
     font-size: x-large;
-    border-bottom: 5px solid black;
-    font-family: 'Helvetica';
-    
+  line-height: 150%;
+  }
+
+  .name {
+    font-size: xx-large;
+    font-weight: 600;
+    line-height: 190%;
+}
+
+  .row {
+    border-bottom: 2px solid black;
   }
   
   .edit {
@@ -50,10 +54,54 @@
   padding-right: 200px;
   padding-top: 50px;
   }
+  
+/*Masthead Bio Buttons */
+  .button-box {
+   padding: 6rem 3rem 0rem;
+  }
+
+  .box-btn {
+    background-color: aliceblue;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    width: 60%;
+    border-radius: 40px;
+    text-decoration: none;
+    color: black;
+    box-shadow: 10px 20px 40px rgb(0 0 0 / 20%);
+    border: none;
+    font-size: larger;
+  }
+
+  .message {
+    margin-top: 5px;
+  }
+    .message-btn {
+      background-color: aliceblue;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      width: 10%;
+      border-radius: 40px;
+      text-decoration: none;
+      color: black;
+      box-shadow: 0 20px 40px rgb(0 0 0 / 20%);
+      border: none;
+  }
+
+  .message-text {
+    text-decoration: none;
+    color: black;
+  }
 
 
+  .linktext {
+    text-decoration: none;
+    color: black;
+        padding-bottom: 5px;
+  }
+
   
-  
+  /* Dog Grid */
   .grid-container {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -66,16 +114,12 @@
   
   }
   .grid-item {
-
-    width: 400px;
-    height: 400px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 400px;
-    background-color: black;
-    display: flex;
-    justify-content: end;
-
+    object-fit: cover;
+    height: 430px;
+    width: 470px;
+    box-shadow: 0 20px 40px rgb(0 0 0 / 10%);
+    margin: 0.5rem;
+    border-radius: 5px;
   }
   
   .grid-item:hover {
@@ -89,44 +133,29 @@
   .wrapattack{
   display: flex;
   justify-content: center;
-  
   }
   
   .titlewrapper{
-  padding-top: 100px;
-  display: flex;
-  justify-content: center;
-  font-size: xx-large;
-  text-decoration: underline;
-  }
-  
-  .message {
-    margin-top: 5px;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+    color: #023047;
+    text-transform: uppercase;
+    font-family: 'KulimPark-SemiBold';
   }
 
-
-  .linktext {
-    text-decoration: none;
-    color: black;
-    text-decoration: underline;
-    padding-bottom: 5px;
-  }
-
+/*Future Delete Button?*/
 
   .deleteButton {
-    
     background-color: red;
     height: fit-content;
-    
-
   }
 
   .deleteButton:hover {
     
     background-color: rgb(255, 183, 0);
     height: fit-content;
-    
-
   }
 
 /* MODAL */

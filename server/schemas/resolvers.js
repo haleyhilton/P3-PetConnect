@@ -186,6 +186,20 @@ const resolvers = {
         }
       );
     },
+    setProfilePicture: async (parent, { profileId, profilePicture }) => {
+      return User.findOneAndUpdate(
+        { profileId: profileId },
+        {
+          $set: { 
+            profilePicture: profilePicture,
+          },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
     addPet: async (parent, { profileId, pet }) => {
       return User.findOneAndUpdate(
         { _id: profileId },
