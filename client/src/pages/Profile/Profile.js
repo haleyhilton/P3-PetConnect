@@ -129,7 +129,6 @@ export default function Profile(props) {
             View Gallery
           </Link>
         </div>
-      </div>
 
 
       <div class="posts">
@@ -222,6 +221,6 @@ export default function Profile(props) {
 
         
       </div>
-    </div>
+    </div >
   );
 }
