@@ -104,6 +104,12 @@ mutation Mutation($name: String!, $age: String!, $breed: String!, $sex: String!,
 }
 `;
 
+export const DELETE_ONE_PET=gql `mutation DeletePet($id: ID!) {
+  deletePet(_id: $id) {
+    _id
+  }
+}`
+
 export const ADD_PICTURE_TO_PROFILE = gql`
 mutation Mutation($profileId: String!, $media: String!) {
   addProfilePicture(profileId: $profileId, media: $media) {
@@ -127,3 +133,28 @@ mutation Mutation($petId: String!, $media: String!) {
   }
 }
 `;
+
+
+export const EDIT_USER = gql`
+mutation Mutation($profileId: ID!, $firstName: String!, $lastName: String!) {
+  editUserInfo(profileId: $profileId, first_name: $firstName, last_name: $lastName) {
+    _id
+    first_name
+    last_name
+    username
+  }
+}
+`;
+
+export const SET_USER_PROFILE_PICTURE = gql`
+mutation SetProfilePicture($profileId: String!, $profilePicture: String!) {
+  setProfilePicture(profileId: $profileId, profilePicture: $profilePicture) {
+    _id
+    username
+    profilePicture
+    media {
+      _id
+      url
+    }
+  }
+}`

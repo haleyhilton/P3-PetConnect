@@ -16,15 +16,15 @@ const resolvers = {
     oneUser: async (parent, { profileId }) => {
       return User.findOne({ _id: profileId }).populate('pet').populate('post').populate('messages');
     },
-    //for use on search page for links
-    oneUserByPetId: async (parent, { petId }) => {
-      return User.findOne({pet: { _id: petId} });
-    },
     onePet: async (parent, { profileId }) => {
       return Pet.findOne({ _id: profileId });
     },
     onePetName: async (parent, { name }) => {
       return Pet.findOne({ name: name });
+    },
+    //for use on search page for links
+    oneUserByPetId: async (parent, { petId }) => {
+      return User.findOne({pet: { _id: petId} });
     },
     viewUserPictures: async (parent, { profileId }) => {
       return User.findOne({ _id: profileId });
@@ -146,6 +146,21 @@ const resolvers = {
         }
       );
     },
+    editUserInfo: async (parent, { profileId, first_name, last_name }) => {
+      return User.findOneAndUpdate(
+        { _id: profileId },
+        {
+          $set: { 
+            first_name: first_name,
+            last_name: last_name,
+          },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
     // See typedefs for what specific fields it needs. Media and Pets are not included
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
@@ -175,12 +190,36 @@ const resolvers = {
         }
       );
     },
+    setProfilePicture: async (parent, { profileId, profilePicture }) => {
+      return User.findOneAndUpdate(
+        { profileId: profileId },
+        {
+          $set: { 
+            profilePicture: profilePicture,
+          },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
     addPet: async (parent, { profileId, pet }) => {
       return User.findOneAndUpdate(
         { _id: profileId },
         {
           $addToSet: { pet: pet },
         },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    deletePet: async (parent, pet) => {
+      console.log(pet)
+      return Pet.findByIdAndDelete(
+        { _id: pet._id },
         {
           new: true,
           runValidators: true,
@@ -212,7 +251,7 @@ const resolvers = {
             new: true,
           }
         );
-        console.log(newMessage)
+        console.log("******",newMessage)
         return newMessage;
     },
     deleteMessage: async (parent, args) => {

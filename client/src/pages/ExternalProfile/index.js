@@ -5,8 +5,18 @@ import { QUERY_ONE_USER } from "../../utils/queries";
 import "./style.css";
 import Button from "react-bootstrap/Button";
 import placeholder from "../../images/results.PNG";
+import blankPicture from "../../images/blankprofile.PNG"
+import DogCard from "./components/DogCard";
 
 export default function ExternalProfile(props) {
+  const [isOpen, setIsOpen] = React.useState(true);
+  const [dogInfo, setDogInfo] = React.useState("");
+  const handleOpen = (event) => {
+    // toggle vis
+    setIsOpen((current) => !current);
+  };
+
+
   const { profileId } = useParams();
   /* const profileId = "6319432ff2c754c444d42e71"; */
 
@@ -36,37 +46,48 @@ export default function ExternalProfile(props) {
 
   return (
     <div className="external-profile">
-      <div className="layout">
-        <div className="profile-picture" style={imgStyle}></div>
-        <div className="profile-info">
-          Name: {profile.first_name} {profile.last_name} <br />
-          Email: {profile.email} <br />
-          Zip Code: {profile.zip_code} <br />
+        <div className="hero-image">
+          <div className="profile-pic" style={{ backgroundImage: `url(${profile.profilePicture ? profile.profilePicture : blankPicture})` }}>
+          </div>
+        </div>
+        <div className="row custom-row">
+          <div className="col-9 details">
+            <div className="name">
+              {profile.first_name} {profile.last_name}
+            </div>
+            <div className="buyer-seller">Buyer/Seller</div>
+            <div className="about-me-section">
+              Hello! I'm {profile.first_name} and I am a dog breeder in {profile.zip_code}
+            </div>
+            <div>⭐️⭐️⭐️⭐️⭐️</div>
+            <br></br>
+            <div className="message">
+              <button className='message-btn'>
+                <a className="message-text" href={`/chat/${profileId}`}>Message</a></button>
+            </div>
+          </div>
+          <div className="col-3 button-box">
+            <div>
+            </div>
+          </div>
+        </div>
+        <div className="posts">
+        </div>
+        <div className="titlewrapper">
+          <div>Dogs</div>
+        </div>
+        <div className="wrapattack">
+          <div className="grid-container">
+            {pets &&
+              pets.map(
+                (dog) =>
+                (
+                  <DogCard dog={dog} />
+                )
+              )
+            }
+          </div>
         </div>
       </div>
-      <div className="pets">
-        {pets &&
-          pets.map((dog) => (
-            // console.log(dog.media[0].url, "dog picture"),
-            <div key={dog._id} className="grid-item">
-              <Button
-                variant="primary"
-                onClick={() => {
-                  // setModalShow(true)
-                  //   handleOpen()
-                  //   setDogInfo(dog._id)
-                }}
-              >
-                {dog.name}: {dog.breed}
-                <br />
-                <img
-                  style={imageStyle}
-                  src={dog.media[0] ? dog.media[0].url : placeholder}
-                />
-              </Button>
-            </div>
-          ))}
-      </div>
-    </div>
   );
 }

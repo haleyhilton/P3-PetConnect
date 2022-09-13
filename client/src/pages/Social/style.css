@@ -1,33 +1,150 @@
 .centerfold {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top-box {
+  width: 400px;
+  height: 50px;
+  border: solid #a7848433;
+  border-bottom: 1px;
+  margin-top: 10%;
+  border-radius: 5px 5px 0% 0%;
+  background-color: lightsteelblue;
+}
+
+.dog-name {
+  display: flex;
+  justify-content: center;
+  top: 25%;
+  text-transform: capitalize;
+  font-family: 'SulphurPoint-Regular';
+  color: #023047;
+}
+
+.box {
+  
+  width: 400px;
+  height: 400px;
+  background-size: cover;
+  background-repeat: none;
+  border: solid #a7848433;
+  border-width: 2px 2px ;
+  /* margin-top: 25px; */
+
+}
+
+
+.smallerbox{
+  width: 400px;
+  height: 75px;
+  border: solid #a7848433;
+  border-width: 0 2px 2px;
+  margin-bottom: 25px;
+  border-radius: 0% 0% 5px 5px;
+
+}
+
+
+
+.button-like {
+
+  border: 2px solid #023047;
+  background-color: transparent;
+  text-decoration: none;
+  padding: 1rem;
+  position: relative;
+  vertical-align: middle;
+  
+  text-align: center;
+  display: inline-block;
+  border-radius: 3rem;
+  color: #023047;
+  transition: all ease 0.4s;
+}
+
+.button-like span {
+  margin-left: 0.5rem;
+}
+
+.button-like .fa,
+.button-like span {
+  transition: all ease 0.4s;
+}
+
+.button-like:focus {
+  background-color: transparent;
+}
+
+.button-like:focus .fa,
+.button-like:focus span {
+  color: #8a8a8a;
+}
+
+.button-like:hover {
+  border-color: #cc4b37;
+  background-color: transparent;
+}
+
+.button-like:hover .fa,
+.button-like:hover span {
+  color: #cc4b37;
+}
+
+.liked {
+  background-color: #cc4b37;
+  border-color: #cc4b37;
+  color: white;
+}
+
+.liked .fa,
+.liked span {
+  color: #fefefe;
+}
+
+.liked:focus {
+  background-color: #cc4b37;
+}
+
+.liked:focus .fa,
+.liked:focus span {
+  color: #fefefe;
+}
+
+.liked:hover {
+  background-color: #cc4b37;
+  border-color: #cc4b37;
+}
+
+.liked:hover .fa,
+.liked:hover span {
+  color: #fefefe;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto;
-    padding: 10px;
-    column-gap: 50px;
-    row-gap: 50px;
-    width: 500px;
-    justify-content: center;
-    
-    }
-    .grid-item {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  padding: 10px;
+  column-gap: 50px;
+  row-gap: 50px;
+  width: 500px;
+  justify-content: center;
   
-      width: 200px;
-      height: 200px;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: 200px;
-      background-color: black;
-    }
-    
-    .grid-item:hover {
-      transform: translateY(-10px);
-      border: 1px;
-      border-style: solid;
-      transition: all .2s ease-in-out;
-      cursor: pointer;
-    }
+  }
+
+  .comment {
+    left: 75px;
+    top: -48px;
+    width: 300px;
+    height: 60px;
+
+  }
+
+  .button-move {
+left: 10px;
+top: 10px
+  }
+
+  

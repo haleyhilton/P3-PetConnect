@@ -4,15 +4,18 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
+import blankPicture from "../../images/blankprofile.PNG"
+
 
 // import { useQuery } from '@apollo/client';
 import { QUERY_ONE_USER } from '../../utils/queries';
 
 export default function Header(props) {
-
+  const navigate = useNavigate();
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
+    navigate.push(`/`);
   };
 
  
@@ -37,6 +40,7 @@ export default function Header(props) {
           >
             <i className="fas fa-bars"></i>
           </button>
+          
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav ms-auto">
               <Link className="nav-link py-3 px-0 px-lg-3 rounded" to="/">
@@ -62,7 +66,7 @@ export default function Header(props) {
                         <a>
                           <img
                             id="profile-image"
-                            src={Auth.getUser().data.profilePicture}
+                            src={Auth.getUser().data.profilePicture ? Auth.getUser().data.profilePicture : blankPicture}
                             alt="Avatar"
                             className="avatar"
                           />
@@ -75,7 +79,7 @@ export default function Header(props) {
                         <Link to="/settings">
                           <a href="#">Settings</a>
                         </Link>
-                        <Link to="/messages">
+                        <Link to={`/messages/${Auth.getUser().data._id}`}>
                           <a href="#">Messages</a>
                         </Link>
                         <Link to="/">
@@ -89,6 +93,7 @@ export default function Header(props) {
                 </div>
               ) : (
                 <>
+                     
                   <Link
                     className="nav-link py-3 px-0 px-lg-3 rounded"
                     to="/login"
@@ -107,24 +112,8 @@ export default function Header(props) {
           </div>
         </div>
       </nav>
-
-      <header className="masthead text-white text-center">
-        <div className="container d-flex align-items-center flex-column">
-          <h1 className="masthead-heading text-uppercase mb-0">
-            {" "}
-            {props.headerText}
-          </h1>
-          <h3 className="masthead-subheading  mb-0"> {props.subHeaderText}</h3>
-
-          <div className="divider-custom divider-light">
-            <div className="divider-custom-line"></div>
-            <div className="divider-custom-icon">
-              <i className="fas fa-paw fa-beat"></i>
-            </div>
-            <div className="divider-custom-line"></div>
-          </div>
-        </div>
-      </header>
     </div>
   );
 }
+
+

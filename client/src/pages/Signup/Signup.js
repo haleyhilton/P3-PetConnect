@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import "./style.css";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../../utils/mutations";
@@ -34,14 +34,14 @@ export default function Signup() {
       });
 
       Auth.login(data.addUser.token);
-      navigate.push("/profile");
+      navigate.push(`/profiles/${Auth.getUser().data._id}`);
     } catch (e) {
       console.error(e);
     }
   };
 
   return (
-    <div>
+    <div className="div-form">
       {/* <h2 className="signupH2">SIGN-UP</h2>
 
       <p>What Arf you waiting for?</p>
@@ -58,23 +58,51 @@ export default function Signup() {
           Success! You may now head <Link to="/">back to the homepage.</Link>
         </p>
       ) : (
-        <form className="form signup-form" onSubmit={handleFormSubmit}>
+        <form className="form signup-form form-addition" onSubmit={handleFormSubmit}>
+          {/* <div className="form-group"> */}
+            {/* <label for="fn-signup">First Name:</label>
+            <input
+              className="form-input"
+              type="text"
+              id="fn-signup"
+              name="first_name"
+              value={formState.first_name}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label for="ln-signup">Last Name:</label>
+            <input
+              className="form-input"
+              type="text"
+              id="ln-signup"
+              name="last"
+              value={formState.last_name}
+              onChange={handleChange}
+            />
+          </div> */}
           {/* <div className="form-group">
-          <label for="fn-signup">First Name:</label>
-          <input className="form-input" type="text" id="fn-signup" name='first' value={formState.first} onChange={handleChange} />
-        </div>
-        <div className="form-group">
-          <label for="ln-signup">Last Name:</label>
-          <input className="form-input" type="text" id="ln-signup" name='last' value={formState.last} onChange={handleChange} />
-        </div>
-        <div className="form-group">
-          <label for="dob-signup">Date of Birth:</label>
-          <input className="form-input" type="text" id="dob-signup" name='dob' value={formState.dob} onChange={handleChange} />
-        </div>
-        <div className="form-group">
-          <label for="zip-signup">Zip Code:</label>
-          <input className="form-input" type="text" id="zip-signup" name='zipCode' value={formState.zipCode} onChange={handleChange} />
-        </div> */}
+            <label for="dob-signup">Date of Birth:</label>
+            <input
+              className="form-input"
+              type="text"
+              id="dob-signup"
+              name="date_of_birth"
+              value={formState.date_of_birth}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label for="zip-signup">Zip Code:</label>
+            <input
+              className="form-input"
+              type="text"
+              id="zip-signup"
+              name="zip_code"
+              value={formState.zip_code}
+              onChange={handleChange}
+            />
+          </div> */}
           <div className="form-group">
             <label for="username-signup">Username:</label>
             <input

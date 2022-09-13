@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 import './style.css'
 import mission1 from '../../images/dog-bath.png'
 import mission2 from '../../images/dog-friend.jpg'
 import mission3 from '../../images/dog-selfie.jpg'
 import dogpark from '../../images/dog-park.jpg'
+import {createMastText} from '../../utils/helpers'
+import Masthead from '../../components/Masthead'
 
+
+
+   
 export default function About() {
+    const [text,setText] = useState();
+    
+    useEffect(() => {
+        const data = createMastText();
+
+        setText(data);
+
+        console.log("*****",data);
+    },[]);
     return (
+        <div>
+            <Masthead {...createMastText()}/>
         <div className="faq">
        <p> Founded in 2022, PetConnect started as a brainstorming session between UCSD Full Stack Development students and quickly 
            snowballed into an obvious commonality between 5 different humans - our love for dogs.  
         We thought, what if we had a place to combine our love of connecting on social with our love of our dogs? So we got hard at work 
         to figure out what that would look like. After hours of work, various prototypes and concepts - we landed on the first iteration of 
-        PetConnect (which was more of a Pet<span class="italic">Connector </span> than a place for Pet<span class="bold">Connections</span>)
+        PetConnect (which was more of a Pet<span className="italic">Connector </span> than a place for Pet<span className="bold">Connections</span>)
         We started our business with our simple thing in mind, whether you're here for a pick me up or 
         you're here to find your new furever friend, PetConnect
         is a place for everyone to do just that - connect. </p><br /><br /><br /><br />
@@ -22,7 +38,7 @@ export default function About() {
         <br /><br /><br /><br /><br /><br /><br /><br />
 
 
-        <div class="container d-flex align-items-center flex-column">
+        <div className="container d-flex align-items-center flex-column">
 
         
             
@@ -55,6 +71,7 @@ to seek new and innovative ways to deliver the best experience possible (for peo
         <img className="about-photos" src={mission3} alt="" /></div>
         </div>
         
+        </div>
         </div>
     )};
         

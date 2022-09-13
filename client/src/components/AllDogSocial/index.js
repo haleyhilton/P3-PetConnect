@@ -47,6 +47,7 @@ console.log(profile, "here is the profile")
                 
               </div>
             )
+            
           )
         )}
          <div
@@ -59,16 +60,17 @@ console.log(profile, "here is the profile")
               &times;
             </span>
             <div className="modal-inner-wrapper">
-            <div className="modal-inner-image" ></div>
-            <p className="dog-stats"> Owner: {}</p>
-              <p className="dog-stats">Name: {profile.name}</p>
+            <div className="modal-inner-image" style={{backgroundImage: `url(${profile?.media?.[0]? profile.media[0].url : placeholder})`}}></div>
+            <div className="modal-inner-text">
+            <p className="dog-stats"> Owner: {}</p><br/>
+              <p className="dog-stats">{profile.name}</p>
               <p className="dog-stats">Age: {profile.age}</p>
               <p className="dog-stats">Breed: {profile.breed}</p>
               <p className="dog-stats">Sex: {profile.sex}</p>
               <p className="dog-stats">Size: {profile.size}</p>
               <p className="dog-stats">Color: {profile.color}</p>
-              <p className="dog-stats">Description: {profile.description}</p>
-
+              <p className="dog-stats italic">{profile.description}</p>
+              </div>
             </div>
           </div>
         </div>
