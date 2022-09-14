@@ -2,8 +2,11 @@ import React from 'react'
 import { useLazyQuery } from '@apollo/client';
 import heart from '../../../images/like.png'
 import { QUERY_ONE_USER_BY_PET_ID } from '../../../utils/queries';
+import blankPicture from "../../../images/blankprofile.PNG"
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 export default function SearchCard(props) {
+  const navigate = useNavigate();
 
   const [getOwner] = useLazyQuery(QUERY_ONE_USER_BY_PET_ID, { variables: { petId: props.pet._id } });
 
@@ -14,15 +17,18 @@ export default function SearchCard(props) {
     const owner = await getOwner();
     if (owner) {
       console.log(owner);
-      window.location.replace(`/external-profiles/${owner.data.oneUserByPetId._id}`);
+      // window.location.replace(`/external-profiles/${owner.data.oneUserByPetId._id}`);
+      navigate(`/external-profiles/${owner.data.oneUserByPetId._id}`)
     }
   }
-
+  console.log(props, "pet media")
+    const newPetMedia = [...props.pet.media]
     return (
 
     <div className="col-xl-3 col-md-6 mb-4" onClick={linkHandler}>
       <div className="card petCard-border shadow pointer-cursor">
-        <img src={typeof props.pet.media === "array" ? props.pet.media[0].url : props.pet.media.url} width="20%" height="300px" className="card-img-top" alt="..."></img>
+        {/* <img src={typeof props.pet.media === "array" ? props.pet.media[0].url : props.pet.media.url} width="20%" height="300px" className="card-img-top" alt="..."></img> */}
+        <img src={newPetMedia[0] ? newPetMedia[0].url : blankPicture} width="20%" height="300px" className="card-img-top" alt="..."></img>
         {/* <favorite-btn className="petCard-favoriteBtn" pet-name="#" pet-id="#" pet-index="#" search-result=""> */}
         <input type="image" className="heart-like" src={heart} />          
     
