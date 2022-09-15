@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import './style.css';
 
 
@@ -32,10 +33,10 @@ export default function Footer() {
                 <div className="col-lg-4">
                     <h4 className="text-uppercase mb-4">Extras</h4>
                     <p className="lead mb-0">
-                        <a id="contact-info" href="/about">Our Story</a> <br/>
-                        <a id="contact-info" href="/team">Meet the Team</a> <br/>
-                        <a id="contact-info" href="/faq">FAQ</a> <br/> 
-                        <a id="contact-info" href="#">Blog</a> <br/>
+                        <Link id="contact-info" to="/about">Our Story</Link> <br/>
+                        <Link id="contact-info" to="/team">Meet the Team</Link> <br/>
+                        <Link id="contact-info" to="/faq">FAQ</Link> <br/> 
+                        <Link id="contact-info" to="/blog">Blog</Link> <br/>
 
                     </p>
                 </div>
