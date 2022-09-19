@@ -1,5 +1,6 @@
 import React from 'react'
 import placeholder from '../../../images/results.PNG'
+import { Link } from "react-router-dom";
 
 
 export default function SocialCard(props) {
@@ -38,7 +39,7 @@ export default function SocialCard(props) {
                     <div className="modal-inner-wrapper">
                         <div className="modal-inner-image" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }}></div>
                         <div className="modal-inner-text">
-                        <a href={'/external-profiles/' + props.pet.ownerId} className='dog-stats owner-stat'>Owner: {props.pet.ownerName}</a><br/>
+                        <Link to={'/external-profiles/' + props.pet.ownerId} className='dog-stats owner-stat'>Owner: {props.pet.ownerName}</Link><br/>
                         <p className="dog-stats"> {props.pet.name}</p>
                         <p className="dog-stats">Age: {props.pet.age}</p>
                         <p className="dog-stats">Breed: {props.pet.breed}</p>

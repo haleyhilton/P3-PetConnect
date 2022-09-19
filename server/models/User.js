@@ -64,6 +64,9 @@ const userSchema = new Schema({
         ref: 'Messages'
       }
     ],
+},
+{
+  timestamps: true,
 });
 
 

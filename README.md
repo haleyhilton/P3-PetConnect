@@ -37,7 +37,7 @@ As a user, I want an app to find and follow reputable breeders, so that I can pu
 
 ## Usage Information
 
-Link showing functionality, usage and final deployment [here]
+Link showing functionality, usage and final deployment [here](https://thepetconnect.herokuapp.com/)
 
 <a name="Future-Development"></a>
 
