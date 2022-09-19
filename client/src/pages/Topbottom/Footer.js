@@ -10,10 +10,10 @@ export default function Footer() {
 
     <footer className="footer text-center">
         <div className="xyz">
-            <div className="row">
+            <div className="row inner-row">
 
 
-                <div className="col-lg-4 contact-info">
+                <div className="col-lg-4 contact-info foot-column" id="contact-info">
                     <h4 className="text-uppercase mb-4">Follow us for more!</h4>
                     <a className="btn btn-outline-light btn-social mx-1" href="#!"><i
                             className="fab fa-fw fa-facebook-f"></i></a>
@@ -22,9 +22,9 @@ export default function Footer() {
                             className="fab fa-fw fa-linkedin-in"></i></a>
                 </div>
 
-                <div className="col-lg-4 mb-5 mb-lg-0">
+                <div className="col-lg-4 mb-5 mb-lg-0 foot-column">
                     <h4 className="text-uppercase mb-4">Contact</h4>
-                    <p className="lead mb-0">
+                    <p className="lead mb-0" id="contact-info">
                         info@petconnect.com
                         <br />
                         800-867-5309
