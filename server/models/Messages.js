@@ -27,7 +27,7 @@ const messageSchema = new Schema({
     type: Date, 
     default: Date.now, 
   },
-});
+},);
 
 const Messages = model('Messages', messageSchema);
 

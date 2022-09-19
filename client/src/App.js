@@ -33,6 +33,7 @@ import EditUser from "./pages/Settings/components/EditUser";
 import EditDog from "./pages/Settings/components/EditDog";
 import EditBilling from "./pages/Settings/components/EditBilling";
 // import Stripe from "../../client/src/components/Stripe"
+import ScrollToTop from './components/Utility-Components/ScrollToTop'
 
 // NEW NEW NEW
 // Construct our main GraphQL API endpoint
@@ -71,6 +72,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
+        <ScrollToTop />
         <Header />
         <Routes>
           <Route path="/" element={<Landing />} />

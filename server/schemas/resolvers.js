@@ -16,6 +16,9 @@ const resolvers = {
     oneUser: async (parent, { profileId }) => {
       return User.findOne({ _id: profileId }).populate('pet').populate('post').populate('messages');
     },
+    oneUserByName: async (parent, { name }) => {
+      return User.findOne({ username: name }).populate('pet').populate('post').populate('messages');
+    },
     onePet: async (parent, { profileId }) => {
       return Pet.findOne({ _id: profileId });
     },
@@ -32,6 +35,19 @@ const resolvers = {
     // Find All Users
     user: async () => {
       return User.find({}).populate('pet').populate('post').populate('messages');
+    },
+    queryMessages: async (parent, { profileId }) => {
+      const newUser = User.findOne({ _id: profileId }).populate('messages').aggregate(
+        [
+          {
+            $project: {
+               _id: 0,
+               formattedDate: { $dateToString: { format: "%Y-%m-%d %H:%M", date: "$lastUpdated" } }
+            }
+          }
+        ]
+     );
+      return newUser
     },
     // Find messages corresponding to sending user id to have history of message conversation
     userMessages: async (parent, args) => {
