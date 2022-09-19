@@ -193,3 +193,26 @@ query oneUserByPetId($petId: ID!) {
   }
 }
 `
+
+export const QUERY_ONE_USER_BY_NAME = gql`
+query OneUserByName($name: String!) {
+  oneUserByName(name: $name) {
+    username
+    profilePicture
+    media {
+      _id
+      url
+    }
+    messages {
+      _id
+      messageText
+      senderId
+      sent_by
+      receiverId
+      received_by
+      lastMessage
+      lastUpdated
+    }
+  }
+}
+`

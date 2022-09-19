@@ -88,6 +88,7 @@ body {
 .navbar-nav {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
@@ -306,6 +307,10 @@ body {
 .navbar-nav-scroll {
   max-height: var(--bs-scroll-height, 75vh);
   overflow-y: auto;
+}
+
+.icon {
+  width: 3rem;
 }
 
 @media (min-width: 992px) {

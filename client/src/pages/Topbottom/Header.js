@@ -44,18 +44,22 @@ export default function Header(props) {
           <div className="collapse navbar-collapse" id="navbarResponsive">
             <ul className="navbar-nav ms-auto">
               <Link className="nav-link py-3 px-0 px-lg-3 rounded" to="/">
+              <i class="fa-solid fa-house icon"></i><br />
                 Home
               </Link>
               <Link className="nav-link py-3 px-0 px-lg-3 rounded" to="/search">
+              <i class="fa-solid fa-magnifying-glass icon"></i><br />
                 Browse
               </Link>
               <Link className="nav-link py-3 px-0 px-lg-3 rounded" to="/social">
+              <i class="fa-solid fa-user-group icon"></i><br />
                 Social
               </Link>
               <Link
                 className="nav-link py-3 px-0 px-lg-3 rounded"
                 to="/contact"
               >
+                <i class="fa-regular fa-address-card icon"></i><br />
                 Contact
               </Link>
               {Auth.loggedIn() ? (
@@ -98,12 +102,14 @@ export default function Header(props) {
                     className="nav-link py-3 px-0 px-lg-3 rounded"
                     to="/login"
                   >
+                    <i class="fa-solid fa-right-to-bracket icon"></i><br />
                     Login
                   </Link>
                   <Link
                     className="nav-link py-3 px-0 px-lg-3 rounded"
                     to="/signup"
                   >
+                    <i class="fa-solid fa-plus icon"></i><br />
                     Signup
                   </Link>
                 </>
