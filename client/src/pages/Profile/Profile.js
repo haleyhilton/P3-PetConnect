@@ -8,14 +8,19 @@ import Cloudinary from "../../components/Cloudinary";
 import { QUERY_ONE_USER } from "../../utils/queries";
 import { ADD_PET_TO_USER } from "../../utils/mutations";
 import { ADD_PET } from "../../utils/mutations";
+import { ADD_PET_PICTURE } from '../../utils/mutations'
 import { getDataFromTree } from "@apollo/client/react/ssr";
 import Auth from "../../utils/auth";
 import blankPicture from "../../images/blankprofile.PNG"
+import Cloudinaryformodal from "../../components/Cloudinaryformodal";
+import axios from 'axios';
 
 export default function Profile(props) {
   // OPEN AND CLOSE ADDING A NEW DOG
+  const { petId } = useParams();
   const [isPostOpen, setIsPostOpen] = useState(true);
   const [isDeleteOpen, setIsDeleteOpen] = useState(true);
+  const [addPhoto, { errorr }] = useMutation(ADD_PET_PICTURE);
   const handlePostOpen = (event) => {
     setIsPostOpen((current) => !current);
   };
@@ -38,6 +43,13 @@ export default function Profile(props) {
   //BEGIN ADDING PET TO USER
   const [addPetToUser, { err }] = useMutation(ADD_PET_TO_USER);
   const [addPet, { error }] = useMutation(ADD_PET);
+  const [images, setImages] = useState([]);
+  const [imageToRemove, setImageToRemove] = useState(null);
+  console.log(petId, "this is pet id")
+  const [imageToSave, setImageToSave] = useState({
+    petId: petId,
+    media: "",
+  });
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -89,6 +101,84 @@ export default function Profile(props) {
   console.log(formState, "hi im form")
 
 
+
+
+
+  // Cloudinary
+
+
+  const styleImageContainer = {
+    position: 'relative',
+    width: '300px',
+    height: '300px',
+    margin: '20px',
+  }
+
+  const imageStyleNew = {
+    width: '300px',
+    height: '300px',
+    objectFit: 'cover',
+  }
+
+  const imagePreviewContainer = {
+    display: 'flex',
+    justifyContent: 'left',
+  }
+
+  const closeIcon = {
+    position: 'absolute',
+    top: '0',
+    left: '0',
+    fontSize: '20px',
+  }
+
+
+
+  const handlePhotoSave = async (event) => {
+    // event.preventDefault();    
+    // On form submit, perform mutation and pass in form data object as arguments
+    // It is important that the object fields are match the defined parameters in `ADD_THOUGHT` mutation
+    try {
+      const { data } = addPhoto({
+        variables: { ...imageToSave },
+      });
+
+      
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  function handleRemoveImg(imgObj) {
+    setImageToRemove(imgObj.public_id);
+    axios.delete(`http://localhost:3001/${imgObj.public_id}`)
+      .then(() => {
+        setImageToRemove(null);
+        setImages((prev) => prev.filter((img) => img.public_id !== imgObj.public_id))
+      })
+      .catch((e) => console.log(e))
+
+  }
+
+  function handleOpenWidget() {
+    let myWidget = window.cloudinary.createUploadWidget(
+      {
+        cloudName: 'dwwkixeof',
+        uploadPreset: 'ml_default',
+      },
+      (error, result) => {
+        if (!error && result && result.event === "success") {
+          setImages((prev) => [...prev, { url: result.info.url, public_id: result.info.public_id }])
+          console.log('Done! Here is the image info: ', result.info);
+          // Save image
+          imageToSave.media = result.info.secure_url
+        }
+      }
+    );
+    // open widget
+    myWidget.open();
+  }
+
   return (
     <div>
 
@@ -98,45 +188,45 @@ export default function Profile(props) {
         </div>
       </div>
 
-    <div className="row custom-row">
-      <div className="col-9 details">
+      <div className="row custom-row">
+        <div className="col-9 details">
 
-        <div className="name">
-          {profile.first_name} {profile.last_name}
+          <div className="name">
+            {profile.first_name} {profile.last_name}
+          </div>
+
+
+          <div className="buyer-seller">Buyer/Seller</div>
+
+
+          <div className="about-me-section">
+            Hello! I'm {profile.first_name} and I am a dog breeder in {profile.zip_code}
+
+          </div>
+          <div>⭐️⭐️⭐️⭐️⭐️</div>
+          <br></br>
+          <div className="message">
+            <button className='message-btn'>
+              <a className="message-text" href={`/chat/${profileId}`}>Message</a></button>
+
+          </div>
         </div>
-
-
-        <div className="buyer-seller">Buyer/Seller</div>
-  
-
-        <div className="about-me-section">
-          Hello! I'm {profile.first_name} and I am a dog breeder in {profile.zip_code}
-
-        </div>
-        <div>⭐️⭐️⭐️⭐️⭐️</div>
-        <br></br>
-        <div className="message">
-          <button className='message-btn'> 
-            <a className="message-text" href={`/chat/${profileId}`}>Message</a></button>
-         
+        <div className="col-3 button-box">
+          <div>
+            <button className="box-btn" onClick={handlePostOpen}>Add New Dog</button>
+          </div>
+          <div><button className="box-btn">
+            <Link className="linktext" to={`/gallery/${Auth.getUser().data._id}`}>
+              View Gallery
+            </Link></button>
+          </div>
         </div>
       </div>
-    <div className="col-3 button-box">
-        <div>
-          <button className="box-btn" onClick={handlePostOpen}>Add New Dog</button>
-        </div>
-        <div><button className="box-btn">
-          <Link className="linktext" to={`/gallery/${Auth.getUser().data._id}`}>
-            View Gallery
-          </Link></button>
-        </div>
-        </div>
-        </div>
 
       <div className="posts">
 
       </div>
-      <ProfileDog dogs={dogProfile}/>
+      <ProfileDog dogs={dogProfile} />
 
       <div className="wrapattack">
         {/* Modal for Adding a Dog */}
@@ -149,7 +239,30 @@ export default function Profile(props) {
             <span className="close" onClick={handlePostOpen}>
               &times;
             </span>
-            <form onSubmit={handleFormSubmit} className="modal-inner-wrapper">
+
+            <form onSubmit={() => { handlePhotoSave(); handleFormSubmit() }} className="modal-inner-wrapper">
+
+              <label>Upload Photo</label>
+              <div className="main-component">
+                <div>
+
+                  <h2>Preview Image</h2>
+                  <div className="images-preview-container" style={imagePreviewContainer}>
+                    {/* Show Pictures*/}
+                    {images.map((image) => (
+                      <div className="image-preview" style={styleImageContainer}>
+                        <img src={image.url} style={imageStyleNew} />
+                        {imageToRemove != image.public_id && <i className="fa fa-times-circle close-icon" style={closeIcon} onClick={() => handleRemoveImg(image)}></i>}
+                      </div>
+                    )
+                    )}
+                  </div>
+                  <br />
+                  <button id="upload-widget" className="cloudinary-button" onClick={() => handleOpenWidget()}>
+                    Upload New Photo
+                  </button>
+                </div>
+              </div>
 
               <label>Name</label>
               <input
@@ -222,7 +335,7 @@ export default function Profile(props) {
           </div>
         </div>
 
-        
+
       </div>
     </div >
   );
