@@ -8,7 +8,7 @@ import PetCloudinary from '../PetCloudinary'
 import { Link } from 'react-router-dom';
 import { style } from "@mui/system";
 import { DELETE_ONE_PET } from "../../utils/mutations";
-
+import ModalApp from "../ProfileDog/ModalApp/ModalApp"
 
 
 
@@ -90,6 +90,7 @@ const ProfileDog = ({ dogs }) => {
               &times;
             </span>
             <div className="modal-inner-wrapper">
+              <ModalApp/>
               <div className="modal-inner-image" style={{ backgroundImage: `url(${profile?.media?.[0] ? profile.media[0].url : placeholder})` }}></div>
               <div className="modal-inner-text">
               <p className="dog-stats">{profile.name}</p>
