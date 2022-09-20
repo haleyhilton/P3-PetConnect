@@ -3,6 +3,7 @@ import { QUERY_USER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import SocialCard from './components/SocialCard';
 import "./style.css";
+import Auth from '../../utils/auth';
 
 function Social() {
     const [firstRender, setFirstRender] = useState(true);
@@ -31,6 +32,7 @@ function Social() {
                 pets = extractPets(users);
                 setPetsState(pets);
                 setFirstRender(false);
+                console.log(Auth.getUser().data);
             }
         }
     });

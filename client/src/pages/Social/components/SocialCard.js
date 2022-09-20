@@ -1,10 +1,12 @@
 import React from 'react'
 import placeholder from '../../../images/results.PNG'
 import { Link } from "react-router-dom";
+import { useMutation } from '@apollo/client';
 
 
 export default function SocialCard(props) {
     const [isOpen, setIsOpen] = React.useState(true);
+    const [addLike] = useMutation(ADD_LIKE, {  })
 
 
     const handleOpen = async (event) => {
@@ -16,6 +18,7 @@ export default function SocialCard(props) {
 
     const handleLikeClick = event => {
         // 👇️ toggle isActive state on click
+
         event.currentTarget.classList.toggle('liked')
     };
 

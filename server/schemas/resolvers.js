@@ -282,6 +282,19 @@ const resolvers = {
       ).populate('messages');
 
       return deletedMessage
+    },
+    addLike: async (parent, args) => {
+      return User.findOneAndUpdate(
+        { _id: args._id },
+        {
+          $addToSet: {
+            likes: args.petId
+          }
+        },
+        {
+          new: true
+        }
+      );
     }
   },
 };

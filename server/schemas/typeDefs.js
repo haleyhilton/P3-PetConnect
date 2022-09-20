@@ -120,6 +120,7 @@ const typeDefs = gql`
     deletePet(_id: ID!): Pet
     editUserInfo(profileId: ID!, first_name: String!, last_name: String!): User
     setProfilePicture(profileId: String!, profilePicture: String!): User
+    addLike(_id: ID!, petId: ID!): User
 
 
     addUser(username: String!, email: String!, password: String!): Auth
