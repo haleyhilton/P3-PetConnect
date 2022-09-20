@@ -6,7 +6,12 @@ import { useMutation } from '@apollo/client';
 
 export default function SocialCard(props) {
     const [isOpen, setIsOpen] = React.useState(true);
-    const [addLike] = useMutation(ADD_LIKE, {  })
+    const [addLike] = useMutation(ADD_LIKE, {
+        variables: {
+            proileId: Auth.getUser().data._id,
+            petId: props.pet._id
+        }
+    });
 
 
     const handleOpen = async (event) => {
@@ -16,9 +21,9 @@ export default function SocialCard(props) {
 
 
 
-    const handleLikeClick = event => {
+    const handleLikeClick = (event) => {
         // 👇️ toggle isActive state on click
-
+        addLike();
         event.currentTarget.classList.toggle('liked')
     };
 
