@@ -285,7 +285,7 @@ const resolvers = {
     },
     addLike: async (parent, args) => {
       return User.findOneAndUpdate(
-        { _id: args._id },
+        { _id: args.profileId },
         {
           $addToSet: {
             likes: args.petId
