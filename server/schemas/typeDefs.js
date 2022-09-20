@@ -51,6 +51,7 @@ const typeDefs = gql`
     post: [Post]
     lastUpdated: String
     messages: [Messages]
+    likes: [Pet]
   }
   
   type Post {
