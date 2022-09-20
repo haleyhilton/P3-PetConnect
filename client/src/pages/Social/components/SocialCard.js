@@ -2,13 +2,15 @@ import React from 'react'
 import placeholder from '../../../images/results.PNG'
 import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/client';
+import Auth from '../../../utils/auth';
+import { ADD_LIKE } from '../../../utils/mutations';
 
 
 export default function SocialCard(props) {
     const [isOpen, setIsOpen] = React.useState(true);
     const [addLike] = useMutation(ADD_LIKE, {
         variables: {
-            proileId: Auth.getUser().data._id,
+            profileId: Auth.getUser().data._id,
             petId: props.pet._id
         }
     });
@@ -24,6 +26,7 @@ export default function SocialCard(props) {
     const handleLikeClick = (event) => {
         // 👇️ toggle isActive state on click
         addLike();
+        //rework to update for pre likes
         event.currentTarget.classList.toggle('liked')
     };
 

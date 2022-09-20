@@ -79,6 +79,9 @@ query OneUser($profileId: ID!) {
       lastMessage
       lastUpdated
     }
+    likes {
+      _id
+    }
   }
 }
 `;
