@@ -157,4 +157,23 @@ mutation SetProfilePicture($profileId: String!, $profilePicture: String!) {
       url
     }
   }
-}`
+}
+`;
+
+export const ADD_LIKE = gql`
+mutation addLike($profileId: ID!, $petId: ID!) {
+  addLike(profileId: $profileId, petId: $petId) {
+    _id
+    username
+  }
+}
+`;
+
+export const REMOVE_LIKE = gql`
+mutation removeLike($profileId: ID!, $petId: ID!) {
+  removeLike(profileId: $profileId, petId: $petId) {
+    _id
+    username
+  }
+}
+`;

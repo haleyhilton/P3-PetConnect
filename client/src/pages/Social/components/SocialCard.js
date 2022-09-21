@@ -1,10 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
 import placeholder from '../../../images/results.PNG'
 import { Link } from "react-router-dom";
+import { useMutation } from '@apollo/client';
+import Auth from '../../../utils/auth';
+import { ADD_LIKE, REMOVE_LIKE } from '../../../utils/mutations';
 
 
 export default function SocialCard(props) {
-    const [isOpen, setIsOpen] = React.useState(true);
+    const [isOpen, setIsOpen] = useState(true);
+    const [liked, setLiked] = useState(props.pet.liked);
+    const [addLike] = useMutation(ADD_LIKE, {
+        variables: {
+            profileId: Auth.getUser().data._id,
+            petId: props.pet._id
+        }
+    });
+
+    const [removeLike] = useMutation(REMOVE_LIKE, {
+        variables: {
+            profileId: Auth.getUser().data._id,
+            petId: props.pet._id
+        },
+        onCompleted: () => {
+            console.log("removed like");
+        },
+    });
 
 
     const handleOpen = async (event) => {
@@ -14,11 +34,13 @@ export default function SocialCard(props) {
 
 
 
-    const handleLikeClick = event => {
+    const handleLikeClick = (event) => {
         // 👇️ toggle isActive state on click
         event.currentTarget.classList.toggle('liked')
+        //check if already liked and update accordingly
+        liked? removeLike() : addLike();
+        setLiked(liked? false : true);
     };
-
 
 
     return (
@@ -26,7 +48,7 @@ export default function SocialCard(props) {
             <div className="top-box"><p className="dog-name">{props.pet.name}</p></div>
             <div key={props.pet._id} className="box" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }} onClick={handleOpen}></div>
             <div className="smallerbox" >
-                <button className="button button-like button-move" onClick={handleLikeClick}>
+                <button className={liked? "button button-like button-move liked" : "button button-like button-move"} onClick={handleLikeClick}>
                     <i className="fa fa-heart"></i>
 
                 </button>
