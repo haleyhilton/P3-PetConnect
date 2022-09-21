@@ -27,6 +27,10 @@
   font-size: 2rem;
 }
 
+.search {
+  padding-bottom: 4rem;
+}
+
 
 /* .search .search-item .search-item-caption {
   position: absolute;
