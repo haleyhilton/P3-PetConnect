@@ -64,6 +64,12 @@ const userSchema = new Schema({
         ref: 'Messages'
       }
     ],
+    likes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Pet'
+      }
+    ],
 },
 {
   timestamps: true,
