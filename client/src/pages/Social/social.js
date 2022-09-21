@@ -6,12 +6,13 @@ import "./style.css";
 import Auth from '../../utils/auth';
 
 function Social() {
-    const [firstRender, setFirstRender] = useState(true);
+    const [isFirstRender, setIsFirstRender] = useState(true);
     const [petsState, setPetsState] = useState([]);
-    const [likes, setLikes] = useState([]);
     let users = [];
     let pets = [];
+    let likes = [];
 
+    //This extracts all pets from the array of all users and modifies them to add whether they've been liked by the user and who their owner is
     function extractPets(arr) {
         let petArr = [];
         for (let i = 0; i < arr.length; i++) {
@@ -32,33 +33,30 @@ function Social() {
         return petArr;
     };
 
-    const { } = useQuery(QUERY_ONE_USER, {
+    const { loading: loadingLikes, data: likesData } = useQuery(QUERY_ONE_USER, {
         variables: {
             profileId: Auth.getUser().data._id
         },
-        onCompleted: newData => {
-            if (!(likes === newData.oneUser.likes)) {
-                setLikes(newData.oneUser.likes);
-            }
-        }
+        fetchPolicy: 'cache-and-network',
     });
 
     const {loading, data} = useQuery(QUERY_USER, {
-        onCompleted: newData => {
-            if (firstRender) {
-                users = newData.user;
-                pets = extractPets(users);
-                setPetsState(pets);
-                setFirstRender(false);
-            }
-        }
     });
-    
 
+    if (!loading && !loadingLikes) {
+        likes = likesData.oneUser.likes;
+        pets = extractPets(data.user);
+        if (isFirstRender) {
+            setPetsState(pets);
+            setIsFirstRender(false);
+        }
+    }
+
+    
     return (
         <div>
         <div className='centerfold'>
-            {loading ? (
+            {loading || loadingLikes ? (
                 <div>Loading...</div>
             ) : (
                 <div className='gridcontainer'>

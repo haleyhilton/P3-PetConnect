@@ -168,3 +168,12 @@ mutation addLike($profileId: ID!, $petId: ID!) {
   }
 }
 `;
+
+export const REMOVE_LIKE = gql`
+mutation removeLike($profileId: ID!, $petId: ID!) {
+  removeLike(profileId: $profileId, petId: $petId) {
+    _id
+    username
+  }
+}
+`;

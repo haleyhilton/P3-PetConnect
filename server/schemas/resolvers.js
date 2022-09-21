@@ -295,6 +295,19 @@ const resolvers = {
           new: true
         }
       );
+    },
+    removeLike: async (parent, args) => {
+      return User.findOneAndUpdate(
+        { _id: args.profileId },
+        {
+          $pull: {
+            likes: args.petId
+          }
+        },
+        {
+          new: true
+        }
+      );
     }
   },
 };
