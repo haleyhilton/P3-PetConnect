@@ -74,5 +74,3 @@ function Social() {
 };
 
 export default Social;
-
-//just here so theres a change
