@@ -142,7 +142,7 @@ export default function Signup() {
           <div className="form-group">
             <button
               id="signup-submit"
-              className="btn btn-primary"
+              className="btn btn-primary sign-up-btn"
               type="submit"
               style={{ cursor: "pointer" }}
             >

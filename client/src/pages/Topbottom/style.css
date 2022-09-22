@@ -12,13 +12,6 @@ root {
 
 }
 
-
-@font-face {
-  font-family: 'Head-Turner';
-  src: url('../Topbottom/Head-Turner.woff') format('woff');
-  font-weight: normal;
-}
-
 @font-face {
   font-family: 'KulimPark-Regular';
   src: url('../Topbottom/KulimPark-Regular.woff') format('woff');
@@ -159,7 +152,7 @@ body {
 .footer {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  margin-top: 4rem;
+  margin-top: 0rem;
   background-color: #219ebc;
   color: white;
 }
@@ -271,6 +264,7 @@ body {
   color: #023047
 }
 
+
 /* ==== MEDIA QUERIES ====*/
 @media (prefers-reduced-motion: no-preference) {
   :root {
@@ -367,4 +361,82 @@ body {
   .navbar-expand-lg .navbar-toggler {
     display: none;
   }
+}
+
+
+/* @media (min-width: 481px) and (max-width: 767px) {
+  
+ .contact-info, #contact-info {
+   font-size: .75rem;
+ }
+  
+} */
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+@media (max-width: 992px) {
+.inner-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 33%;
+}
+
+.foot-column {
+  border-right: 2px solid;
+  max-height: 120px;
+}
+}
+@media (max-width: 625px) {
+  
+  #contact-info {
+    font-size: .75rem;
+  }
+  .navbar-custom .navbar-brand, .navbar-custom .navbar-text {
+    font-size: medium;
+  }
+
+  h4 {
+    font-size: medium;
+    margin-bottom: .5rem !important;
+  }
+
+  .footer {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 2rem;
+    
+  }
+
+  .masthead {
+    padding-top: calc(1rem + 54px);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.masthead .masthead-heading {
+  font-size: 1.75rem;
+  padding: 0px 1rem;
+  line-height: 1.75rem; 
+}
+
+.masthead .masthead-subheading {
+  display: none;
+}
+
+.divider-custom-icon, .divider-custom-line {
+  display: none;
+}
+
+.btn {
+  margin-top: 16px;}
+
+.btn-social {
+  width: 2rem;
+  height: 2rem;
+}
+
 }
