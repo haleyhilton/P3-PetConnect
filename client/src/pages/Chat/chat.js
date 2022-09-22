@@ -161,6 +161,7 @@ function Chat() {
 
     const chat = data?.oneUser || [];
     const newChatInstance = chat.username;
+    console.log("HERE I AM", chat)
    
     const createDate = new Date()
     // Logic to send message to database
@@ -234,7 +235,7 @@ function Chat() {
               <Grid item xs={9}>
                   <List style={styles.messageArea}>
                     {receiverBubble.map((mess) => {
-                        // console.log("44444444",mess)
+                        console.log("44444444",mess)
                         return (
                             <ListItem>
                          <Grid container>
