@@ -51,6 +51,7 @@ const typeDefs = gql`
     post: [Post]
     lastUpdated: String
     messages: [Messages]
+    likes: [Pet]
   }
   
   type Post {
@@ -119,6 +120,8 @@ const typeDefs = gql`
     deletePet(_id: ID!): Pet
     editUserInfo(profileId: ID!, first_name: String!, last_name: String!): User
     setProfilePicture(profileId: String!, profilePicture: String!): User
+    addLike(profileId: ID!, petId: ID!): User
+    removeLike(profileId: ID!, petId: ID!): User
 
 
     addUser(username: String!, email: String!, password: String!): Auth

@@ -134,6 +134,7 @@ function Chat() {
             const receiverMessages = converse.filter(function (converse) {
                 return converse.senderId === profileId;
             }).map(function (converse) {
+                // console.log(converse, "this my converse baabbbyyy")
                 return converse;
             })
 
@@ -172,7 +173,7 @@ function Chat() {
         receiverId: `${profileId}`,
         sentBy: `${AuthService.getUser().data.username}`,
         receivedBy: "",
-        lastUpdated: createDate,
+        lastUpdated: `${createDate}`,
     });
 
     console.log(createDate, "supposed date object")
@@ -222,7 +223,8 @@ function Chat() {
 // TODO: need to be able to click on a profile message button that automatically opens up chat page with user id in params to start conversation
 // TODO: Change date format
 
-
+console.log(moment(new Date(1663789736150).toISOString()), "1st date")
+console.log(Date(1663789989183), "2nd date")
 
 
     return (
@@ -235,7 +237,7 @@ function Chat() {
               <Grid item xs={9}>
                   <List style={styles.messageArea}>
                     {receiverBubble.map((mess) => {
-                        console.log("44444444",mess)
+                        console.log("44444444",receiverBubble)
                         return (
                             <ListItem>
                          <Grid container>
@@ -244,14 +246,14 @@ function Chat() {
                                  <ListItemText style={styles.receiver} primary={mess.messageText}></ListItemText>
                              </Grid>
                              <Grid item xs={12}>
-                                 <ListItemText  style={styles.receiverTime} secondary={moment(Date(mess.lastUpdated)).format('MMM Do YYYY, h:mm a')}></ListItemText>
+                                 <ListItemText  style={styles.receiverTime} secondary={moment(mess.lastUpdated).format('MMM Do YYYY, h:mm a')}></ListItemText>
                              </Grid>
                          </Grid>
                      </ListItem>
                         )   
                     })}
                     {senderBubble.map((mess2) => {
-                        console.log(moment(Date(mess2.lastUpdated)), typeof mess2.lastUpdated, "moment")
+                        console.log(Date(mess2.lastUpdated), typeof mess2.lastUpdated, "moment")
                         return (
                       <ListItem>
                           <Grid container>
@@ -260,7 +262,7 @@ function Chat() {
                                   <ListItemText style={styles.sender} primary={mess2.messageText}></ListItemText>
                               </Grid>
                               <Grid item xs={12}>
-                                  <ListItemText style={styles.senderTime} secondary={moment(Date(mess2.lastUpdated)).format('MMM Do YYYY, h:mm a')}></ListItemText>
+                                  <ListItemText style={styles.senderTime} secondary={moment(mess2.lastUpdated).format('MMM Do YYYY, h:mm a')}></ListItemText>
                               </Grid>
                           </Grid>
                       </ListItem>
