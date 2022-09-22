@@ -11,6 +11,8 @@ import { DELETE_ONE_PET } from "../../utils/mutations";
 import "./style.css";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import ModalApp from "../ProfileDog/ModalApp/ModalApp"
+
 
 const ProfileDog = ({ dogs }) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(true);
@@ -96,6 +98,7 @@ const ProfileDog = ({ dogs }) => {
               &times;
             </span>
             <div className="modal-inner-wrapper">
+              <ModalApp/>
               <div
                 className="modal-inner-image"
                 style={{
