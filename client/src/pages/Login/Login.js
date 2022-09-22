@@ -47,7 +47,7 @@ export default function Login(props) {
   };
 
   return (
-    <div>
+    <div className="entire-background">
       {loaderTime? 
       <div className="loader">
         <div className="dog">
@@ -94,22 +94,26 @@ export default function Login(props) {
       : 
       <div className="splitMenu-container" id="login">
         <div className="login-container">
-          <h1>Login to your account</h1>
+          <h1>Welcome</h1>
 
           {/* Call the login states */}
-          <form onSubmit={handleFormSubmit}>
+          <form onSubmit={handleFormSubmit} className="log-in">
+            <h6 className="form-content">Username</h6>
             <input
               id="username-login"
               type="text"
+              className="form-content input-content"
               placeholder="Username"
               name="username"
               required
               value={formState.username}
               onChange={handleChange}
             />
+            <h6 className="form-content">Password</h6>
             <input
               id="password-login"
               type="password"
+              className="form-content input-content"
               placeholder="Password"
               name="password"
               required
@@ -118,7 +122,7 @@ export default function Login(props) {
             />
             <button
                   id="login-submit"
-                  classNameName="btn btn-block btn-info"
+                  classNameName="btn btn-block btn-info form-content"
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
@@ -145,7 +149,7 @@ export default function Login(props) {
           <p>Well then you should join us obviously</p>
 
           <Link to="/Signup">
-            <button id="signUpBtn" onClick={"/Signup"}>
+            <button id="signUpBtn" className="sign-up-button" onClick={"/Signup"}>
               Sign Up
             </button>
           </Link>
