@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/haleyhilton/P3-PetConnect/issues"
   },
-  "homepage": "https://github.com/haleyhilton/P3-PetConnect#readme"
+  "homepage": "https://github.com/haleyhilton/P3-PetConnect#readme",
+  "dependencies": {
+    "redbox-react": "^1.6.0"
+  }
 }
