@@ -9,7 +9,7 @@ import Auth from "../../utils/auth";
 import { SET_USER_PROFILE_PICTURE } from "../../utils/mutations";
 
 const Cloudinary = (props) => {
-  const [setPicture, { error, datum1 }] = useMutation(SET_USER_PROFILE_PICTURE);
+  const [setProfilePicture, { error, datum1 }] = useMutation(SET_USER_PROFILE_PICTURE);
   const { profileId } = useParams();
   const [images, setImages] = useState([]);
   const [imageToRemove, setImageToRemove] = useState(null);
@@ -17,7 +17,7 @@ const Cloudinary = (props) => {
     profileId: profileId,
     media: "",
   });
-  const [newProfilePicture, setProfilePicture] = useState({
+  const [newProfilePicture, setProfilePictures] = useState({
     profileId: Auth.getUser().data._id,
     profilePicture: "",
   });
@@ -74,7 +74,7 @@ const Cloudinary = (props) => {
       const { datum } = await addPictureToProfile({
         variables: { ...addPicture },
       });
-
+      console.log(datum, "this is the normal picture addition")
       window.location.reload();
     } catch (err) {
       console.error(err);
@@ -122,11 +122,11 @@ const Cloudinary = (props) => {
     newProfilePicture.profilePicture = url;
     console.log(newProfilePicture, "here is the updated");
     try {
-      const { datum3 } = await setPicture({
+      const { data } = await setProfilePicture({
         variables: { ...newProfilePicture },
       });
       // window.location.reload();
-      console.log(datum3, "datum");
+      console.log(data, "datum");
       navigate(`/profiles/${Auth.getUser().data._id}`);
     } catch (e) {
       console.error(e);
