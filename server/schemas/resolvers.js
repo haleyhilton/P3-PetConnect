@@ -5,6 +5,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const removeDuplicates = require('../utils/removeDuplicates');
 const { eventNames } = require('../models/Messages');
 
+
 // This essentially replaces routes and controllers.
 // Query = Get Routes
 // Mutations = POST/PUT/DELETE Routes
@@ -162,13 +163,27 @@ const resolvers = {
         }
       );
     },
-    editUserInfo: async (parent, { profileId, first_name, last_name }) => {
+    addFile: async (parent, { petId, file }) => {
+      return Pet.findOneAndUpdate(
+        { _id: petId },
+        {
+          $addToSet: { files: { filename: file } },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    editUserInfo: async (parent, { profileId, first_name, last_name, date_of_birth, zip_code }) => {
       return User.findOneAndUpdate(
         { _id: profileId },
         {
           $set: { 
             first_name: first_name,
             last_name: last_name,
+            date_of_birth: date_of_birth,
+            zip_code: zip_code,
           },
         },
         {
@@ -208,7 +223,7 @@ const resolvers = {
     },
     setProfilePicture: async (parent, { profileId, profilePicture }) => {
       return User.findOneAndUpdate(
-        { profileId: profileId },
+        { _id: profileId },
         {
           $set: { 
             profilePicture: profilePicture,

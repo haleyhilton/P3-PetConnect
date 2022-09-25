@@ -5,6 +5,7 @@ import { QUERY_ONE_USER } from "../../../utils/queries";
 import { EDIT_USER } from "../../../utils/mutations";
 import { useQuery, useMutation } from "@apollo/client";
 import './editUser.css'
+import moment from 'moment'
 
 export default function EditUser() {
 
@@ -12,8 +13,10 @@ export default function EditUser() {
   const [editUser, { error, datum }] = useMutation(EDIT_USER);
   const [nameInfo, setNameInfo] = useState({
     profileId: Auth.getUser().data._id,
-    firstName: "Monkey",
-    lastName: "Pox",
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    zipCode: "",
   });
   const navigate = useNavigate();
   const profileId = Auth.getUser().data._id;
@@ -27,6 +30,10 @@ export default function EditUser() {
     return <div>Loading...</div>;
   }
 
+  nameInfo.firstName = profile.first_name;
+  nameInfo.lastName = profile.last_name;
+  nameInfo.dateOfBirth = profile.date_of_birth;
+  nameInfo.zipCode = profile.zip_code;
  
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -43,11 +50,13 @@ export default function EditUser() {
     }
   };
 
-  console.log(nameInfo.firstName)
+  const date_of_birth = new Date("04/07/1986")
+
+  console.log(nameInfo, "dob")
 
   return (
     <div>
-      <div className="container my-5">
+      <div className="container my-5 edit-info">
         <h1>
           <span>
             <button className="btn btn-secondary" onClick={() => navigate(-1)}>
@@ -57,9 +66,9 @@ export default function EditUser() {
             Profile Settings
           </span>
         </h1>
-        <div className="my-5 div-form">
+        <div className="my-5 edit-info-div">
           <form className="form signup-form form-addition" onSubmit={handleFormSubmit}>
-          <h2>Edit Your Name</h2>
+          <h2>Edit Your Information</h2>
             <input
               className="form-input"
               type="text"
@@ -78,13 +87,31 @@ export default function EditUser() {
               // value={this.state.name}
               onChange={e => nameInfo.lastName = e.target.value}
             />
+            <input
+              className="form-input"
+              type="text"
+              id="fn-signup"
+              name="date_of_birth"
+              placeholder={`Current DOB: ${moment(`${profile.date_of_birth}`).format('MMM Do YYYY')}`}
+              // value={this.state.name}
+              onChange={e => (nameInfo.dateOfBirth) = new Date(e.target.value)}
+            />
+            <input
+              className="form-input"
+              type="text"
+              id="fn-signup"
+              name="zip_code"
+              placeholder={`Current Zip Code: ${profile.zip_code}`}
+              // value={this.state.name}
+              onChange={e => nameInfo.zipCode = parseInt(e.target.value)}
+            />
             <button
               id="signup-submit"
               className="btn btn-primary"
               type="submit"
               style={{ cursor: "pointer" }}
             >
-              Update Name
+              Update
             </button>
           </form>
           {/* <div>First Name: {profile.first_name}</div>

@@ -27,13 +27,14 @@ import Search from "./pages/Search/Search";
 import { setContext } from "@apollo/client/link/context";
 import Message from "./pages/Messages/Message";
 import Chat from "./pages/Chat/chat";
-import Social from "./pages/Social/Social";
+import Social from "./pages/Social/social";
 import Settings from "./pages/Settings";
 import EditUser from "./pages/Settings/components/EditUser";
 import EditDog from "./pages/Settings/components/EditDog";
 import EditBilling from "./pages/Settings/components/EditBilling";
 // import Stripe from "../../client/src/components/Stripe"
 import ScrollToTop from './components/Utility-Components/ScrollToTop'
+import FileUploader from '../../client/src/components/FileUploader'
 
 // NEW NEW NEW
 // Construct our main GraphQL API endpoint
@@ -99,6 +100,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/search" element={<Search />} />
           <Route path="/social" element={<Social />} />
+          <Route path="/file-upload/:petId" element={<FileUploader />} />
           {/* <Route path="/stripe" element={<Stripe />} /> */}
         </Routes>
         <Footer />
