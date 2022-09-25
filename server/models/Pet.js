@@ -7,6 +7,18 @@ const dogMediaSchema = new Schema({
   },
 });
 
+const fileUploaderSchema = new Schema({
+  filename: {
+    type: String,
+  },
+  // mimetype: {
+  //   type: String,
+  // },
+  // encoding: {
+  //   type: String,
+  // },
+});
+
 const petSchema = new Schema({
     // Attaches pet to user
     name: {
@@ -40,6 +52,7 @@ const petSchema = new Schema({
       type: Date, 
       default: Date.now, 
     },
+    files: [fileUploaderSchema],
 });
 
 const Pet = model('Pet', petSchema);

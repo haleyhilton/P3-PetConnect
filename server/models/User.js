@@ -35,7 +35,7 @@ const userSchema = new Schema({
       type: String,
     },
     date_of_birth: {
-      type: Date,
+      type: String,
     },
     zip_code: {
       type: Number,

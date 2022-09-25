@@ -7,6 +7,7 @@ const { gql } = require('apollo-server-express');
 // Mutations are for your POST/PUT/DELETE Routes
 
 const typeDefs = gql`
+
   type Pet {
     _id: ID!
     name: String
@@ -18,6 +19,7 @@ const typeDefs = gql`
     description: String
     for_sale: Boolean
     media: [PetMedia]
+    files: [Files]
     lastUpdated: String
   }
 
@@ -31,9 +33,9 @@ const typeDefs = gql`
     url: String
   }
 
-  type ProfileMedia {
+  type Files {
     _id: ID
-    url: String
+    filename: String
   }
 
    type User {
@@ -61,14 +63,6 @@ const typeDefs = gql`
     lastUpdated: String
   }
 
-  type Post {
-    _id: ID!
-    subject: String!
-    body: String!
-    lastUpdated: String
-  }
-
-
   type Messages {
     _id: ID!
     messageText: String!
@@ -77,13 +71,6 @@ const typeDefs = gql`
     receiverId: String!
     received_by: String
     lastMessage: String
-    lastUpdated: String
-  }
-
-  type Post {
-    _id: ID!
-    subject: String!
-    body: String!
     lastUpdated: String
   }
 
@@ -118,10 +105,11 @@ const typeDefs = gql`
     createMessage(messageText: String!, senderId: String!, sent_by: String, receiverId: String!, received_by: String, lastMessage: String, lastUpdated: String): Messages
     deleteMessage(_id: ID!, messageId: String!): User
     deletePet(_id: ID!): Pet
-    editUserInfo(profileId: ID!, first_name: String!, last_name: String!): User
+    editUserInfo(profileId: ID!, first_name: String!, last_name: String!, date_of_birth: String!, zip_code: Int!): User
     setProfilePicture(profileId: String!, profilePicture: String!): User
     addLike(profileId: ID!, petId: ID!): User
     removeLike(profileId: ID!, petId: ID!): User
+    addFile(petId: String!, file: String!): Pet
 
 
     addUser(username: String!, email: String!, password: String!): Auth

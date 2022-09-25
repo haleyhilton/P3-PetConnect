@@ -59,9 +59,8 @@ function Message() {
         return mes;
     }
 }
-
+console.log(message, "what is this message")
   return (
-
     <div>
       {loading ? (
         <div>Loading...</div>

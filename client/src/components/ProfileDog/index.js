@@ -28,7 +28,7 @@ const ProfileDog = ({ dogs }) => {
   });
 
   const profile = data?.onePet || {};
-
+  console.log(profile, "this is profile")
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -120,6 +120,11 @@ const ProfileDog = ({ dogs }) => {
                 <button className="upload-btn">
                   <Link className="linktext" to={`/pet-gallery/${profile._id}`}>
                     Upload a Picture
+                  </Link>
+                </button>
+                <button className="upload-btn">
+                  <Link className="linktext" to={`/file-upload/${profile._id}`}>
+                    Upload a File
                   </Link>
                 </button>
               </div>
