@@ -36,8 +36,8 @@ export default function Footer() {
                     <p className="lead mb-0">
                         <Link id="contact-info" to="/about">Our Story</Link> <br/>
                         <Link id="contact-info" to="/team">Meet the Team</Link> <br/>
-                        <Link id="contact-info" to="/faq">FAQ</Link> <br/> 
-                        <Link id="contact-info" to="/blog">Blog</Link> <br/>
+                        {/* <Link id="contact-info" to="/faq">FAQ</Link> <br/> 
+                        <Link id="contact-info" to="/blog">Blog</Link> <br/> */}
 
                     </p>
                 </div>
