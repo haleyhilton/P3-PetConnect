@@ -8,22 +8,23 @@ import { ADD_LIKE, REMOVE_LIKE } from '../../../utils/mutations';
 
 export default function SocialCard(props) {
     const [isOpen, setIsOpen] = useState(true);
-    const [liked, setLiked] = useState(props.pet.liked);
+    const [liked, setLiked] = useState(props.pet.liked? props.pet.liked : false);
+    let user = null;
+    if (Auth.loggedIn()) {
+        user = Auth.getUser().data._id;
+    }
     const [addLike] = useMutation(ADD_LIKE, {
         variables: {
-            profileId: Auth.getUser().data._id,
+            profileId: user,
             petId: props.pet._id
         }
     });
 
     const [removeLike] = useMutation(REMOVE_LIKE, {
         variables: {
-            profileId: Auth.getUser().data._id,
+            profileId: user,
             petId: props.pet._id
-        },
-        onCompleted: () => {
-            console.log("removed like");
-        },
+        }
     });
 
 
@@ -38,9 +39,11 @@ export default function SocialCard(props) {
         // 👇️ toggle isActive state on click
         event.currentTarget.classList.toggle('liked')
         //check if already liked and update accordingly
-        liked? removeLike() : addLike();
+        if (Auth.loggedIn()) { liked? removeLike() : addLike() };
         setLiked(liked? false : true);
     };
+
+    const doNothing = () => {};
 
 
     return (
@@ -49,8 +52,15 @@ export default function SocialCard(props) {
             {/* <div className="top-box"><p className="dog-name">{props.pet.name}</p></div> */}
             <div key={props.pet._id} className="box" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }} onClick={handleOpen}></div>
             <div className="smallerbox" >
+<<<<<<< HEAD
                 <button className={liked? "button button-like button-move liked" : "button button-like button-move"} onClick={handleLikeClick}>
                     <i className="fa fa-heart"></i></button>
+=======
+                <button className={liked? "button button-like button-move liked" : "button button-like button-move"} onClick={() => {Auth.loggedIn() ? handleLikeClick() : doNothing()}}>
+                    <i className="fa fa-heart"></i>
+
+                </button>
+>>>>>>> f77a8bd0181f6244d0a700c27027bc845820af42
 
                 <div><textarea placeholder="Leave Comment" className='comment'></textarea></div>
             </div>

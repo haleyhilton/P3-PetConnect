@@ -32,19 +32,21 @@ function Social() {
         };
         return petArr;
     };
-
-    const { loading: loadingLikes, data: likesData } = useQuery(QUERY_ONE_USER, {
+    
+    const { loading: loadingLikes, data: likesData } = useQuery(QUERY_ONE_USER, Auth.loggedIn() ? {
         variables: {
-            profileId: Auth.getUser().data._id
+            profileId: Auth.getUser().data._id,
         },
         fetchPolicy: 'cache-and-network',
-    });
+    } : { skip: true });
 
     const {loading, data} = useQuery(QUERY_USER, {
     });
 
-    if (!loading && !loadingLikes) {
-        likes = likesData.oneUser.likes;
+    if (!loading) {
+        if (Auth.loggedIn() && !loadingLikes) {
+            likes = likesData.oneUser.likes;
+        }
         pets = extractPets(data.user);
         if (isFirstRender) {
             setPetsState(pets);
