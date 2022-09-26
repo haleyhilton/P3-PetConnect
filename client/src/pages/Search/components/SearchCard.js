@@ -68,17 +68,23 @@ console.log(props.pet)
                 <div className="modal-content">
                     <span className="close" onClick={handleOpen}>&times;</span>
                     <div className="modal-inner-wrapper">
-                        <div className="modal-inner-image" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }}></div>
-                        <div className="modal-inner-text">
-                        <Link to={'/external-profiles/' + props.pet.ownerId} className='dog-stats owner-stat'>Owner: {props.pet.ownerName}</Link><br/>
-                      
-                        <p className="dog-stats"> {props.pet.name}</p>
-                        <p className="dog-stats">Age: {props.pet.age}</p>
-                        <p className="dog-stats">Breed: {props.pet.breed}</p>
-                        <p className="dog-stats">Sex: {props.pet.sex}</p>
-                        <p className="dog-stats">Size: {props.pet.size}</p>
-                        <p className="dog-stats">Color: {props.pet.color}</p>
-                        <p className="dog-stats italic"><small> {props.pet.description}</small></p>
+                      <div className="row modal-row">
+                        <div className="modal-inner-dog col" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }}></div>
+                        <div className="modal-inner-text col">
+                          <div className="image-hide" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }}></div>
+                          <p className="dog-stats dog-stat-name"> {props.pet.name}</p>
+                          <Link to={'/external-profiles/' + props.pet.ownerId} className='dog-stats owner-stat owner-hide'>Owner {props.pet.ownerName}</Link><br/>
+                          <p className="dog-stats">Age: {props.pet.age}</p>
+                          <p className="dog-stats">Breed: {props.pet.breed}</p>
+                          <p className="dog-stats">Sex: {props.pet.sex}</p>
+                          <p className="dog-stats">Size: {props.pet.size}</p>
+                          <p className="dog-stats">Color: {props.pet.color}</p>
+                          <p className="dog-stats italic"><small> {props.pet.description}</small></p>
+                        </div>
+                        </div>
+
+                        <div className="modal-inner-contact">
+                         <p className='dog-contact owner-hidexx'>Interested in {props.pet.name}? Reach out to: </p> <Link to={'/external-profiles/' + props.pet.ownerId} className='dog-stats owner-stat'>Owner {props.pet.ownerName}</Link><br/>
                         </div>
                     </div>
                 </div>
