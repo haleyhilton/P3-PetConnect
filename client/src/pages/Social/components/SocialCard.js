@@ -52,15 +52,10 @@ export default function SocialCard(props) {
             {/* <div className="top-box"><p className="dog-name">{props.pet.name}</p></div> */}
             <div key={props.pet._id} className="box" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }} onClick={handleOpen}></div>
             <div className="smallerbox" >
-<<<<<<< HEAD
-                <button className={liked? "button button-like button-move liked" : "button button-like button-move"} onClick={handleLikeClick}>
-                    <i className="fa fa-heart"></i></button>
-=======
                 <button className={liked? "button button-like button-move liked" : "button button-like button-move"} onClick={() => {Auth.loggedIn() ? handleLikeClick() : doNothing()}}>
                     <i className="fa fa-heart"></i>
 
                 </button>
->>>>>>> f77a8bd0181f6244d0a700c27027bc845820af42
 
                 <div><textarea placeholder="Leave Comment" className='comment'></textarea></div>
             </div>
