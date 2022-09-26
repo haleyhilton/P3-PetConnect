@@ -1,5 +1,7 @@
-label {
+.label {
   color: white !important;
+  font-family: 'Helvetica' !important;
+  text-transform:none !important;
 }
 
  .divider-custom {
@@ -48,7 +50,7 @@ p {
   width: 100vw;
   background-size: cover;
   background-position: center;
-  opacity: 0.5;
+  opacity: 0.35;
   position: absolute;
   z-index: -1;
 }
@@ -73,4 +75,7 @@ p {
 .sign-up-btn {
   width: 90%;
   margin-left: 1.5vw;
+  border-style: solid !important;
+  border-color: white !important;
+  border-width: 1px !important;
 }

@@ -5,12 +5,12 @@ import Auth from "../../utils/auth";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import blankPicture from "../../images/blankprofile.PNG"
-
-
-// import { useQuery } from '@apollo/client';
 import { QUERY_ONE_USER } from '../../utils/queries';
 
+
 export default function Header(props) {
+
+  
   const navigate = useNavigate();
   const logout = (event) => {
     event.preventDefault();

@@ -5,3 +5,8 @@
 .form-addition {
     width: 500px;
 }
+
+.edit-info-div {
+ display: flex;
+ justify-content: center;
+}
