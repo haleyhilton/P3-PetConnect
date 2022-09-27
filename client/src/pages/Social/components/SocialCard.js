@@ -48,7 +48,8 @@ export default function SocialCard(props) {
 
     return (
         <div>
-            <div className="top-box"><p className="dog-name">{props.pet.name}</p></div>
+            <div className="social-container2">
+            {/* <div className="top-box"><p className="dog-name">{props.pet.name}</p></div> */}
             <div key={props.pet._id} className="box" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }} onClick={handleOpen}></div>
             <div className="smallerbox" >
                 <button className={liked? "button button-like button-move liked" : "button button-like button-move"} onClick={() => {Auth.loggedIn() ? handleLikeClick() : doNothing()}}>
@@ -58,13 +59,14 @@ export default function SocialCard(props) {
 
                 <div><textarea placeholder="Leave Comment" className='comment'></textarea></div>
             </div>
+            </div>
             <div id="myModal" className="modal" style={{ display: isOpen ? "none" : "block" }}>
-                <div className="modal-content">
+                <div className="modal-content2">
                     <span className="close" onClick={handleOpen}>&times;</span>
-                    <div className="modal-inner-wrapper">
-                        <div className="modal-inner-image" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }}></div>
-                        <div className="modal-inner-text">
-                        <Link to={'/external-profiles/' + props.pet.ownerId} className='dog-stats owner-stat'>Owner: {props.pet.ownerName}</Link><br/>
+                    <div className="modal-inner-wrapper2">
+                        <div className="modal-inner-dog2" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }}></div>
+                        <div className="modal-inner-text2">
+                        <Link to={'/external-profiles/' + props.pet.ownerId} className='dog-stats owner-stat2'>Owner: {props.pet.ownerName}</Link><br/>
                         <p className="dog-stats"> {props.pet.name}</p>
                         <p className="dog-stats">Age: {props.pet.age}</p>
                         <p className="dog-stats">Breed: {props.pet.breed}</p>
