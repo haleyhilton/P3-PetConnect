@@ -157,7 +157,7 @@ export default function Profile(props) {
             </span>
             <form onSubmit={handleFormSubmit} className="modal-inner-wrapper">
 
-              <label>Name</label>
+              <label className="add-dog-modal-input">Name</label>
               <input
                 required
                 placeholder="Enter your pet's name"
@@ -166,7 +166,7 @@ export default function Profile(props) {
                 value={formState.name}
                 onChange={handleInputChange}
               ></input>
-              <label>Age</label>
+              <label className="add-dog-modal-input">Age</label>
               <input
                 required
                 placeholder="Enter your pet's age"
@@ -176,7 +176,7 @@ export default function Profile(props) {
                 onChange={handleInputChange}
               ></input>
 
-              <label>Breed</label>
+              <label className="add-dog-modal-input">Breed</label>
               <input
                 required
                 placeholder="Enter your pet's breed"
@@ -185,7 +185,7 @@ export default function Profile(props) {
                 value={formState.breed}
                 onChange={handleInputChange}
               ></input>
-              <label>Sex</label>
+              <label className="add-dog-modal-input">Sex</label>
               <textarea
                 required
                 placeholder="Enter your pet's sex"
@@ -194,7 +194,7 @@ export default function Profile(props) {
                 value={formState.sex}
                 onChange={handleInputChange}
               ></textarea>
-              <label>Size</label>
+              <label className="add-dog-modal-input">Size</label>
               <textarea
                 required
                 placeholder="Enter your pet's size"
@@ -203,7 +203,7 @@ export default function Profile(props) {
                 value={formState.size}
                 onChange={handleInputChange}
               ></textarea>
-              <label>Color</label>
+              <label className="add-dog-modal-input">Color</label>
               <textarea
                 required
                 placeholder="Enter your pet's color"
@@ -213,7 +213,7 @@ export default function Profile(props) {
                 onChange={handleInputChange}
               ></textarea>
 
-              <label>Description</label>
+              <label className="add-dog-modal-input">Description</label>
               <textarea
                 required
                 placeholder="Description of your pet"
@@ -223,7 +223,7 @@ export default function Profile(props) {
                 onChange={handleInputChange}
               ></textarea>
               {/* <Cloudinary dogName={formState.name} /> */}
-              <button type="submit" onClick={handlePostOpen}>Submit</button>
+              <button className="add-dog-submit-btn" type="submit" onClick={handlePostOpen}>Submit</button>
             </form>
           </div>
         </div>
