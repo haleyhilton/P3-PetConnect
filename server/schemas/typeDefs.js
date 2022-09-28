@@ -7,6 +7,7 @@ const { gql } = require('apollo-server-express');
 // Mutations are for your POST/PUT/DELETE Routes
 
 const typeDefs = gql`
+
   type Pet {
     _id: ID!
     name: String
@@ -18,6 +19,7 @@ const typeDefs = gql`
     description: String
     for_sale: Boolean
     media: [PetMedia]
+    files: [Files]
     lastUpdated: String
   }
 
@@ -31,9 +33,9 @@ const typeDefs = gql`
     url: String
   }
 
-  type ProfileMedia {
+  type Files {
     _id: ID
-    url: String
+    filename: String
   }
 
    type User {
@@ -51,6 +53,7 @@ const typeDefs = gql`
     post: [Post]
     lastUpdated: String
     messages: [Messages]
+    likes: [Pet]
   }
   
   type Post {
@@ -59,14 +62,6 @@ const typeDefs = gql`
     body: String!
     lastUpdated: String
   }
-
-  type Post {
-    _id: ID!
-    subject: String!
-    body: String!
-    lastUpdated: String
-  }
-
 
   type Messages {
     _id: ID!
@@ -79,13 +74,6 @@ const typeDefs = gql`
     lastUpdated: String
   }
 
-  type Post {
-    _id: ID!
-    subject: String!
-    body: String!
-    lastUpdated: String
-  }
-
   # Set up an Auth type to handle returning data from a profile creating or user login
   type Auth {
     token: ID!
@@ -94,6 +82,7 @@ const typeDefs = gql`
 
   type Query {
     user: [User]
+    oneUserByName(name: String!): User
     oneUser(profileId: ID!): User
     oneUserByPetId(petId: ID!): User
     onePet(profileId: ID!): Pet
@@ -104,6 +93,7 @@ const typeDefs = gql`
     post(_id: String!): [Post]
     userMessages(receiverId: String!): [Messages]
     viewUserPictures(profileId: ID!): User
+    queryMessages(profileId: ID!): User
   }
 
   
@@ -112,11 +102,14 @@ const typeDefs = gql`
     addPetInfo(name: String!, age: String!, breed: String!, sex: String!, size: String!, color: String!, description: String!): Pet
     addPetPicture(petId: String!, media: String!): Pet
     addProfilePicture(profileId: String!, media: String!): User
-    createMessage(messageText: String!, senderId: String!, sent_by: String, receiverId: String!, received_by: String lastMessage: String, lastUpdated: String): Messages
+    createMessage(messageText: String!, senderId: String!, sent_by: String, receiverId: String!, received_by: String, lastMessage: String, lastUpdated: String): Messages
     deleteMessage(_id: ID!, messageId: String!): User
     deletePet(_id: ID!): Pet
-    editUserInfo(profileId: ID!, first_name: String!, last_name: String!): User
+    editUserInfo(profileId: ID!, first_name: String!, last_name: String!, date_of_birth: String!, zip_code: Int!): User
     setProfilePicture(profileId: String!, profilePicture: String!): User
+    addLike(profileId: ID!, petId: ID!): User
+    removeLike(profileId: ID!, petId: ID!): User
+    addFile(petId: String!, file: String!): Pet
 
 
     addUser(username: String!, email: String!, password: String!): Auth

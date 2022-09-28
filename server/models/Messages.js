@@ -24,10 +24,9 @@ const messageSchema = new Schema({
     type: String,
   },
   lastUpdated: { 
-    type: Date, 
-    default: Date.now, 
+    type: String, 
   },
-});
+},);
 
 const Messages = model('Messages', messageSchema);
 

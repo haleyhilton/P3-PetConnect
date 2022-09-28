@@ -5,6 +5,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const removeDuplicates = require('../utils/removeDuplicates');
 const { eventNames } = require('../models/Messages');
 
+
 // This essentially replaces routes and controllers.
 // Query = Get Routes
 // Mutations = POST/PUT/DELETE Routes
@@ -15,6 +16,9 @@ const resolvers = {
     // Find one user
     oneUser: async (parent, { profileId }) => {
       return User.findOne({ _id: profileId }).populate('pet').populate('post').populate('messages');
+    },
+    oneUserByName: async (parent, { name }) => {
+      return User.findOne({ username: name }).populate('pet').populate('post').populate('messages');
     },
     onePet: async (parent, { profileId }) => {
       return Pet.findOne({ _id: profileId });
@@ -32,6 +36,19 @@ const resolvers = {
     // Find All Users
     user: async () => {
       return User.find({}).populate('pet').populate('post').populate('messages');
+    },
+    queryMessages: async (parent, { profileId }) => {
+      const newUser = User.findOne({ _id: profileId }).populate('messages').aggregate(
+        [
+          {
+            $project: {
+               _id: 0,
+               formattedDate: { $dateToString: { format: "%Y-%m-%d %H:%M", date: "$lastUpdated" } }
+            }
+          }
+        ]
+     );
+      return newUser
     },
     // Find messages corresponding to sending user id to have history of message conversation
     userMessages: async (parent, args) => {
@@ -146,13 +163,27 @@ const resolvers = {
         }
       );
     },
-    editUserInfo: async (parent, { profileId, first_name, last_name }) => {
+    addFile: async (parent, { petId, file }) => {
+      return Pet.findOneAndUpdate(
+        { _id: petId },
+        {
+          $addToSet: { files: { filename: file } },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    editUserInfo: async (parent, { profileId, first_name, last_name, date_of_birth, zip_code }) => {
       return User.findOneAndUpdate(
         { _id: profileId },
         {
           $set: { 
             first_name: first_name,
             last_name: last_name,
+            date_of_birth: date_of_birth,
+            zip_code: zip_code,
           },
         },
         {
@@ -192,7 +223,7 @@ const resolvers = {
     },
     setProfilePicture: async (parent, { profileId, profilePicture }) => {
       return User.findOneAndUpdate(
-        { profileId: profileId },
+        { _id: profileId },
         {
           $set: { 
             profilePicture: profilePicture,
@@ -266,6 +297,32 @@ const resolvers = {
       ).populate('messages');
 
       return deletedMessage
+    },
+    addLike: async (parent, args) => {
+      return User.findOneAndUpdate(
+        { _id: args.profileId },
+        {
+          $addToSet: {
+            likes: args.petId
+          }
+        },
+        {
+          new: true
+        }
+      );
+    },
+    removeLike: async (parent, args) => {
+      return User.findOneAndUpdate(
+        { _id: args.profileId },
+        {
+          $pull: {
+            likes: args.petId
+          }
+        },
+        {
+          new: true
+        }
+      );
     }
   },
 };

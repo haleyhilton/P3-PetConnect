@@ -136,12 +136,13 @@ mutation Mutation($petId: String!, $media: String!) {
 
 
 export const EDIT_USER = gql`
-mutation Mutation($profileId: ID!, $firstName: String!, $lastName: String!) {
-  editUserInfo(profileId: $profileId, first_name: $firstName, last_name: $lastName) {
-    _id
+mutation Mutation($profileId: ID!, $firstName: String!, $lastName: String!, $dateOfBirth: String!, $zipCode: Int!) {
+  editUserInfo(profileId: $profileId, first_name: $firstName, last_name: $lastName, date_of_birth: $dateOfBirth, zip_code: $zipCode) {
     first_name
     last_name
-    username
+    date_of_birth
+    zip_code
+    _id
   }
 }
 `;
@@ -149,12 +150,39 @@ mutation Mutation($profileId: ID!, $firstName: String!, $lastName: String!) {
 export const SET_USER_PROFILE_PICTURE = gql`
 mutation SetProfilePicture($profileId: String!, $profilePicture: String!) {
   setProfilePicture(profileId: $profileId, profilePicture: $profilePicture) {
+    username
+    _id
+    profilePicture
+  }
+}
+`;
+
+export const ADD_LIKE = gql`
+mutation addLike($profileId: ID!, $petId: ID!) {
+  addLike(profileId: $profileId, petId: $petId) {
     _id
     username
-    profilePicture
-    media {
-      _id
-      url
+  }
+}
+`;
+
+export const REMOVE_LIKE = gql`
+mutation removeLike($profileId: ID!, $petId: ID!) {
+  removeLike(profileId: $profileId, petId: $petId) {
+    _id
+    username
+  }
+}
+`;
+
+export const ADD_FILE = gql`
+mutation Mutation($petId: String!, $file: String!) {
+  addFile(petId: $petId, file: $file) {
+    _id
+    name
+    files {
+      filename
     }
   }
-}`
+}
+`;

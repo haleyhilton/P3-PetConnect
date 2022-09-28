@@ -1,0 +1,17 @@
+.file-upload {
+    font-size: 5rem;
+}
+
+.file-component {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.wow-button {
+    width: 20rem;
+    height: 5rem;
+}
+
+.preview-file {
+    color: black;
+}

@@ -34,7 +34,7 @@ export default function Signup() {
       });
 
       Auth.login(data.addUser.token);
-      navigate.push(`/profiles/${Auth.getUser().data._id}`);
+      navigate(`/edit-user`);
     } catch (e) {
       console.error(e);
     }
@@ -104,7 +104,7 @@ export default function Signup() {
             />
           </div> */}
           <div className="form-group">
-            <label for="username-signup">Username:</label>
+            <label class="label" for="username-signup">Username:</label>
             <input
               className="form-input"
               placeholder="Enter username"
@@ -116,7 +116,7 @@ export default function Signup() {
             />
           </div>
           <div className="form-group">
-            <label for="email-signup">Email:</label>
+            <label class="label" for="email-signup">Email:</label>
             <input
               className="form-input"
               placeholder="Enter email"
@@ -128,7 +128,7 @@ export default function Signup() {
             />
           </div>
           <div className="form-group">
-            <label for="password-signup">Password:</label>
+            <label class="label" for="password-signup">Password:</label>
             <input
               className="form-input"
               placeholder="Enter password"
@@ -142,7 +142,7 @@ export default function Signup() {
           <div className="form-group">
             <button
               id="signup-submit"
-              className="btn btn-primary"
+              className="btn btn-primary sign-up-btn"
               type="submit"
               style={{ cursor: "pointer" }}
             >

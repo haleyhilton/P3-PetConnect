@@ -79,6 +79,9 @@ query OneUser($profileId: ID!) {
       lastMessage
       lastUpdated
     }
+    likes {
+      _id
+    }
   }
 }
 `;
@@ -190,6 +193,29 @@ export const QUERY_ONE_USER_BY_PET_ID = gql`
 query oneUserByPetId($petId: ID!) {
   oneUserByPetId(petId: $petId) {
     _id
+  }
+}
+`
+
+export const QUERY_ONE_USER_BY_NAME = gql`
+query OneUserByName($name: String!) {
+  oneUserByName(name: $name) {
+    username
+    profilePicture
+    media {
+      _id
+      url
+    }
+    messages {
+      _id
+      messageText
+      senderId
+      sent_by
+      receiverId
+      received_by
+      lastMessage
+      lastUpdated
+    }
   }
 }
 `

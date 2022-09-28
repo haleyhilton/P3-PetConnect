@@ -18,6 +18,7 @@ import { CREATE_USER_MESSAGE } from '../../utils/mutations';
 import { useParams } from "react-router-dom";
 import AuthService from '../../utils/auth';
 import formatDate from '../../utils/date';
+import moment from 'moment'
 
 
 const styles = {
@@ -129,11 +130,11 @@ function Chat() {
             
             const converse = chat.messages;
 
-            console.log("converse", converse)
-         
+                   
             const receiverMessages = converse.filter(function (converse) {
                 return converse.senderId === profileId;
             }).map(function (converse) {
+                // console.log(converse, "this my converse baabbbyyy")
                 return converse;
             })
 
@@ -159,7 +160,10 @@ function Chat() {
        
     }, [loading]);
 
-
+    const chat = data?.oneUser || [];
+    const newChatInstance = chat.username;
+   
+    const createDate = new Date()
     // Logic to send message to database
     // Need to add from token sender and params receiver
     const [ createMessage, setCreateMessage ] = useState({
@@ -167,8 +171,12 @@ function Chat() {
         senderId: `${AuthService.getUser().data._id}`,
         receiverId: `${profileId}`,
         sentBy: `${AuthService.getUser().data.username}`,
+        receivedBy: "",
+        lastUpdated: `${createDate}`,
     });
 
+    console.log(createDate, "supposed date object")
+    
     // Making mutation
     const [ sendMessage, { error }] = useMutation(CREATE_USER_MESSAGE)
     const handleInputChange = (event) => {
@@ -181,6 +189,7 @@ function Chat() {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        createMessage.receivedBy = newChatInstance;
         try {
            const messageData = await sendMessage({
             variables: {...createMessage}
@@ -208,8 +217,13 @@ function Chat() {
     }
 
 
+   console.log(senderBubble, "yasss")
+
 // TODO: need to be able to click on a profile message button that automatically opens up chat page with user id in params to start conversation
 // TODO: Change date format
+
+console.log(moment(new Date(1663789736150).toISOString()), "1st date")
+console.log(Date(1663789989183), "2nd date")
 
 
     return (
@@ -222,7 +236,7 @@ function Chat() {
               <Grid item xs={9}>
                   <List style={styles.messageArea}>
                     {receiverBubble.map((mess) => {
-                        console.log("44444444",mess)
+                        console.log("44444444",receiverBubble)
                         return (
                             <ListItem>
                          <Grid container>
@@ -231,14 +245,14 @@ function Chat() {
                                  <ListItemText style={styles.receiver} primary={mess.messageText}></ListItemText>
                              </Grid>
                              <Grid item xs={12}>
-                                 <ListItemText  style={styles.receiverTime} secondary={mess.lastUpdated}></ListItemText>
+                                 <ListItemText  style={styles.receiverTime} secondary={moment(mess.lastUpdated).format('MMM Do YYYY, h:mm a')}></ListItemText>
                              </Grid>
                          </Grid>
                      </ListItem>
                         )   
                     })}
                     {senderBubble.map((mess2) => {
-                        console.log("mess2",mess2)
+                        console.log(Date(mess2.lastUpdated), typeof mess2.lastUpdated, "moment")
                         return (
                       <ListItem>
                           <Grid container>
@@ -247,7 +261,7 @@ function Chat() {
                                   <ListItemText style={styles.sender} primary={mess2.messageText}></ListItemText>
                               </Grid>
                               <Grid item xs={12}>
-                                  <ListItemText style={styles.senderTime} secondary={mess2.lastUpdated}></ListItemText>
+                                  <ListItemText style={styles.senderTime} secondary={moment(mess2.lastUpdated).format('MMM Do YYYY, h:mm a')}></ListItemText>
                               </Grid>
                           </Grid>
                       </ListItem>

@@ -4,10 +4,23 @@ import heart from '../../../images/like.png'
 import { QUERY_ONE_USER_BY_PET_ID } from '../../../utils/queries';
 import blankPicture from "../../../images/blankprofile.PNG"
 import { useParams, useNavigate, Link } from "react-router-dom";
-
+import placeholder from '../../../images/results.PNG'
 export default function SearchCard(props) {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = React.useState(true);
 
+
+  const handleOpen = async (event) => {
+      // toggle vis
+      setIsOpen((current) => !current);
+  };
+
+console.log(props.pet)
+
+  const handleLikeClick = event => {
+      // 👇️ toggle isActive state on click
+      event.currentTarget.classList.toggle('liked')
+  };
   const [getOwner] = useLazyQuery(QUERY_ONE_USER_BY_PET_ID, { variables: { petId: props.pet._id } });
 
   //makeshift link to the dog owner's profile page
@@ -25,7 +38,7 @@ export default function SearchCard(props) {
     const newPetMedia = [...props.pet.media]
     return (
 
-    <div className="col-xl-3 col-md-6 mb-4" onClick={linkHandler}>
+    <div className="col-xl-3 col-md-6 mb-4" onClick={handleOpen}>
       <div className="card petCard-border shadow pointer-cursor">
         {/* <img src={typeof props.pet.media === "array" ? props.pet.media[0].url : props.pet.media.url} width="20%" height="300px" className="card-img-top" alt="..."></img> */}
         <img src={newPetMedia[0] ? newPetMedia[0].url : blankPicture} width="20%" height="300px" className="card-img-top" alt="..."></img>
@@ -50,7 +63,32 @@ export default function SearchCard(props) {
 
           </div>
         </div>
-      </div>        
+      </div>
+      <div id="myModal" className="modal" style={{ display: isOpen ? "none" : "block" }}>
+                <div className="modal-content">
+                    <span className="close" onClick={handleOpen}>&times;</span>
+                    <div className="modal-inner-wrapper">
+                      <div className="row modal-row">
+                        <div className="modal-inner-dog col" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }}></div>
+                        <div className="modal-inner-text col">
+                          <div className="image-hide" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }}></div>
+                          <p className="dog-stats dog-stat-name"> {props.pet.name}</p>
+                          <Link to={'/external-profiles/' + props.pet.ownerId} className='dog-stats owner-stat owner-hide'>Owner {props.pet.ownerName}</Link><br/>
+                          <p className="dog-stats">Age: {props.pet.age}</p>
+                          <p className="dog-stats">Breed: {props.pet.breed}</p>
+                          <p className="dog-stats">Sex: {props.pet.sex}</p>
+                          <p className="dog-stats">Size: {props.pet.size}</p>
+                          <p className="dog-stats">Color: {props.pet.color}</p>
+                          <p className="dog-stats italic"><small> {props.pet.description}</small></p>
+                        </div>
+                        </div>
+
+                        <div className="modal-inner-contact">
+                         <p className='dog-contact owner-hidexx'>Interested in {props.pet.name}? Reach out to: </p> <Link to={'/external-profiles/' + props.pet.ownerId} className='dog-stats owner-stat'>Owner {props.pet.ownerName}</Link><br/>
+                        </div>
+                    </div>
+                </div>
+            </div>        
     </div>  
 
   );
@@ -58,4 +96,4 @@ export default function SearchCard(props) {
 
                             
                               
-                           
+                              

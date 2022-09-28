@@ -5,13 +5,13 @@
       "email": "joshjankowski@gmail.com",
       "first_name": "Josh",
       "last_name": "Jankowski",
-      "date_of_birth": "1986-04-07",
+      "date_of_birth": "Wed May 07 1986 00:00:00 GMT-0700 (Pacific Daylight Time)",
       "zip_code": 98104,
       "media": {
         "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661824507/219211605_10165766044975341_4448912384451270100_n_wj9yam.jpg"
       },
       "profilePicture": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661824507/219211605_10165766044975341_4448912384451270100_n_wj9yam.jpg",
-      "pet": ["6306d4531b35ad587c6572fa"]
+      "pet": ["6306d4531b35ad587c6572fa", "631eed37778834a5ed052164"]
     },
     {
       "username": "haleyhilton",
@@ -19,13 +19,13 @@
       "email": "haleymariehilton@gmail.com",
       "first_name": "Haley",
       "last_name": "Hilton",
-      "date_of_birth": "1992-02-19",
+      "date_of_birth": "Thu Mar 19 1992 00:00:00 GMT-0800 (Pacific Standard Time)",
       "zip_code": 92083,
       "media": [{
         "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661825266/haleyhilton_oywguw.jpg"
       }],
       "profilePicture": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661825265/haleyhilton2_uk2c8m.jpg",
-      "pet": ["6306d4531b35ad587c6572fb"]
+      "pet": ["6306d4531b35ad587c6572fb", "631eed37778834a5ed052163", "631eed37778834a5ed052161"]
     },
     {
       "username": "nathanstein",
@@ -33,13 +33,13 @@
       "email": "nathanstein2@gmail.com",
       "first_name": "Nathan",
       "last_name": "Stein",
-      "date_of_birth": "1994-11-07",
+      "date_of_birth": "Wed Dec 07 1994 00:00:00 GMT-0800 (Pacific Standard Time)",
       "zip_code": 92128,
       "media": [{
         "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661824883/nathan_mcup66.jpg"
       }],
       "profilePicture": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661824883/nathan_mcup66.jpg",
-      "pet": ["6306d4531b35ad587c6572fc"]
+      "pet": ["6306d4531b35ad587c6572fc", "631eed37778834a5ed052165", "631eed37778834a5ed052162"]
     },
     {
       "username": "davidrios",
@@ -47,7 +47,7 @@
       "email": "riosdavid16@gmail.com",
       "first_name": "David",
       "last_name": "Rios",
-      "date_of_birth": "1996-08-10",
+      "date_of_birth": "Tue Sep 10 1996 00:00:00 GMT-0700 (Pacific Daylight Time)",
       "zip_code": 91945,
       "media": [{
         "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661825264/davidrios_hqnjqn.jpg"
@@ -56,7 +56,7 @@
         "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661825264/davidrios2_l1didb.jpg"
       }],
       "profilePicture": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661825265/davidrios3_q0pe2w.jpg",
-      "pet": ["6306d4531b35ad587c6572fe"]
+      "pet": ["6306d4531b35ad587c6572fe", "631eed37778834a5ed052167", "631eed37778834a5ed052166"]
     },
     {
       "username": "davidryan",
@@ -64,12 +64,12 @@
       "email": "dryan10101@gmail.com",
       "first_name": "David",
       "last_name": "Ryan",
-      "date_of_birth": "1999-03-14",
+      "date_of_birth": "Wed Apr 14 1999 00:00:00 GMT-0700 (Pacific Daylight Time)",
       "zip_code": 92065,
       "media": [{
         "url": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661824883/davidryan2_sf0spj.jpg"
       }],
       "profilePicture": "https://res.cloudinary.com/dwwkixeof/image/upload/v1661824883/davidryan_ygjdph.jpg",
-      "pet": ["6306d4531b35ad587c6572fd"]
+      "pet": ["6306d4531b35ad587c6572fd", "631eed37778834a5ed052169", "631eed37778834a5ed052168", "631eed37778834a5ed052160"]
     }
   ]

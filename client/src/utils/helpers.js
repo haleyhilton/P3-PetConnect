@@ -19,7 +19,7 @@ export const createMastText = () => {
       return {headerText: 'Contact Us', subHeaderText: 'Got a question? Need details about our business plan? Let us know below'};
     } 
     else if (url === 'team') {
-      return {headerText: 'Meet the Team', subHeaderText: 'Something about us'};
+      return {headerText: 'Meet the Team', subHeaderText: 'Dog loving developers'};
     } 
     else if (url === 'login') {
       return {};
