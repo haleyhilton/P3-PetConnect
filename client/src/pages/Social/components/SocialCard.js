@@ -38,6 +38,7 @@ export default function SocialCard(props) {
     const handleLikeClick = (event) => {
         // 👇️ toggle isActive state on click
         event.currentTarget.classList.toggle('liked')
+
         //check if already liked and update accordingly
         if (Auth.loggedIn()) { liked? removeLike() : addLike() };
         setLiked(liked? false : true);
