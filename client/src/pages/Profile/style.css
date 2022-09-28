@@ -259,20 +259,3 @@
   text-decoration: none;
   cursor: pointer;
 }
-
-.add-dog-modal-input {
-  color: white;
-}
-
-.add-dog-submit-btn {
-  background-color: aliceblue;
-  padding: 10px;
-  align-self: center;
-  margin: 1rem 0;
-  width: 40%;
-  border-radius: 40px;
-  text-decoration: none;
-  color: black;
-  box-shadow: 10px 10px 40px rgb(0 0 0 / 10%);
-  border: none;
-}

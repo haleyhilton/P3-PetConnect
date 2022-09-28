@@ -13,8 +13,6 @@ import MapsUgcIcon from '@mui/icons-material/MapsUgc';
 import IconButton from '@mui/material/IconButton';
 import { QUERY_ONE_USER } from '../utils/queries';
 import { Link } from "react-router-dom";
-import AuthService from '../utils/auth';
-
 
 const styles = {
     header: {
@@ -61,71 +59,37 @@ function Conversations({ conversations }) {
             <div style={styles.conversations}>
             {conversations.map((messages) => {
                 { console.log("messages", messages) }
-                if (messages.sent_by !== AuthService.getUser().data.username) {
-                    return (
-                        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                        <ListItem alignItems="flex-start">
-                            {/* ?This is where I may need to add onclick function to go to conversation chat? */}
-                            <ListItemButton href={`/chat/${messages.senderId}`}>
-                                <ListItemAvatar>
-                                    {/* Add Cloudinary profile pictures url */}
-                                    <Avatar alt={Array.from(messages.sent_by)[0].toUpperCase()} src="#" />
-                                </ListItemAvatar>
-                                        <ListItemText
-                                        // this will display receiver name for messages
-                                        primary={messages.sent_by}
-                                        secondary={
-                                            <React.Fragment>
-                                                <Typography
-                                                    sx={{ display: 'inline' }}
-                                                    component="span"
-                                                    variant="body2"
-                                                    color="text.primary"
-                                                >
-                                                </Typography>
-                                                {/* Display last message below from database */}
-                                                {messages.messageText}
-                                            </React.Fragment>
-                                        }
-                                    /> 
-                            </ListItemButton>
-                        </ListItem>
-                        <Divider variant="inset" component="li" />
-                    </List>
-                    )
-                } else if(messages.sent_by === AuthService.getUser().data.username) {
-                    return (
-                        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                        <ListItem alignItems="flex-start">
-                            {/* ?This is where I may need to add onclick function to go to conversation chat? */}
-                            <ListItemButton href={`/chat/${messages.receiverId}`}>
-                                <ListItemAvatar>
-                                    {/* Add Cloudinary profile pictures url */}
-                                    <Avatar alt={Array.from(messages.sent_by)[0].toUpperCase()} src="#" />
-                                </ListItemAvatar>
-                                        <ListItemText
-                                        // this will display receiver name for messages
-                                        primary={messages.received_by}
-                                        secondary={
-                                            <React.Fragment>
-                                                <Typography
-                                                    sx={{ display: 'inline' }}
-                                                    component="span"
-                                                    variant="body2"
-                                                    color="text.primary"
-                                                >
-                                                </Typography>
-                                                {/* Display last message below from database */}
-                                                {messages.messageText}
-                                            </React.Fragment>
-                                        }
-                                    /> 
-                            </ListItemButton>
-                        </ListItem>
-                        <Divider variant="inset" component="li" />
-                    </List>
-                    )
-                }
+                return (
+                    <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                    <ListItem alignItems="flex-start">
+                        {/* ?This is where I may need to add onclick function to go to conversation chat? */}
+                        <ListItemButton href={`/chat/${messages.senderId}`}>
+                            <ListItemAvatar>
+                                {/* Add Cloudinary profile pictures url */}
+                                <Avatar alt={Array.from(messages.sent_by)[0].toUpperCase()} src="#" />
+                            </ListItemAvatar>
+                                    <ListItemText
+                                    // this will display receiver name for messages
+                                    primary={messages.sent_by}
+                                    secondary={
+                                        <React.Fragment>
+                                            <Typography
+                                                sx={{ display: 'inline' }}
+                                                component="span"
+                                                variant="body2"
+                                                color="text.primary"
+                                            >
+                                            </Typography>
+                                            {/* Display last message below from database */}
+                                            {messages.messageText}
+                                        </React.Fragment>
+                                    }
+                                /> 
+                        </ListItemButton>
+                    </ListItem>
+                    <Divider variant="inset" component="li" />
+                </List>
+                )
             })}
             </div>
             
@@ -139,4 +103,3 @@ export default Conversations;
 {/* {conversations.messages.map((message) => {
     return(     )
 })} */}
-
