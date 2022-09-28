@@ -40,7 +40,7 @@ export default function index() {
     return (
 
         <div>
-            <select id="option-select">
+            <select id="option-select-profile">
                 <option>Information</option>
                 <option>Attachments</option>
             </select>
