@@ -13,6 +13,7 @@ import MapsUgcIcon from '@mui/icons-material/MapsUgc';
 import IconButton from '@mui/material/IconButton';
 import { QUERY_ONE_USER } from '../utils/queries';
 import { Link } from "react-router-dom";
+import AuthService from '../utils/auth';
 
 
 const styles = {

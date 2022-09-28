@@ -198,13 +198,10 @@ function Chat() {
 
            console.log("Message Data", messageData)
 
-           window.location.reload();
-
-        //    setReceiverBubble(...receiverBubble, messageData.data.createMessage.messageText)
-
+           window.location.reload(true);
 
         } catch (err) {
-            console.error(err)
+            console.error("This is the ERROR!!!",err)
         }
     }
 
