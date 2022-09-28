@@ -30,6 +30,10 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+
 // cloudinary config
 cloudinary.config({
   cloud_Name: process.env.CLOUD_NAME,
