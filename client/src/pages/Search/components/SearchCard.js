@@ -73,7 +73,7 @@ console.log(props.pet)
                         <div className="modal-inner-text col">
                           <div className="image-hide" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }}></div>
                           <p className="dog-stats dog-stat-name"> {props.pet.name}</p>
-                          <Link to={'/external-profiles/' + props.pet.ownerId} className='dog-stats owner-stat owner-hide'>Owner {props.pet.ownerName}</Link><br/>
+                          <p className='dog-stats owner-stat owner-hide' onClick={() => linkHandler()}>Owner</p><br/>
                           <p className="dog-stats">Age: {props.pet.age}</p>
                           <p className="dog-stats">Breed: {props.pet.breed}</p>
                           <p className="dog-stats">Sex: {props.pet.sex}</p>

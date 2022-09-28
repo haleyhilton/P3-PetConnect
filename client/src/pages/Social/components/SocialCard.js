@@ -37,7 +37,8 @@ export default function SocialCard(props) {
 
     const handleLikeClick = (event) => {
         // 👇️ toggle isActive state on click
-        event.currentTarget.classList.toggle('liked')
+        console.log(event);
+        event.currentTarget.classList.toggle('liked');
         //check if already liked and update accordingly
         if (Auth.loggedIn()) { liked? removeLike() : addLike() };
         setLiked(liked? false : true);
@@ -52,7 +53,7 @@ export default function SocialCard(props) {
             {/* <div className="top-box"><p className="dog-name">{props.pet.name}</p></div> */}
             <div key={props.pet._id} className="box" style={{ backgroundImage: `url(${props.pet.media[0] ? props.pet.media[0].url : placeholder})` }} onClick={handleOpen}></div>
             <div className="smallerbox" >
-                <button className={liked? "button button-like button-move liked" : "button button-like button-move"} onClick={() => {Auth.loggedIn() ? handleLikeClick() : doNothing()}}>
+                <button className={liked? "button button-like button-move liked" : "button button-like button-move"} onClick={(event) => {Auth.loggedIn() ? handleLikeClick(event) : doNothing()}}>
                     <i className="fa fa-heart"></i>
 
                 </button>
