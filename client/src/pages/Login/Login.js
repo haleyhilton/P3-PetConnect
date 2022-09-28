@@ -34,7 +34,7 @@ export default function Login(props) {
       setLoaderTime(true);
       const loaderTimeout = setTimeout(() => {
         window.location.assign('/');
-      }, 4000);
+      }, 2000);
     } catch (e) {
       console.error(e);
     }
