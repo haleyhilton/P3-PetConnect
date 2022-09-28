@@ -11,6 +11,8 @@ import { DELETE_ONE_PET } from "../../utils/mutations";
 import "./style.css";
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import ModalApp from "../ProfileDog/ModalApp/ModalApp"
+
 
 const ProfileDog = ({ dogs }) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(true);
@@ -26,7 +28,7 @@ const ProfileDog = ({ dogs }) => {
   });
 
   const profile = data?.onePet || {};
-
+  console.log(profile, "this is profile")
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -96,6 +98,7 @@ const ProfileDog = ({ dogs }) => {
               &times;
             </span>
             <div className="modal-inner-wrapper">
+              <ModalApp/>
               <div
                 className="modal-inner-image"
                 style={{
@@ -117,6 +120,11 @@ const ProfileDog = ({ dogs }) => {
                 <button className="upload-btn">
                   <Link className="linktext" to={`/pet-gallery/${profile._id}`}>
                     Upload a Picture
+                  </Link>
+                </button>
+                <button className="upload-btn">
+                  <Link className="linktext" to={`/file-upload/${profile._id}`}>
+                    Upload a File
                   </Link>
                 </button>
               </div>

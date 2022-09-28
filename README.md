@@ -29,9 +29,11 @@ As a user, I want an app to find and follow reputable breeders, so that I can pu
 
 - [Contact](#questions)
 
-<a name="Installation-Instructions"></a>
 
-## Installation Instructions
+
+<br>
+
+
 
 <a name="Usage"></a>
 
@@ -39,10 +41,33 @@ As a user, I want an app to find and follow reputable breeders, so that I can pu
 
 Link showing functionality, usage and final deployment [here](https://thepetconnect.herokuapp.com/)
 
+<br>
 <a name="Future-Development"></a>
 
 ## Future Development
+We view the current model as an MVP. Our short, mid, and long term goals are as follows
 
+
+SHORT TERM: 
+* Fix Messaging and other basic tools
+* Add PDF upload
+* Refactor
+* Clean up UI/UX
+* Move MVP to Prototype
+
+MID TERM:
+* Introduce Users and recieve feedback
+* Introduce Cloud Services through Azure, AWS
+* Handle load balancing, content delivery, security, etc through the cloud service
+* Develop our Big Data Processing Strategy
+
+LONG TERM:
+* With Data, we will develop technologies that are proprietary and useful
+* Breeder to Breeder Genetic Matching
+* Predictive Machine Algos
+* Bioinformatics
+
+<br>
 
 <a name="Screenshots"></a>
 
@@ -50,7 +75,7 @@ Link showing functionality, usage and final deployment [here](https://thepetconn
 ![FrontPage](/client/src/images/readMeScreenshots/Frontpage.png)
 
 ![Profile](/client/src/images/readMeScreenshots/profile.png)
-
+<br>
 <a name="Questions"></a>
 
 ## Questions
@@ -58,8 +83,8 @@ Link showing functionality, usage and final deployment [here](https://thepetconn
 The authors' preferred method of contact is: Email
 
 Email us at:<br>
-[David Rios](riosdavid16@gmail.com)<br>
-[David Ryan](dryan10101@gmail.com)<br>
-[Haley Hilton Zito](haleymariehilton@gmail.com)<br>
-[Josh Jankowski](joshjankowski@gmail.com)<br>
-[Nathan Stein](nathanstein.dev@gmail.com)<br>
+David Rios: riosdavid16@gmail.com<br>
+David Ryan: dryan10101@gmail.com<br>
+Haley Hilton Zito: haleymariehilton@gmail.com<br>
+Josh Jankowski: joshjankowski@gmail.com<br>
+Nathan Stein: nathanstein.dev@gmail.com<br>

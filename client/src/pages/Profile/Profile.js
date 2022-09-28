@@ -86,7 +86,13 @@ export default function Profile(props) {
 
 
   const dogProfile = profile.pet;
-  console.log(formState, "hi im form")
+
+  function getAge(dateString) {
+    var ageInMilliseconds = new Date() - new Date(dateString);
+    return Math.floor(ageInMilliseconds/1000/60/60/24/365); // convert to years
+ }
+  
+ const userAge = getAge(profile.date_of_birth)
 
 
   return (
@@ -104,8 +110,7 @@ export default function Profile(props) {
         <div className="name">
           {profile.first_name} {profile.last_name}
         </div>
-
-
+        <div className="buyer-seller">Age: {userAge}</div>
         <div className="buyer-seller">Buyer/Seller</div>
   
 
@@ -117,7 +122,8 @@ export default function Profile(props) {
         <br></br>
         <div className="message">
           <button className='message-btn'> 
-            <a className="message-text" href={`/chat/${profileId}`}>Message</a></button>
+            <Link className="message-text" to={`/chat/${profileId}`}>Message</Link>
+            </button>
          
         </div>
       </div>
@@ -221,8 +227,6 @@ export default function Profile(props) {
             </form>
           </div>
         </div>
-
-        
       </div>
     </div >
   );
