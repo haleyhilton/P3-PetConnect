@@ -97,17 +97,17 @@ const ProfileDog = ({ dogs }) => {
             <span className="close" onClick={handleOpen}>
               &times;
             </span>
-            <div className="modal-inner-wrapper">
-              <ModalApp/>
+            <div className="modal-inner-wrapper-profile">
               <div
-                className="modal-inner-image"
+                className="modal-inner-image-profile"
                 style={{
                   backgroundImage: `url(${
                     profile?.media?.[0] ? profile.media[0].url : placeholder
                   })`,
                 }}
-              ></div>
-              <div className="modal-inner-text">
+                ></div>
+                <ModalApp/>
+              <div className="modal-inner-text-profile">
                 <p className="dog-stats">{profile.name}</p>
                 <p className="dog-stats">Age: {profile.age}</p>
                 <p className="dog-stats">Breed: {profile.breed}</p>
@@ -117,12 +117,12 @@ const ProfileDog = ({ dogs }) => {
                 <p className="dog-stats italic">
                   <small>{profile.description}</small>
                 </p>
-                <button className="upload-btn">
+                <button className="upload-btn-profile">
                   <Link className="linktext" to={`/pet-gallery/${profile._id}`}>
                     Upload a Picture
                   </Link>
                 </button>
-                <button className="upload-btn">
+                <button className="upload-btn-profile">
                   <Link className="linktext" to={`/file-upload/${profile._id}`}>
                     Upload a File
                   </Link>
