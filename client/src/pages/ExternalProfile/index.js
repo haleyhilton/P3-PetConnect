@@ -63,7 +63,7 @@ export default function ExternalProfile(props) {
             <br></br>
             <div className="message">
               <button className='message-btn'>
-                <a className="message-text" href={`/chat/${profileId}`}>Message</a></button>
+                <Link className="message-text" to={`/chat/${profileId}`}>Message</Link></button>
             </div>
           </div>
           <div className="col-3 button-box">
