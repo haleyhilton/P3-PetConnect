@@ -162,6 +162,7 @@ function Chat() {
 
     const chat = data?.oneUser || [];
     const newChatInstance = chat.username;
+    console.log("HERE I AM", chat)
    
     const createDate = new Date()
     // Logic to send message to database
@@ -197,13 +198,10 @@ function Chat() {
 
            console.log("Message Data", messageData)
 
-           window.location.reload();
-
-        //    setReceiverBubble(...receiverBubble, messageData.data.createMessage.messageText)
-
+           window.location.reload(true);
 
         } catch (err) {
-            console.error(err)
+            console.error("This is the ERROR!!!",err)
         }
     }
 
